@@ -1,0 +1,119 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/localized-ring.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] </p>
+<h1><a name="label-0" id="label-0">Algebra::LocalizedRing</a></h1><!-- RDLabel: "Algebra::LocalizedRing" -->
+<p><em>(Class of Localization of Ring)</em></p>
+<p>This class creates the fraction ring of the given ring.
+To make a concrete class, use the class method
+<a href="#label-9">::create</a> or the function <a href="#label-5">Algebra.LocalizedRing</a>().</p>
+<h2><a name="label-1" id="label-1">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>localized-ring.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">Included Ring</a></h2><!-- RDLabel: "Included Ring" -->
+<p>none.</p>
+<h2><a name="label-4" id="label-4">Associated Functions:</a></h2><!-- RDLabel: "Associated Functions:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>Algebra.LocalizedRing(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra.LocalizedRing" -->
+<dd>
+Same as <a href="#label-9">::create</a>(ring).</dd>
+<dt><a name="label-6" id="label-6"><code>Algebra.RationalFunctionField(<var>ring</var>, <var>obj</var>)</code></a></dt><!-- RDLabel: "Algebra.RationalFunctionField" -->
+<dd>
+<p>Creates the rational function field over <var>ring</var> with
+the variable expressed by <var>obj</var>. This class is equipped with
+the class method <var>::var</var> which returns the variable.</p>
+<p>Example: the quotient field over the polynomial ring over Rational</p>
+<pre>require "algebra/localized-ring"
+require "rational"
+F = Algebra.RationalFunctionField(Rational, "x")
+x = F.var
+p ( 1 / (x**2 - 1) - 1 / (x**3 - 1) )
+  #=&gt; x^2/(x^4 + x^3 - x - 1)</pre></dd>
+<dt><a name="label-7" id="label-7"><code>Algebra.MRationalFunctionField(<var>ring</var>, [<var>obj1</var>[, <var>obj2</var>, ...]])</code></a></dt><!-- RDLabel: "Algebra.MRationalFunctionField" -->
+<dd>
+<p>Creates the rational function field over <var>ring</var> with
+the variables expressed by <var>obj1</var>, <var>obj2</var>, .... This class is equipped with
+the class method <var>::vars</var> which returns the array of variables.</p>
+<p>Example: the quotient field over the polynomial ring over Rational</p>
+<pre>require "algebra/localized-ring"
+require "rational"
+G = Algebra.MRationalFunctionField(Rational, "x", "y", "z")
+x, y, z = G.vars
+f = (x + z) / (x + y) - z / (x + y)
+p f #=&gt; (x^2 + xy)/(x^2 + 2xy + y^2)
+p f.simplify #=&gt; x/(x + y)</pre></dd>
+</dl>
+<h2><a name="label-8" id="label-8">Class Method:</a></h2><!-- RDLabel: "Class Method:" -->
+<dl>
+<dt><a name="label-9" id="label-9"><code>::create(<var>ring</var>)</code></a></dt><!-- RDLabel: "::create" -->
+<dd>
+<p>Returns the fraction ring of which the numerator and the
+denominator are the elements of the <var>ring</var>.</p>
+<p>This returns the subclass of Algebra::LocalizedRing. The subclass
+has the class method <var>::ground</var> and <code>::[]</code> which 
+return <var>ring</var> and <code>x/1</code> respectively.</p>
+<p>Example: Yet Another Rational</p>
+<pre>require "localized-ring"
+F = Algebra.LocalizedRing(Integer)
+p F.new(1, 2) + F.new(2, 3) #=&gt; 7/6</pre>
+<p>Example: rational function field over Integer</p>
+<pre>require "polynomial"
+require "localized-ring"
+P = Algebra.Polynomial(Integer, "x")
+F = Algebra.LocalizedRing(P)
+x = F[P.var]
+p ( 1 / (x**2 - 1) - 1 / (x**3 - 1) )
+  #=&gt; (x^3 - x^2)/(x^5 - x^3 - x^2 + 1)</pre></dd>
+<dt><a name="label-10" id="label-10"><code>::zero</code></a></dt><!-- RDLabel: "::zero" -->
+<dd>
+Returns zero.</dd>
+<dt><a name="label-11" id="label-11"><code>::unity</code></a></dt><!-- RDLabel: "::unity" -->
+<dd>
+Returns unity.</dd>
+</dl>
+<h2><a name="label-12" id="label-12">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-13" id="label-13"><code>zero?</code></a></dt><!-- RDLabel: "zero?" -->
+<dd>
+Returns true if <var>self</var> is zero.</dd>
+<dt><a name="label-14" id="label-14"><code>zero</code></a></dt><!-- RDLabel: "zero" -->
+<dd>
+Returns zero.</dd>
+<dt><a name="label-15" id="label-15"><code>unity</code></a></dt><!-- RDLabel: "unity" -->
+<dd>
+Returns unity.</dd>
+<dt><a name="label-16" id="label-16"><code>==(<var>other</var>)</code></a></dt><!-- RDLabel: "==" -->
+<dd>
+Returns true if <var>self</var> equals <var>other</var>.</dd>
+<dt><a name="label-17" id="label-17"><code>+(<var>other</var>)</code></a></dt><!-- RDLabel: "+" -->
+<dd>
+Returns the sum of <var>self</var> and <var>other</var>.</dd>
+<dt><a name="label-18" id="label-18"><code>-(<var>other</var>)</code></a></dt><!-- RDLabel: "-" -->
+<dd>
+Returns the difference of <var>self</var> from <var>other</var>.</dd>
+<dt><a name="label-19" id="label-19"><code>*(<var>other</var>)</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+Returns the product of <var>self</var> and <var>other</var>.</dd>
+<dt><a name="label-20" id="label-20"><code>/(<var>other</var>)</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+Returns the quotient of <var>self</var> by <var>other</var> using <!-- Reference, RDLabel "inverse" doesn't exist --><em class="label-not-found">inverse</em><!-- Reference end -->.</dd>
+<dt><a name="label-21" id="label-21"><code>**(<var>n</var>)</code></a></dt><!-- RDLabel: "**" -->
+<dd>
+Returns the <var>n</var>-th power of <var>self</var>.</dd>
+</dl>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/finite-map.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] 
+[<a href="finite-set.html">finite-set</a>] 
+<a href="#label-0">Algebra::Map</a></p>
+<h1><a name="label-0" id="label-0">Algebra::Map</a></h1><!-- RDLabel: "Algebra::Map" -->
+<p><em>Map Class</em></p>
+<p>The class which represents maps.</p>
+<h2><a name="label-1" id="label-1">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>finite-map.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Set</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">Included Module:</a></h2><!-- RDLabel: "Included Module:" -->
+<ul>
+<li><var>Powers</var></li>
+</ul>
+<h2><a name="label-4" id="label-4">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>::[[<var>x0</var> =&gt; <var>y0</var>, [<var>x1</var> =&gt; <var>y1</var>, [<var>x2</var> =&gt; <var>y2</var>, ...]]]]</code></a></dt><!-- RDLabel: "::[]" -->
+<dd>
+<p>Returns the map which has values <var>y0</var> at <var>x0</var>,
+<var>y1</var> at <var>x1</var>,  <var>y2</var> at <var>x2</var>...</p>
+<p>Exampel: </p>
+<pre>require "finite-map"
+include Algebra
+p Map[0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12]         #=&gt; {0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12}
+p Map[{0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12}]       #=&gt; {0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12}
+p Map.new(0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12)     #=&gt; {0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12}
+p Map.new({0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12})   #=&gt; {0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12}
+p Map.new_a([0, 10, 1, 11, 2, 12])       #=&gt; {0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12}</pre></dd>
+<dt><a name="label-6" id="label-6"><code>::new([<var>x0</var> =&gt; <var>y0</var>, [<var>x1</var> =&gt; <var>y1</var>, [<var>x2</var> =&gt; <var>y2</var>, ...]]])</code></a></dt><!-- RDLabel: "::new" -->
+<dd>
+Returns the map which has values <var>y0</var> at <var>x0</var>,
+<var>y1</var> at <var>x1</var>,  <var>y2</var> at <var>x2</var>... This is the same
+as <a href="#label-5">::[]</a>.</dd>
+<dt><a name="label-7" id="label-7"><code>::new_a(<var>a</var>)</code></a></dt><!-- RDLabel: "::new_a" -->
+<dd>
+Returns the map defined so that the even-th elements are in domain and
+the odd-th elements are their image.</dd>
+<dt><a name="label-8" id="label-8"><code>::phi([<var>t</var>])</code></a></dt><!-- RDLabel: "::phi" -->
+<dd>
+<p>Return the empty map (having empty set as domain).
+If <var>t</var> is given, <a href="#label-12">target=</a> is set by <var>t</var>.</p>
+<p>Exampel: </p>
+<pre>p Map.phi #=&gt; {}
+p Map.phi(Set[0, 1]) #=&gt; {}
+p Map.phi(Set[0, 1]).target #=&gt; {0, 1}</pre></dd>
+<dt><a name="label-9" id="label-9"><code>::empty_set</code></a></dt><!-- RDLabel: "::empty_set" -->
+<dd>
+Alias of <a href="#label-8">::phi</a>.</dd>
+<dt><a name="label-10" id="label-10"><code>::singleton(<var>x</var>, <var>y</var>)</code></a></dt><!-- RDLabel: "::singleton" -->
+<dd>
+Returns the map defined over singleton <code>{x}</code> and having value <var>y</var>
+on it.</dd>
+</dl>
+<h2><a name="label-11" id="label-11">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-12" id="label-12"><code>target=(<var>s</var>)</code></a></dt><!-- RDLabel: "target=" -->
+<dd>
+Sets the codomain <var>s</var>. This is used for <a href="#label-42">surjective?</a> and so on.</dd>
+<dt><a name="label-13" id="label-13"><code>codomain=(<var>s</var>)</code></a></dt><!-- RDLabel: "codomain=" -->
+<dd>
+Alias of <a href="#label-12">target=</a>.</dd>
+<dt><a name="label-14" id="label-14"><code>target</code></a></dt><!-- RDLabel: "target" -->
+<dd>
+Returns the codomain of <var>self</var></dd>
+<dt><a name="label-15" id="label-15"><code>codomain</code></a></dt><!-- RDLabel: "codomain" -->
+<dd>
+Alias of <a href="#label-14">target</a>.</dd>
+<dt><a name="label-16" id="label-16"><code>source</code></a></dt><!-- RDLabel: "source" -->
+<dd>
+<p>Returns the domain of <var>self</var>.</p>
+<p>Example: </p>
+<pre>require "finite-map"
+include Algebra
+m = Map[0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12]
+p m.source #=&gt; {0, 1, 2}
+p m.target #=&gt; nil
+m.target = Set[10, 11, 12, 13]
+p m.target #=&gt; {10, 11, 12, 13}</pre></dd>
+<dt><a name="label-17" id="label-17"><code>domain</code></a></dt><!-- RDLabel: "domain" -->
+<dd>
+Alias of <a href="#label-16">source</a>.</dd>
+<dt><a name="label-18" id="label-18"><code>phi([<var>t</var>])</code></a></dt><!-- RDLabel: "phi" -->
+<dd>
+Returns the empty map. If <var>t</var> given, <a href="#label-12">target=</a> t is done.</dd>
+<dt><a name="label-19" id="label-19"><code>empty_set</code></a></dt><!-- RDLabel: "empty_set" -->
+<dt><a name="label-20" id="label-20"><code>null</code></a></dt><!-- RDLabel: "null" -->
+<dd>
+Alias of <a href="#label-18">phi</a>.</dd>
+<dt><a name="label-21" id="label-21"><code>call(<var>x</var>)</code></a></dt><!-- RDLabel: "call" -->
+<dd>
+Return the value of <var>x</var>.</dd>
+<dt><a name="label-22" id="label-22"><code>act</code></a></dt><!-- RDLabel: "act" -->
+<dt><a name="label-23" id="label-23"><code>[]</code></a></dt><!-- RDLabel: "[]" -->
+<dd>
+Alias of <a href="#label-21">call</a>.</dd>
+<dt><a name="label-24" id="label-24"><code>each</code></a></dt><!-- RDLabel: "each" -->
+<dd>
+<p>Iterates for each <code>[point, image]</code> of the map.</p>
+<p>Example: </p>
+<pre>require "finite-map"
+include Algebra
+Map[0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12].each do |x, y|
+  p [x, y] #=&gt; [1, 11], [0, 10], [2, 12]
+end</pre></dd>
+<dt><a name="label-25" id="label-25"><code>compose(<var>other</var>)</code></a></dt><!-- RDLabel: "compose" -->
+<dd>
+<p>Returns the composition map of <var>self</var> and <var>other</var>.</p>
+<p>Example: </p>
+<pre>require "finite-map"
+include Algebra
+f = Map.new(0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12)
+g = Map.new(10 =&gt; 20, 11 =&gt; 21, 12 =&gt; 22)
+p g * f #=&gt; {0 =&gt; 20, 1 =&gt; 21, 2 =&gt; 22}</pre></dd>
+<dt><a name="label-26" id="label-26"><code>*</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+Alias of <a href="#label-25">compose</a>.</dd>
+<dt><a name="label-27" id="label-27"><code>dup</code></a></dt><!-- RDLabel: "dup" -->
+<dd>
+Duplicates <var>self</var>. <a href="#label-14">target</a> is also duplicated if it is set.</dd>
+<dt><a name="label-28" id="label-28"><code>append!(<var>x</var>, <var>y</var>)</code></a></dt><!-- RDLabel: "append!" -->
+<dd>
+<p>Let the value of <var>x</var> be <var>y</var>.</p>
+<p>Example: </p>
+<pre>require "finite-map"
+include Algebra
+m = Map[0 =&gt; 10, 1 =&gt; 11]
+m.append!(2, 12)
+p m #=&gt; {0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12}</pre></dd>
+<dt><a name="label-29" id="label-29"><code>[<var>x</var>] = <var>y</var></code></a></dt><!-- RDLabel: "[]=" -->
+<dd>
+Alias of <a href="#label-28">append!</a>.</dd>
+<dt><a name="label-30" id="label-30"><code>append(<var>x</var>, <var>y</var>)</code></a></dt><!-- RDLabel: "append" -->
+<dd>
+<a href="#label-27">dup</a> and <a href="#label-28">append!</a>(x, y).</dd>
+<dt><a name="label-31" id="label-31"><code>include?(<var>x</var>)</code></a></dt><!-- RDLabel: "include?" -->
+<dd>
+Returns true if <var>x</var> is in the domain.</dd>
+<dt><a name="label-32" id="label-32"><code>contains?(<var>x</var>)</code></a></dt><!-- RDLabel: "contains?" -->
+<dd>
+Alias of <a href="#label-31">include?</a>.</dd>
+<dt><a name="label-33" id="label-33"><code>member?(<var>a</var>)</code></a></dt><!-- RDLabel: "member?" -->
+<dd>
+<p>Returns true if there is <code>[x, y]</code> s.t. the value of <var>x</var>
+is <var>y</var> and <code>[x, y] == a</code>.</p>
+<p>Example: </p>
+<pre>require "finite-map"
+include Algebra
+m = Map[0 =&gt; 10, 1 =&gt; 11]
+p m.include?(1)  #=&gt; true
+p m.member?([1, 11]) #=&gt; true</pre></dd>
+<dt><a name="label-34" id="label-34"><code>has?</code></a></dt><!-- RDLabel: "has?" -->
+<dd>
+Alias of member?</dd>
+<dt><a name="label-35" id="label-35"><code>image([<var>s</var>])</code></a></dt><!-- RDLabel: "image" -->
+<dd>
+Returns the image of <var>self</var>. If <var>s</var> is indicated, returns
+the image of <var>s</var> by <var>self</var>.</dd>
+<dt><a name="label-36" id="label-36"><code>inv_image(<var>s</var>)</code></a></dt><!-- RDLabel: "inv_image" -->
+<dd>
+Return the inverse image of <var>s</var> by <var>self</var>.</dd>
+<dt><a name="label-37" id="label-37"><code>map_s</code></a></dt><!-- RDLabel: "map_s" -->
+<dd>
+<p>Returns the set given by evaluation of the block, iterating over each pair
+of <code>[point, image]</code>.</p>
+<p>Example: </p>
+<pre>require "finite-map"
+include Algebra
+p Map.new(0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12).map_s{|x, y| y - 2*x}
+#=&gt; Set[10, 9, 8]</pre></dd>
+<dt><a name="label-38" id="label-38"><code>map_m</code></a></dt><!-- RDLabel: "map_m" -->
+<dd>
+<p>Returns the map given by evaluation of the block, iterating over each pair
+of <code>[point, image]</code>. The value of the block must be
+the two-dimensional array <code>[x, y]</code>.</p>
+<p>Example: </p>
+<pre>require "finite-map"
+include Algebra
+p Map.new(0 =&gt; 10, 1 =&gt; 11, 2 =&gt; 12).map_m{|x, y| [y, x]}
+#=&gt; {10 =&gt; 0, 11 =&gt; 1, 12 =&gt; 2}</pre></dd>
+<dt><a name="label-39" id="label-39"><code>inverse</code></a></dt><!-- RDLabel: "inverse" -->
+<dd>
+Returns the inverse map of <var>self</var>.</dd>
+<dt><a name="label-40" id="label-40"><code>inv_coset</code></a></dt><!-- RDLabel: "inv_coset" -->
+<dd>
+<p>Reterns the map corresponding each point to its set of inverse images.</p>
+<p>Examepe: </p>
+<pre>require "finite-map"
+include Algebra
+m = Map[0=&gt;0, 1=&gt;0, 2=&gt;2, 3=&gt;2, 4=&gt;0]
+p m.inv_coset #=&gt; {0=&gt;{0, 1, 4}, 2=&gt;{2, 3}}
+m.codomain = Set[0, 1, 2, 3]
+p m.inv_coset #=&gt; {0=&gt;{0, 1, 4}, 1=&gt;{}, 2=&gt;{2, 3}, 3=&gt;{}}</pre></dd>
+<dt><a name="label-41" id="label-41"><code>identity?</code></a></dt><!-- RDLabel: "identity?" -->
+<dd>
+Returns true if <var>self</var> is the identity map.</dd>
+<dt><a name="label-42" id="label-42"><code>surjective?</code></a></dt><!-- RDLabel: "surjective?" -->
+<dd>
+Returns true if <var>self</var> is surjective.
+<a href="#label-14">target</a> should be set before using this.</dd>
+<dt><a name="label-43" id="label-43"><code>injective?</code></a></dt><!-- RDLabel: "injective?" -->
+<dd>
+Returns true if <var>self</var> is injective.</dd>
+<dt><a name="label-44" id="label-44"><code>bijective?</code></a></dt><!-- RDLabel: "bijective?" -->
+<dd>
+Returns true if <var>self</var> is bijective. 
+<a href="#label-14">target</a> should be set before using this.</dd>
+</dl>
+
+</body>
+</html>

@@ -1,0 +1,445 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/polynomial.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] 
+<a href="#label-0">Polynomial</a>
+/
+<a href="#label-59">PolynomialFactorization</a>
+/
+<a href="#label-66">Algebra::SplittingField</a>
+/
+<a href="#label-71">Algebra::Galois</a></p>
+<h1><a name="label-0" id="label-0">Polynomial</a></h1><!-- RDLabel: "Polynomial" -->
+<p><em>(Class of Polynomial Ring)</em></p>
+<p>This class expresses the polynomial ring over arbitrary ring.
+For creating the actual class, use the class method <a href="#label-7">::create</a>
+or <a href="#label-5">Algebra.Polynomial</a>, giving the coefficient ring.</p>
+<h2><a name="label-1" id="label-1">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>polynomial.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">Included Modules</a></h2><!-- RDLabel: "Included Modules" -->
+<ul>
+<li><var>Enumerable</var></li>
+<li><var>Comparable</var></li>
+<li><!-- Reference, RDLabel "Algebra::EuclidianRing" doesn't exist --><em class="label-not-found">Algebra::EuclidianRing</em><!-- Reference end --></li>
+</ul>
+<h2><a name="label-4" id="label-4">Associated Functions:</a></h2><!-- RDLabel: "Associated Functions:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>Algebra.Polynomial(<var>ring</var> [, <var>obj0</var> , <var>obj1</var> [, ...]])</code></a></dt><!-- RDLabel: "Algebra.Polynomial" -->
+<dd>
+Same as <a href="#label-7">::create</a>(ring, obj0[, obj1 [, ...]]).</dd>
+</dl>
+<h2><a name="label-6" id="label-6">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-7" id="label-7"><code>::create(<var>ring</var>, <var>obj0</var>[, <var>obj1</var>[, ...]])</code></a></dt><!-- RDLabel: "::create" -->
+<dd>
+<p>Creates a polynomial ring class over the coefficient ring
+expressed by the class: <var>ring</var>.</p>
+<p>The objects designated in <code>obj0, obj1, ...</code> express the variables,
+and the polynomial ring on the polynomial ring is recursively created, 
+if this is multiple.</p>
+<p>The value of this method is the subclass of Polynomial class.
+This subclass has the class methods: <var>ground</var>, <var>var</var>, 
+and <var>vars</var>, which return the coefficient ring <var>ring</var>, 
+the primary variable object(the latest one) and all variables, 
+respectively.</p>
+<p>The objects <code>obj0, obj1, ...</code> are to utilize for the name
+(the value of <var>to_s</var> ) of the variable.</p>
+<p>Example: Polynomial ring over Integer</p>
+<pre>require "polynomial"
+P = Algebra::Polynomial.create(Integer, "x")
+x = P.var
+p((x + 1)**100) #=&gt; x^100 + 100x^99 + ... + 100x + 1
+p P.ground #=&gt; integer</pre>
+<p>Example: Multi variate Polynomial ring over Integer</p>
+<pre>require "polynomial"
+P = Algebra::Polynomial.create(Integer, "x", "y", "z")
+x, y, z = P.vars
+p((-x + y + z)*(x + y - z)*(x - y + z))
+#=&gt; -z^3 + (y + x)z^2 + (y^2 - 2xy + x^2)z - y^3 + xy^2 + x^2y - x^3
+p P.var #=&gt; z</pre>
+<p>This <code>P</code> is equal to</p>
+<pre>Algebra::Polynomial.create(
+  Algebra::Polynomial.create(
+    Algebra::Polynomial.create(
+      Integer,
+    "x"),
+  "y"),
+"z")</pre>
+<p>and the last variable <var>z</var> is the primary variable.</p></dd>
+<dt><a name="label-8" id="label-8"><code>::var</code></a></dt><!-- RDLabel: "::var" -->
+<dd>
+Returns the (primary) variable of the polynomial ring.</dd>
+<dt><a name="label-9" id="label-9"><code>::vars</code></a></dt><!-- RDLabel: "::vars" -->
+<dd>
+Returns the array of the variables of the polynomial rings, 
+collecting recursively.</dd>
+<dt><a name="label-10" id="label-10"><code>::mvar</code></a></dt><!-- RDLabel: "::mvar" -->
+<dd>
+Same as <a href="#label-9">::vars</a>.</dd>
+<dt><a name="label-11" id="label-11"><code>::to_ary</code></a></dt><!-- RDLabel: "::to_ary" -->
+<dd>
+<p>Returns <code>[self, *vars]</code>.</p>
+<p>Example: Define Polynomial ring and variables simulteniously</p>
+<pre>P, x, y, z = Algebra::Polynomial.create(Integer, "x", "y", "z")</pre></dd>
+<dt><a name="label-12" id="label-12"><code>::variable</code></a></dt><!-- RDLabel: "::variable" -->
+<dd>
+Returns the object which expresses the (primary) variable of 
+the polynomial ring.</dd>
+<dt><a name="label-13" id="label-13"><code>::variables</code></a></dt><!-- RDLabel: "::variables" -->
+<dd>
+Returns the array of the objects which express the variables of 
+the polynomial rings, collecting recursively.</dd>
+<dt><a name="label-14" id="label-14"><code>::indeterminate(<var>obj</var>)</code></a></dt><!-- RDLabel: "::indeterminate" -->
+<dd>
+Returns the variable expressed by <var>obj</var>.</dd>
+<dt><a name="label-15" id="label-15"><code>::monomial([<var>n</var>])</code></a></dt><!-- RDLabel: "::monomial" -->
+<dd>
+<p>Returns the monomial of degree <var>n</var>.</p>
+<p>Example:</p>
+<pre>P = Polynomial(Integer, "x")
+P.monomial(3) #=&gt; x^3</pre></dd>
+<dt><a name="label-16" id="label-16"><code>::const(<var>c</var>)</code></a></dt><!-- RDLabel: "::const" -->
+<dd>
+<p>Returns the constant value <var>c</var>.</p>
+<p>Example:</p>
+<pre>P = Polynomial(Integer, "x")
+P.const(3)      #=&gt; 3
+P.const(3).type #=&gt; P</pre></dd>
+<dt><a name="label-17" id="label-17"><code>::zero</code></a></dt><!-- RDLabel: "::zero" -->
+<dd>
+Returns the zero.</dd>
+<dt><a name="label-18" id="label-18"><code>::unity</code></a></dt><!-- RDLabel: "::unity" -->
+<dd>
+Returns the unity.</dd>
+</dl>
+<h2><a name="label-19" id="label-19">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-20" id="label-20"><code>var</code></a></dt><!-- RDLabel: "var" -->
+<dd>
+Same as <a href="#label-8">::var</a>.</dd>
+<dt><a name="label-21" id="label-21"><code>variable</code></a></dt><!-- RDLabel: "variable" -->
+<dd>
+Same as <a href="#label-12">::variable</a>.</dd>
+<dt><a name="label-22" id="label-22"><code>each(&amp;<var>b</var>)</code></a></dt><!-- RDLabel: "each" -->
+<dd>
+<p>Iterates of coefficients in the ascendant power series.</p>
+<p>Example:</p>
+<pre>P = Polynomial(Integer, "x")
+x = P.var
+(x**3 + 2*x**2 + 4).each do |c|
+  p c #=&gt; 4, 0, 2, 1
+end</pre></dd>
+<dt><a name="label-23" id="label-23"><code>reverse_each(&amp;<var>b</var>)</code></a></dt><!-- RDLabel: "reverse_each" -->
+<dd>
+<p>Iterates of coefficients in the descendent power series.</p>
+<p>Example:</p>
+<pre>P = Polynomial(Integer, "x")
+x = P.var
+(x**3 + 2*x**2 + 4).reverse_each do |c|
+  p c #=&gt; 1, 2, 0, 4
+end</pre></dd>
+<dt><a name="label-24" id="label-24"><code>[<var>n</var>]</code></a></dt><!-- RDLabel: "[]" -->
+<dd>
+Returns the coefficient of degree <var>n</var>.</dd>
+<dt><a name="label-25" id="label-25"><code>[<var>n</var>] = <var>v</var></code></a></dt><!-- RDLabel: "[]=" -->
+<dd>
+Sets the coefficient of degree <var>n</var> into <var>v</var>.</dd>
+<dt><a name="label-26" id="label-26"><code>monomial</code></a></dt><!-- RDLabel: "monomial" -->
+<dd>
+Same as <a href="#label-15">::monomial</a>.</dd>
+<dt><a name="label-27" id="label-27"><code>monomial?</code></a></dt><!-- RDLabel: "monomial?" -->
+<dd>
+Returns true if self is a monomial.</dd>
+<dt><a name="label-28" id="label-28"><code>zero?</code></a></dt><!-- RDLabel: "zero?" -->
+<dd>
+Returns true if self is the zero.</dd>
+<dt><a name="label-29" id="label-29"><code>zero</code></a></dt><!-- RDLabel: "zero" -->
+<dd>
+Returns the zero.</dd>
+<dt><a name="label-30" id="label-30"><code>unity</code></a></dt><!-- RDLabel: "unity" -->
+<dd>
+Returns the unity.</dd>
+<dt><a name="label-31" id="label-31"><code>==(<var>other</var>)</code></a></dt><!-- RDLabel: "==" -->
+<dd>
+Returns true if <var>self</var> is equal to <var>other</var>.</dd>
+<dt><a name="label-32" id="label-32"><code>&lt;=&gt;(<var>other</var>)</code></a></dt><!-- RDLabel: "<=>" -->
+<dd>
+Returns positive if <var>self</var> is greater than <var>other</var>.</dd>
+<dt><a name="label-33" id="label-33"><code>+(<var>other</var>)</code></a></dt><!-- RDLabel: "+" -->
+<dd>
+Returns the sum of <var>self</var> and <var>other</var>.</dd>
+<dt><a name="label-34" id="label-34"><code>-(<var>other</var>)</code></a></dt><!-- RDLabel: "-" -->
+<dd>
+Returns the difference of <var>self</var> from <var>other</var>.</dd>
+<dt><a name="label-35" id="label-35"><code>*(<var>other</var>)</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+Returns the product of <var>self</var> and <var>other</var>.</dd>
+<dt><a name="label-36" id="label-36"><code>**(<var>n</var>)</code></a></dt><!-- RDLabel: "**" -->
+<dd>
+Returns the <var>n</var>-th power of <var>self</var>.</dd>
+<dt><a name="label-37" id="label-37"><code>/(<var>other</var>)</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+Returns the quotient of <var>self</var> by <var>other</var>.
+Same as <a href="#label-39">div</a>.</dd>
+<dt><a name="label-38" id="label-38"><code>divmod(<var>other</var>)</code></a></dt><!-- RDLabel: "divmod" -->
+<dd>
+Returns the array [quotient, remainder] by <var>other</var>.</dd>
+<dt><a name="label-39" id="label-39"><code>div(<var>other</var>)</code></a></dt><!-- RDLabel: "div" -->
+<dd>
+Returns the quotient of <var>self</var> by <var>other</var>.
+Same as <code>divmod(other).first</code>.</dd>
+<dt><a name="label-40" id="label-40"><code>%(<var>other</var>)</code></a></dt><!-- RDLabel: "%" -->
+<dd>
+Returns the remainder of <var>self</var> by <var>other</var>.
+Same as <code>divmod(other).last</code>.</dd>
+<dt><a name="label-41" id="label-41"><code>divide?(<var>other</var>)</code></a></dt><!-- RDLabel: "divide?" -->
+<dd>
+Returns true if <var>self</var> is divisible by <var>other</var>.
+Same as <code>divmod(other).last == zero?</code>.</dd>
+<dt><a name="label-42" id="label-42"><code>deg</code></a></dt><!-- RDLabel: "deg" -->
+<dd>
+<p>Returns the degree.</p>
+<p>Example:</p>
+<pre>P = Polynomial(Integer, "x")
+x = P.var
+(5*x**3 + 2*x + 1).deg #=&gt; 3</pre></dd>
+<dt><a name="label-43" id="label-43"><code>lc</code></a></dt><!-- RDLabel: "lc" -->
+<dd>
+<p>Returns the leading coefficient.</p>
+<p>Example:</p>
+<pre>(5*x**3 + 2*x + 1).lc #=&gt; 5</pre></dd>
+<dt><a name="label-44" id="label-44"><code>lm</code></a></dt><!-- RDLabel: "lm" -->
+<dd>
+<p>Returns the leading monomial.</p>
+<p>Example:</p>
+<pre>(5*x**3 + 2*x + 1).lm #=&gt; x**3</pre></dd>
+<dt><a name="label-45" id="label-45"><code>lt</code></a></dt><!-- RDLabel: "lt" -->
+<dd>
+<p>Returns the leading term).
+Same as <code>lc * lm</code>.</p>
+<p>Example:</p>
+<pre>(5*x**3 + 2*x + 1).lt #=&gt; 5*x**3</pre></dd>
+<dt><a name="label-46" id="label-46"><code>rt</code></a></dt><!-- RDLabel: "rt" -->
+<dd>
+<p>Returns the rest term, which has the same value as <code>self - lt</code>.</p>
+<p>Example:</p>
+<pre>(5*x**3 + 2*x + 1).rt #=&gt; 2*x + 1</pre></dd>
+<dt><a name="label-47" id="label-47"><code>monic</code></a></dt><!-- RDLabel: "monic" -->
+<dd>
+Returns the polynomial, which corrected the maximum order coefficient in 1.
+Same as <code>self / lc</code> .</dd>
+<dt><a name="label-48" id="label-48"><code>cont</code></a></dt><!-- RDLabel: "cont" -->
+<dd>
+Returns the content (i.e. L.C.M of coefficients).</dd>
+<dt><a name="label-49" id="label-49"><code>pp</code></a></dt><!-- RDLabel: "pp" -->
+<dd>
+Returns the primitive part.
+Same as<code>self / cont</code>.</dd>
+<dt><a name="label-50" id="label-50"><code>to_s</code></a></dt><!-- RDLabel: "to_s" -->
+<dd>
+<p>Returns the expression in strings.
+Use <var>display_type</var> in order to change the display format.
+The possible value of <var>display_type</var> is 
+<var>:norm</var>(default) and  <var>:code</var>.</p>
+<p>Example:</p>
+<pre>P = Polynomial(Integer, "x")
+x = P.var
+p 5*x**3 + 2*x + 1 #=&gt;5x^3 + 2x + 1
+P.display_type = :code
+p 5*x**3 + 2*x + 1 #=&gt; 5*x**3 + 2*x + 1</pre></dd>
+<dt><a name="label-51" id="label-51"><code>derivate</code></a></dt><!-- RDLabel: "derivate" -->
+<dd>
+<p>Return the derivative.</p>
+<p>Example:</p>
+<pre>(5*x**3 + 2*x + 1).derivate #=&gt; 15*x**2 + 2</pre></dd>
+<dt><a name="label-52" id="label-52"><code>sylvester_matrix(<var>other</var>)</code></a></dt><!-- RDLabel: "sylvester_matrix" -->
+<dd>
+Return the Sylvester matrix of <var>self</var> and <var>other</var>.</dd>
+<dt><a name="label-53" id="label-53"><code>resultant(<var>other</var>)</code></a></dt><!-- RDLabel: "resultant" -->
+<dd>
+Return the resultant of <var>self</var> with <var>other</var></dd>
+<dt><a name="label-54" id="label-54"><code>project(<var>ring</var>[, <var>obj</var>]){|<var>c</var>, <var>n</var>| ... }</code></a></dt><!-- RDLabel: "project" -->
+<dd>
+<p>Returns the sum of the evaluations
+of ... for each monomial of coefficient <var>c</var> and degree <var>n</var>.
+If <var>obj</var> is omitted, it is assumed to be <code>ring.var</code>.</p>
+<p>Example:</p>
+<pre>require "polynomial"
+require "rational"
+P = Algebra::Polynomial(Integer, "x")
+PQ = Algebra::Polynomial(Rational, "y")
+x = P.var
+f = 5*x**3 + 2*x + 1
+p f.convert_to(PQ) #=&gt; 5y^3 + 2y + 1
+p f.project(PQ) {|c, n| Rational(c) / (n + 1)} #=&gt; 5/4y^3 + y + 1</pre></dd>
+<dt><a name="label-55" id="label-55"><code>evaluate(<var>obj</var>)</code></a></dt><!-- RDLabel: "evaluate" -->
+<dd>
+<p>Returns the value of <var>self</var> at <var>obj</var>.
+This is equivalent to <code> project(ground, obj){|c, n| c} </code>.</p>
+<p>Example:</p>
+<pre>require "polynomial"
+P = Algebra::Polynomial(Integer, "x")
+x = P.var
+f = x**3 - 3*x**2 + 1
+p f.evaluate(-1)    #=&gt; -3 (in Integer)
+p f.evaluate(x + 1) #=&gt; x^3 - 3x - 1 (in P)</pre></dd>
+<dt><a name="label-56" id="label-56"><code>call(<var>obj</var>)</code></a></dt><!-- RDLabel: "call" -->
+<dd>
+Same as <a href="#label-55">evaluate</a>.</dd>
+<dt><a name="label-57" id="label-57"><code>sub(<var>var</var>, <var>value</var>)</code></a></dt><!-- RDLabel: "sub" -->
+<dd>
+<p>Returns the value of substitution of a variable <var>var</var> by <var>value</var>.</p>
+<p>Example:</p>
+<pre>require "polynomial"
+P = Algebra::Polynomial(Integer, "x", "y", "z")
+x, y, z = P.vars
+f = (x - y)*(y - z - 1)
+p f.sub(y, z+1)    #=&gt; 0</pre></dd>
+<dt><a name="label-58" id="label-58"><code>convert_to(<var>ring</var>)</code></a></dt><!-- RDLabel: "convert_to" -->
+<dd>
+Returns the polynomial the one converted on <var>ring</var>.
+This is equivalent to <code> project(ring){|c, n| c} </code>.</dd>
+</dl>
+<h1><a name="label-59" id="label-59">PolynomialFactorization</a></h1><!-- RDLabel: "PolynomialFactorization" -->
+<p><em>(Module of Factorization)</em></p>
+<p>The module of factorization of polynomials.</p>
+<h2><a name="label-60" id="label-60">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<p><var>polynomial-factor.rb</var></p>
+<h2><a name="label-61" id="label-61">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-62" id="label-62"><code>sqfree</code></a></dt><!-- RDLabel: "sqfree" -->
+<dd>
+Returns the square free parts.</dd>
+<dt><a name="label-63" id="label-63"><code>sqfree?</code></a></dt><!-- RDLabel: "sqfree?" -->
+<dd>
+Returns true if square free.</dd>
+<dt><a name="label-64" id="label-64"><code>irreducible?</code></a></dt><!-- RDLabel: "irreducible?" -->
+<dd>
+Returns true if irreducible</dd>
+<dt><a name="label-65" id="label-65"><code>factorize</code></a></dt><!-- RDLabel: "factorize" -->
+<dd>
+<p>Returns the factorization.</p>
+<p>The following type can be factorized:</p>
+<ul>
+<li>Integer</li>
+<li>Rational</li>
+<li>prime field</li>
+<li>Algebraic Field</li>
+</ul></dd>
+</dl>
+<h1><a name="label-66" id="label-66">Algebra::SplittingField</a></h1><!-- RDLabel: "Algebra::SplittingField" -->
+<p><em>(Module of Splitting Field)</em></p>
+<p>The module of the minimal splitting field of polynomials.</p>
+<h2><a name="label-67" id="label-67">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>splitting-field.rb</var></li>
+</ul>
+<h2><a name="label-68" id="label-68">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-69" id="label-69"><code>decompose([<var>fac0</var>])</code></a></dt><!-- RDLabel: "decompose" -->
+<dd>
+<p>Returns</p>
+<pre>[field, modulus, facts, roots, addelems]</pre>
+<p>Here the elements are: 
+<var>field</var> the mimimal splitting field of <var>poly</var>, 
+<var>def_polys</var> the irreducible polynomial needed for the splitting,
+<var>facts</var> the linear factors of <var>poly</var> over <var>field</var>, 
+<var>roots</var> the roots of <var>poly</var> and
+<var>proots</var> the sorted array of <var>roots</var> in order that
+the added elements to the base field first.</p>
+<p><var>fac0</var> makes the factorization fast. (<var>facts</var> and <var>fact0</var>
+are the instance of <var>Algebra::Factors</var>).
+Generally, <var>field</var> is the object of
+<!-- Reference, RDLabel "algebraic-extension-field.html" doesn't exist --><em class="label-not-found">AlgebraicExtensionField</em><!-- Reference end -->.
+If <var>self</var> is splitted linearlly,
+that is the <!-- Reference, RDLabel "ground" doesn't exist --><em class="label-not-found">ground</em><!-- Reference end --> ring own.</p>
+<p>Example:</p>
+<pre>require "algebra"
+PQ = Polynomial(Rational, "x")
+x = PQ.var
+f = x**5 - x**4 + 2*x - 2
+field, def_polys, facts, roots, proots = f.decompose
+p def_polys #=&gt; [a^4 + 2, b^2 + a^2]
+p facts    #=&gt; (x - 1)(x - a)(x + a)(x - b)(x + b)
+p roots    #=&gt; [1, a, -a, b, -b]
+p proots   #=&gt; [a, b, 1, -a, -b]
+fp = Polynomial(field, "x")
+x = fp.var
+facts1 = Factors.new(facts.collect{|g, n| [g.call(x), n]})
+p facts1.pi == f.convert_to(fp) #=&gt; true</pre></dd>
+<dt><a name="label-70" id="label-70"><code>splitting_field([<var>fac0</var>]))</code></a></dt><!-- RDLabel: "splitting_field" -->
+<dd>
+<p>Returns the infomation of the splitting field of <var>self</var>.
+Each field corresponds to the return value of <a href="#label-69">decompose</a>:</p>
+<p>poly, field, roots, proots, def_polys</p>
+<p>The values of <var>roots</var> and <var>proots</var> are transrated in
+the elements of <var>fields</var>.</p>
+<p>Example:</p>
+<pre>require "algebra"
+PQ = Polynomial(Rational, "x")
+x = PQ.var
+f = x**5 - x**4 + 2*x - 2
+sf = f.splitting_field
+p sf.roots     #=&gt; [1, a, -a, b, -b]
+p sf.proots     #=&gt; [a, b, 1, -a, -b]
+p sf.def_polys #=&gt; [a^4 + 2, b^2 + a^2]</pre></dd>
+</dl>
+<h1><a name="label-71" id="label-71">Algebra::Galois</a></h1><!-- RDLabel: "Algebra::Galois" -->
+<p><em>(Module of Galois Group)</em></p>
+<p>The module of Galois Group of polynomials</p>
+<h2><a name="label-72" id="label-72">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>galois-group.rb</var></li>
+</ul>
+<h2><a name="label-73" id="label-73">Included Module:</a></h2><!-- RDLabel: "Included Module:" -->
+<p>(none)</p>
+<h2><a name="label-74" id="label-74">Associated Method</a></h2><!-- RDLabel: "Associated Method" -->
+<dl>
+<dt><a name="label-75" id="label-75"><code>GaloisGroup.galois_group(<var>poly</var>)</code></a></dt><!-- RDLabel: "GaloisGroup.galois_group" -->
+<dd>
+Same as <a href="#label-77">galois_group</a>.</dd>
+</dl>
+<h2><a name="label-76" id="label-76">Method:</a></h2><!-- RDLabel: "Method:" -->
+<dl>
+<dt><a name="label-77" id="label-77"><code>galois_group</code></a></dt><!-- RDLabel: "galois_group" -->
+<dd>
+<p>Retuns the galois group of <var>self</var>.
+Each elements of this is the object of
+<!-- Reference, RDLabel "finite-group.html" doesn't exist --><em class="label-not-found">FiniteGroup</em><!-- Reference end --> of which elements are
+in <!-- Reference, RDLabel "permutation-group.html" doesn't exist --><em class="label-not-found">PermutationGroup</em><!-- Reference end -->.</p>
+<p>Example:</p>
+<pre>require "rational"
+require "polynomial"
+
+P = Algebra.Polynomial(Rational, "x")
+x = P.var
+p( (x**3 - 3*x + 1).galois_group.to_a )
+#=&gt;[[0, 1, 2], [1, 2, 0], [2, 0, 1]]
+
+(x**3 - x + 1).galois_group.each do |g|
+  p g
+end
+#=&gt; [0, 1, 2]
+#   [1, 0, 2]
+#   [2, 0, 1]
+#   [0, 2, 1]
+#   [1, 2, 0]
+#   [2, 1, 0]</pre></dd>
+</dl>
+
+</body>
+</html>

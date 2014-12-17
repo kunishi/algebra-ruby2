@@ -1,0 +1,446 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/polynomial-ja.html</title>
+</head>
+<body>
+<p>[<a href="index-ja.html">index-ja</a>] 
+<a href="#label-0">Algebra::Polynomial</a>
+/
+<a href="#label-59">Algebra::PolynomialFactorization</a>
+/
+<a href="#label-66">Algebra::SplittingField</a>
+/
+<a href="#label-71">Algebra::Galois</a></p>
+<h1><a name="label-0" id="label-0">Algebra::Polynomial</a></h1><!-- RDLabel: "Algebra::Polynomial" -->
+<p><em>(1変数多項式環クラス)</em></p>
+<p>1変数の多項式環を表現します。実際のクラスを生成するには環を指定して、クラスメソッド <a href="#label-7">::create</a> あるいは関数 <a href="#label-5">Algebra.Polynomial</a>() を用います。</p>
+<h2><a name="label-1" id="label-1">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>polynomial.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">スーパークラス:</a></h2><!-- RDLabel: "スーパークラス:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">インクルードしているモジュール:</a></h2><!-- RDLabel: "インクルードしているモジュール:" -->
+<ul>
+<li><var>Enumerable</var></li>
+<li><var>Comparable</var></li>
+<li><a href="euclidian-ring-ja.html">Algebra::EuclidianRing</a></li>
+<li><a href="#label-59">Algebra::PolynomialFactorization</a></li>
+<li><a href="#label-66">Algebra::SplittingField</a></li>
+<li><a href="#label-71">Algebra::Galois</a></li>
+</ul>
+<h2><a name="label-4" id="label-4">関連するメソッド:</a></h2><!-- RDLabel: "関連するメソッド:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>Algebra.Polynomial(<var>ring</var> [, <var>obj0</var> , <var>obj1</var> [, ...]])</code></a></dt><!-- RDLabel: "Algebra.Polynomial" -->
+<dd>
+<a href="#label-7">::create</a>(ring, obj0[, obj1 [, ...]])&gt; に同じ。</dd>
+</dl>
+<h2><a name="label-6" id="label-6">クラスメソッド:</a></h2><!-- RDLabel: "クラスメソッド:" -->
+<dl>
+<dt><a name="label-7" id="label-7"><code>::create(<var>ring</var>, <var>obj0</var>[, <var>obj1</var>[, ...]])</code></a></dt><!-- RDLabel: "::create" -->
+<dd>
+<p><var>ring</var> で表現されるクラスを係数環とする多項式環クラスを
+生成します。</p>
+<p><code>obj0, obj1, ...</code> で指定されたオブジェクトが変数を
+表現し、これが複数ならば、再帰的に多項式環上の多項
+式環を生成します。</p>
+<p>このメソッドの戻り値は Polynomial クラスのサブクラス
+です。このサブクラスにはクラスメソッドとして <var>ground</var> と
+<var>var</var>、<var>vars</var> が定義され、それぞれ、係数環 <var>ring</var>、
+主変数オブジェクト（最後に指定された変数）、全ての変数オ
+ブジェクトを返します。</p>
+<p>オブジェクト<code>obj0, obj1, ...</code>は変数の名（<var>to_s</var>の値）
+に利用されるだけです。</p>
+<p>例: 整数を係数とする多項式環の生成</p>
+<pre>require "polynomial"
+P = Algebra::Polynomial.create(Integer, "x")
+x = P.var
+p((x + 1)**100) #=&gt; x^100 + 100x^99 + ... + 100x + 1
+p P.ground #=&gt; integer</pre>
+<p>例: 整数を係数とする複数変数多項式環の生成</p>
+<pre>require "polynomial"
+P = Algebra::Polynomial.create(Integer, "x", "y", "z")
+x, y, z = P.vars
+p((-x + y + z)*(x + y - z)*(x - y + z))
+#=&gt; -z^3 + (y + x)z^2 + (y^2 - 2xy + x^2)z - y^3 + xy^2 + x^2y - x^3
+p P.var #=&gt; z</pre>
+<p>この例の <code>P</code> は</p>
+<pre>Algebra::Polynomial.create(
+  Algebra::Polynomial.create(
+    Algebra::Polynomial.create(
+      Integer,
+    "x"),
+  "y"),
+"z")</pre>
+<p>と同値で、最後の変数 <var>z</var> が主変数となります。</p></dd>
+<dt><a name="label-8" id="label-8"><code>::var</code></a></dt><!-- RDLabel: "::var" -->
+<dd>
+多項式環の変数（主変数）を返します。</dd>
+<dt><a name="label-9" id="label-9"><code>::vars</code></a></dt><!-- RDLabel: "::vars" -->
+<dd>
+再帰的に各多項式環の変数を集めた配列を返します。</dd>
+<dt><a name="label-10" id="label-10"><code>::mvar</code></a></dt><!-- RDLabel: "::mvar" -->
+<dd>
+<a href="#label-9">::vars</a> と同じです。</dd>
+<dt><a name="label-11" id="label-11"><code>::to_ary</code></a></dt><!-- RDLabel: "::to_ary" -->
+<dd>
+<p><code>[self, *vars]</code> を返します。</p>
+<p>例: 多項式環と変数を同時に定義する。</p>
+<pre>P, x, y, z = Algebra::Polynomial.create(Integer, "x", "y", "z")</pre></dd>
+<dt><a name="label-12" id="label-12"><code>::variable</code></a></dt><!-- RDLabel: "::variable" -->
+<dd>
+変数（主変数）を表現するオブジェクトを返します。</dd>
+<dt><a name="label-13" id="label-13"><code>::variables</code></a></dt><!-- RDLabel: "::variables" -->
+<dd>
+再帰的に各多項式環の変数を表現するオブジェクトを
+集めた配列を返します。</dd>
+<dt><a name="label-14" id="label-14"><code>::indeterminate(<var>obj</var>)</code></a></dt><!-- RDLabel: "::indeterminate" -->
+<dd>
+<var>obj</var> で表現される変数を再帰的に探して返します。</dd>
+<dt><a name="label-15" id="label-15"><code>::monomial([<var>n</var>])</code></a></dt><!-- RDLabel: "::monomial" -->
+<dd>
+<p><var>n</var> 次の単項式を返します。</p>
+<p>例:</p>
+<pre>P = Algebra::Polynomial(Integer, "x")
+P.monomial(3) #=&gt; x^3</pre></dd>
+<dt><a name="label-16" id="label-16"><code>::const(<var>c</var>)</code></a></dt><!-- RDLabel: "::const" -->
+<dd>
+<p>値 <var>c</var> の定数項を返します。</p>
+<p>例:</p>
+<pre>P = Algebra::Polynomial(Integer, "x")
+P.const(3)      #=&gt; 3
+P.const(3).type #=&gt; P</pre></dd>
+<dt><a name="label-17" id="label-17"><code>::zero</code></a></dt><!-- RDLabel: "::zero" -->
+<dd>
+零元を返します。</dd>
+<dt><a name="label-18" id="label-18"><code>::unity</code></a></dt><!-- RDLabel: "::unity" -->
+<dd>
+単位元を返します。</dd>
+</dl>
+<h2><a name="label-19" id="label-19">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-20" id="label-20"><code>var</code></a></dt><!-- RDLabel: "var" -->
+<dd>
+<a href="#label-8">::var</a> と同じです。</dd>
+<dt><a name="label-21" id="label-21"><code>variable</code></a></dt><!-- RDLabel: "variable" -->
+<dd>
+<a href="#label-12">::variable</a> と同じです。</dd>
+<dt><a name="label-22" id="label-22"><code>each(&amp;<var>b</var>)</code></a></dt><!-- RDLabel: "each" -->
+<dd>
+<p>各次の係数を昇冪順に繰り返します。</p>
+<p>例:</p>
+<pre>P = Algebra::Polynomial(Integer, "x")
+x = P.var
+(x**3 + 2*x**2 + 4).each do |c|
+  p c #=&gt; 4, 0, 2, 1
+end</pre></dd>
+<dt><a name="label-23" id="label-23"><code>reverse_each(&amp;<var>b</var>)</code></a></dt><!-- RDLabel: "reverse_each" -->
+<dd>
+<p>各次の係数を降冪順に繰り返します。</p>
+<p>例:</p>
+<pre>P = Algebra::Polynomial(Integer, "x")
+x = P.var
+(x**3 + 2*x**2 + 4).reverse_each do |c|
+  p c #=&gt; 1, 2, 0, 4
+end</pre></dd>
+<dt><a name="label-24" id="label-24"><code>[<var>n</var>]</code></a></dt><!-- RDLabel: "[]" -->
+<dd>
+<var>n</var> 次の係数を返します。</dd>
+<dt><a name="label-25" id="label-25"><code>[<var>n</var>] = <var>v</var></code></a></dt><!-- RDLabel: "[]=" -->
+<dd>
+<var>n</var> 次の係数を<var>v</var>に設定します。</dd>
+<dt><a name="label-26" id="label-26"><code>monomial</code></a></dt><!-- RDLabel: "monomial" -->
+<dd>
+<a href="#label-15">::monomial</a> と同じです。</dd>
+<dt><a name="label-27" id="label-27"><code>monomial?</code></a></dt><!-- RDLabel: "monomial?" -->
+<dd>
+単項式であるとき真を返します。</dd>
+<dt><a name="label-28" id="label-28"><code>zero?</code></a></dt><!-- RDLabel: "zero?" -->
+<dd>
+零元であるとき真を返します。</dd>
+<dt><a name="label-29" id="label-29"><code>zero</code></a></dt><!-- RDLabel: "zero" -->
+<dd>
+零元を返します。</dd>
+<dt><a name="label-30" id="label-30"><code>unity</code></a></dt><!-- RDLabel: "unity" -->
+<dd>
+単位元を返します。</dd>
+<dt><a name="label-31" id="label-31"><code>==(<var>other</var>)</code></a></dt><!-- RDLabel: "==" -->
+<dd>
+等しいとき真を返します。</dd>
+<dt><a name="label-32" id="label-32"><code>&lt;=&gt;(<var>other</var>)</code></a></dt><!-- RDLabel: "<=>" -->
+<dd>
+大小関係を求めます。</dd>
+<dt><a name="label-33" id="label-33"><code>+(<var>other</var>)</code></a></dt><!-- RDLabel: "+" -->
+<dd>
+和を計算します。</dd>
+<dt><a name="label-34" id="label-34"><code>-(<var>other</var>)</code></a></dt><!-- RDLabel: "-" -->
+<dd>
+差を計算します。</dd>
+<dt><a name="label-35" id="label-35"><code>*(<var>other</var>)</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+積を計算します。</dd>
+<dt><a name="label-36" id="label-36"><code>**(<var>n</var>)</code></a></dt><!-- RDLabel: "**" -->
+<dd>
+<var>n</var> 乗を計算します。</dd>
+<dt><a name="label-37" id="label-37"><code>/(<var>other</var>)</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+商を計算します。<a href="#label-39">div</a>と同じです。</dd>
+<dt><a name="label-38" id="label-38"><code>divmod(<var>other</var>)</code></a></dt><!-- RDLabel: "divmod" -->
+<dd>
+<var>other</var> で割った商と余りの配列を返します。</dd>
+<dt><a name="label-39" id="label-39"><code>div(<var>other</var>)</code></a></dt><!-- RDLabel: "div" -->
+<dd>
+<var>other</var> で割った商を返します。<code>divmod(other).first</code>
+と一致します。</dd>
+<dt><a name="label-40" id="label-40"><code>%(<var>other</var>)</code></a></dt><!-- RDLabel: "%" -->
+<dd>
+<var>other</var> で割った余りを返します。<code>divmod(other).last</code>
+と一致します。</dd>
+<dt><a name="label-41" id="label-41"><code>divide?(<var>other</var>)</code></a></dt><!-- RDLabel: "divide?" -->
+<dd>
+<var>other</var> で割り切れるとき真を返します。
+<code>divmod(other).last == zero?</code>と一致します。</dd>
+<dt><a name="label-42" id="label-42"><code>deg</code></a></dt><!-- RDLabel: "deg" -->
+<dd>
+<p>次数を返します。</p>
+<p>例:</p>
+<pre>P = Algebra::Polynomial(Integer, "x")
+x = P.var
+(5*x**3 + 2*x + 1).deg #=&gt; 3</pre></dd>
+<dt><a name="label-43" id="label-43"><code>lc</code></a></dt><!-- RDLabel: "lc" -->
+<dd>
+<p>先頭係数(leading coeffcient)を返します。</p>
+<p>例:</p>
+<pre>(5*x**3 + 2*x + 1).lc #=&gt; 5</pre></dd>
+<dt><a name="label-44" id="label-44"><code>lm</code></a></dt><!-- RDLabel: "lm" -->
+<dd>
+<p>先頭単項式(leading monomial)を返します。</p>
+<p>例:</p>
+<pre>(5*x**3 + 2*x + 1).lm #=&gt; x**3</pre></dd>
+<dt><a name="label-45" id="label-45"><code>lt</code></a></dt><!-- RDLabel: "lt" -->
+<dd>
+<p>先頭項(leading term)を返します。<code>lc * lm</code>と等しい値を持ちます。</p>
+<p>例:</p>
+<pre>(5*x**3 + 2*x + 1).lt #=&gt; 5*x**3</pre></dd>
+<dt><a name="label-46" id="label-46"><code>rt</code></a></dt><!-- RDLabel: "rt" -->
+<dd>
+<p>残余項(rest term)を返します。<code>self - lt</code>と等しい値を持ちます。</p>
+<p>例:</p>
+<pre>(5*x**3 + 2*x + 1).rt #=&gt; 2*x + 1</pre></dd>
+<dt><a name="label-47" id="label-47"><code>monic</code></a></dt><!-- RDLabel: "monic" -->
+<dd>
+最高次係数を1に直した式を返します。<code>self / lc</code> と同じ値を持
+ちます。</dd>
+<dt><a name="label-48" id="label-48"><code>cont</code></a></dt><!-- RDLabel: "cont" -->
+<dd>
+係因数(content(全ての係数の最大公約数)）を返します。</dd>
+<dt><a name="label-49" id="label-49"><code>pp</code></a></dt><!-- RDLabel: "pp" -->
+<dd>
+原始的部分(primitive part)を返します。<code>self / cont</code>と
+同じ値を持ちます。</dd>
+<dt><a name="label-50" id="label-50"><code>to_s</code></a></dt><!-- RDLabel: "to_s" -->
+<dd>
+<p>文字列表現を得ます。表示形式を変えるには <var>display_type</var> を用います。
+<var>display_type</var> に与えられる値は <var>:norm</var>(デフォルト), <var>:code</var>
+です。</p>
+<p>例:</p>
+<pre>P = Algebra::Polynomial(Integer, "x")
+x = P.var
+p 5*x**3 + 2*x + 1 #=&gt;5x^3 + 2x + 1
+P.display_type = :code
+p 5*x**3 + 2*x + 1 #=&gt; 5*x**3 + 2*x + 1</pre></dd>
+<dt><a name="label-51" id="label-51"><code>derivate</code></a></dt><!-- RDLabel: "derivate" -->
+<dd>
+<p>微分した値を返します。</p>
+<p>例:</p>
+<pre>(5*x**3 + 2*x + 1).derivate #=&gt; 15*x**2 + 2</pre></dd>
+<dt><a name="label-52" id="label-52"><code>sylvester_matrix(<var>other</var>)</code></a></dt><!-- RDLabel: "sylvester_matrix" -->
+<dd>
+<var>other</var> とのシルベスター行列を返します。</dd>
+<dt><a name="label-53" id="label-53"><code>resultant(<var>other</var>)</code></a></dt><!-- RDLabel: "resultant" -->
+<dd>
+<var>other</var> との集結式返します。予め</dd>
+<dt><a name="label-54" id="label-54"><code>project(<var>ring</var>[, <var>obj</var>]){|<var>c</var>, <var>n</var>| ... }</code></a></dt><!-- RDLabel: "project" -->
+<dd>
+<p>各単項式について、
+次数を <var>n</var> に、係数 <var>c</var> に代入し ... を評価したものを
+その単項式の値に置き換え、<var>ring</var> 上で和を取った値を
+返します。<var>obj</var> が省略されると <code>ring.var</code> が用いら
+れます。</p>
+<p>例:</p>
+<pre>require "polynomial"
+require "rational"
+P = Algebra::Polynomial(Integer, "x")
+PQ = Algebra::Polynomial(Rational, "y")
+x = P.var
+f = 5*x**3 + 2*x + 1
+p f.convert_to(PQ) #=&gt; 5y^3 + 2y + 1
+p f.project(PQ) {|c, n| Rational(c) / (n + 1)} #=&gt; 5/4y^3 + y + 1</pre></dd>
+<dt><a name="label-55" id="label-55"><code>evaluate(<var>obj</var>)</code></a></dt><!-- RDLabel: "evaluate" -->
+<dd>
+<p>主変数に <var>obj</var> を代入した値を返します。
+<code> project(ground, obj){|c, n| c} </code> の値と一致します。</p>
+<p>例:</p>
+<pre>require "polynomial"
+P = Algebra::Polynomial(Integer, "x")
+x = P.var
+f = x**3 - 3*x**2 + 1
+p f.evaluate(-1)    #=&gt; -3 (in Integer)
+p f.evaluate(x + 1) #=&gt; x^3 - 3x - 1 (in P)</pre></dd>
+<dt><a name="label-56" id="label-56"><code>call(<var>obj</var>)</code></a></dt><!-- RDLabel: "call" -->
+<dd>
+<a href="#label-55">evaluate</a>と同じです。</dd>
+<dt><a name="label-57" id="label-57"><code>sub(<var>var</var>, <var>value</var>)</code></a></dt><!-- RDLabel: "sub" -->
+<dd>
+<p>変数 <var>var</var> に <var>value</var> を代入した値を返します。</p>
+<p>例:</p>
+<pre>require "polynomial"
+P = Algebra::Polynomial(Integer, "x", "y", "z")
+x, y, z = P.vars
+f = (x - y)*(y - z - 1)
+p f.sub(y, z+1)    #=&gt; 0</pre></dd>
+<dt><a name="label-58" id="label-58"><code>convert_to(<var>ring</var>)</code></a></dt><!-- RDLabel: "convert_to" -->
+<dd>
+各項を<var>ring</var>上で評価します。<code> project(ring){|c, n| c} </code>の
+値と一致します。</dd>
+</dl>
+<h1><a name="label-59" id="label-59">Algebra::PolynomialFactorization</a></h1><!-- RDLabel: "Algebra::PolynomialFactorization" -->
+<p><em>(因数分解モジュール)</em></p>
+<p>因数分解をするためのモジュールです。</p>
+<h2><a name="label-60" id="label-60">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<p><var>polynomial-factor.rb</var></p>
+<h2><a name="label-61" id="label-61">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-62" id="label-62"><code>sqfree</code></a></dt><!-- RDLabel: "sqfree" -->
+<dd>
+無平方化します。</dd>
+<dt><a name="label-63" id="label-63"><code>sqfree?</code></a></dt><!-- RDLabel: "sqfree?" -->
+<dd>
+無平方なら真を返します。</dd>
+<dt><a name="label-64" id="label-64"><code>irreducible?</code></a></dt><!-- RDLabel: "irreducible?" -->
+<dd>
+既約なら真を返します。</dd>
+<dt><a name="label-65" id="label-65"><code>factorize</code></a></dt><!-- RDLabel: "factorize" -->
+<dd>
+<p>因数分解します。</p>
+<p>因数分解可能な係数環は</p>
+<ul>
+<li>Integer</li>
+<li>Rational</li>
+<li>素体</li>
+<li>代数体（Rational 上の有限次拡大）</li>
+</ul>
+<p>です。</p></dd>
+</dl>
+<h1><a name="label-66" id="label-66">Algebra::SplittingField</a></h1><!-- RDLabel: "Algebra::SplittingField" -->
+<p><em>(分解体モジュール)</em></p>
+<p>多項式の最小分解体を求めるためのモジュール</p>
+<h2><a name="label-67" id="label-67">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>splitting-field.rb</var></li>
+</ul>
+<h2><a name="label-68" id="label-68">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-69" id="label-69"><code>decompose([<var>fac0</var>])</code></a></dt><!-- RDLabel: "decompose" -->
+<dd>
+<p>自身の最小分解体を <var>field</var>、拡大に要した既約多項式
+の配列を <var>def_polys</var>、最小分解体上で1次式の積に因数分解し
+たものを <var>facts</var>、多項式の根の配列を <var>roots</var>、
+<var>roots</var> を基礎体に添加した元が前に来るように並べ替えた
+の配列を <var>proots</var> として、</p>
+<pre>[field, def_polys, facts, roots, proots]</pre>
+<p>を返します。基礎体上の因数分解 <var>fac0</var> を添えると高速化に役立ちます。
+（<var>facts</var> の要素と <var>fact0</var> は <var>Algebra::Factors</var> オブジェクト
+、<var>field</var> は
+<!-- Reference, RDLabel "algebraic-extension-field.html" doesn't exist --><em class="label-not-found">AlgebraicExtensionField</em><!-- Reference end -->
+オブジェクトです。ただし、自身が一次因子に分解されるときは
+<!-- Reference, RDLabel "groud" doesn't exist --><em class="label-not-found">groud</em><!-- Reference end --> そのものを返します。</p>
+<p>例:</p>
+<pre>require "algebra"
+PQ = Polynomial(Rational, "x")
+x = PQ.var
+f = x**5 - x**4 + 2*x - 2
+field, def_polys, facts, roots, proots = f.decompose
+p def_polys #=&gt; [a^4 + 2, b^2 + a^2]
+p facts    #=&gt; (x - 1)(x - a)(x + a)(x - b)(x + b)
+p roots    #=&gt; [1, a, -a, b, -b]
+p proots   #=&gt; [a, b, 1, -a, -b]
+fp = Polynomial(field, "x")
+x = fp.var
+facts1 = Factors.new(facts.collect{|g, n| [g.call(x), n]})
+p facts1.pi == f.convert_to(fp) #=&gt; true</pre></dd>
+<dt><a name="label-70" id="label-70"><code>splitting_field([<var>fac0</var>]))</code></a></dt><!-- RDLabel: "splitting_field" -->
+<dd>
+<p>自身の最小分解体の情報を返します。返り値の各フィールドの値は以下
+の通りです。poly_exps 以外は <a href="#label-69">decompose</a> の以下のものに相当します。</p>
+<p>poly, field, roots, proots, def_polys</p>
+<p>ただし、<var>roots</var>、<var>proots</var> の各要素は <var>field</var> の
+要素として変換されています。</p>
+<p>例:</p>
+<pre>require "algebra"
+PQ = Polynomial(Rational, "x")
+x = PQ.var
+f = x**5 - x**4 + 2*x - 2
+sf = f.splitting_field
+p sf.roots     #=&gt; [1, a, -a, b, -b]
+p sf.proots     #=&gt; [a, b, 1, -a, -b]
+p sf.def_polys #=&gt; [a^4 + 2, b^2 + a^2]</pre></dd>
+</dl>
+<h1><a name="label-71" id="label-71">Algebra::Galois</a></h1><!-- RDLabel: "Algebra::Galois" -->
+<p><em>(ガロア群)</em></p>
+<p>多項式のガロア群を求めるためのモジュール</p>
+<h2><a name="label-72" id="label-72">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>galois-group.rb</var></li>
+</ul>
+<h2><a name="label-73" id="label-73">インクルードしているモジュール:</a></h2><!-- RDLabel: "インクルードしているモジュール:" -->
+<ul>
+<li>なし</li>
+</ul>
+<h2><a name="label-74" id="label-74">関連するメソッド:</a></h2><!-- RDLabel: "関連するメソッド:" -->
+<dl>
+<dt><a name="label-75" id="label-75"><code>GaloisGroup.galois_group(<var>poly</var>)</code></a></dt><!-- RDLabel: "GaloisGroup.galois_group" -->
+<dd>
+<a href="#label-78">galois_group</a> と同じ</dd>
+</dl>
+<h2><a name="label-76" id="label-76">モジュールメソッド:</a></h2><!-- RDLabel: "モジュールメソッド:" -->
+<ul>
+<li>なし</li>
+</ul>
+<h2><a name="label-77" id="label-77">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-78" id="label-78"><code>galois_group</code></a></dt><!-- RDLabel: "galois_group" -->
+<dd>
+<p>多項式のガロア群を返します。群は各元が 
+<!-- Reference, RDLabel "permutation-group.html" doesn't exist --><em class="label-not-found">PermutationGroup</em><!-- Reference end --> である 
+<!-- Reference, RDLabel "finite-group.html" doesn't exist --><em class="label-not-found">FiniteGroup</em><!-- Reference end --> オブジェクトとして表現されます。</p>
+<p>例:</p>
+<pre>require "rational"
+require "polynomial"
+
+P = Algebra.Polynomial(Rational, "x")
+x = P.var
+p( (x**3 - 3*x + 1).galois_group.to_a )
+#=&gt;[[0, 1, 2], [1, 2, 0], [2, 0, 1]]
+
+(x**3 - x + 1).galois_group.each do |g|
+  p g
+end
+#=&gt; [0, 1, 2]
+#   [1, 0, 2]
+#   [2, 0, 1]
+#   [0, 2, 1]
+#   [1, 2, 0]
+#   [2, 1, 0]</pre></dd>
+</dl>
+
+</body>
+</html>

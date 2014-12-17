@@ -1,0 +1,127 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/matrix-algebra-triplet.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] 
+<a href="#label-0">Algebra::MatrixAlgebraTriplet</a>
+/
+<a href="#label-32">Algebra::MatrixAlgebraQuint</a></p>
+<h1><a name="label-0" id="label-0">Algebra::MatrixAlgebraTriplet</a></h1><!-- RDLabel: "Algebra::MatrixAlgebraTriplet" -->
+<p><em>(Class of Triplet of matrices)</em></p>
+<p>This is the class of the matrix and the records of the right and
+left elementary diformations on it. There is a subclass of the quintet
+of matrices (<a href="#label-32">Algebra::MatrixAlgebraQuint</a>).</p>
+<h2><a name="label-1" id="label-1">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>matrix-algebra-triplet.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">Included Modules:</a></h2><!-- RDLabel: "Included Modules:" -->
+<ul>
+<li><var>GaussianElimination</var></li>
+<li><var>ElementaryDivisor</var></li>
+</ul>
+<h3><a name="label-4" id="label-4">Class Methods:</a></h3><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>:new(<var>matrix</var>[, <var>left</var>[, <var>right</var>]])</code></a></dt><!-- RDLabel: ":new" -->
+<dd>
+Creates the triplet object of <var>matrix</var> as the body, 
+<var>left</var> as the record of the left(row) deformation and
+<var>right</var> as the record ofthe right(column) deformation.</dd>
+</dl>
+<h2><a name="label-6" id="label-6">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-7" id="label-7"><code>body</code></a></dt><!-- RDLabel: "body" -->
+<dd>
+Returns the body.</dd>
+<dt><a name="label-8" id="label-8"><code>left</code></a></dt><!-- RDLabel: "left" -->
+<dd>
+Returns <var>left</var> as the record of the left(row) deformation.</dd>
+<dt><a name="label-9" id="label-9"><code>right</code></a></dt><!-- RDLabel: "right" -->
+<dd>
+Returns <var>right</var> as the record ofthe right(column) deformation.</dd>
+<dt><a name="label-10" id="label-10"><code>to_a</code></a></dt><!-- RDLabel: "to_a" -->
+<dd>
+Retruns the array of <code>[body, left, right]</code>.</dd>
+<dt><a name="label-11" id="label-11"><code>to_ary</code></a></dt><!-- RDLabel: "to_ary" -->
+<dd>
+Same as <a href="#label-10">to_a</a>.</dd>
+<dt><a name="label-12" id="label-12"><code>dup</code></a></dt><!-- RDLabel: "dup" -->
+<dd>
+Returns the duplicate of <var>self</var>.</dd>
+<dt><a name="label-13" id="label-13"><code>transpose</code></a></dt><!-- RDLabel: "transpose" -->
+<dd>
+<p>Returns the transpose of <var>self</var>. Same as</p>
+<pre>[type.new(body.transpose, right.transpose, left.transpose].</pre></dd>
+<dt><a name="label-14" id="label-14"><code>replace(<var>other</var>)</code></a></dt><!-- RDLabel: "replace" -->
+<dd>
+Replaces <var>self</var> to <var>other</var>.</dd>
+<dt><a name="label-15" id="label-15"><code>display</code></a></dt><!-- RDLabel: "display" -->
+<dd>
+Displays <var>self</var></dd>
+<dt><a name="label-16" id="label-16"><code>[<var>i</var>, <var>j</var>]</code></a></dt><!-- RDLabel: "[]" -->
+<dd>
+Returns the componetnt of <code>(i, j)</code>.</dd>
+<dt><a name="label-17" id="label-17"><code>rsize</code></a></dt><!-- RDLabel: "rsize" -->
+<dd>
+Returns the row size.</dd>
+<dt><a name="label-18" id="label-18"><code>csize</code></a></dt><!-- RDLabel: "csize" -->
+<dd>
+Return the column size.</dd>
+<dt><a name="label-19" id="label-19"><code>each_i</code></a></dt><!-- RDLabel: "each_i" -->
+<dd>
+Iterates for the row index.</dd>
+<dt><a name="label-20" id="label-20"><code>each_j</code></a></dt><!-- RDLabel: "each_j" -->
+<dd>
+Iterates for the column index.</dd>
+<dt><a name="label-21" id="label-21"><code>row!(<var>i</var>)</code></a></dt><!-- RDLabel: "row!" -->
+<dd>
+Retunrs the <var>i</var> -th row.</dd>
+<dt><a name="label-22" id="label-22"><code>sswap_r!(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "sswap_r!" -->
+<dt><a name="label-23" id="label-23"><code>swap_r!(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "swap_r!" -->
+<dt><a name="label-24" id="label-24"><code>swap_c!(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "swap_c!" -->
+<dt><a name="label-25" id="label-25"><code>multiply_r!(<var>i</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "multiply_r!" -->
+<dt><a name="label-26" id="label-26"><code>multiply_c!(<var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "multiply_c!" -->
+<dt><a name="label-27" id="label-27"><code>divide_r!(<var>i</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "divide_r!" -->
+<dt><a name="label-28" id="label-28"><code>divide_c!(<var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "divide_c!" -->
+<dt><a name="label-29" id="label-29"><code>mix_r!(<var>i</var>, <var>j</var>[, <var>c</var>])</code></a></dt><!-- RDLabel: "mix_r!" -->
+<dt><a name="label-30" id="label-30"><code>mix_c!(<var>i</var>, <var>j</var>[, <var>c</var>])</code></a></dt><!-- RDLabel: "mix_c!" -->
+<dt><a name="label-31" id="label-31"><code>left_eliminate!</code></a></dt><!-- RDLabel: "left_eliminate!" -->
+<dd>
+Refer <a href="matrix-algebra.html#label:96">Algebra::GauusianElimination</a>.</dd>
+</dl>
+<h1><a name="label-32" id="label-32">Algebra::MatrixAlgebraQuint</a></h1><!-- RDLabel: "Algebra::MatrixAlgebraQuint" -->
+<p><em>(Class of Quintet of matrices)</em></p>
+<p>This is the class of the matrix and the records of the right and
+left elementary diformations on it and the reverses of them.
+There is a superclass of the triplet
+of matrices (<a href="#label-0">Algebra::MatrixAlgebraTriplet</a>).</p>
+<h2><a name="label-33" id="label-33">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Algebra:MatrixAlgebraTriplet</var></li>
+</ul>
+<h2><a name="label-34" id="label-34">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-35" id="label-35"><code>lefti</code></a></dt><!-- RDLabel: "lefti" -->
+<dd>
+Returns the inverse of <a href="#label-8">left</a>.</dd>
+<dt><a name="label-36" id="label-36"><code>righti</code></a></dt><!-- RDLabel: "righti" -->
+<dd>
+Returns the inverse of <a href="#label-9">right</a>.</dd>
+<dt><a name="label-37" id="label-37"><code>to_a</code></a></dt><!-- RDLabel: "to_a" -->
+<dd>
+Reutrns <code>[body, left, right, lefti, righti]</code>.</dd>
+</dl>
+
+</body>
+</html>

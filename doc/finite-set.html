@@ -1,0 +1,390 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/finite-set.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] 
+[<a href="finite-map.html">finite-map</a>] 
+<a href="#label-0">Algebra::Set</a>
+/
+<a href="#label-81">Enumerable</a></p>
+<h1><a name="label-0" id="label-0">Algebra::Set</a></h1><!-- RDLabel: "Algebra::Set" -->
+<p><em>Class of Set</em></p>
+<p>This is the class of sets. The conclusion relationship is determined by
+<var>each</var> and <a href="#label-42">member?</a>, that is, <var>s</var> is the subset of <var>t</var>
+if and only if</p>
+<pre>s.all?{|x| t.member?(x)}</pre>
+<p>is true.</p>
+<h2><a name="label-1" id="label-1">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>finite-set.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">Included Module:</a></h2><!-- RDLabel: "Included Module:" -->
+<ul>
+<li><var>Enumerable</var></li>
+</ul>
+<h2><a name="label-4" id="label-4">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>::[[<var>obj0</var>, [<var>obj1</var>, [<var>obj2</var>, ...]]]]</code></a></dt><!-- RDLabel: "::[]" -->
+<dd>
+<p>Creates <var>Set</var> objects from parameters.</p>
+<p>Example: Create {"a", [1, 2], 0}</p>
+<pre>require "finite-set"
+p Algebra::Set[0, "a", [1, 2]]
+p Algebra::Set.new(0, "a", [1, 2])
+p Algebra::Set.new_a([0, "a", [1, 2]])
+p Algebra::Set.new_h({0=&gt;true, "a"=&gt;true, [1, 2]=&gt;true})</pre></dd>
+<dt><a name="label-6" id="label-6"><code>::new([<var>obj0</var>, [<var>obj1</var>, [<var>obj2</var>, ...]]])</code></a></dt><!-- RDLabel: "::new" -->
+<dd>
+Creates <var>Set</var> objects from parameters.</dd>
+<dt><a name="label-7" id="label-7"><code>::new_a(<var>a</var>)</code></a></dt><!-- RDLabel: "::new_a" -->
+<dd>
+Creates <var>Set</var> objects from an array <var>a</var>.</dd>
+<dt><a name="label-8" id="label-8"><code>::new_h(<var>h</var>)</code></a></dt><!-- RDLabel: "::new_h" -->
+<dd>
+Creates <var>Set</var> objects from a hash.</dd>
+<dt><a name="label-9" id="label-9"><code>::empty_set</code></a></dt><!-- RDLabel: "::empty_set" -->
+<dd>
+Returns the empty set.</dd>
+<dt><a name="label-10" id="label-10"><code>::phi</code></a></dt><!-- RDLabel: "::phi" -->
+<dt><a name="label-11" id="label-11"><code>::null</code></a></dt><!-- RDLabel: "::null" -->
+<dd>
+Alias of <a href="#label-9">::empty_set</a>.</dd>
+<dt><a name="label-12" id="label-12"><code>::singleton(<var>x</var>)</code></a></dt><!-- RDLabel: "::singleton" -->
+<dd>
+Creates the set of one element <var>x</var>.</dd>
+</dl>
+<h2><a name="label-13" id="label-13">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-14" id="label-14"><code>empty_set</code></a></dt><!-- RDLabel: "empty_set" -->
+<dd>
+Returns the empty set.</dd>
+<dt><a name="label-15" id="label-15"><code>phi</code></a></dt><!-- RDLabel: "phi" -->
+<dt><a name="label-16" id="label-16"><code>null</code></a></dt><!-- RDLabel: "null" -->
+<dd>
+Alias of <a href="#label-9">::empty_set</a>.</dd>
+<dt><a name="label-17" id="label-17"><code>empty?</code></a></dt><!-- RDLabel: "empty?" -->
+<dd>
+Returns true if <var>self</var> is the empty set.</dd>
+<dt><a name="label-18" id="label-18"><code>phi?</code></a></dt><!-- RDLabel: "phi?" -->
+<dt><a name="label-19" id="label-19"><code>empty_set?</code></a></dt><!-- RDLabel: "empty_set?" -->
+<dt><a name="label-20" id="label-20"><code>null?</code></a></dt><!-- RDLabel: "null?" -->
+<dd>
+Alias of <a href="#label-17">empty?</a></dd>
+<dt><a name="label-21" id="label-21"><code>singleton(<var>x</var>)</code></a></dt><!-- RDLabel: "singleton" -->
+<dd>
+Creates the set of one element <var>x</var>.</dd>
+<dt><a name="label-22" id="label-22"><code>singleton?</code></a></dt><!-- RDLabel: "singleton?" -->
+<dd>
+Returns true if <var>self</var> is a singleton set.</dd>
+<dt><a name="label-23" id="label-23"><code>size</code></a></dt><!-- RDLabel: "size" -->
+<dd>
+Returns the size of <var>self</var>.</dd>
+<dt><a name="label-24" id="label-24"><code>each</code></a></dt><!-- RDLabel: "each" -->
+<dd>
+<p>Iterates the block with the block parameter of each element.
+The order of iteration is indefinite.</p>
+<p>Example: </p>
+<pre>require "finite-set"
+include Algebra
+Set[0, 1, 2].each do |x|
+  p x #=&gt; 1, 0, 2
+end</pre></dd>
+<dt><a name="label-25" id="label-25"><code>separate</code></a></dt><!-- RDLabel: "separate" -->
+<dd>
+<p>Returns the set of the elements which make the block true.</p>
+<p>Example: </p>
+<pre>require "finite-set"
+include Algebra
+p Set[0, 1, 2, 3].separate{|x| x % 2 == 0} #=&gt; {2, 0}</pre></dd>
+<dt><a name="label-26" id="label-26"><code>select_s</code></a></dt><!-- RDLabel: "select_s" -->
+<dt><a name="label-27" id="label-27"><code>find_all_s</code></a></dt><!-- RDLabel: "find_all_s" -->
+<dd>
+Alias of <a href="#label-25">separate</a></dd>
+<dt><a name="label-28" id="label-28"><code>map_s</code></a></dt><!-- RDLabel: "map_s" -->
+<dd>
+<p>Return the set of the values of the block.</p>
+<p>Example: </p>
+<pre>require "finite-set"
+include Algebra
+p Set[0, 1, 2, 3].map_s{|x| x % 2 + 1} #=&gt; {2, 1}</pre></dd>
+<dt><a name="label-29" id="label-29"><code>pick</code></a></dt><!-- RDLabel: "pick" -->
+<dd>
+Returns a elements of <var>self</var>. The chois is indefinite.</dd>
+<dt><a name="label-30" id="label-30"><code>shift</code></a></dt><!-- RDLabel: "shift" -->
+<dd>
+<p>Takes an element from <!-- Reference, RDLabel "self" doesn't exist --><em class="label-not-found">self</em><!-- Reference end --> and returns it. </p>
+<p>Example: </p>
+<pre>require "finite-set"
+include Algebra
+s = Set[0, 1, 2, 3]
+p s.shift #=&gt; 2
+p s #=&gt; {0, 1, 3}</pre></dd>
+<dt><a name="label-31" id="label-31"><code>dup</code></a></dt><!-- RDLabel: "dup" -->
+<dd>
+Returns the duplication of <var>self</var>.</dd>
+<dt><a name="label-32" id="label-32"><code>append!(<var>x</var>)</code></a></dt><!-- RDLabel: "append!" -->
+<dd>
+Appends <var>x</var> to <var>self</var> and returns <var>self</var>.</dd>
+<dt><a name="label-33" id="label-33"><code>push</code></a></dt><!-- RDLabel: "push" -->
+<dt><a name="label-34" id="label-34"><code>&lt;&lt;</code></a></dt><!-- RDLabel: "<<" -->
+<dd>
+Alias of <var>append!</var>.</dd>
+<dt><a name="label-35" id="label-35"><code>append(<var>x</var>)</code></a></dt><!-- RDLabel: "append" -->
+<dd>
+Duplicates and appends <var>x</var> to it and returns it.</dd>
+<dt><a name="label-36" id="label-36"><code>concat(<var>other</var>)</code></a></dt><!-- RDLabel: "concat" -->
+<dd>
+Adds the all elements of <var>other</var>. This is the destructive
+version of <a href="#label-55">+</a>.</dd>
+<dt><a name="label-37" id="label-37"><code>rehash</code></a></dt><!-- RDLabel: "rehash" -->
+<dd>
+Rehashes the internal <var>Hash</var> object.</dd>
+<dt><a name="label-38" id="label-38"><code>eql?(<var>other</var>)</code></a></dt><!-- RDLabel: "eql?" -->
+<dd>
+Returns true if <var>self</var> is equal to <var>other</var>. This is
+equivalent to <code> self &gt;= other and self &lt;= other</code>.</dd>
+<dt><a name="label-39" id="label-39"><code>==</code></a></dt><!-- RDLabel: "==" -->
+<dd>
+Alias of eql?</dd>
+<dt><a name="label-40" id="label-40"><code>hash</code></a></dt><!-- RDLabel: "hash" -->
+<dd>
+Returns the hash value of <var>self</var>.</dd>
+<dt><a name="label-41" id="label-41"><code>include?(<var>x</var>)</code></a></dt><!-- RDLabel: "include?" -->
+<dd>
+Returns true if <var>x</var> is a element of <var>self</var>.</dd>
+<dt><a name="label-42" id="label-42"><code>member?</code></a></dt><!-- RDLabel: "member?" -->
+<dt><a name="label-43" id="label-43"><code>has?</code></a></dt><!-- RDLabel: "has?" -->
+<dt><a name="label-44" id="label-44"><code>contains?</code></a></dt><!-- RDLabel: "contains?" -->
+<dd>
+Alias of <!-- Reference, RDLabel "include" doesn't exist --><em class="label-not-found">include</em><!-- Reference end -->.</dd>
+<dt><a name="label-45" id="label-45"><code>superset?(<var>other</var>)<var>n</var></code></a></dt><!-- RDLabel: "superset?" -->
+<dd>
+Returns true if <var>self</var> containds <var>other</var>.
+This is equivalent to <code>other.all{|x| member?(x)}</code>.</dd>
+<dt><a name="label-46" id="label-46"><code>&gt;=</code></a></dt><!-- RDLabel: ">=" -->
+<dt><a name="label-47" id="label-47"><code>incl?</code></a></dt><!-- RDLabel: "incl?" -->
+<dd>
+Alias of <code>superset?</code>.</dd>
+<dt><a name="label-48" id="label-48"><code>subset?(<var>other</var>)</code></a></dt><!-- RDLabel: "subset?" -->
+<dd>
+Returns true if <var>self</var> is a subset of <var>other</var>.</dd>
+<dt><a name="label-49" id="label-49"><code>&lt;=</code></a></dt><!-- RDLabel: "<=" -->
+<dt><a name="label-50" id="label-50"><code>part_of?</code></a></dt><!-- RDLabel: "part_of?" -->
+<dd>
+Alias of <a href="#label-48">subset?</a>.</dd>
+<dt><a name="label-51" id="label-51"><code>&lt;(<var>other</var>)</code></a></dt><!-- RDLabel: "<" -->
+<dd>
+Returns true if <var>self</var> is a proper subset of <var>other</var>.</dd>
+<dt><a name="label-52" id="label-52"><code>&gt;(<var>other</var>)</code></a></dt><!-- RDLabel: ">" -->
+<dd>
+Returns true if <var>other</var> is a proper subset of <var>self</var>.</dd>
+<dt><a name="label-53" id="label-53"><code>union(<var>other</var> = <var>nil</var>)</code></a></dt><!-- RDLabel: "union" -->
+<dd>
+<p>Returns the union of <var>self</var> and <var>other</var>.
+If <var>other</var> is omitted, returns the union of the
+<var>self</var> the set of sets.</p>
+<p>Example: </p>
+<pre>require "finite-set"
+include Algebra
+p Set[0, 2, 4].cup Set[1, 3] #=&gt; {0, 1, 2, 3, 4}
+s = Set[*(0...15).to_a]
+s2 = s.separate{|x| x % 2 == 0}
+s3 = s.separate{|x| x % 3 == 0}
+s5 = s.separate{|x| x % 5 == 0}
+p Set[s2, s3, s5].union #=&gt; {1, 7, 11, 13}</pre></dd>
+<dt><a name="label-54" id="label-54"><code>|</code></a></dt><!-- RDLabel: "|" -->
+<dt><a name="label-55" id="label-55"><code>+</code></a></dt><!-- RDLabel: "+" -->
+<dt><a name="label-56" id="label-56"><code>cup</code></a></dt><!-- RDLabel: "cup" -->
+<dd>
+Alias of <a href="#label-53">union</a>.</dd>
+<dt><a name="label-57" id="label-57"><code>intersection(<var>other</var> = <var>nil</var>)</code></a></dt><!-- RDLabel: "intersection" -->
+<dd>
+<p>Returns the intersection of <var>self</var> and <var>other</var>.
+If <var>other</var> is omitted, returns the intersection of the
+<var>self</var> the set of sets.</p>
+<p>Example: </p>
+<pre>require "finite-set"
+include Algebra
+p Set[0, 2, 4].cap(Set[4, 2, 0]) #=&gt; {0, 2, 4}
+s = Set[*(0..30).to_a]
+s2 = s.separate{|x| x % 2 == 0}
+s3 = s.separate{|x| x % 3 == 0}
+s5 = s.separate{|x| x % 5 == 0}
+p Set[s2, s3, s5].cap #=&gt; {0, 30}</pre></dd>
+<dt><a name="label-58" id="label-58"><code>&amp;</code></a></dt><!-- RDLabel: "&" -->
+<dt><a name="label-59" id="label-59"><code>cap</code></a></dt><!-- RDLabel: "cap" -->
+<dd>
+Alias of <a href="#label-57">intersection</a>.</dd>
+<dt><a name="label-60" id="label-60"><code>difference(<var>other</var>)</code></a></dt><!-- RDLabel: "difference" -->
+<dd>
+Returns the set of the elements of <var>self</var> which are not in
+<var>other</var>.</dd>
+<dt><a name="label-61" id="label-61"><code>-</code></a></dt><!-- RDLabel: "-" -->
+<dd>
+Alias of <a href="#label-60">difference</a>.</dd>
+<dt><a name="label-62" id="label-62"><code>each_pair</code></a></dt><!-- RDLabel: "each_pair" -->
+<dd>
+<p>Iterates with each two different elements of <var>self</var>.</p>
+<p>Example: </p>
+<pre>require "finite-set"
+include Algebra
+s = Set.phi
+Set[0, 1, 2].each_pair do |x, y|
+  s.push [x, y]
+end
+p s == Set[[0, 1], [0, 2], [1, 2]] #=&gt; true</pre></dd>
+<dt><a name="label-63" id="label-63"><code>each_member(<var>n</var>)</code></a></dt><!-- RDLabel: "each_member" -->
+<dd>
+<p>Iterates with each <var>n</var> different elements of <var>self</var>.</p>
+<p>Example: </p>
+<pre>require "finite-set"
+include Algebra
+s = Set.phi
+Set[0, 1, 2].each_member(2) do |x, y|
+  s.push [x, y]
+end
+p s == Set[[0, 1], [0, 2], [1, 2]] #=&gt; true</pre></dd>
+<dt><a name="label-64" id="label-64"><code>each_subset</code></a></dt><!-- RDLabel: "each_subset" -->
+<dd>
+<p>Iterates over each subset of <var>self</var>.</p>
+<p>Example: </p>
+<pre>require "finite-set"
+include Algebra
+s = Set.phi
+Set[0, 1, 2].each_subset do |t|
+  s.append! t
+end
+p s.size = 2**3 #=&gt; true</pre></dd>
+<dt><a name="label-65" id="label-65"><code>each_non_trivial_subset</code></a></dt><!-- RDLabel: "each_non_trivial_subset" -->
+<dd>
+Iterates over each non trivial subset of <var>self</var></dd>
+<dt><a name="label-66" id="label-66"><code>power_set</code></a></dt><!-- RDLabel: "power_set" -->
+<dd>
+Returns the set of subsets.</dd>
+<dt><a name="label-67" id="label-67"><code>each_product(<var>other</var>)</code></a></dt><!-- RDLabel: "each_product" -->
+<dd>
+<p>Iterates over for each <var>x</var> in <var>self</var> and
+each <var>y</var> in <var>other</var></p>
+<p>Exameple:</p>
+<pre>require "finite-set"
+include Algebra
+Set[0, 1].each_prodct(Set[0, 1]) do |x, y|
+  p [x, y] #=&gt; [0,0], [0,1], [1,0], [1,1]
+end</pre></dd>
+<dt><a name="label-68" id="label-68"><code>product(<var>other</var>)</code></a></dt><!-- RDLabel: "product" -->
+<dd>
+<p>Returns the product set of <var>self</var> and <var>other</var>.
+The elements are the arrays of type <code>[x, y]</code>.
+If the block is given, it returns the set which consists
+of the value of the block.</p>
+<p>Example: </p>
+<pre>require "finite-set"
+include Algebra
+p Set[0, 1].product(Set[0, 1]) #=&gt; {[0,0], [0,1], [1,0], [1,1]}
+p Set[0, 1].product(Set[0, 1]){|x, y| x + 2*y} #=&gt; {0, 1, 2, 3]</pre></dd>
+<dt><a name="label-69" id="label-69"><code>*</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+Alias of <a href="#label-68">product</a>.</dd>
+<dt><a name="label-70" id="label-70"><code>equiv_class([<var>equiv</var>])</code></a></dt><!-- RDLabel: "equiv_class" -->
+<dd>
+Returns the quotient set by the equivalent relation.
+The relation are given as following:
+<ol>
+<li><p>The evaluation of the block:</p>
+<pre>require "finite-set"
+include Algebra
+s = Set[0, 1, 2, 3, 4, 5]
+p s.equiv_class{|a, b| (a - b) % 3 == 0} #=&gt; {{0, 3}, {1, 4}, {2, 5}}</pre></li>
+<li><p>The value of the instance method 
+        <var>call(x, y)</var> of the parameter.</p>
+<pre>require "finite-set"
+include Algebra
+o = Object.new
+def o.call(x, y)
+  (x - y) % 3 == 0
+end
+s = Set[0, 1, 2, 3, 4, 5]
+p s.equiv_class(o) #=&gt; {{0, 3}, {1, 4}, {2, 5}}</pre></li>
+<li><p>The value of method indicated <var>Symbol</var>.</p>
+<pre>require "finite-set"
+include Algebra
+s = Set[0, 1, 2, 3, 4, 5]
+def q(x, y)
+  (x - y) % 3 == 0
+end
+p s.equiv_class(:q) #=&gt; {{0, 3}, {1, 4}, {2, 5}}</pre></li>
+</ol></dd>
+<dt><a name="label-71" id="label-71"><code>/</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+Alias of <a href="#label-70">equiv_class</a>.</dd>
+<dt><a name="label-72" id="label-72"><code>to_a</code></a></dt><!-- RDLabel: "to_a" -->
+<dd>
+Returns the array of elements. The order is indefinite.</dd>
+<dt><a name="label-73" id="label-73"><code>to_ary</code></a></dt><!-- RDLabel: "to_ary" -->
+<dd>
+Alias of <a href="#label-72">to_a</a>.</dd>
+<dt><a name="label-74" id="label-74"><code>sort</code></a></dt><!-- RDLabel: "sort" -->
+<dd>
+Returns the value of <code>to_a.sort</code>.</dd>
+<dt><a name="label-75" id="label-75"><code>power(<var>other</var>)</code></a></dt><!-- RDLabel: "power" -->
+<dd>
+<p>Returns the all maps from <var>other</var> to <var>self</var>.
+The maps are the instances of <a href="finite-map.html">Map</a>.</p>
+<p>Example: </p>
+<pre>require "finite-map"
+include Algebra
+a = Set[0, 1, 2, 3]
+b = Set[0, 1, 2]
+s = 
+p( (a ** b).size )      #=&gt; 4 ** 3 = 64
+p b.surjections(a).size #=&gt; S(3, 4) = 36
+p a.injections(b).size  #=&gt; 4P3 = 24</pre></dd>
+<dt><a name="label-76" id="label-76"><code>** <var>power</var></code></a></dt><!-- RDLabel: "** power" -->
+<dd>
+Alias of <a href="#label-75">power</a>.</dd>
+<dt><a name="label-77" id="label-77"><code>identity_map</code></a></dt><!-- RDLabel: "identity_map" -->
+<dd>
+Returns the identity map of <var>self</var>.</dd>
+<dt><a name="label-78" id="label-78"><code>surjections(<var>other</var>)</code></a></dt><!-- RDLabel: "surjections" -->
+<dd>
+Returns all surjections from <var>other</var> to<var>self</var>.</dd>
+<dt><a name="label-79" id="label-79"><code>injections(<var>other</var>)</code></a></dt><!-- RDLabel: "injections" -->
+<dd>
+Returns all injections from <var>other</var> to<var>self</var>.</dd>
+<dt><a name="label-80" id="label-80"><code>bijections(<var>other</var>)</code></a></dt><!-- RDLabel: "bijections" -->
+<dd>
+Returns all bijections from <var>other</var> to<var>self</var>.</dd>
+</dl>
+<h1><a name="label-81" id="label-81">Enumerable</a></h1><!-- RDLabel: "Enumerable" -->
+<h2><a name="label-82" id="label-82">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>finite-set.rb</var></li>
+</ul>
+<h2><a name="label-83" id="label-83">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-84" id="label-84"><code>any?</code></a></dt><!-- RDLabel: "any?" -->
+<dd>
+Returns true when the block is true for some elements.
+This is the alias of <var>Enumerable#find</var>
+(built-in method of ruby-1.8).</dd>
+<dt><a name="label-85" id="label-85"><code>all?</code></a></dt><!-- RDLabel: "all?" -->
+<dd>
+<p>Returns true when the block is true for all elements.
+This is defined by:</p>
+<pre>!any?{|x| !yield(x)}</pre>
+<p>(These are built-in methods of ruby-1.8).</p></dd>
+</dl>
+
+</body>
+</html>

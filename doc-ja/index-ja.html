@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/index-ja.html</title>
+</head>
+<body>
+<p>[<a href="README-ja.html">README-ja</a>]  [<a href="../doc/index.html">English</a>]</p>
+<h1><a name="label-0" id="label-0">代数パッケージ</a></h1><!-- RDLabel: "代数パッケージ" -->
+<pre>Version: 0.72  (2006.09.16)
+Author: 原 信一郎 (sinara@blade.nagaokaut.ac.jp)
+
+これは１変数あるいは多変数の多項式を計算するためのライブラリです。</pre>
+<h2><a name="label-1" id="label-1">0. 最初の一歩</a></h2><!-- RDLabel: "0. 最初の一歩" -->
+<p>最も簡単な利用法は require "algebra" として、計算を始めることです。</p>
+<pre>require "algebra"
+x = Polynomial(Integer, "x").var
+puts( (x+1)**7 )
+  #=&gt; x^7 + 7x^6 + 21x^5 + 35x^4 + 35x^3 + 21x^2 + 7x + 1
+puts( (x**7 + 7*x**6 + 21*x**5 + 35*x**4 + 35*x**3 + 21*x**2 + 7*x + 1).factorize )
+  #=&gt; (x + 1)^7</pre>
+<h2><a name="label-2" id="label-2">1. 例題</a></h2><!-- RDLabel: "1. 例題" -->
+<ul>
+<li><a href="samples-ja.html">Samples</a></li>
+</ul>
+<h2><a name="label-3" id="label-3">2. 主なクラス・モジュール</a></h2><!-- RDLabel: "2. 主なクラス・モジュール" -->
+<ul>
+<li><a href="algebra-ja.html">Algebra</a> (代数モジュール)
+<ul>
+<li><a href="polynomial-ja.html">Algebra::Polynomial</a> (1変数多項式環クラス)</li>
+<li><a href="euclidian-ring-ja.html">Algebra::EuclidianRing</a> (ユークリッド環モジュール)</li>
+<li><a href="m-polynomial-ja.html">Algebra::MPolynomial</a> (多変数多項式環クラス)</li>
+<li><a href="residue-class-ring-ja.html">Algebra::ResidueClassRing</a> (剰余環クラス)</li>
+<li><a href="algebraic-extension-field-ja.html">Algebra::AlgebraicExtensionField</a> (代数拡大体クラス)</li>
+<li><a href="localized-ring-ja.html">Algebra::LocalizedRing</a> (局所化環クラス)</li>
+<li><a href="matrix-algebra-ja.html">Algebra::MatrixAlgebra</a> (行列代数クラス)</li>
+<li><a href="algebraic-parser-ja.html">Algebra::AlgebraicParser</a> (代数式を表す文字列の評価クラス)</li>
+<li><a href="finite-set-ja.html">Algebra::Set</a> (集合のクラス)</li>
+<li><a href="finite-map-ja.html">Algebra::Map</a> (写像のクラス)</li>
+<li><a href="finite-group-ja.html">Algebra::Group</a> (群のクラス)</li>
+<li><a href="permutation-group-ja.html">Algebra::PermutationGroup</a> (置換群のクラス)</li>
+</ul></li>
+</ul>
+<h2><a name="label-4" id="label-4">3. その他</a></h2><!-- RDLabel: "3. その他" -->
+<ul>
+<li><a href="elementary-divisor-ja.html">Algebra::ElementaryDivisor</a> (単因子モジュール)</li>
+<li><a href="jordan-form-ja.html">Algebra::JordanForm</a> (ジョルダン行列クラス)</li>
+<li><a href="matrix-algebra-triplet-ja.html">Algebra::MatrixAlgebraTriplet</a> (3つ組行列のクラス)</li>
+<li><a href="algebraic-equation-ja.html">代数方程式ハンドルユーティリティー</a></li>
+<li><a href="polynomial-converter-ja.html">多項式環相互変換ユーティリティー</a></li>
+</ul>
+<h2><a name="label-5" id="label-5">4. パッケージ内容</a></h2><!-- RDLabel: "4. パッケージ内容" -->
+<h3><a name="label-6" id="label-6">総合</a></h3><!-- RDLabel: "総合" -->
+<pre>algebra.rb             Algebra ライブラリ一般利用ファイル</pre>
+<h3><a name="label-7" id="label-7">一変数関係</a></h3><!-- RDLabel: "一変数関係" -->
+<pre>polynomial.rb          １変数多項式環のクラス
+euclidian-ring.rb      ユークリッド整域ユティリティー(G.C.D.の計算)
+polynomial-factor.rb   １変数多項式因数分解ライブラリ
+  polynomial-factor-int.rb   整数係数版
+  polynomial-factor-zp.rb    Zp係数版
+  polynomial-factor-alg.rb   代数的数係数版</pre>
+<h3><a name="label-8" id="label-8">多変数関係</a></h3><!-- RDLabel: "多変数関係" -->
+<pre>m-polynomial.rb         多変数多項式環のクラス
+  m-index.rb            m-polynomial.rb の下請け
+m-polynomial-factor.rb   １変数多項式因数分解ライブラリ
+  m-polynomial-factor-int.rb   整数係数版
+  m-polynomial-factor-zp.rb    Zp係数版
+groebner-basis.rb       グレブナ基底の計算モジュール
+groebner-basis-coeff.rb 除算の計算モジュール</pre>
+<h3><a name="label-9" id="label-9">代数全般</a></h3><!-- RDLabel: "代数全般" -->
+<pre>localized-ring.rb       商体作成ライブラリ
+matrix-algebra.rb       行列代数のクラス
+  elementary-divisor.rb 単因子操作モジュール
+  matrix-algebra.triplete.rb  3つ組行列クラス
+  jordan-form.rb        ジョルダン行列クラス
+residue-class-ring.rb   多項式環の剰余環
+algebraic-extention-field.rb 代数拡大体
+splitting-field.rb      多項式の最小分解体
+galois-group.rb         Galois 群
+linear-algebra.rb       線形代数ライブラリ
+algebraic-equation.rb   代数方程式ライブラリ</pre>
+<h3><a name="label-10" id="label-10">基礎部分</a></h3><!-- RDLabel: "基礎部分" -->
+<pre>finite-set.rb           集合のクラス
+  finite-map.rb         写像のクラス
+  finite-group.rb       群のクラス
+    permutation-group.rb  置換群のクラス</pre>
+<h3><a name="label-11" id="label-11">共通部分</a></h3><!-- RDLabel: "共通部分" -->
+<pre>prime-gen.rb            素数生成クラス
+numeric-supplement.rb   Numeric の補完
+polynomial-converter.rb 多項式環相互変換ユーティリティー
+algebra-system.rb       代数系の共通仕様
+algebraic-parser.rb     多元環の式の文字列表現を評価するモジュール</pre>
+<h3><a name="label-12" id="label-12">その他</a></h3><!-- RDLabel: "その他" -->
+<pre>array-supplement.rb     Array の補完
+doc-ja/                 マニュアル日本語版(RD, HTML, TXT)
+doc/                    マニュアル英語版(RD, HTML, TXT)
+sample/                 サンプルコード
+work/                   （開発作業場所）</pre>
+<h2><a name="label-13" id="label-13">5. ToDo</a></h2><!-- RDLabel: "5. ToDo" -->
+<ul>
+<li><a href="todo.html">todo.html</a></li>
+</ul>
+<h2><a name="label-14" id="label-14">6. Changes</a></h2><!-- RDLabel: "6. Changes" -->
+<ul>
+<li><a href="changes.html">changes.html</a></li>
+</ul>
+
+</body>
+</html>

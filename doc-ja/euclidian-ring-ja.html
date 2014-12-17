@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/euclidian-ring-ja.html</title>
+</head>
+<body>
+<p>[<a href="index-ja.html">index-ja</a>] </p>
+<h1><a name="label-0" id="label-0">Algebra::EuclidianRing</a></h1><!-- RDLabel: "Algebra::EuclidianRing" -->
+<p><em>(G.C.D.計算モジュール)</em></p>
+<p><var>divmod</var> から G.C.D(最大公約数)等を計算するモジュールです。
+これは <var>Integer</var> や <var>Algebra::Polynomial</var> にインクルードされます。</p>
+<h2><a name="label-1" id="label-1">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>euclidian-ring.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-3" id="label-3"><code>gcd(<var>other</var>)</code></a></dt><!-- RDLabel: "gcd" -->
+<dd>
+<var>self</var> と <var>other</var> との最大公約数を返します。</dd>
+<dt><a name="label-4" id="label-4"><code>gcd_all(<var>other0</var> [, <var>other1</var>[, ...]])</code></a></dt><!-- RDLabel: "gcd_all" -->
+<dd>
+<var>self</var> と <var>other0</var>, <var>other1</var>,... との最大公約数を返します。</dd>
+<dt><a name="label-5" id="label-5"><code>gcd_coeff(<var>other</var>)</code></a></dt><!-- RDLabel: "gcd_coeff" -->
+<dd>
+<p><var>self</var> と <var>other</var> との最大公約数と、それを表現する係数の
+配列を返します。</p>
+<p>例:</p>
+<pre>require "polynomial"
+require "rational"
+P = Algebra.Polynomial(Rational, "x")
+x = P.var
+f = (x + 2) * (x**2 - 1)**2
+g = (x + 2)**2 * (x - 1)**3
+gcd, a, b = f.gcd_coeff(g)
+p gcd #=&gt; 4x^3 - 12x + 8
+p a   #=&gt; -x + 2
+p b   #=&gt; x - 1
+p gcd == a*f + b*g #=&gt; true</pre></dd>
+<dt><a name="label-6" id="label-6"><code>gcd_ext(<var>other</var>)</code></a></dt><!-- RDLabel: "gcd_ext" -->
+<dd>
+<a href="#label-5">gcd_coeff</a> と同じです。</dd>
+<dt><a name="label-7" id="label-7"><code>gcd_coeff_all(<var>other0</var> [, <var>other1</var>[, ...]])</code></a></dt><!-- RDLabel: "gcd_coeff_all" -->
+<dd>
+<p><var>self</var> と <var>other0</var>, <var>other1</var>,... との最大公約数と、それ
+を表現する係数の配列を返します。</p>
+<p>例:</p>
+<pre>require "polynomial"
+require "rational"
+P = Algebra.Polynomial(Rational, "x")
+x = P.var
+f = (x + 2) * (x**2 - 1)**2
+g = (x + 2)**2 * (x - 1)**3
+h = (x + 2) * (x + 1) * (x - 1)
+gcd, a, b, c = f.gcd_coeff_all(g, h)
+p gcd #=&gt; -8x^2 - 8x + 16
+p a   #=&gt; -x + 2
+p b   #=&gt; x - 1
+p c   #=&gt; -4
+p gcd == a*f + b*g + c*h #=&gt; true</pre></dd>
+<dt><a name="label-8" id="label-8"><code>gcd_ext_all(<var>other</var>)</code></a></dt><!-- RDLabel: "gcd_ext_all" -->
+<dd>
+<a href="#label-7">gcd_coeff_all</a> と同じです。</dd>
+<dt><a name="label-9" id="label-9"><code>lcm(<var>b</var>)</code></a></dt><!-- RDLabel: "lcm" -->
+<dd>
+<var>self</var> と <var>other</var> との最小公倍数を返します。</dd>
+<dt><a name="label-10" id="label-10"><code>lcm_all(<var>other0</var> [, <var>other1</var>[, ...]])</code></a></dt><!-- RDLabel: "lcm_all" -->
+<dd>
+<var>self</var> と <var>other0</var>, <var>other1</var>,... との最小公倍数を返します。</dd>
+</dl>
+
+</body>
+</html>

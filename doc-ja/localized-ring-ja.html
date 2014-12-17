@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/localized-ring-ja.html</title>
+</head>
+<body>
+<p>[<a href="index-ja.html">index-ja</a>] </p>
+<h1><a name="label-0" id="label-0">Algebra::LocalizedRing</a></h1><!-- RDLabel: "Algebra::LocalizedRing" -->
+<p><em>(局所化環クラス)</em></p>
+<p>与えられた環を分子・分母にした分数環を構成します。
+実際のクラスを生成するには、クラスメソッド <a href="#label-9">::create</a> 
+あるいは関数 <a href="#label-5">Algebra.LocalizedRing</a>() を用います。</p>
+<h2><a name="label-1" id="label-1">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>localized-ring.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">スーパークラス:</a></h2><!-- RDLabel: "スーパークラス:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">インクルードしているモジュール:</a></h2><!-- RDLabel: "インクルードしているモジュール:" -->
+<p>なし</p>
+<h2><a name="label-4" id="label-4">関連する関数:</a></h2><!-- RDLabel: "関連する関数:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>Algebra.LocalizedRing(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra.LocalizedRing" -->
+<dd>
+<a href="#label-9">::create</a>(ring) と同じです。</dd>
+<dt><a name="label-6" id="label-6"><code>Algebra.RationalFunctionField(<var>ring</var>, <var>obj</var>)</code></a></dt><!-- RDLabel: "Algebra.RationalFunctionField" -->
+<dd>
+<p>環 <var>ring</var>、変数を表すオブジェクトを <var>obj</var> として有理関数体
+を作ります。クラスメソッド <var>::var</var> で変数を得ることができます。</p>
+<p>例: 有理関数体</p>
+<pre>require "algebra/localized-ring"
+require "rational"
+F = Algebra.RationalFunctionField(Rational, "x")
+x = F.var
+p ( 1 / (x**2 - 1) - 1 / (x**3 - 1) )
+  #=&gt; x^2/(x^4 + x^3 - x - 1)</pre></dd>
+<dt><a name="label-7" id="label-7"><code>Algebra.MRationalFunctionField(<var>ring</var>, [<var>obj1</var>[, <var>obj2</var>, ...]])</code></a></dt><!-- RDLabel: "Algebra.MRationalFunctionField" -->
+<dd>
+<p>環 <var>ring</var>、変数を表すオブジェクトを <var>obj1</var>, <var>obj2</var>,... として有理関数体を作ります。クラスメソッド <var>::vars</var> で変数を得ることができます。</p>
+<p>例: 有理関数体</p>
+<pre>require "algebra/localized-ring"
+require "rational"
+G = Algebra.MRationalFunctionField(Rational, "x", "y", "z")
+x, y, z = G.vars
+f = (x + z) / (x + y) - z / (x + y)
+p f #=&gt; (x^2 + xy)/(x^2 + 2xy + y^2)
+p f.simplify #=&gt; x/(x + y)</pre></dd>
+</dl>
+<h2><a name="label-8" id="label-8">クラスメソッド:</a></h2><!-- RDLabel: "クラスメソッド:" -->
+<dl>
+<dt><a name="label-9" id="label-9"><code>::create(<var>ring</var>)</code></a></dt><!-- RDLabel: "::create" -->
+<dd>
+<p>クラス<var>ring</var>で表現されるを環の元を分子・分母とする分数環
+を作ります。</p>
+<p>この戻り値は Algebra::LocalizedRing クラスのサブクラスです。
+このサブクラスにはクラスメソッドとして <var>::ground</var> が定義され
+<var>ring</var> を返します。</p>
+<p>生成したクラスにはクラスメソッド<code>::[]</code>が定義され、基礎環の
+元 <code>x</code> に対して分数環の元 <code>x/1</code> を返します。</p>
+<p>例: 有理数を作る</p>
+<pre>require "localized-ring"
+F = Algebra.LocalizedRing(Integer)
+p F.new(1, 2) + F.new(2, 3) #=&gt; 7/6</pre>
+<p>例: 整数上の多項式環の商体</p>
+<pre>require "polynomial"
+require "localized-ring"
+P = Algebra.Polynomial(Integer, "x")
+F = Algebra.LocalizedRing(P)
+x = F[P.var]
+p ( 1 / (x**2 - 1) - 1 / (x**3 - 1) )
+  #=&gt; (x^3 - x^2)/(x^5 - x^3 - x^2 + 1)</pre></dd>
+<dt><a name="label-10" id="label-10"><code>::zero</code></a></dt><!-- RDLabel: "::zero" -->
+<dd>
+零元を返します。</dd>
+<dt><a name="label-11" id="label-11"><code>::unity</code></a></dt><!-- RDLabel: "::unity" -->
+<dd>
+単位元を返します。</dd>
+</dl>
+<h2><a name="label-12" id="label-12">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-13" id="label-13"><code>zero?</code></a></dt><!-- RDLabel: "zero?" -->
+<dd>
+零元であるとき真を返します。</dd>
+<dt><a name="label-14" id="label-14"><code>zero</code></a></dt><!-- RDLabel: "zero" -->
+<dd>
+零元を返します。</dd>
+<dt><a name="label-15" id="label-15"><code>unity</code></a></dt><!-- RDLabel: "unity" -->
+<dd>
+単位元を返します。</dd>
+<dt><a name="label-16" id="label-16"><code>==(<var>other</var>)</code></a></dt><!-- RDLabel: "==" -->
+<dd>
+等しいとき真を返します。</dd>
+<dt><a name="label-17" id="label-17"><code>&lt;=&gt;(<var>other</var>)</code></a></dt><!-- RDLabel: "<=>" -->
+<dd>
+大小関係を求めます。</dd>
+<dt><a name="label-18" id="label-18"><code>+(<var>other</var>)</code></a></dt><!-- RDLabel: "+" -->
+<dd>
+和を計算します。</dd>
+<dt><a name="label-19" id="label-19"><code>-(<var>other</var>)</code></a></dt><!-- RDLabel: "-" -->
+<dd>
+差を計算します。</dd>
+<dt><a name="label-20" id="label-20"><code>*(<var>other</var>)</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+積を計算します。</dd>
+<dt><a name="label-21" id="label-21"><code>**(<var>n</var>)</code></a></dt><!-- RDLabel: "**" -->
+<dd>
+<var>n</var> 乗を計算します。</dd>
+<dt><a name="label-22" id="label-22"><code>/(<var>other</var>)</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+商を計算します。</dd>
+</dl>
+
+</body>
+</html>

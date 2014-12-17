@@ -1,0 +1,131 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/algebraic-extension-field.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] </p>
+<h1><a name="label-0" id="label-0">AlgebraicExtensionField</a></h1><!-- RDLabel: "AlgebraicExtensionField" -->
+<p><em>(Algebraic Extension Field)</em></p>
+<p>A class represents the algebraic extension field.</p>
+<h2><a name="label-1" id="label-1">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>algebraic-Extension-feild.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>ResidueClassRing</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">Included Module</a></h2><!-- RDLabel: "Included Module" -->
+<p>(none)</p>
+<h2><a name="label-4" id="label-4">Associated Methods:</a></h2><!-- RDLabel: "Associated Methods:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>Algebra.AlgebraicExtensionField(<var>field</var>, <var>obj</var>){|<var>x</var>| ... }</code></a></dt><!-- RDLabel: "Algebra.AlgebraicExtensionField" -->
+<dd>
+Same as <a href="#label-7">::create</a>.</dd>
+</dl>
+<h2><a name="label-6" id="label-6">Class Method</a></h2><!-- RDLabel: "Class Method" -->
+<dl>
+<dt><a name="label-7" id="label-7"><code>::create(<var>k</var>, <var>obj</var>){|<var>x</var>| ... }</code></a></dt><!-- RDLabel: "::create" -->
+<dd>
+<p>Returns the extension field <var>k[x]/(p(x))</var>
+of the field <var>k</var> by 
+the polynomial <var>p(x)</var> of the variable <var>x</var>, 
+where <var>obj</var> represents the <var>x</var>.</p>
+<p>The class methods <a href="#label-9">::var</a>, <a href="#label-11">::def_polys</a> and <a href="#label-12">::env_ring</a>
+are defined for the return value.</p>
+<p>Example: Create the field <var>F</var> extended by <code>x**2 + x + 1 == 0</code>
+from <var>Rational</var>.</p>
+<pre>require "rational"
+require "polynomial"
+require "residue-class-ring"
+F  = Algebra.AlgebraicExtensionField(Rational, "x") {|x| x**2 + x + 1}
+x = F.var
+p( (x-1)** 3 / (x**2 - 1) ) #=&gt; -3x - 3</pre></dd>
+<dt><a name="label-8" id="label-8"><code>::to_ary</code></a></dt><!-- RDLabel: "::to_ary" -->
+<dd>
+<p>Returns <code>[self, var]</code>.</p>
+<p>Example: Define AlgebraicExtensionField and variables simulteniously</p>
+<pre>require "rational"
+require "algebraic-extension-field"
+F, a = Algebra.AlgebraicExtensionField(Rational, "a") {|a| a**2 + a + 1}</pre></dd>
+<dt><a name="label-9" id="label-9"><code>::var</code></a></dt><!-- RDLabel: "::var" -->
+<dd>
+Returns the residue class of <var>x</var>.
+This method is defined for the residue class ring, <var>k[x]/(p(x))</var>
+which is the return value of <a href="#label-7">::create</a>.</dd>
+<dt><a name="label-10" id="label-10"><code>::modulus</code></a></dt><!-- RDLabel: "::modulus" -->
+<dd>
+Returns the element <var>p(x)</var> of <var>k[x]</var> .
+This method is defined for the residue class ring, <var>k[x]/(p(x))</var>
+which is the return value of <a href="#label-7">::create</a>.</dd>
+<dt><a name="label-11" id="label-11"><code>::def_polys</code></a></dt><!-- RDLabel: "::def_polys" -->
+<dd>
+<p>Returns the array of <a href="#label-10">::modulus</a>'s of size <var>n</var>.
+Where <var>self</var> is defined recursively as the 
+<var>AlgebraicExtensionField</var> 
+of height <var>n</var> and base field <var>k0</var>. 
+This method is defined for the residue class ring <var>k[x]/(p(x))</var>
+which is the return value of <a href="#label-7">::create</a>.</p>
+<p>Example: Make the extension field of cubic roots of 2, 3, 5 over Rational.</p>
+<pre>require "algebra"
+# K0 == Rational
+K1 = AlgebraicExtensionField(Rational, "x1") { |x|
+  x ** 3 - 2
+}
+K2 = AlgebraicExtensionField(K1, "x2") { |y|
+  y ** 3 - 3
+}
+K3 = AlgebraicExtensionField(K2, "x3") { |z|
+  z ** 3 - 5
+}
+
+p K3.def_polys #=&gt; [x1^3 - 2, x2^3 - 3, x3^3 - 5]
+
+x1, x2, x3 = K1.var, K2.var, K3.var
+f = x1**2 + 2*x2**2 + 3*x3**2
+f0 = f.abs_lift
+
+p f0.type     #=&gt; (Polynomial/(Polynomial/(Polynomial/Rational)))
+p f0.type == K3.env_ring #=&gt; true
+
+p f #=&gt; 3x3^2 + 2x2^2 + x1^2
+p f0.evaluate(x3.abs_lift, x2.abs_lift, x1.abs_lift)
+    #=&gt; x3^2 + 2x2^2 + 3x3^2</pre></dd>
+<dt><a name="label-12" id="label-12"><code>::env_ring</code></a></dt><!-- RDLabel: "::env_ring" -->
+<dd>
+Returns the multi-variate polynomial ring <var>k0[x1, x2,.., xn]</var>.
+Where <var>self</var> is defined recursively as the 
+<var>AlgebraicExtensionField</var> 
+of height <var>n</var> and base field <var>k0</var>. 
+This method is defined for the residue class ring <var>k[x]/(p(x))</var>
+which is the return value of <a href="#label-7">::create</a>.</dd>
+<dt><a name="label-13" id="label-13"><code>::ground</code></a></dt><!-- RDLabel: "::ground" -->
+<dd>
+Return the polnomial ring <var>k[x]</var> which is the ground ring of
+the residue class ring.</dd>
+</dl>
+<h2><a name="label-14" id="label-14">Methods</a></h2><!-- RDLabel: "Methods" -->
+<dl>
+<dt><a name="label-15" id="label-15"><code>abs_lift</code></a></dt><!-- RDLabel: "abs_lift" -->
+<dd>
+Returns the lift of self in <a href="#label-12">::env_ring</a>.
+( = <var>k0[x1, x2,.., xn] </var> ).</dd>
+<dt><a name="label-16" id="label-16"><code>[<var>n</var>]</code></a></dt><!-- RDLabel: "[]" -->
+<dd>
+<p>Returns the coeffcient of degree <!-- Reference, RDLabel "n" doesn't exist --><em class="label-not-found">n</em><!-- Reference end -->. Same as <code>lift[n]</code>.</p>
+<p>Example: Fibonacci Series</p>
+<pre>require "algebra"
+t = AlgebraicExtensionField(Integral, "t"){|x| x**2-x-1}.var
+(0..10).each do |n|
+  p( (t**n)[1] ) #=&gt; 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+end</pre></dd>
+</dl>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/changes.html</title>
+</head>
+<body>
+<h1><a name="label-0" id="label-0">Changes</a></h1><!-- RDLabel: "Changes" -->
+<h2><a name="label-1" id="label-1">0.71(2005.07.26)</a></h2><!-- RDLabel: "0.71(2005.07.26)" -->
+<ul>
+<li>MPolynomial#derivate</li>
+<li>MPolynomial#map_to</li>
+</ul>
+<h2><a name="label-2" id="label-2">0.70(2005.02.02)</a></h2><!-- RDLabel: "0.70(2005.02.02)" -->
+<ul>
+<li>id =&gt; object_id</li>
+</ul>
+<h2><a name="label-3" id="label-3">0.69(2004.10.15)</a></h2><!-- RDLabel: "0.69(2004.10.15)" -->
+<ul>
+<li>MRationalFunctionField</li>
+<li>MPolynomial#gcd</li>
+<li>SquareMatrix#inverse depends on ufd?</li>
+</ul>
+<h2><a name="label-4" id="label-4">0.68(2004.07.28)</a></h2><!-- RDLabel: "0.68(2004.07.28)" -->
+<ul>
+<li>fix Mpolynomial#to_s (for tex)</li>
+</ul>
+<h2><a name="label-5" id="label-5">0.67(2004.06.10)</a></h2><!-- RDLabel: "0.67(2004.06.10)" -->
+<ul>
+<li>need_paren_in_coeff?</li>
+<li>Matrix: entries are regulated.</li>
+<li>Matrix: type*type is due to wedge.</li>
+<li>AlgebraicSystem: wedge, superior?</li>
+<li>Polynomial#sub, MPolynomial#sub</li>
+<li>SquareMatrix.determinant</li>
+<li>fix MPolynomial#to_s</li>
+<li>fix Factors#normalize!</li>
+<li>(Co)Vector#norm2, inner_product</li>
+</ul>
+<h2><a name="label-6" id="label-6">0.66(2004.06.05)</a></h2><!-- RDLabel: "0.66(2004.06.05)" -->
+<ul>
+<li>fix _hensel_lift (add param 'where')</li>
+<li>sample-geometry01.rb</li>
+<li>title of docs</li>
+</ul>
+<h2><a name="label-7" id="label-7">0.65(2004.06.04)</a></h2><!-- RDLabel: "0.65(2004.06.04)" -->
+<ul>
+<li>Polynomial#factor over Polynomial</li>
+<li>reverse var's order in value_on &amp; convert_to in polynomial-convert.rb</li>
+</ul>
+<h2><a name="label-8" id="label-8">0.64(2004.03.01)</a></h2><!-- RDLabel: "0.64(2004.03.01)" -->
+<ul>
+<li>return value of SquareMatrix#diagonalize is Strut</li>
+</ul>
+<h2><a name="label-9" id="label-9">0.63(2004.01.08)</a></h2><!-- RDLabel: "0.63(2004.01.08)" -->
+<ul>
+<li>fix matrix[i, j] = x</li>
+</ul>
+<h2><a name="label-10" id="label-10">0.62(2003.11.13)</a></h2><!-- RDLabel: "0.62(2003.11.13)" -->
+<ul>
+<li>allow f.gcd_coeff_all()</li>
+</ul>
+<h2><a name="label-11" id="label-11">0.61(2003.11.06)</a></h2><!-- RDLabel: "0.61(2003.11.06)" -->
+<ul>
+<li>corrected Enumerable#any? in finite-set.rb</li>
+</ul>
+<h2><a name="label-12" id="label-12">0.60(2003.07.28)</a></h2><!-- RDLabel: "0.60(2003.07.28)" -->
+<ul>
+<li>AlgebraMatrix(cofactor, cofactor_matrix, adjoint)</li>
+</ul>
+<h2><a name="label-13" id="label-13">0.59(2003.07.28)</a></h2><!-- RDLabel: "0.59(2003.07.28)" -->
+<ul>
+<li>adapted to the version 1.8.0(preview 4)</li>
+<li>include installer</li>
+</ul>
+<h2><a name="label-14" id="label-14">0.58(2002.04.00)</a></h2><!-- RDLabel: "0.58(2002.04.00)" -->
+<ul>
+<li>AlgebraicExtensionField#[n] is lift[n]</li>
+<li>abolish the field of 'poly_exps' of the splitting field' and add 'proots'</li>
+<li>MatrixAlgebra#rank</li>
+<li>Raise Exception for the inverse of the non invertible square matrix</li>
+<li>Use "import-module" for monomial order (0.57.18.01)</li>
+</ul>
+<h2><a name="label-15" id="label-15">0.57 (2002.03.16)</a></h2><!-- RDLabel: "0.57 (2002.03.16)" -->
+<ul>
+<li>New class
+<ul>
+<li>Set</li>
+<li>Map</li>
+<li>Group</li>
+<li>PermuationGroup</li>
+<li>AlgebraicExtensionField</li>
+</ul></li>
+<li>New methods
+<ul>
+<li>Galois#group</li>
+<li>Polynomial#splitting_field</li>
+</ul></li>
+<li>Rename MinimalDecompositionField to decompose</li>
+<li>Move *.rb to lib/</li>
+<li>Define Polynomial.to_ary and MPolynomial.to_ary</li>
+</ul>
+<h2><a name="label-16" id="label-16">0.56 (2002.02.06)</a></h2><!-- RDLabel: "0.56 (2002.02.06)" -->
+<ul>
+<li>MPolynomial#with_ord</li>
+<li>Orderings belong to MPolynomial.</li>
+<li>MIndex is not a subclass of Array, now.</li>
+<li>"Integer &lt; Numeric" ==&gt; "Integer"</li>
+</ul>
+<h2><a name="label-17" id="label-17">0.55 (2001.11.15)</a></h2><!-- RDLabel: "0.55 (2001.11.15)" -->
+<ul>
+<li>Improve Algorithm of Factorization over algebraic fields</li>
+</ul>
+<h2><a name="label-18" id="label-18">0.54 (2001.11.05)</a></h2><!-- RDLabel: "0.54 (2001.11.05)" -->
+<ul>
+<li>Elementary Divisor</li>
+<li>Jordan Form</li>
+<li>Minimal Decomposition Field</li>
+</ul>
+<h2><a name="label-19" id="label-19">0.53 (2001.10.03)</a></h2><!-- RDLabel: "0.53 (2001.10.03)" -->
+<ul>
+<li>move "MatrixAlgebra" to "Algebra::MatrixAlgebra"</li>
+<li>move "MatrixAlgebra::Vector" to "Algebra::Vector"</li>
+<li>move "MatrixAlgebra::Covector" to "Algebra::Covector",</li>
+<li>move "MatrixAlgebra::SquareMatrix" to "Algebra::SquareMatrix"</li>
+</ul>
+<h2><a name="label-20" id="label-20">0.52 (2001.09.22)</a></h2><!-- RDLabel: "0.52 (2001.09.22)" -->
+<ul>
+<li>One-variate polynomial
+<ul>
+<li>Fundamental operations (addition, multiplication, quotient/remainder, ...)</li>
+<li>factorization</li>
+</ul></li>
+<li>Multi-variate polynomial
+<ul>
+<li>Fundamental operations (addition, multiplication, ...)</li>
+<li>factorization</li>
+<li>Creating Groebner-basis, quotient/remainder by Groebner-basis.</li>
+</ul></li>
+<li>Algebraic systems
+<ul>
+<li>Creating quotient fields</li>
+<li>Creating residue class fields</li>
+<li>Operating matrices.</li>
+</ul></li>
+<li>Linear Algebra
+<ul>
+<li>Diagonalization of Symmetrix Matrix</li>
+</ul></li>
+</ul>
+<h2><a name="label-21" id="label-21">0.40 (2001.03.03)</a></h2><!-- RDLabel: "0.40 (2001.03.03)" -->
+<ul>
+<li>Initial Version</li>
+</ul>
+
+</body>
+</html>

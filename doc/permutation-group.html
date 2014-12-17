@@ -1,0 +1,159 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/permutation-group.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] 
+<a href="#label-0">Algebra::PermutationGroup</a>
+/
+<a href="#label-10">Algebra::Permutation</a></p>
+<h1><a name="label-0" id="label-0">Algebra::PermutationGroup</a></h1><!-- RDLabel: "Algebra::PermutationGroup" -->
+<p>This is the class of permutations.
+The elements are assumed to be the instances of <!-- Reference, RDLabel "Permutation" doesn't exist --><em class="label-not-found">Permutation</em><!-- Reference end -->.</p>
+<h2><a name="label-1" id="label-1">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>permutation-group.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Group</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-4" id="label-4"><code>::new(<var>u</var>, [<var>g0</var>, [<var>g1</var>, ...]])</code></a></dt><!-- RDLabel: "::new" -->
+<dd>
+Returns the group with unit <var>u</var>, whcih
+consists of <var>g0</var>, <var>g1</var>, ....</dd>
+<dt><a name="label-5" id="label-5"><code>::unit_group(<var>d</var>)</code></a></dt><!-- RDLabel: "::unit_group" -->
+<dd>
+Return the unit group of degree <var>d</var>.</dd>
+<dt><a name="label-6" id="label-6"><code>::unity(<var>n</var>)</code></a></dt><!-- RDLabel: "::unity" -->
+<dd>
+Retunrs the unity of degree <var>n</var>.</dd>
+<dt><a name="label-7" id="label-7"><code>::perm(<var>a</var>)</code></a></dt><!-- RDLabel: "::perm" -->
+<dd>
+Returns the permuation represented by the array <var>a</var>.</dd>
+<dt><a name="label-8" id="label-8"><code>::symmetric(<var>n</var>)</code></a></dt><!-- RDLabel: "::symmetric" -->
+<dd>
+Returns the simmetric group of degree <var>n</var></dd>
+<dt><a name="label-9" id="label-9"><code>::alternate(<var>n</var>)</code></a></dt><!-- RDLabel: "::alternate" -->
+<dd>
+Returns the alternative group of dgree <var>n</var>.</dd>
+</dl>
+<h1><a name="label-10" id="label-10">Algebra::Permutation</a></h1><!-- RDLabel: "Algebra::Permutation" -->
+<h2><a name="label-11" id="label-11">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>permutation-group.rb</var></li>
+</ul>
+<h2><a name="label-12" id="label-12">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-13" id="label-13">Included Module:</a></h2><!-- RDLabel: "Included Module:" -->
+<ul>
+<li><var>Enumerable</var></li>
+<li><var>Powers</var></li>
+</ul>
+<h2><a name="label-14" id="label-14">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-15" id="label-15"><code>::new(<var>x</var>)</code></a></dt><!-- RDLabel: "::new" -->
+<dd>
+Returns the permutaiont represented by the array <var>x</var>.</dd>
+<dt><a name="label-16" id="label-16"><code>::[[<var>n0</var>, [<var>n1</var>, [<var>n2</var>, ..., ]]]]</code></a></dt><!-- RDLabel: "::[]" -->
+<dd>
+<p>Returns the permutation <code>[n0, n1, n2, ..., ]</code>.</p>
+<p>Example:</p>
+<pre>a = Permutation[1, 2, 0]
+p a**2 #=&gt; [2, 0, 1]
+p a**3 #=&gt; [0, 1, 2]</pre></dd>
+<dt><a name="label-17" id="label-17"><code>::unity(<var>d</var>)</code></a></dt><!-- RDLabel: "::unity" -->
+<dd>
+Returns the unity of degree <var>d</var>.</dd>
+<dt><a name="label-18" id="label-18"><code>::cyclic2perm(<var>c</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "::cyclic2perm" -->
+<dd>
+<p>Returns the <!-- Reference, RDLabel "Permutation" doesn't exist --><em class="label-not-found">Permutation</em><!-- Reference end --> represented by
+<var>c</var> : the array of arrays of cyclic permutations,
+where <var>n</var> is the degree. This method is the inverse of
+<a href="#label-38">decompose_cyclic</a>.</p>
+<p>Example:</p>
+<pre>Permutation.cyclic2perm([[1,6,5,4], [2,3]], 7) #=&gt; [0, 6, 3, 2, 1, 4, 5]
+Permutation[0, 6, 3, 2, 1, 4, 5].decompose_cyclic #=&gt; [[1,6,5,4], [2,3]]</pre></dd>
+</dl>
+<h2><a name="label-19" id="label-19">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-20" id="label-20"><code>unity</code></a></dt><!-- RDLabel: "unity" -->
+<dd>
+Returns the unity.</dd>
+<dt><a name="label-21" id="label-21"><code>perm</code></a></dt><!-- RDLabel: "perm" -->
+<dd>
+Returns the array which represents <var>self</var></dd>
+<dt><a name="label-22" id="label-22"><code>degree</code></a></dt><!-- RDLabel: "degree" -->
+<dd>
+Returns the degree</dd>
+<dt><a name="label-23" id="label-23"><code>size</code></a></dt><!-- RDLabel: "size" -->
+<dd>
+Alias of <a href="#label-22">degree</a>.</dd>
+<dt><a name="label-24" id="label-24"><code>each</code></a></dt><!-- RDLabel: "each" -->
+<dd>
+Iterates for each entry.</dd>
+<dt><a name="label-25" id="label-25"><code>eql?(<var>other</var>)</code></a></dt><!-- RDLabel: "eql?" -->
+<dd>
+Returns true if <var>self</var> is equal to <var>other</var>.</dd>
+<dt><a name="label-26" id="label-26"><code>==</code></a></dt><!-- RDLabel: "==" -->
+<dd>
+Alias of <var>eql?</var>.</dd>
+<dt><a name="label-27" id="label-27"><code>hash</code></a></dt><!-- RDLabel: "hash" -->
+<dd>
+Returns the hash number.</dd>
+<dt><a name="label-28" id="label-28"><code>[<var>i</var>]</code></a></dt><!-- RDLabel: "[]" -->
+<dd>
+Returns the number to which <var>i</var> is transferrd.</dd>
+<dt><a name="label-29" id="label-29"><code>call</code></a></dt><!-- RDLabel: "call" -->
+<dd>
+Alias of <a href="#label-28">[]</a>.</dd>
+<dt><a name="label-30" id="label-30"><code>index(<var>i</var>)</code></a></dt><!-- RDLabel: "index" -->
+<dd>
+Returns the number from which <var>i</var> is transferred.</dd>
+<dt><a name="label-31" id="label-31"><code>right_act(<var>other</var>)</code></a></dt><!-- RDLabel: "right_act" -->
+<dd>
+Returns the value multiplying <var>other</var> from right.
+It follows <code>(g.right_act(h))[x] == h[g[x]]</code>.</dd>
+<dt><a name="label-32" id="label-32"><code>*</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+Alias of <a href="#label-31">right_act</a></dd>
+<dt><a name="label-33" id="label-33"><code>left_act(<var>other</var>)</code></a></dt><!-- RDLabel: "left_act" -->
+<dd>
+Returns the value multiplying <var>other</var> from left.
+It follows <code>(g.left_act(h))[x] == g[h[x]]</code>.</dd>
+<dt><a name="label-34" id="label-34"><code>inverse</code></a></dt><!-- RDLabel: "inverse" -->
+<dd>
+Returns the inverse element.</dd>
+<dt><a name="label-35" id="label-35"><code>inv</code></a></dt><!-- RDLabel: "inv" -->
+<dd>
+Alias of <var>inverse</var>.</dd>
+<dt><a name="label-36" id="label-36"><code>sign</code></a></dt><!-- RDLabel: "sign" -->
+<dd>
+Returns the sign of <var>self</var>.</dd>
+<dt><a name="label-37" id="label-37"><code>conjugate(<var>g</var>)</code></a></dt><!-- RDLabel: "conjugate" -->
+<dd>
+Returns the conjugate by <var>g</var>: <code>g * self * g.inv</code>.</dd>
+<dt><a name="label-38" id="label-38"><code>decompose_cyclic</code></a></dt><!-- RDLabel: "decompose_cyclic" -->
+<dd>
+Returns the array of arrays of cyclic permutations.
+This is the inverse of <!-- Reference, RDLabel "::cyclic2perm(c, n)" doesn't exist --><em class="label-not-found">::cyclic2perm(c, n)</em><!-- Reference end -->.</dd>
+<dt><a name="label-39" id="label-39"><code>to_map</code></a></dt><!-- RDLabel: "to_map" -->
+<dd>
+Returns the <a href="finite-map.html">Map</a> object of <var>self</var>.</dd>
+<dt><a name="label-40" id="label-40"><code>decompose_transposition</code></a></dt><!-- RDLabel: "decompose_transposition" -->
+<dd>
+Decompose into the array of the transpositions.</dd>
+</dl>
+
+</body>
+</html>

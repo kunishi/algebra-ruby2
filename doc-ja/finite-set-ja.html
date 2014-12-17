@@ -1,0 +1,393 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/finite-set-ja.html</title>
+</head>
+<body>
+<p>[<a href="index-ja.html">index-ja</a>] 
+[<a href="finite-map-ja.html">finite-map-ja</a>] 
+<a href="#label-0">Algebra::Set</a>
+/
+<a href="#label-81">Enumerable</a></p>
+<h1><a name="label-0" id="label-0">Algebra::Set</a></h1><!-- RDLabel: "Algebra::Set" -->
+<p><em>集合のクラス</em></p>
+<p>集合を表現するクラスです。２つの集合 <var>s</var>, <var>t</var> に関して、
+<var>s</var> が <var>t</var> に含まれる事は <a href="#label-85">all?</a> を使って、</p>
+<pre>s.all?{|x| t.member?(x)}</pre>
+<p>で表現されます。</p>
+<h2><a name="label-1" id="label-1">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>finite-set.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">スーパークラス:</a></h2><!-- RDLabel: "スーパークラス:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">インクルードしているモジュール:</a></h2><!-- RDLabel: "インクルードしているモジュール:" -->
+<ul>
+<li><var>Enumerable</var></li>
+</ul>
+<h2><a name="label-4" id="label-4">クラスメソッド:</a></h2><!-- RDLabel: "クラスメソッド:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>::[[<var>obj0</var>, [<var>obj1</var>, [<var>obj2</var>, ...]]]]</code></a></dt><!-- RDLabel: "::[]" -->
+<dd>
+<p>引数の列から <var>Set</var> オブジェクトを生成します。</p>
+<p>例: 全て {"a", [1, 2], 0} を生成する。</p>
+<pre>require "finite-set"
+p Algebra::Set[0, "a", [1, 2]]
+p Algebra::Set.new(0, "a", [1, 2])
+p Algebra::Set.new_a([0, "a", [1, 2]])
+p Algebra::Set.new_h({0=&gt;true, "a"=&gt;true, [1, 2]=&gt;true})</pre></dd>
+<dt><a name="label-6" id="label-6"><code>::new([<var>obj0</var>, [<var>obj1</var>, [<var>obj2</var>, ...]]])</code></a></dt><!-- RDLabel: "::new" -->
+<dd>
+引数の列から <var>Set</var> オブジェクトを生成します。</dd>
+<dt><a name="label-7" id="label-7"><code>::new_a(<var>a</var>)</code></a></dt><!-- RDLabel: "::new_a" -->
+<dd>
+配列 <var>a</var> から <var>Set</var> オブジェクトを生成します。</dd>
+<dt><a name="label-8" id="label-8"><code>::new_h(<var>h</var>)</code></a></dt><!-- RDLabel: "::new_h" -->
+<dd>
+<var>Hash</var> から <var>Set</var> オブジェクトを生成します。</dd>
+<dt><a name="label-9" id="label-9"><code>self.empty_set</code></a></dt><!-- RDLabel: "self.empty_set" -->
+<dd>
+空集合を生成する。</dd>
+<dt><a name="label-10" id="label-10"><code>::phi</code></a></dt><!-- RDLabel: "::phi" -->
+<dt><a name="label-11" id="label-11"><code>::null</code></a></dt><!-- RDLabel: "::null" -->
+<dd>
+<!-- Reference, RDLabel "::empty_set" doesn't exist --><em class="label-not-found">::empty_set</em><!-- Reference end --> のエイリアスです。</dd>
+<dt><a name="label-12" id="label-12"><code>::singleton(<var>x</var>)</code></a></dt><!-- RDLabel: "::singleton" -->
+<dd>
+<var>x</var> 一元のみで構成される集合を生成します。</dd>
+</dl>
+<h2><a name="label-13" id="label-13">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-14" id="label-14"><code>empty_set</code></a></dt><!-- RDLabel: "empty_set" -->
+<dd>
+空集合を生成する。</dd>
+<dt><a name="label-15" id="label-15"><code>phi</code></a></dt><!-- RDLabel: "phi" -->
+<dt><a name="label-16" id="label-16"><code>null</code></a></dt><!-- RDLabel: "null" -->
+<dd>
+<a href="#label-14">empty_set</a> のエイリアスです。</dd>
+<dt><a name="label-17" id="label-17"><code>empty?</code></a></dt><!-- RDLabel: "empty?" -->
+<dd>
+空集合であるとき真を返します。</dd>
+<dt><a name="label-18" id="label-18"><code>phi?</code></a></dt><!-- RDLabel: "phi?" -->
+<dt><a name="label-19" id="label-19"><code>empty_set?</code></a></dt><!-- RDLabel: "empty_set?" -->
+<dt><a name="label-20" id="label-20"><code>null?</code></a></dt><!-- RDLabel: "null?" -->
+<dd>
+<a href="#label-17">empty?</a> のエイリアスです。</dd>
+<dt><a name="label-21" id="label-21"><code>singleton(<var>x</var>)</code></a></dt><!-- RDLabel: "singleton" -->
+<dd>
+<var>x</var> 一元のみで構成される集合を生成します。</dd>
+<dt><a name="label-22" id="label-22"><code>singleton?</code></a></dt><!-- RDLabel: "singleton?" -->
+<dd>
+一元のみで構成される集合であるとき真を返します。</dd>
+<dt><a name="label-23" id="label-23"><code>size</code></a></dt><!-- RDLabel: "size" -->
+<dd>
+集合の大きさを返します。</dd>
+<dt><a name="label-24" id="label-24"><code>each</code></a></dt><!-- RDLabel: "each" -->
+<dd>
+<p>集合の各要素に関して繰り返します。繰り返しの順番は不定です。</p>
+<p>例: </p>
+<pre>require "finite-set"
+include Algebra
+Set[0, 1, 2].each do |x|
+  p x #=&gt; 1, 0, 2
+end</pre></dd>
+<dt><a name="label-25" id="label-25"><code>separate</code></a></dt><!-- RDLabel: "separate" -->
+<dd>
+<p>集合の各要素をブロックパラメータに渡し、ブロックの値を真にする
+もので構成される集合を返します。</p>
+<p>例: </p>
+<pre>require "finite-set"
+include Algebra
+p Set[0, 1, 2, 3].separate{|x| x % 2 == 0} #=&gt; {2, 0}</pre></dd>
+<dt><a name="label-26" id="label-26"><code>select_s</code></a></dt><!-- RDLabel: "select_s" -->
+<dt><a name="label-27" id="label-27"><code>find_all_s</code></a></dt><!-- RDLabel: "find_all_s" -->
+<dd>
+<a href="#label-25">separate</a> のエイリアスです。</dd>
+<dt><a name="label-28" id="label-28"><code>map_s</code></a></dt><!-- RDLabel: "map_s" -->
+<dd>
+<p>集合の各要素をブロックパラメータに渡し、ブロックの値によって
+構成される集合を返します。</p>
+<p>例: </p>
+<pre>require "finite-set"
+include Algebra
+p Set[0, 1, 2, 3].map_s{|x| x % 2 + 1} #=&gt; {2, 1}</pre></dd>
+<dt><a name="label-29" id="label-29"><code>pick</code></a></dt><!-- RDLabel: "pick" -->
+<dd>
+集合の要素から一つ選んで値とします。どの要素が選ばれるかは
+不定です。空集合に対しては <var>nil</var> を返します。</dd>
+<dt><a name="label-30" id="label-30"><code>shift</code></a></dt><!-- RDLabel: "shift" -->
+<dd>
+<p>集合の要素から一つ選んで取り出し値とします。どの要素が選ばれる
+かは不定です。</p>
+<p>例: </p>
+<pre>require "finite-set"
+include Algebra
+s = Set[0, 1, 2, 3]
+p s.shift #=&gt; 2
+p s #=&gt; {0, 1, 3}</pre></dd>
+<dt><a name="label-31" id="label-31"><code>dup</code></a></dt><!-- RDLabel: "dup" -->
+<dd>
+集合の複製を返します。（内部の Hash の複製によります。）</dd>
+<dt><a name="label-32" id="label-32"><code>append!(<var>x</var>)</code></a></dt><!-- RDLabel: "append!" -->
+<dd>
+集合に要素 <var>x</var> を付け加えます。返り値は <var>self</var> です。</dd>
+<dt><a name="label-33" id="label-33"><code>push</code></a></dt><!-- RDLabel: "push" -->
+<dt><a name="label-34" id="label-34"><code>&lt;&lt;</code></a></dt><!-- RDLabel: "<<" -->
+<dd>
+<var>append!</var> のエイリアスです。</dd>
+<dt><a name="label-35" id="label-35"><code>append(<var>x</var>)</code></a></dt><!-- RDLabel: "append" -->
+<dd>
+集合に要素 <var>x</var> を付け加えた複製を返します。</dd>
+<dt><a name="label-36" id="label-36"><code>concat(<var>other</var>)</code></a></dt><!-- RDLabel: "concat" -->
+<dd>
+集合に別の集合 <var>other</var> の要素を付け加えます。
+（<var>+</var> の破壊版です。）</dd>
+<dt><a name="label-37" id="label-37"><code>rehash</code></a></dt><!-- RDLabel: "rehash" -->
+<dd>
+内部の <var>Hash</var> オブジェクトを <var>rehash</var> します。</dd>
+<dt><a name="label-38" id="label-38"><code>eql?(<var>other</var>)</code></a></dt><!-- RDLabel: "eql?" -->
+<dd>
+集合 <var>other</var> と等しいとき、真を返します。
+<code> self &gt;= other and self &lt;= other</code> と同値です。</dd>
+<dt><a name="label-39" id="label-39"><code>==</code></a></dt><!-- RDLabel: "==" -->
+<dd>
+<a href="#label-38">eql?</a> のエイリアスです。</dd>
+<dt><a name="label-40" id="label-40"><code>hash</code></a></dt><!-- RDLabel: "hash" -->
+<dd>
+自身が <var>Hash</var> あるいは <var>Set</var> の要素となるときに利用される
+ハッシュ値関数です。</dd>
+<dt><a name="label-41" id="label-41"><code>include?(<var>x</var>)</code></a></dt><!-- RDLabel: "include?" -->
+<dd>
+集合が <var>x</var> を要素としているとき、真を返します。</dd>
+<dt><a name="label-42" id="label-42"><code>member?</code></a></dt><!-- RDLabel: "member?" -->
+<dt><a name="label-43" id="label-43"><code>has?</code></a></dt><!-- RDLabel: "has?" -->
+<dt><a name="label-44" id="label-44"><code>contains?</code></a></dt><!-- RDLabel: "contains?" -->
+<dd>
+<a href="#label-41">include?</a> のエイリアスです。</dd>
+<dt><a name="label-45" id="label-45"><code>superset?(<var>other</var>)</code></a></dt><!-- RDLabel: "superset?" -->
+<dd>
+集合が他の集合 <var>other</var> を包含するとき真を返します。
+<code>other.all{|x| member?(x)}</code> と同値です。</dd>
+<dt><a name="label-46" id="label-46"><code>&gt;=</code></a></dt><!-- RDLabel: ">=" -->
+<dt><a name="label-47" id="label-47"><code>incl?</code></a></dt><!-- RDLabel: "incl?" -->
+<dd>
+<code>superset?</code> のエイリアスです。</dd>
+<dt><a name="label-48" id="label-48"><code>subset?(<var>other</var>)</code></a></dt><!-- RDLabel: "subset?" -->
+<dd>
+集合が他の集合 <var>other</var> の部分集合であるとき真を返します。
+<code>self.all{|x| other.member?(x)}</code> と同値です。</dd>
+<dt><a name="label-49" id="label-49"><code>&lt;=</code></a></dt><!-- RDLabel: "<=" -->
+<dt><a name="label-50" id="label-50"><code>part_of?</code></a></dt><!-- RDLabel: "part_of?" -->
+<dd>
+<var>subset?</var> のエイリアスです。</dd>
+<dt><a name="label-51" id="label-51"><code>&lt;(<var>other</var>)</code></a></dt><!-- RDLabel: "<" -->
+<dd>
+<var>self</var> が <var>other</var> の真部分集合の時真を返します。</dd>
+<dt><a name="label-52" id="label-52"><code>&gt;(<var>other</var>)</code></a></dt><!-- RDLabel: ">" -->
+<dd>
+<var>self</var> が <var>other</var> を真に含む時真を返します。</dd>
+<dt><a name="label-53" id="label-53"><code>union([<var>other</var>])</code></a></dt><!-- RDLabel: "union" -->
+<dd>
+<p><var>self</var> と <var>other</var> の合併集合を返します。
+<var>other</var> が省略された場合、自身を集合の集合とみなし、全ての
+要素の合併を返します。</p>
+<p>例:</p>
+<pre>require "finite-set"
+include Algebra
+p Set[0, 2, 4].cup Set[1, 3] #=&gt; {0, 1, 2, 3, 4}
+s = Set[*(0...15).to_a]
+s2 = s.separate{|x| x % 2 == 0}
+s3 = s.separate{|x| x % 3 == 0}
+s5 = s.separate{|x| x % 5 == 0}
+p Set[s2, s3, s5].union #=&gt; {1, 7, 11, 13}</pre></dd>
+<dt><a name="label-54" id="label-54"><code>|</code></a></dt><!-- RDLabel: "|" -->
+<dt><a name="label-55" id="label-55"><code>+</code></a></dt><!-- RDLabel: "+" -->
+<dt><a name="label-56" id="label-56"><code>cup</code></a></dt><!-- RDLabel: "cup" -->
+<dd>
+<var>union</var> のエイリアスです。</dd>
+<dt><a name="label-57" id="label-57"><code>intersection([<var>other</var>])</code></a></dt><!-- RDLabel: "intersection" -->
+<dd>
+<p><var>self</var> と <var>other</var> の交わりの集合を返します。
+<var>other</var> が省略された場合、自身を集合の集合とみなし、全ての
+要素の共通部分を返します。</p>
+<p>例:</p>
+<pre>require "finite-set"
+include Algebra
+p Set[0, 2, 4].cap(Set[4, 2, 0]) #=&gt; {0, 2, 4}
+s = Set[*(0..30).to_a]
+s2 = s.separate{|x| x % 2 == 0}
+s3 = s.separate{|x| x % 3 == 0}
+s5 = s.separate{|x| x % 5 == 0}
+p Set[s2, s3, s5].cap #=&gt; {0, 30}</pre></dd>
+<dt><a name="label-58" id="label-58"><code>&amp;</code></a></dt><!-- RDLabel: "&" -->
+<dt><a name="label-59" id="label-59"><code>cap</code></a></dt><!-- RDLabel: "cap" -->
+<dd>
+<var>intersection</var> のエイリアスです。</dd>
+<dt><a name="label-60" id="label-60"><code>difference(<var>other</var>)</code></a></dt><!-- RDLabel: "difference" -->
+<dd>
+<var>self</var> から <var>other</var> に含まれる要素を取り除いたものを返します。</dd>
+<dt><a name="label-61" id="label-61"><code>-</code></a></dt><!-- RDLabel: "-" -->
+<dd>
+<var>difference</var> のエイリアスです。</dd>
+<dt><a name="label-62" id="label-62"><code>each_pair</code></a></dt><!-- RDLabel: "each_pair" -->
+<dd>
+<p>集合から異なる２つの要素を取り出して、ブロックパラメータに
+代入して繰り返します。</p>
+<p>例: </p>
+<pre>require "finite-set"
+include Algebra
+s = Set.phi
+Set[0, 1, 2].each_pair do |x, y|
+  s.push [x, y]
+end
+p s == Set[[0, 1], [0, 2], [1, 2]] #=&gt; true</pre></dd>
+<dt><a name="label-63" id="label-63"><code>each_member(<var>n</var>)</code></a></dt><!-- RDLabel: "each_member" -->
+<dd>
+<p>集合から異なる <var>n</var> 個の要素を取り出して、ブロックパラメータに
+代入して繰り返します。</p>
+<p>例: </p>
+<pre>require "finite-set"
+include Algebra
+s = Set.phi
+Set[0, 1, 2].each_member(2) do |x, y|
+  s.push [x, y]
+end
+p s == Set[[0, 1], [0, 2], [1, 2]] #=&gt; true</pre></dd>
+<dt><a name="label-64" id="label-64"><code>each_subset</code></a></dt><!-- RDLabel: "each_subset" -->
+<dd>
+<p>集合の全ての部分集合をブロックパラメータに代入して繰り返します。</p>
+<p>例: </p>
+<pre>require "finite-set"
+include Algebra
+s = Set.phi
+Set[0, 1, 2].each_subset do |t|
+  s.append! t
+end
+p s.size = 2**3 #=&gt; true</pre></dd>
+<dt><a name="label-65" id="label-65"><code>each_non_trivial_subset</code></a></dt><!-- RDLabel: "each_non_trivial_subset" -->
+<dd>
+集合の空集合でない真部分集合をブロックパラメータに代入して繰り返します。</dd>
+<dt><a name="label-66" id="label-66"><code>power_set</code></a></dt><!-- RDLabel: "power_set" -->
+<dd>
+集合の全ての部分集合の集合を返します。</dd>
+<dt><a name="label-67" id="label-67"><code>each_product(<var>other</var>)</code></a></dt><!-- RDLabel: "each_product" -->
+<dd>
+<var>self</var> と <var>other</var> の全ての要素 <var>x</var>, <var>y</var> に
+ついて、繰り返します。</dd>
+</dl>
+<pre>例:
+   require "finite-set"
+   include Algebra
+   Set[0, 1].each_prodct(Set[0, 1]) do |x, y|
+     p [x, y] #=&gt; [0,0], [0,1], [1,0], [1,1]
+   end</pre>
+<dl>
+<dt><a name="label-68" id="label-68"><code>product(<var>other</var>)</code></a></dt><!-- RDLabel: "product" -->
+<dd>
+<p><var>self</var> と <var>other</var> の積集合を返します。積集合の各元
+は配列 <code>[x, y]</code> です。ブロックが与えられた時は、ブロック
+を評価した値で構成される集合を返します。</p>
+<p>例: </p>
+<pre>require "finite-set"
+include Algebra
+p Set[0, 1].product(Set[0, 1]) #=&gt; {[0,0], [0,1], [1,0], [1,1]}
+p Set[0, 1].product(Set[0, 1]){|x, y| x + 2*y} #=&gt; {0, 1, 2, 3]</pre></dd>
+<dt><a name="label-69" id="label-69"><code>*</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+<a href="#label-68">product</a> のエイリアスです。</dd>
+<dt><a name="label-70" id="label-70"><code>equiv_class([<var>equiv</var>])</code></a></dt><!-- RDLabel: "equiv_class" -->
+<dd>
+集合を同値関係で割った商集合を返します。同値関係の与え方は次の３通りあります。
+<ol>
+<li><p>ブロックの評価値を真にする同値関係</p>
+<pre>require "finite-set"
+include Algebra
+s = Set[0, 1, 2, 3, 4, 5]
+p s.equiv_class{|a, b| (a - b) % 3 == 0} #=&gt; {{0, 3}, {1, 4}, {2, 5}}</pre></li>
+<li><p>引数に与えられたオブジェクトに対するメソッド <var>call(x, y)</var> 
+        の真偽値による同値関係</p>
+<pre>require "finite-set"
+include Algebra
+o = Object.new
+def o.call(x, y)
+  (x - y) % 3 == 0
+end
+s = Set[0, 1, 2, 3, 4, 5]
+p s.equiv_class(o) #=&gt; {{0, 3}, {1, 4}, {2, 5}}</pre></li>
+<li><p>引数に与えられた <var>Symbol</var> に応じたメソッドによる同値関係</p>
+<pre>require "finite-set"
+include Algebra
+s = Set[0, 1, 2, 3, 4, 5]
+def q(x, y)
+  (x - y) % 3 == 0
+end
+p s.equiv_class(:q) #=&gt; {{0, 3}, {1, 4}, {2, 5}}</pre></li>
+</ol></dd>
+<dt><a name="label-71" id="label-71"><code>/</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+<a href="#label-70">equiv_class</a> のエイリアスです。</dd>
+<dt><a name="label-72" id="label-72"><code>to_a</code></a></dt><!-- RDLabel: "to_a" -->
+<dd>
+集合を配列にして返します。要素の並びの順は不定です。</dd>
+<dt><a name="label-73" id="label-73"><code>to_ary</code></a></dt><!-- RDLabel: "to_ary" -->
+<dd>
+<a href="#label-72">to_a</a> のエイリアスです。</dd>
+<dt><a name="label-74" id="label-74"><code>sort</code></a></dt><!-- RDLabel: "sort" -->
+<dd>
+<a href="#label-72">to_a</a> の値をソートして返します。</dd>
+<dt><a name="label-75" id="label-75"><code>power(<var>other</var>)</code></a></dt><!-- RDLabel: "power" -->
+<dd>
+<p><var>other</var> から <var>self</var> への写像全ての集合を返します。
+写像は <a href="finite-map-ja.html">Map</a> の元として表現されます。</p>
+<p>例: </p>
+<pre>require "finite-map"
+include Algebra
+a = Set[0, 1, 2, 3]
+b = Set[0, 1, 2]
+s = 
+p( (a ** b).size )      #=&gt; 4 ** 3 = 64
+p b.surjections(a).size #=&gt; S(3, 4) = 36
+p a.injections(b).size  #=&gt; 4P3 = 24</pre></dd>
+<dt><a name="label-76" id="label-76"><code>**</code></a></dt><!-- RDLabel: "**" -->
+<dd>
+<a href="#label-75">power</a> のエイリアスです。</dd>
+<dt><a name="label-77" id="label-77"><code>identity_map</code></a></dt><!-- RDLabel: "identity_map" -->
+<dd>
+自分への恒等写像を返します。</dd>
+<dt><a name="label-78" id="label-78"><code>surjections(<var>other</var>)</code></a></dt><!-- RDLabel: "surjections" -->
+<dd>
+<var>other</var> から <var>self</var> への全射全ての集合を返します。</dd>
+<dt><a name="label-79" id="label-79"><code>injections(<var>other</var>)</code></a></dt><!-- RDLabel: "injections" -->
+<dd>
+<var>other</var> から <var>self</var> への単射全ての集合を返します。</dd>
+<dt><a name="label-80" id="label-80"><code>bijections(<var>other</var>)</code></a></dt><!-- RDLabel: "bijections" -->
+<dd>
+<var>other</var> から <var>self</var> への全単射全ての集合を返します。</dd>
+</dl>
+<h1><a name="label-81" id="label-81">Enumerable</a></h1><!-- RDLabel: "Enumerable" -->
+<h2><a name="label-82" id="label-82">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>finite-set.rb</var></li>
+</ul>
+<h2><a name="label-83" id="label-83">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-84" id="label-84"><code>any?</code></a></dt><!-- RDLabel: "any?" -->
+<dd>
+ブロックを真にする要素があるとき、真を返します。
+<var>Enumerable#find</var> の別名です。(built-in of ruby-1.8)</dd>
+<dt><a name="label-85" id="label-85"><code>all?</code></a></dt><!-- RDLabel: "all?" -->
+<dd>
+<p>全ての要素についてブロックが真であるとき、真を返します。</p>
+<pre>!any?{|x| !yield(x)}</pre>
+<p>と定義されています。(built-in of ruby-1.8)</p></dd>
+</dl>
+
+</body>
+</html>

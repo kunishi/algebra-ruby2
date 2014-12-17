@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/jordan-form.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] </p>
+<h1><a name="label-0" id="label-0">Algebra::JordanForm</a></h1><!-- RDLabel: "Algebra::JordanForm" -->
+<p><em>(Jordan Matrix)</em></p>
+<p>This class expresses the Jordan canonical matrix. </p>
+<h2><a name="label-1" id="label-1">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>jordan-form.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">Included Modules</a></h2><!-- RDLabel: "Included Modules" -->
+<p>none.</p>
+<h2><a name="label-4" id="label-4">Associated Functions:</a></h2><!-- RDLabel: "Associated Functions:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>Algebra::MatrixAlgebra#jordan_form</code></a></dt><!-- RDLabel: "Algebra::MatrixAlgebra#jordan_form" -->
+<dd>
+Returns the Jordan matrix of <var>self</var>.</dd>
+<dt><a name="label-6" id="label-6"><code>Algebra::MatrixAlgebra#jordan_form_info</code></a></dt><!-- RDLabel: "Algebra::MatrixAlgebra#jordan_form_info" -->
+<dd>
+Same as <!-- Reference, RDLabel "Algebra::JordanForm.decompose" doesn't exist --><em class="label-not-found">Algebra::JordanForm.decompose</em><!-- Reference end -->(self).</dd>
+</dl>
+<h2><a name="label-7" id="label-7">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-8" id="label-8"><code>::new(<var>array</var>)</code></a></dt><!-- RDLabel: "::new" -->
+<dd>
+<p>Returns a instance of <!-- Reference, RDLabel "JordanForm" doesn't exist --><em class="label-not-found">JordanForm</em><!-- Reference end -->.
+<var>array</var> is the array of the pair of <code>[diagonal component, size]</code>.
+To get the matrix expression, apply <a href="#label-12">to_matrix</a> for the upper 
+triaglular matrix or <a href="#label-14">to_matrix_l</a> for the lower.</p>
+<p>Exampe:</p>
+<pre>j = Algebra::JordanForm.new([[2, 3], [-1, 2]])
+j.to_matrix.display #=&gt;
+#  2,   1,   0,   0,   0
+#  0,   2,   1,   0,   0
+#  0,   0,   2,   0,   0
+#  0,   0,   0,  -1,   1
+#  0,   0,   0,   0,  -1</pre></dd>
+<dt><a name="label-9" id="label-9"><code>::construct(<var>elem_divs</var>, <var>facts</var>, <var>field</var>, <var>pfield</var>)</code></a></dt><!-- RDLabel: "::construct" -->
+<dd>
+abbreviate.</dd>
+<dt><a name="label-10" id="label-10"><code>::decompose(<var>m</var>)</code></a></dt><!-- RDLabel: "::decompose" -->
+<dd>
+<p>Returns the array:</p>
+<pre>[jm, tL, sR, field, modulus]</pre>
+<p>where <var>jm</var> is the Jordan matrix of <var>m</var>,
+<var>tL</var> and <var>sR</var> are the left and right deformation matrix
+from <var>m</var> to<var>jm</var>,
+<var>field</var> is the mimimal decompostion field to Jordan decompose and
+<var>modulus</var> is the polynomials to the algebraic extention.
+(<code>tL * sR == the identity matrix</code>)</p>
+<p>Example:</p>
+<pre>m = Algebra.SquareMatrix(Rational, a.size)[
+ [-1, 1, 2, -1],
+ [-5, 3, 4, -2],
+ [3, -1, 0, 1],
+ [5, -2, -2, 0]
+]
+jf, p, q, field, modulus = Algebra::JordanForm.decompose(m)
+jf.display; puts #=&gt;
+#  2,   0,   0,   0
+#  0,   a,   0,   0
+#  0,   0,   b,   0
+#  0,   0,   0, -b - a
+
+p modulus #=&gt; [a^3 + 3a - 1, b^2 + ab + a^2 + 3]
+
+print "P =\n"; p.display; puts
+print "P^-1 =\n"; q.display; puts
+
+m = m.convert_to(field)
+p jf == p * m * q #=&gt; true</pre></dd>
+</dl>
+<h2><a name="label-11" id="label-11">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-12" id="label-12"><code>to_matrix(<var>ring</var>)</code></a></dt><!-- RDLabel: "to_matrix" -->
+<dd>
+<p>Returns the upper triangular Jordan matrix over <var>ring</var>.</p>
+<p>Example:</p>
+<pre>j = Algebra::JordanForm.new([[2, 3], [-1, 2]])
+j.to_matrix(Integer).display #=&gt;
+#  2,   1,   0,   0,   0
+#  0,   2,   1,   0,   0
+#  0,   0,   2,   0,   0
+#  0,   0,   0,  -1,   1
+#  0,   0,   0,   0,  -1</pre></dd>
+<dt><a name="label-13" id="label-13"><code>to_matrix_r(<var>ring</var>)</code></a></dt><!-- RDLabel: "to_matrix_r" -->
+<dd>
+Same as <a href="#label-12">to_matrix</a>.</dd>
+<dt><a name="label-14" id="label-14"><code>to_matrix_l(<var>ring</var>)</code></a></dt><!-- RDLabel: "to_matrix_l" -->
+<dd>
+Returns the lower triangular Jordan matrix over <var>ring</var>.</dd>
+</dl>
+
+</body>
+</html>

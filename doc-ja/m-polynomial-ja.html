@@ -1,0 +1,542 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/m-polynomial-ja.html</title>
+</head>
+<body>
+<p>[<a href="index-ja.html">index-ja</a>] 
+<a href="#label-0">Algebra::MPolynomial</a>
+/
+<a href="#label-55">Algebra::MPolynomial::Monomial</a>
+/
+<a href="#label-62">Algebra::MPolynomialFactorization</a>
+/
+<a href="#label-66">Algebra::Groebner</a></p>
+<h1><a name="label-0" id="label-0">Algebra::MPolynomial</a></h1><!-- RDLabel: "Algebra::MPolynomial" -->
+<p><em>(多変数多項式環クラス)</em></p>
+<p>多変数の多項式環を表現します。実際のクラスを生成するには環を指定して、
+クラスメソッド<a href="#label-7">::create</a>あるいは関数<a href="#label-5">Algebra.MPolynomial</a>()を
+用います。</p>
+<h2><a name="label-1" id="label-1">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>m-polynomial.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">スーパークラス:</a></h2><!-- RDLabel: "スーパークラス:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">インクルードしているモジュール:</a></h2><!-- RDLabel: "インクルードしているモジュール:" -->
+<ul>
+<li><var>Enumerable</var></li>
+<li><var>Comparable</var></li>
+<li><a href="#label-66">Algebra::Groebner</a></li>
+</ul>
+<h2><a name="label-4" id="label-4">関連する関数:</a></h2><!-- RDLabel: "関連する関数:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>Algebra.MPolynomial(<var>ring</var> [, <var>obj0</var> [, <var>obj1</var> [, ...]]])</code></a></dt><!-- RDLabel: "Algebra.MPolynomial" -->
+<dd>
+<!-- Reference, RDLabel "::create(ring [, obj0[, obj1[, ...]]])" doesn't exist --><em class="label-not-found">::create(ring [, obj0[, obj1[, ...]]])</em><!-- Reference end -->に同じ。</dd>
+</dl>
+<h2><a name="label-6" id="label-6">クラスメソッド:</a></h2><!-- RDLabel: "クラスメソッド:" -->
+<dl>
+<dt><a name="label-7" id="label-7"><code>::create(<var>ring</var> [, <var>obj0</var> [, <var>obj1</var> [, ...]]])</code></a></dt><!-- RDLabel: "::create" -->
+<dd>
+<p><var>ring</var>で表現されるクラスを係数環とする多変数多項式環
+クラスを生成します。</p>
+<p>オブジェクト<code>obj0, obj1, ...</code>で変数を登録し、戻り値である
+多変数多項式環クラスは Algebra::MPolynomial クラスのサブクラスです。</p>
+<p>オブジェクト<code>obj0, obj1, ...</code>は変数の区別と
+名（<var>to_s</var>の値）に利用されるだけです。</p>
+<p>このサブクラスにはクラスメソッドとして<var>ground</var>と
+<var>vars</var>が定義され、それぞれ、係数環<var>ring</var>、変数
+の配列を返します。    </p>
+<p>登録されたオブジェクト <code>obj0, obj1, ...</code> で表現される
+される変数は<code>var(obj0)</code>, <code>var(obj1)</code>,...
+で得ることができます。すなわち<code>vars == [var(obj0), var(obj1), ...]</code>
+です。</p>
+<p>各変数の大小関係は<code>obj0 &gt; obj1 &gt; ...</code>となります。各単項式
+の順序は<a href="#label-17">::set_ord</a>で指定します。</p>
+<p>例: 整数を係数とする多項式環の生成</p>
+<pre>require "m-polynomial"
+P = Algebra::MPolynomial.create(Integer, "x", "y", "z")
+x, y, z = P.vars
+p((-x + y + z)*(x + y - z)*(x - y + z))
+#=&gt; -x^3 + x^2y + x^2z + xy^2 - 2xyz + xz^2 - y^3 + y^2z + yz^2 - z^3
+p P.ground #=&gt; integer</pre></dd>
+<dt><a name="label-8" id="label-8"><code>::vars([<var>obj0</var> [, <var>obj1</var> [, ...]]])</code></a></dt><!-- RDLabel: "::vars" -->
+<dd>
+<p><em>引数が1つもないとき</em>、既に登録されている全ての変数を
+配列として返します。</p>
+<p>例:</p>
+<pre>P = Algebra.MPolynomial(Integer, "x", "y", "z")
+p P.vars #=&gt; [x, y, z]</pre>
+<p><em>引数がただ1つで文字列であるとき</em>、文字列を「英字1字+数字の列」
+に分解し、それで表現される変数を登録します。オブジェクトが既
+に登録されていれば新たな登録はしません。戻り値はそれぞれのオ
+ブジェクトに対応する変数の配列です。</p>
+<p>例: </p>
+<pre>P = Algebra.MPolynomial(Integer)
+x, y, z, w = P.vars("a0b10cd")
+p P.vars #=&gt; [a0, b10, c, d]
+p [x, y, z, w] #=&gt; [a0, b10, c, d]</pre>
+<p><em>それ以外のとき</em>、引数であるオブジェクト
+<code>obj0, obj1, ...</code> で表現される変数
+を登録します。オブジェクトが既に登録されていれば新たな登録
+はしません。戻り値は<code>obj0, obj1, ...</code>に対応する変数
+の配列です。</p>
+<p>例:</p>
+<pre>P = Algebra.MPolynomial(Integer)
+p P.vars("x", "y", "z") #=&gt; [x, y, z]</pre></dd>
+<dt><a name="label-9" id="label-9"><code>::mvar([<var>obj0</var> [, <var>obj1</var> [, ...]]])</code></a></dt><!-- RDLabel: "::mvar" -->
+<dd>
+<p><em>引数が1つもないとき</em>、既に登録されている全ての変数を
+配列として返します。</p>
+<p><em>それ以外のとき</em>、引数であるオブジェクト
+<code>obj0, obj1, ...</code> で表現される変数
+を登録します。オブジェクトが既に登録されていれば新たな登録
+はしません。戻り値は <code>obj0, obj1, ...</code> に対応する変数
+の配列です。</p></dd>
+<dt><a name="label-10" id="label-10"><code>::to_ary</code></a></dt><!-- RDLabel: "::to_ary" -->
+<dd>
+<p><code>[self, *vars]</code> を返します。</p>
+<p>例: 多項式環と変数を同時に定義する。</p>
+<pre>P, x, y, z, w = Algebra.MPolynomial(Integer, "a", "b", "c", "d")</pre></dd>
+<dt><a name="label-11" id="label-11"><code>::var(<var>obj</var>)</code></a></dt><!-- RDLabel: "::var" -->
+<dd>
+<p><var>obj</var> で登録されたオブジェクトによって表現される変数を返します。</p>
+<p>例: </p>
+<pre>P = Algebra.MPolynomial(Integer, "X", "Y", "Z")
+x, y, z = P.vars
+P.var("Y") == y #=&gt; true</pre></dd>
+<dt><a name="label-12" id="label-12"><code>::variables</code></a></dt><!-- RDLabel: "::variables" -->
+<dd>
+既に登録されている変数を表現するオブジェクトの配列を返します。</dd>
+<dt><a name="label-13" id="label-13"><code>::indeterminate(<var>obj</var>)</code></a></dt><!-- RDLabel: "::indeterminate" -->
+<dd>
+<a href="#label-11">::var</a> と同じです。</dd>
+<dt><a name="label-14" id="label-14"><code>::zero?</code></a></dt><!-- RDLabel: "::zero?" -->
+<dd>
+零元であるとき真を返します。</dd>
+<dt><a name="label-15" id="label-15"><code>::zero</code></a></dt><!-- RDLabel: "::zero" -->
+<dd>
+零元を返します。</dd>
+<dt><a name="label-16" id="label-16"><code>::unity</code></a></dt><!-- RDLabel: "::unity" -->
+<dd>
+単位元を返します。</dd>
+<dt><a name="label-17" id="label-17"><code>::set_ord(<var>ord</var> [, <var>v_ord</var>])</code></a></dt><!-- RDLabel: "::set_ord" -->
+<dd>
+<p><var>ord</var> に単項式順序をシンボルで指定します。順序として可能な指定
+は <code>:lex</code> (辞書式順序(デフォルト))、<code>:grlex</code> (次数付き辞書
+式順序)、<code>:grevlex</code> (次数付き逆辞書式順序)の3つです。</p>
+<p>各変数間の順序は登録された順（先に登録されるほど大きい）に
+なります。<var>v_ord</var> に配列を与えてこの順番を変更する事が
+できます。</p>
+<p>例: <code>x, y, z = P.var("xyz")</code> としたときの順位</p>
+<pre>require "m-polynomial"
+P = Algebra.MPolynomial(Integer)
+x, y, z = P.vars("xyz")
+f = -5*x**3 + 7*x**2*z**2 + 4*x*y**2*z + 4*z**2
+
+P.set_ord(:lex)
+p f #=&gt; -5x^3 + 7x^2z^2 + 4xy^2z + 4z^2
+
+f.method_cash_clear
+P.set_ord(:grlex)
+p f #=&gt; 7x^2z^2 + 4xy^2z - 5x^3 + 4z^2
+
+f.method_cash_clear
+P.set_ord(:grevlex)
+p f #=&gt; 4xy^2z + 7x^2z^2 - 5x^3 + 4z^2
+
+f.method_cash_clear
+P.set_ord(:lex, [2, 1, 0]) # z &gt; y &gt; x
+p f #=&gt; 7x^2z^2 + 4z^2 + 4xy^2z - 5x^3</pre></dd>
+<dt><a name="label-18" id="label-18"><code>::order=(<var>x</var>)</code></a></dt><!-- RDLabel: "::order=" -->
+<dd>
+<!-- Reference, RDLabel "::set_ord(x)" doesn't exist --><em class="label-not-found">::set_ord(x)</em><!-- Reference end --> と同じです。</dd>
+<dt><a name="label-19" id="label-19"><code>::get_ord</code></a></dt><!-- RDLabel: "::get_ord" -->
+<dd>
+単項式順序(:lex, :grlex, :grevlex)を返します。</dd>
+<dt><a name="label-20" id="label-20"><code>::ord</code></a></dt><!-- RDLabel: "::ord" -->
+<dd>
+<a href="#label-19">::get_ord</a> と同じです。</dd>
+<dt><a name="label-21" id="label-21"><code>::with_ord(<var>ord</var> [, <var>v_ord</var>[ [, <var>array_of_polys</var>]])</code></a></dt><!-- RDLabel: "::with_ord" -->
+<dd>
+<p><var>ord</var> を単項式順序、<var>v_ord</var> を変数の順序の変換配列として、
+ブロックを実行します。
+ブロックを抜けると以前の順序に戻ります。
+多項式の配列 <var>array_of_polys</var> が与えられれば、それらに対して
+<a href="#label-30">method_cash_clear</a> が実行されてから、ブロックが実行されます。
+(このブロックはスレッドセーフではありません。)</p>
+<p>例:</p>
+<pre>require "m-polynomial"
+P = Algebra.MPolynomial(Integer)
+x, y, z = P.vars("xyz")
+f = -5*x**3 + 7*x**2*z**2 + 4*x*y**2*z + 4*z**2
+
+P.with_ord(:lex, nil, [f]) do
+  p f    #=&gt; -5x^3 + 7x^2z^2 + 4xy^2z + 4z^2
+  p f.lt #=&gt; -5x^3
+end
+
+P.with_ord(:grlex, nil, [f]) do
+  p f    #=&gt; 7x^2z^2 + 4xy^2z - 5x^3 + 4z^2
+  p f.lt #=&gt; 7x^2z^2
+end
+
+P.with_ord(:grevlex, nil, [f]) do
+  p f    #=&gt; 4xy^2z + 7x^2z^2 - 5x^3 + 4z^2
+  p f.lt #=&gt; 4xy^2z
+end
+
+P.with_ord(:lex, [2, 1, 0], [f]) do # z &gt; y &gt; x
+  p f    #=&gt; 7x^2z^2 + 4z^2 + 4xy^2z - 5x^3
+  p f.lt #=&gt; 7x^2z^2
+end</pre>
+<p><a href="#label-17">::set_ord</a> も参照してください。</p></dd>
+<dt><a name="label-22" id="label-22"><code>::monomial(<var>ind</var>[, <var>c</var>])</code></a></dt><!-- RDLabel: "::monomial" -->
+<dd>
+multi-degree <var>ind</var> で、係数が <var>c</var> の単項式を返します。
+（ただし、<a href="#label-55">Algebra::MPolynomial::Monomial</a> は extend
+されていない。）
+<var>c</var> が省略されれば、単位元とみなされます。</dd>
+</dl>
+<h2><a name="label-23" id="label-23">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-24" id="label-24"><code>monomial(<var>ind</var>[, <var>c</var>])</code></a></dt><!-- RDLabel: "monomial" -->
+<dd>
+<a href="#label-22">::monomial</a> と同じ。</dd>
+<dt><a name="label-25" id="label-25"><code>constant?</code></a></dt><!-- RDLabel: "constant?" -->
+<dd>
+定数(0次式)であるとき、真を返します。</dd>
+<dt><a name="label-26" id="label-26"><code>monomial?</code></a></dt><!-- RDLabel: "monomial?" -->
+<dd>
+単項式であるとき、真を返します。</dd>
+<dt><a name="label-27" id="label-27"><code>zero?</code></a></dt><!-- RDLabel: "zero?" -->
+<dd>
+零であるとき、真を返します。    </dd>
+<dt><a name="label-28" id="label-28"><code>zero</code></a></dt><!-- RDLabel: "zero" -->
+<dd>
+零元を返します。</dd>
+<dt><a name="label-29" id="label-29"><code>unity</code></a></dt><!-- RDLabel: "unity" -->
+<dd>
+単位元を返します。</dd>
+<dt><a name="label-30" id="label-30"><code>method_cash_clear</code></a></dt><!-- RDLabel: "method_cash_clear" -->
+<dd>
+<p>このライブラリは、同じ計算を繰り返ししないように結果を保存
+していますが、それをクリアします。この操作は単項式順序の変
+更などを行った後に必要になります。</p>
+<p>結果が保存されているメソッドは、
+<a href="#label-43">lc</a>, <a href="#label-44">lm</a>, <a href="#label-45">lt</a>, <a href="#label-46">rt</a>, <a href="#label-40">multideg</a>
+です。</p>
+<p>例:</p>
+<pre>P = Algebra.MPolynomial(Integer)
+x, y, z = P.vars("xyz")
+f = -5*x**3 + 7*x**2*z**2 + 4*x*y**2*z + 4*z**2
+P.set_ord(:lex)
+p f.lt #=&gt; -5x^3
+P.set_ord(:grlex)
+p f.lt #=&gt; -5x^3
+f.method_cash_clear
+p f.lt #=&gt; 7x^2z^2</pre></dd>
+<dt><a name="label-31" id="label-31"><code>==(<var>other</var>)</code></a></dt><!-- RDLabel: "==" -->
+<dd>
+等しいとき真を返します。</dd>
+<dt><a name="label-32" id="label-32"><code>&lt;=&gt;(<var>other</var>)</code></a></dt><!-- RDLabel: "<=>" -->
+<dd>
+大小関係を求めます。</dd>
+<dt><a name="label-33" id="label-33"><code>+(<var>other</var>)</code></a></dt><!-- RDLabel: "+" -->
+<dd>
+和を計算します。</dd>
+<dt><a name="label-34" id="label-34"><code>-(<var>other</var>)</code></a></dt><!-- RDLabel: "-" -->
+<dd>
+差を計算します。</dd>
+<dt><a name="label-35" id="label-35"><code>*(<var>other</var>)</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+積を計算します。</dd>
+<dt><a name="label-36" id="label-36"><code>**(<var>n</var>)</code></a></dt><!-- RDLabel: "**" -->
+<dd>
+<var>n</var> 乗を計算します。</dd>
+<dt><a name="label-37" id="label-37"><code>/(<var>other</var>)</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+<var>other</var> が、定数(0次式)であるとき、商を計算します。</dd>
+<dt><a name="label-38" id="label-38"><code>divmod(<var>f0</var> [, <var>f1</var> [,...]])</code></a></dt><!-- RDLabel: "divmod" -->
+<dd>
+<p>多項式 <code>f0, f1,...</code> による割り算をし、商の配列と剰余を計算します。</p>
+<pre>P = Algebra.MPolynomial(Integer)
+x, y = P.vars("xy")
+f = x**2*y + x*y**2 + y**2
+f0 = x*y - 1
+f1 = y**2 - 1
+p f.divmod(f0, f1) #=&gt; [[x + y, 1], x + y + 1]
+p f % [f0, f1]     #=&gt; x + y + 1</pre></dd>
+<dt><a name="label-39" id="label-39"><code>%(<var>others</var>)</code></a></dt><!-- RDLabel: "%" -->
+<dd>
+<var>others</var> を多項式の配列としたとき、それによる割り算の剰余を返します。
+これは <code>divmod(*others)[1]</code> と同じです。</dd>
+<dt><a name="label-40" id="label-40"><code>multideg</code></a></dt><!-- RDLabel: "multideg" -->
+<dd>
+<p>（多重）次数を返します。</p>
+<p>例: (lex オーダーで)</p>
+<pre>P = Algebra.MPolynomial(Integer)
+x, y, z = P.vars("xyz")
+f = 4*x*y**2*z + 4*z**2 - 5*x**3*y + 7*x**2*z**2
+p f.multideg #=&gt; [3, 1]</pre></dd>
+<dt><a name="label-41" id="label-41"><code>totdeg</code></a></dt><!-- RDLabel: "totdeg" -->
+<dd>
+<p>次数（多重次数の和）を返します。</p>
+<p>例: (lex オーダーで)</p>
+<pre>f = 4*x*y**2*z + 4*z**2 - 5*x**3*y + 7*x**2*z**2
+p f.totdeg   #=&gt; 4</pre></dd>
+<dt><a name="label-42" id="label-42"><code>deg</code></a></dt><!-- RDLabel: "deg" -->
+<dd>
+multideg と同じです。</dd>
+<dt><a name="label-43" id="label-43"><code>lc</code></a></dt><!-- RDLabel: "lc" -->
+<dd>
+<p>先頭係数(leading coeffcient)を返します。</p>
+<p>例: (lex オーダーで)</p>
+<pre>f = 4*x*y**2*z + 4*z**2 - 5*x**3*y + 7*x**2*z**2
+p f.lc       #=&gt; -5</pre></dd>
+<dt><a name="label-44" id="label-44"><code>lm</code></a></dt><!-- RDLabel: "lm" -->
+<dd>
+<p>先頭単項式(leading monomial)を返します。
+この戻り値は<a href="#label-55">Algebra::MPolynomial::Monomial</a>というモジュールが
+extend されます。</p>
+<p>例: (lex オーダーで)</p>
+<pre>f = 4*x*y**2*z + 4*z**2 - 5*x**3*y + 7*x**2*z**2
+p f.lm       #=&gt; x^3y</pre></dd>
+<dt><a name="label-45" id="label-45"><code>lt</code></a></dt><!-- RDLabel: "lt" -->
+<dd>
+<p>先頭項(leading term)を返します。<code>lc * lm</code>と等しい値を持ちます。</p>
+<p>例: (lex オーダーで)</p>
+<pre>f = 4*x*y**2*z + 4*z**2 - 5*x**3*y + 7*x**2*z**2
+p f.lt       #=&gt; -5x^3y</pre></dd>
+<dt><a name="label-46" id="label-46"><code>rt</code></a></dt><!-- RDLabel: "rt" -->
+<dd>
+<p>残余項(rest term)を返します。<code>self - lt</code>と等しい値を持ちます。</p>
+<p>例: (lex オーダーで)</p>
+<pre>f = 4*x*y**2*z + 4*z**2 - 5*x**3*y + 7*x**2*z**2
+p f.rt       #=&gt; 4*z**2 - 5*x**3*y + 7*x**2*z**2</pre></dd>
+<dt><a name="label-47" id="label-47"><code>to_s</code></a></dt><!-- RDLabel: "to_s" -->
+<dd>
+<p>文字列表現を得ます。表示形式を変えるには<var>display_type</var>を用います。
+<var>display_type</var>に与えられる値は <var>:norm</var>(デフォルト), <var>:code</var>
+です。</p>
+<p>例:</p>
+<pre>P = Algebra.MPolynomial(Integer)
+x, y, z = P.vars("xyz")
+f = -5*x**3 + 7*x**2*z**2 + 4*x*y**2*z + 4*z**2
+p f #=&gt; -5x^3 + 7x^2z^2 + 4xy^2z + 4z^2
+P.display_type = :code
+p f #=&gt; -5*x**3 + 7*x**2*z**2 + 4*x*y**2*z + 4*z**2</pre></dd>
+<dt><a name="label-48" id="label-48"><code>map_to(<var>ring</var>[, <var>vs</var>]){|<var>c</var>, <var>ind</var>| ... }</code></a></dt><!-- RDLabel: "map_to" -->
+<dd>
+多項式に含まれる各単項式について、
+multi-degree を <var>ind</var>、係数を <var>c</var> に代入し、
+... を評価して、<var>ring</var> 上で和を取った値を
+返します。<var>vs</var> が省略されると <a href="#label-8">::vars</a> の値が用いら
+れます。
+<code>f</code>が<code>P</code>上の多項式なら、
+<code>f.map_to(P) {|c, ind| c * P.monomial(ind)}</code> は <code>f</code>と一致します。</dd>
+<dt><a name="label-49" id="label-49"><code>project(<var>ring</var>[, <var>vs</var>]){|<var>c</var>, <var>ind</var>| ... }</code></a></dt><!-- RDLabel: "project" -->
+<dd>
+<p>多項式に含まれる各単項式について、
+multi-degree を <var>ind</var>、係数を <var>c</var> に代入し、
+... を評価して<var>ind</var>次の単項式に掛けて、
+<var>ring</var> 上で和を取った値を
+返します。<var>vs</var> が省略されると <a href="#label-8">::vars</a> の値が用いら
+れます。</p>
+<p><code>f</code>が<code>P</code>上の多項式なら、
+<code>f.map_to(P) {|c, ind| c}</code> は <code>f</code>と一致します。</p>
+<p><code>project(ring){|c, ind| f(c, ind)}</code> は <code>map_to(ring){|c, ind| f(c, ind) * self.class.monomial(ind)}</code>に一致します。</p>
+<p>例:</p>
+<pre>require "m-polynomial"
+require "rational"
+P = Algebra::MPolynomial(Integer, "x", "y", "z")
+x, y, z = P.vars
+f = x**2 + 2*x*y - z**3
+PQ = Algebra::MPolynomial(Rational, "x", "y", "z")
+p f.project(PQ) {|c, ind| Rational(c) / (ind[0] + 1)}
+                  #=&gt; 1/3x^2 + xy - z^3
+p f.convert_to(PQ)      #=&gt; x^2 + 2xy - z^3</pre></dd>
+<dt><a name="label-50" id="label-50"><code>evaluate(<var>obj0</var>[, [<var>obj1</var>, [<var>obj2</var>,..]]])</code></a></dt><!-- RDLabel: "evaluate" -->
+<dd>
+<p>各変数に <var>obj0, obj1, obj2,...</var> を代入した値を返します。
+<a href="#label-49">project</a><code>(ground, [obj0, obj1, obj2,..]){|c, ind| c}</code>
+の値と一致します。</p>
+<p>例:</p>
+<pre>require "m-polynomial"
+P = Algebra::MPolynomial(Integer, "x", "y", "z")
+x, y, z = P.vars
+f = x**2 + 2*x*y - z**3
+p f.evaluate(1, -1, -1) #=&gt; 0 (in Integer)
+p f.evaluate(y, z, x)   #=&gt; -x^3 + y^2 + 2yz (in P)</pre></dd>
+<dt><a name="label-51" id="label-51"><code>call(<var>obj0</var>[, [<var>obj1</var>, [<var>obj2</var>,..]]])</code></a></dt><!-- RDLabel: "call" -->
+<dd>
+<a href="#label-50">evaluate</a>と同じです。</dd>
+<dt><a name="label-52" id="label-52"><code>sub(<var>var</var>, <var>value</var>)</code></a></dt><!-- RDLabel: "sub" -->
+<dd>
+<p>変数 <var>var</var> に <var>value</var> を代入した値を返します。</p>
+<p>例:</p>
+<pre>require "m-polynomial"
+P = Algebra::MPolynomial(Integer)
+x, y, z = P.vars("x", "y", "z")
+f = (x - y)*(y - z - 1)
+p f.sub(y, z+1)    #=&gt; 0</pre></dd>
+<dt><a name="label-53" id="label-53"><code>convert_to(<var>ring</var>)</code></a></dt><!-- RDLabel: "convert_to" -->
+<dd>
+各項を<var>ring</var>上で評価します。<a href="#label-49">project</a><code>(ring){|c, ind| c}</code>の
+値と一致します。</dd>
+<dt><a name="label-54" id="label-54"><code>derivate(<var>var</var>)</code></a></dt><!-- RDLabel: "derivate" -->
+<dd>
+<!-- Reference, RDLabel "var" doesn't exist --><em class="label-not-found">var</em><!-- Reference end -->での偏微分を返します。</dd>
+</dl>
+<h1><a name="label-55" id="label-55">Algebra::MPolynomial::Monomial</a></h1><!-- RDLabel: "Algebra::MPolynomial::Monomial" -->
+<p>(単項式の性質を集めたモジュール)</p>
+<p><a href="#label-45">lt</a>, <a href="#label-44">lm</a> の戻り値である多項式にはこのモジュールがextendされます。</p>
+<h2><a name="label-56" id="label-56">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-57" id="label-57"><code>divide?(<var>other</var>)</code></a></dt><!-- RDLabel: "divide?" -->
+<dd>
+単項式 <var>other</var> で割り切れるとき真を返します。</dd>
+<dt><a name="label-58" id="label-58"><code>/(<var>other</var>)</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+単項式 <var>other</var> で割り切ります。</dd>
+<dt><a name="label-59" id="label-59"><code>prime_to?(<var>other</var>)</code></a></dt><!-- RDLabel: "prime_to?" -->
+<dd>
+単項式 <var>other</var> と素なとき真を返します。</dd>
+<dt><a name="label-60" id="label-60"><code>lcm(<var>other</var>)</code></a></dt><!-- RDLabel: "lcm" -->
+<dd>
+単項式 <var>other</var> との最小公倍数である単項式を返します。</dd>
+<dt><a name="label-61" id="label-61"><code>divide_or?(<var>other0</var>, <var>other1</var>)</code></a></dt><!-- RDLabel: "divide_or?" -->
+<dd>
+<var>divide?(other0.lcm(other1))</var> と同じ値を返します。</dd>
+</dl>
+<h1><a name="label-62" id="label-62">Algebra::MPolynomialFactorization</a></h1><!-- RDLabel: "Algebra::MPolynomialFactorization" -->
+<p><em>(因数分解モジュール)</em></p>
+<p>因数分解をするためのモジュールです。</p>
+<h2><a name="label-63" id="label-63">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<p><var>m-polynomial-factor.rb</var></p>
+<h2><a name="label-64" id="label-64">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-65" id="label-65"><code>factorize</code></a></dt><!-- RDLabel: "factorize" -->
+<dd>
+<p>因数分解します。</p>
+<p>因数分解可能な係数環は</p>
+<ul>
+<li>Integer</li>
+<li>Rational</li>
+<li>素体</li>
+</ul>
+<p>です。</p></dd>
+</dl>
+<h1><a name="label-66" id="label-66">Algebra::Groebner</a></h1><!-- RDLabel: "Algebra::Groebner" -->
+<p>(グレブナ基底計算モジュール)</p>
+<h2><a name="label-67" id="label-67">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>groebner-basis.rb</var></li>
+<li><var>groebner-basis-coeff.rb</var></li>
+</ul>
+<h2><a name="label-68" id="label-68">クラスメソッド:</a></h2><!-- RDLabel: "クラスメソッド:" -->
+<dl>
+<dt><a name="label-69" id="label-69"><code>Groebner.basis(<var>f</var>)</code></a></dt><!-- RDLabel: "Groebner.basis" -->
+<dd>
+<p>基底の配列 <var>f</var> から簡約グレブナ基底を作り、配列として返します。
+<!-- Reference, RDLabel "Groebner.basis(Groebner.minimal_basis(Groebner.basis_159A(f)))" doesn't exist --><em class="label-not-found">Groebner.basis(Groebner.minimal_basis(Groebner.basis_159A(f)))</em><!-- Reference end -->
+と同等です。</p>
+<p>例:</p>
+<pre>require "m-polynomial"
+require "rational"
+P = Algebra.MPolynomial(Rational)
+P.set_ord :grevlex
+x, y, z = P.vars("xyz")
+f1 = x**2 + y**2 + z**2 -1
+f2 = x**2 + z**2 - y
+f3 = x - z
+b = Groebner.basis([f1, f2, f3])
+p b #=&gt; [y^2 + y - 1, z^2 - 1/2y, x - z]</pre></dd>
+<dt><a name="label-70" id="label-70"><code>Groebner.basis_159A(<var>f</var>)</code></a></dt><!-- RDLabel: "Groebner.basis_159A" -->
+<dd>
+基底の配列 <var>f</var> からグレブナ基底を作り配列として返します。</dd>
+<dt><a name="label-71" id="label-71"><code>Groebner.minimal_basis(<var>f</var>)</code></a></dt><!-- RDLabel: "Groebner.minimal_basis" -->
+<dd>
+グレブナ基底の配列 <var>f</var> から極小グレブナ基底の配列を作り返します。</dd>
+<dt><a name="label-72" id="label-72"><code>Groebner.reduced_basis(<var>f</var>)</code></a></dt><!-- RDLabel: "Groebner.reduced_basis" -->
+<dd>
+極小グレブナ基底の配列 <var>f</var> から簡約グレブナ基底の配列を作り返します。</dd>
+<dt><a name="label-73" id="label-73"><code>Groebner.basis_coeff(<var>f</var>)</code></a></dt><!-- RDLabel: "Groebner.basis_coeff" -->
+<dd>
+<p>基底の配列 <var>f</var> から簡約グレブナ基底の配列と、各基底を生成
+するための係数を返します。</p>
+<p>例:</p>
+<pre>require "m-polynomial"
+require "rational"
+P = Algebra.MPolynomial(Rational)
+P.set_ord :grevlex
+x, y, z = P.vars("xyz")
+f1 = x**2 + y**2 + z**2 -1
+f2 = x**2 + z**2 - y
+f3 = x - z
+fs = [f1, f2, f3]
+c, b = Groebner.basis_coeff(fs)
+p b #=&gt; [y^2 + y - 1, z^2 - 1/2y, x - z]
+p c #=&gt; [[1, -1, 0], [0, 1/2, -1/2x - 1/2z], [0, 0, 1]]
+for i in 0..2
+  p c[i].inner_product(fs) == b[i] #=&gt; true
+end</pre></dd>
+<dt><a name="label-74" id="label-74"><code>Groebner.basis?(<var>f</var>)</code></a></dt><!-- RDLabel: "Groebner.basis?" -->
+<dd>
+<var>f</var> がグレブナ基底の配列か否かを返します。</dd>
+<dt><a name="label-75" id="label-75"><code>Groebner.minimal_basis?(<var>f</var>)</code></a></dt><!-- RDLabel: "Groebner.minimal_basis?" -->
+<dd>
+<var>f</var> が極小グレブナ基底の配列か否かを返します。</dd>
+<dt><a name="label-76" id="label-76"><code>Groebner.reduced_basis?(<var>f</var>)</code></a></dt><!-- RDLabel: "Groebner.reduced_basis?" -->
+<dd>
+<var>f</var> が極小グレブナ基底の配列か否かを返します。</dd>
+</dl>
+<h2><a name="label-77" id="label-77">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-78" id="label-78"><code>S_pair(<var>other</var>)</code></a></dt><!-- RDLabel: "S_pair" -->
+<dd>
+<p><var>other</var> との S-pair を取ります。</p>
+<p>例:</p>
+<pre>(x**2*y + y**2 + z**2 -1).S_pair(x**2*z + z**2 - y)
+  #=&gt; y^2z + y^2 - yz^2 + z^3 - z</pre></dd>
+<dt><a name="label-79" id="label-79"><code>divmod_s(<var>f1</var>[, <var>f2</var>[, <var>f3</var>...]])</code></a></dt><!-- RDLabel: "divmod_s" -->
+<dd>
+<p>基底 <code>f1, f2, f3, ...</code> で割った商（各基底の係数の配列）
+と余り <code>[[q1, q2, q3, ...], r]</code> を返します。</p>
+<p>一度 <code>f1, f2, f3, ...</code> をグレブナ基底に変換してから
+割り算を行うので、<code>divmod(f1, f2, ...).last == 0</code> と <var>self</var> が
+イデアル <code>(f1, f2, ...)</code> に属することは同値です。</p>
+<p>例:</p>
+<pre>require "m-polynomial"
+require "rational"
+P = Algebra.MPolynomial(Rational)
+P.set_ord :grevlex
+x, y, z = P.vars("xyz")
+f1 = x**2 + y**2 + z**2 -1
+f2 = x**2 + z**2 - y
+f3 = x - z
+fs = [f1, f2, f3]
+f = x**3 + y**3 + z**3
+c, r = f.divmod_s(*fs)
+p r #=&gt; yz + 2y - 1
+p c #=&gt; [y - 1, -y + z + 1, x^2]
+p f == c.inner_product(fs) + r #=&gt; true</pre></dd>
+<dt><a name="label-80" id="label-80"><code>div_cg(<var>f</var>, <var>cg</var>)</code></a></dt><!-- RDLabel: "div_cg" -->
+<dd>
+基底の配列 <var>f</var> から <a href="#label-73">Groebner.basis_coeff</a>(f)
+で求めた値 <var>cg</var> を用いて<var>self</var> を基底 <var>f</var> で
+割った商（各基底の係数の配列）と余り <code>[q, r]</code> を返します。
+<a href="#label-79">divmod_s</a>(f) は
+<code>div_cg(f, Groebner.basis_coeff(f))</code> を返しています。</dd>
+</dl>
+
+</body>
+</html>

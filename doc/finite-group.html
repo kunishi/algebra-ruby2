@@ -1,0 +1,289 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/finite-group.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] 
+<a href="#label-0">Algebra::OperatorDomain</a>
+/
+<a href="#label-18">Algebra::Set</a>
+/
+<a href="#label-27">Algebra::Group</a>
+/
+<a href="#label-65">Algebra::QuotientGroup</a></p>
+<h1><a name="label-0" id="label-0">Algebra::OperatorDomain</a></h1><!-- RDLabel: "Algebra::OperatorDomain" -->
+<p>This is the module for the set oprated by groups.
+This is included by <!-- Reference, RDLabel "Group" doesn't exist --><em class="label-not-found">Group</em><!-- Reference end -->.</p>
+<h2><a name="label-1" id="label-1">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>finite-group.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-3" id="label-3"><code>right_act(<var>other</var>)</code></a></dt><!-- RDLabel: "right_act" -->
+<dd>
+Returns the products of <var>self</var> and <var>other</var>, i.e.
+<var>Set</var> of <code>x * y</code> for
+<var>x</var> element of <var>self</var> and <var>y</var> element of <var>other</var>.</dd>
+<dt><a name="label-4" id="label-4"><code>act</code></a></dt><!-- RDLabel: "act" -->
+<dd>
+Alias of <a href="#label-3">right_act</a>.</dd>
+<dt><a name="label-5" id="label-5"><code>left_act(<var>other</var>)</code></a></dt><!-- RDLabel: "left_act" -->
+<dd>
+Returns the products of <var>self</var> and <var>other</var>, i.e.
+<var>Set</var> of <code>y * x</code> for
+<var>x</var> element of <var>self</var> and <var>y</var> element of <var>other</var>.</dd>
+<dt><a name="label-6" id="label-6"><code>right_quotient(<var>other</var>)</code></a></dt><!-- RDLabel: "right_quotient" -->
+<dd>
+Returns the <var>Set</var> of right residue classes
+of <var>self</var> by <var>other</var>. </dd>
+<dt><a name="label-7" id="label-7"><code>quotient</code></a></dt><!-- RDLabel: "quotient" -->
+<dt><a name="label-8" id="label-8"><code>right_coset</code></a></dt><!-- RDLabel: "right_coset" -->
+<dt><a name="label-9" id="label-9"><code>coset</code></a></dt><!-- RDLabel: "coset" -->
+<dd>
+Alias of <a href="#label-6">right_quotient</a>.</dd>
+<dt><a name="label-10" id="label-10"><code>left_quotient(<var>other</var>)</code></a></dt><!-- RDLabel: "left_quotient" -->
+<dd>
+Returns the <var>Set</var> of left residue classes
+of <var>self</var> by <var>other</var>. </dd>
+<dt><a name="label-11" id="label-11"><code>left_coset</code></a></dt><!-- RDLabel: "left_coset" -->
+<dd>
+Alias of <a href="#label-10">left_quotient</a>.</dd>
+<dt><a name="label-12" id="label-12"><code>right_representatives(<var>other</var>)</code></a></dt><!-- RDLabel: "right_representatives" -->
+<dd>
+Returns the representatives of the
+right residue classes <a href="#label-6">right_quotient</a>.</dd>
+<dt><a name="label-13" id="label-13"><code>representatives</code></a></dt><!-- RDLabel: "representatives" -->
+<dd>
+Alias of <a href="#label-12">right_representatives</a>.</dd>
+<dt><a name="label-14" id="label-14"><code>left_representatives(<var>other</var>)</code></a></dt><!-- RDLabel: "left_representatives" -->
+<dd>
+Returns the representatives of the
+left residue classes <a href="#label-10">left_quotient</a>.</dd>
+<dt><a name="label-15" id="label-15"><code>right_orbit!(<var>other</var>)</code></a></dt><!-- RDLabel: "right_orbit!" -->
+<dd>
+Extends <var>self</var> operating the elements of <var>other</var> by right action
+<var>*</var>.</dd>
+<dt><a name="label-16" id="label-16"><code>orbit!</code></a></dt><!-- RDLabel: "orbit!" -->
+<dd>
+Alias of <a href="#label-15">right_orbit!</a>.</dd>
+<dt><a name="label-17" id="label-17"><code>left_orbit!(<var>other</var>)</code></a></dt><!-- RDLabel: "left_orbit!" -->
+<dd>
+Extends <var>self</var> operating the elements of <var>other</var> by left action
+<var>*</var>.</dd>
+</dl>
+<h1><a name="label-18" id="label-18">Algebra::Set</a></h1><!-- RDLabel: "Algebra::Set" -->
+<h2><a name="label-19" id="label-19">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>finite-group.rb</var></li>
+</ul>
+<h2><a name="label-20" id="label-20">Included Module:</a></h2><!-- RDLabel: "Included Module:" -->
+<ul>
+<li><var>OperatorDomain</var></li>
+</ul>
+<h2><a name="label-21" id="label-21">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-22" id="label-22"><code>* <var>act</var></code></a></dt><!-- RDLabel: "* act" -->
+<dd>
+Alias of <a href="#label-4">act</a></dd>
+<dt><a name="label-23" id="label-23"><code>/</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+Alias of <a href="#label-7">quotient</a>.</dd>
+<dt><a name="label-24" id="label-24"><code>%</code></a></dt><!-- RDLabel: "%" -->
+<dd>
+Alias of <a href="#label-13">representatives</a>.</dd>
+<dt><a name="label-25" id="label-25"><code>increasing_series([<var>x</var>])</code></a></dt><!-- RDLabel: "increasing_series" -->
+<dd>
+<p>Returns the increasing series begining with <var>x</var>.
+This is equivalent to the following code:</p>
+<pre>def increasing_series(x = unit_group)
+  a = []
+  loop do
+    a.push x
+    if x &gt;= (y = yield x)
+      break
+    end
+    x = y
+  end
+  a
+end</pre></dd>
+<dt><a name="label-26" id="label-26"><code>decreasing_series([<var>x</var>])</code></a></dt><!-- RDLabel: "decreasing_series" -->
+<dd>
+<p>Returns the decreasing series begining with <var>x</var>.
+This is equivalent to the following code:</p>
+<pre>def decreasing_series(x = self)
+  a = []
+  loop do
+    a.push x
+    if x &lt;= (y = yield x)
+      break
+    end
+    x = y
+  end
+  a
+end</pre></dd>
+</dl>
+<h1><a name="label-27" id="label-27">Algebra::Group</a></h1><!-- RDLabel: "Algebra::Group" -->
+<h2><a name="label-28" id="label-28">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>finite-group.rb</var></li>
+</ul>
+<h2><a name="label-29" id="label-29">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Set</var></li>
+</ul>
+<h2><a name="label-30" id="label-30">Included Module:</a></h2><!-- RDLabel: "Included Module:" -->
+<p>(None)</p>
+<h2><a name="label-31" id="label-31">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-32" id="label-32"><code>::new(<var>u</var>, [<var>g0</var>, <var>g1</var>, ...]])</code></a></dt><!-- RDLabel: "::new" -->
+<dd>
+Returns the group which consists of <var>u</var>, <var>g0</var>, <var>g1</var>, ... 
+and whose unity is <var>u</var>.</dd>
+<dt><a name="label-33" id="label-33"><code>::generate_strong(<var>u</var>, [<var>g0</var>, [<var>g1</var>, ...]])</code></a></dt><!-- RDLabel: "::generate_strong" -->
+<dd>
+Returns the group strongly generated by <var>g0</var>, <var>g1</var>, ... 
+and whose unity is <var>u</var>.</dd>
+</dl>
+<h2><a name="label-34" id="label-34">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-35" id="label-35"><code>quotient_group(<var>u</var>)</code></a></dt><!-- RDLabel: "quotient_group" -->
+<dd>
+Returns the residue class group of the normal subgroup <var>u</var>.</dd>
+<dt><a name="label-36" id="label-36"><code>separate</code></a></dt><!-- RDLabel: "separate" -->
+<dd>
+Returns the subgroup whose elements makes the block true.</dd>
+<dt><a name="label-37" id="label-37"><code>to_a</code></a></dt><!-- RDLabel: "to_a" -->
+<dd>
+Returns the array of elements. The first is the unity.</dd>
+<dt><a name="label-38" id="label-38"><code>unity</code></a></dt><!-- RDLabel: "unity" -->
+<dd>
+Returns the unity.</dd>
+<dt><a name="label-39" id="label-39"><code>unit_group</code></a></dt><!-- RDLabel: "unit_group" -->
+<dd>
+Returns the unit group.</dd>
+<dt><a name="label-40" id="label-40"><code>semi_complete!</code></a></dt><!-- RDLabel: "semi_complete!" -->
+<dd>
+Makes <var>self</var> be the semi-group generated by the elements.</dd>
+<dt><a name="label-41" id="label-41"><code>semi_complete</code></a></dt><!-- RDLabel: "semi_complete" -->
+<dd>
+Returns the semi-group generated by the elements.</dd>
+<dt><a name="label-42" id="label-42"><code>complete!</code></a></dt><!-- RDLabel: "complete!" -->
+<dd>
+Makes <var>self</var> be the semi-group generated by the elements.</dd>
+<dt><a name="label-43" id="label-43"><code>complete</code></a></dt><!-- RDLabel: "complete" -->
+<dd>
+Returns the group generated by the elements.</dd>
+<dt><a name="label-44" id="label-44"><code>closed?</code></a></dt><!-- RDLabel: "closed?" -->
+<dd>
+Returns true when <var>self</var> is closed by product and inverse.</dd>
+<dt><a name="label-45" id="label-45"><code>subgroups</code></a></dt><!-- RDLabel: "subgroups" -->
+<dd>
+Returns the all subgroups.</dd>
+<dt><a name="label-46" id="label-46"><code>centralizer(<var>s</var>)</code></a></dt><!-- RDLabel: "centralizer" -->
+<dd>
+Returns the centralize of <var>s</var> in <var>self</var>.</dd>
+<dt><a name="label-47" id="label-47"><code>center</code></a></dt><!-- RDLabel: "center" -->
+<dd>
+Returns the center of<var>self</var>.</dd>
+<dt><a name="label-48" id="label-48"><code>center?(<var>x</var>)</code></a></dt><!-- RDLabel: "center?" -->
+<dd>
+Returns true if <var>x</var> is in the center of <var>self</var>.</dd>
+<dt><a name="label-49" id="label-49"><code>normalizer(<var>s</var>)</code></a></dt><!-- RDLabel: "normalizer" -->
+<dd>
+Returns the normalizer of <var>s</var> in <var>self</var>.</dd>
+<dt><a name="label-50" id="label-50"><code>normal?(<var>s</var>)</code></a></dt><!-- RDLabel: "normal?" -->
+<dd>
+Returns true if <var>s</var> is a normal subgroup of <var>self</var>.</dd>
+<dt><a name="label-51" id="label-51"><code>normal_subgroups</code></a></dt><!-- RDLabel: "normal_subgroups" -->
+<dd>
+Returns the all normal subgroups.</dd>
+<dt><a name="label-52" id="label-52"><code>conjugacy_class(<var>x</var>)</code></a></dt><!-- RDLabel: "conjugacy_class" -->
+<dd>
+Returns the conjugacy class of the element <var>x</var>.</dd>
+<dt><a name="label-53" id="label-53"><code>conjugacy_classes</code></a></dt><!-- RDLabel: "conjugacy_classes" -->
+<dd>
+Returns the set of all conjucacy claases of <var>self</var>.</dd>
+<dt><a name="label-54" id="label-54"><code>simple?</code></a></dt><!-- RDLabel: "simple?" -->
+<dd>
+Retuns true if <var>self</var> is a simple group.</dd>
+<dt><a name="label-55" id="label-55"><code>commutator([<var>h</var>])</code></a></dt><!-- RDLabel: "commutator" -->
+<dd>
+Returns the commutator subgroup of <var>self</var> and <var>h</var>.
+If the parameter is omitted, <var>h</var> is assumed to be <var>self</var>.</dd>
+<dt><a name="label-56" id="label-56"><code>D([<var>n</var>])</code></a></dt><!-- RDLabel: "D" -->
+<dd>
+Returns the <var>n</var>-the commutator subgroup.
+<code>D(0) = self</code> and <code>D(n+1) = [D[n], D[n]]</code>.
+If the parameter ommitted, <var>n</var> is assumed to be 1.</dd>
+<dt><a name="label-57" id="label-57"><code>commutator_series</code></a></dt><!-- RDLabel: "commutator_series" -->
+<dd>
+Returns the array <code>[D(0), D(1), D(2),..., D(n)]</code> .
+This sequence is terminated for <var>n</var> with <code>D(n) == D(n+1)</code>.</dd>
+<dt><a name="label-58" id="label-58"><code>solvable?</code></a></dt><!-- RDLabel: "solvable?" -->
+<dd>
+Returns true if <var>self</var> is solvable.</dd>
+<dt><a name="label-59" id="label-59"><code>K([<var>n</var>])</code></a></dt><!-- RDLabel: "K" -->
+<dd>
+Returns the subgroup definend such that <code>K(0) = self</code> and
+<code>K(n+1) = [self, K[n]</code>.
+If the parameter is omitted, <var>n</var> is asumed to be 1.</dd>
+<dt><a name="label-60" id="label-60"><code>descending_central_series</code></a></dt><!-- RDLabel: "descending_central_series" -->
+<dd>
+Returns the descending central series:
+<code>[K(0), K(1), K(2),..., K(n)]</code>.
+This sequence is terminated for <var>n</var> with <code>K(n) == K(n+1)</code>.</dd>
+<dt><a name="label-61" id="label-61"><code>Z([<var>n</var>])</code></a></dt><!-- RDLabel: "Z" -->
+<dd>
+Returns the subgroup that defined by: <code>Z(0) = unit group</code>,
+<code>Z(n+1) = separate{|x| commutator(Set[x]) &lt;= Z(n-1)}</code> .
+If the parameter is omitted, <var>n</var> is assumed to be 1.</dd>
+<dt><a name="label-62" id="label-62"><code>ascending_central_series</code></a></dt><!-- RDLabel: "ascending_central_series" -->
+<dd>
+Returns the array of  ascending central series:
+<code>[Z(0), Z(1), Z(2),..., Z(n)]</code>.
+This sequence is terminated for <var>n</var> such that
+<code>Z(n) == Z(n+1)</code>.</dd>
+<dt><a name="label-63" id="label-63"><code>nilpotent?</code></a></dt><!-- RDLabel: "nilpotent?" -->
+<dd>
+Returns true if <var>self</var> is nilpotent.</dd>
+<dt><a name="label-64" id="label-64"><code>nilpotency_class</code></a></dt><!-- RDLabel: "nilpotency_class" -->
+<dd>
+Returns the class of nilpotency.
+If <var>self</var> is not nilpotent, returns nil.</dd>
+</dl>
+<h1><a name="label-65" id="label-65">Algebra::QuotientGroup</a></h1><!-- RDLabel: "Algebra::QuotientGroup" -->
+<h2><a name="label-66" id="label-66">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>finite-group.rb</var></li>
+</ul>
+<h2><a name="label-67" id="label-67">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Group</var></li>
+</ul>
+<h2><a name="label-68" id="label-68">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-69" id="label-69"><code>new(<var>u</var>, [<var>g0</var>, [<var>g1</var>,...]])</code></a></dt><!-- RDLabel: "new" -->
+<dd>
+Returns the residue class group by <var>u</var> of which the residues are
+<var>u</var>, <var>g0</var>, <var>g1</var>, ... Here <var>u</var> is assumed to be
+the normal subgroup of <var>self</var>.</dd>
+</dl>
+<h2><a name="label-70" id="label-70">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-71" id="label-71"><code>inverse</code></a></dt><!-- RDLabel: "inverse" -->
+<dd>
+Returns the inverse element.</dd>
+<dt><a name="label-72" id="label-72"><code>inv</code></a></dt><!-- RDLabel: "inv" -->
+<dd>
+Alias of <a href="#label-71">inverse</a>.</dd>
+</dl>
+
+</body>
+</html>

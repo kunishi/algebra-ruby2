@@ -1,0 +1,159 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/permutation-group-ja.html</title>
+</head>
+<body>
+<p>[<a href="index-ja.html">index-ja</a>] 
+<a href="#label-0">Algebra::PermutationGroup</a>
+/
+<a href="#label-10">Algebra::Permutation</a></p>
+<h1><a name="label-0" id="label-0">Algebra::PermutationGroup</a></h1><!-- RDLabel: "Algebra::PermutationGroup" -->
+<p>置換群のクラスです。要素として <!-- Reference, RDLabel "Permutation" doesn't exist --><em class="label-not-found">Permutation</em><!-- Reference end --> のインスタンス
+が指定されているとします。</p>
+<h2><a name="label-1" id="label-1">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>permutation-group.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">スーパークラス:</a></h2><!-- RDLabel: "スーパークラス:" -->
+<ul>
+<li><var>Group</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">クラスメソッド:</a></h2><!-- RDLabel: "クラスメソッド:" -->
+<dl>
+<dt><a name="label-4" id="label-4"><code>::new(<var>u</var>, [<var>g0</var>, [<var>g1</var>, ...]])</code></a></dt><!-- RDLabel: "::new" -->
+<dd>
+<var>u</var> を単位元とし、<var>g0</var>, <var>g1</var>, ... で構成される群を
+返します。</dd>
+<dt><a name="label-5" id="label-5"><code>::unit_group(<var>d</var>)</code></a></dt><!-- RDLabel: "::unit_group" -->
+<dd>
+次数が <var>d</var> の単位群を返します。</dd>
+<dt><a name="label-6" id="label-6"><code>::unity(<var>n</var>)</code></a></dt><!-- RDLabel: "::unity" -->
+<dd>
+次数が <var>n</var> の単位元を返します。</dd>
+<dt><a name="label-7" id="label-7"><code>::perm(<var>a</var>)</code></a></dt><!-- RDLabel: "::perm" -->
+<dd>
+配列 <var>a</var> で表される置換を返します。</dd>
+<dt><a name="label-8" id="label-8"><code>::symmetric(<var>n</var>)</code></a></dt><!-- RDLabel: "::symmetric" -->
+<dd>
+<var>n</var> 次の対称群を返します。</dd>
+<dt><a name="label-9" id="label-9"><code>::alternate(<var>n</var>)</code></a></dt><!-- RDLabel: "::alternate" -->
+<dd>
+<var>n</var> 次の交代群を返します。</dd>
+</dl>
+<h1><a name="label-10" id="label-10">Algebra::Permutation</a></h1><!-- RDLabel: "Algebra::Permutation" -->
+<p>置換を表現するクラスです。</p>
+<h2><a name="label-11" id="label-11">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>permutation-group.rb</var></li>
+</ul>
+<h2><a name="label-12" id="label-12">スーパークラス:</a></h2><!-- RDLabel: "スーパークラス:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-13" id="label-13">インクルードしているモジュール:</a></h2><!-- RDLabel: "インクルードしているモジュール:" -->
+<ul>
+<li><var>Enumerable</var></li>
+<li><var>Powers</var></li>
+</ul>
+<h2><a name="label-14" id="label-14">クラスメソッド:</a></h2><!-- RDLabel: "クラスメソッド:" -->
+<dl>
+<dt><a name="label-15" id="label-15"><code>::new(<var>x</var>)</code></a></dt><!-- RDLabel: "::new" -->
+<dd>
+<var>x</var> という配列で表現される置換を生成します。</dd>
+<dt><a name="label-16" id="label-16"><code>::[[<var>n0</var>, [<var>n1</var>, [<var>n2</var>, ..., ]]]]</code></a></dt><!-- RDLabel: "::[]" -->
+<dd>
+<p><code>[n0, n1, n2, ..., ]</code> という置換を生成します。
+例</p>
+<pre>a = Permutation[1, 2, 0]
+p a**2 #=&gt; [2, 0, 1]
+p a**3 #=&gt; [0, 1, 2]</pre></dd>
+<dt><a name="label-17" id="label-17"><code>::unity(<var>d</var>)</code></a></dt><!-- RDLabel: "::unity" -->
+<dd>
+<var>d</var> 次の単位元を返します。</dd>
+<dt><a name="label-18" id="label-18"><code>::cyclic2perm(<var>c</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "::cyclic2perm" -->
+<dd>
+<p><var>c</var> という巡回置換を表す配列の配列から、<!-- Reference, RDLabel "Permutation" doesn't exist --><em class="label-not-found">Permutation</em><!-- Reference end -->
+オブジェクトを生成します。<var>n</var> は次数です。
+<a href="#label-38">decompose_cyclic</a> の逆です。</p>
+<p>例: </p>
+<pre>Permutation.cyclic2perm([[1,6,5,4], [2,3]], 7) #=&gt; [0, 6, 3, 2, 1, 4, 5]
+Permutation[0, 6, 3, 2, 1, 4, 5].decompose_cyclic #=&gt; [[1,6,5,4], [2,3]]</pre></dd>
+</dl>
+<h2><a name="label-19" id="label-19">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-20" id="label-20"><code>unity</code></a></dt><!-- RDLabel: "unity" -->
+<dd>
+単位元を返します。</dd>
+<dt><a name="label-21" id="label-21"><code>perm</code></a></dt><!-- RDLabel: "perm" -->
+<dd>
+配列表現を返します。</dd>
+<dt><a name="label-22" id="label-22"><code>degree</code></a></dt><!-- RDLabel: "degree" -->
+<dd>
+次数を返します。</dd>
+<dt><a name="label-23" id="label-23"><code>size</code></a></dt><!-- RDLabel: "size" -->
+<dd>
+<a href="#label-22">degree</a> のエイリアスです。</dd>
+<dt><a name="label-24" id="label-24"><code>each</code></a></dt><!-- RDLabel: "each" -->
+<dd>
+置換の各元について繰り返します。</dd>
+<dt><a name="label-25" id="label-25"><code>eql?(<var>other</var>)</code></a></dt><!-- RDLabel: "eql?" -->
+<dd>
+<var>other</var> と等しいとき真を返します。</dd>
+<dt><a name="label-26" id="label-26"><code>==</code></a></dt><!-- RDLabel: "==" -->
+<dd>
+<var>eql?</var> のエイリアスです。</dd>
+<dt><a name="label-27" id="label-27"><code>hash</code></a></dt><!-- RDLabel: "hash" -->
+<dd>
+ハッシュ値を返します。</dd>
+<dt><a name="label-28" id="label-28"><code>[<var>i</var>]</code></a></dt><!-- RDLabel: "[]" -->
+<dd>
+<var>i</var> の置換先を返します。</dd>
+<dt><a name="label-29" id="label-29"><code>call</code></a></dt><!-- RDLabel: "call" -->
+<dd>
+<a href="#label-28">[]</a> のエイリアスです。</dd>
+<dt><a name="label-30" id="label-30"><code>index(<var>i</var>)</code></a></dt><!-- RDLabel: "index" -->
+<dd>
+<var>i</var> の置換元を返します。</dd>
+<dt><a name="label-31" id="label-31"><code>right_act(<var>other</var>)</code></a></dt><!-- RDLabel: "right_act" -->
+<dd>
+<var>other</var> に右からかけます。すなわち
+<code>(g.right_act(h))[x] == h[g[x]]</code> が成立します。</dd>
+<dt><a name="label-32" id="label-32"><code>*</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+<a href="#label-31">right_act</a> のエイリアスです。</dd>
+<dt><a name="label-33" id="label-33"><code>left_act(<var>other</var>)</code></a></dt><!-- RDLabel: "left_act" -->
+<dd>
+<var>other</var> に左からからかけます。すなわち
+<code>(g.left_act(h))[x] == g[h[x]]</code> が成立します。</dd>
+<dt><a name="label-34" id="label-34"><code>inverse</code></a></dt><!-- RDLabel: "inverse" -->
+<dd>
+逆元を返します。</dd>
+<dt><a name="label-35" id="label-35"><code>inv</code></a></dt><!-- RDLabel: "inv" -->
+<dd>
+<var>inverse</var> のエイリアスです。</dd>
+<dt><a name="label-36" id="label-36"><code>sign</code></a></dt><!-- RDLabel: "sign" -->
+<dd>
+符号を返します。</dd>
+<dt><a name="label-37" id="label-37"><code>conjugate(<var>g</var>)</code></a></dt><!-- RDLabel: "conjugate" -->
+<dd>
+<var>g</var> による共役 <code>g * self * g.inv</code> を返します。</dd>
+<dt><a name="label-38" id="label-38"><code>decompose_cyclic</code></a></dt><!-- RDLabel: "decompose_cyclic" -->
+<dd>
+配列による巡回表現の配列を返します。
+<!-- Reference, RDLabel "::cyclic2perm(c, n)" doesn't exist --><em class="label-not-found">::cyclic2perm(c, n)</em><!-- Reference end --> の逆です。</dd>
+<dt><a name="label-39" id="label-39"><code>to_map</code></a></dt><!-- RDLabel: "to_map" -->
+<dd>
+<a href="finite-map-ja.html">Map</a> オブジェクト化します。</dd>
+<dt><a name="label-40" id="label-40"><code>decompose_transposition</code></a></dt><!-- RDLabel: "decompose_transposition" -->
+<dd>
+互換の配列に分解したものを返します。</dd>
+</dl>
+
+</body>
+</html>

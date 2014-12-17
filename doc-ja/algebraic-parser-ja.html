@@ -1,0 +1,87 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/algebraic-parser-ja.html</title>
+</head>
+<body>
+<h1><a name="label-0" id="label-0">Algebra::AlgebraicParser</a></h1><!-- RDLabel: "Algebra::AlgebraicParser" -->
+<p><em>(文字列の代数的評価クラス)</em></p>
+<h2><a name="label-1" id="label-1">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>algebraic-parser.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">スーパークラス:</a></h2><!-- RDLabel: "スーパークラス:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">インクルードしているモジュール:</a></h2><!-- RDLabel: "インクルードしているモジュール:" -->
+<p>なし</p>
+<h2><a name="label-4" id="label-4">クラスメソッド:</a></h2><!-- RDLabel: "クラスメソッド:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>Algebra::AlgebraicParser.eval(<var>string</var>, <var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::AlgebraicParser.eval" -->
+<dd>
+<var>string</var> の四則演算式を <var>ring</var> 上で計算します。</dd>
+</dl>
+<h2><a name="label-6" id="label-6">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<p>なし</p>
+<h2><a name="label-7" id="label-7">仕様</a></h2><!-- RDLabel: "仕様" -->
+<h3><a name="label-8" id="label-8">評価の手順</a></h3><!-- RDLabel: "評価の手順" -->
+<p>変数の値は、その変数名を引数として <var>ring</var> のクラスメソ
+ッド <var>indeterminate</var> の引数として渡され、その戻り値
+として評価されます。また数値は <var>ring.ground</var> のクラス
+メソッド <var>indterminate</var> で評価されます。</p>
+<pre>require "algebraic-parser"
+class A
+  def self.indeterminate(str)
+    case str
+    when "x"; 7
+    when "y"; 11
+    end
+  end
+  def A.ground
+    Integer
+  end
+end
+p Algebraic::AlgebraicParser.eval("x * y - x^2 + x/8", A)
+    #=&gt; 7*11 - 7**2 + 7/8 = 28</pre>
+<p>ここで、Integer の indeterminate は algebraic-parser.rb が require
+している algebra-supplement.rb で次のように定義されています。</p>
+<pre>def Integer.indeterminate(x)
+  eval(x)
+end</pre>
+<h3><a name="label-9" id="label-9">識別子</a></h3><!-- RDLabel: "識別子" -->
+<p>識別子は、「英字1文字＋数字0文字以上」で定義されます。したがって</p>
+<pre>"a13bc04def0"</pre>
+<p>は、</p>
+<pre>"a13 * b * c04 * d * e * f0"</pre>
+<p>と解釈されます。</p>
+<h3><a name="label-10" id="label-10">演算子</a></h3><!-- RDLabel: "演算子" -->
+<p>演算子を結合の弱い順に並べます。</p>
+<pre>;       中間評価
++, -    和, 差
++, -    単項 +, 単項 -
+*, /    積, 商
+並置    積
+**, ^   冪</pre>
+<h3><a name="label-11" id="label-11">用例</a></h3><!-- RDLabel: "用例" -->
+<p>クラス <var>Algebra::Polynomial</var>、クラス <var>Algebra::MPolynomial</var> には適
+切に <var>indeterminate</var>, <var>ground</var>
+が定義されています。したがって次のように文字列評価ができます。</p>
+<pre>require "algebraic-parser"
+require "rational"
+require "m-polynomial"
+F = Algebra::MPolynomial(Rational)
+p Algebra::AlgebraicParser.eval("- (2*y)**3 + x", F) #=&gt; -8y^3 + x</pre>
+<p><var>Algebra::MPolynomial</var> では、<var>indeterminate</var> は変数を表現するオブジェ
+クトの登録も行うので、登録順が変数間の順序になります。したがって ; を
+使って先に変数を評価させる事によって、順序の変更をする事ができます。</p>
+<pre>F.variables.clear
+p Algebra::AlgebraicParser.eval("x; y; - (2*y)**3 + x", F) #=&gt; x - 8y^3</pre>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/polynomial-converter.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] </p>
+<h1><a name="label-0" id="label-0">Utility of Conversion of Polynomials</a></h1><!-- RDLabel: "Utility of Conversion of Polynomials" -->
+<h2><a name="label-1" id="label-1">File Name</a></h2><!-- RDLabel: "File Name" -->
+<ul>
+<li><var>polyomimial-converter.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-3" id="label-3"><code>Algebra::Polynomial.convert_to(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::Polynomial.convert_to" -->
+<dd>
+Returns the ring converted to <var>ring</var> of
+<a href="m-polynomial.html">Algebra::MPolynomial</a>.</dd>
+<dt><a name="label-4" id="label-4"><code>Algebra::Polynomial#value_on(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::Polynomial#value_on" -->
+<dd>
+<p>Returns the ring converted to <var>ring</var> of
+<a href="m-polynomial.html">Algebra::MPolynomial</a>.</p>
+<p>Example:</p>
+<pre>require "m-polynomial"
+require "polynomial"
+
+P = Algebra::Polynomial(Integer, "x", "y", "z")
+x, y, z = P.vars
+f = x**2 + y**2 + z**2 - x*y - y*z - z*x
+
+MP = P.convert_to(Algebra::MPolynomial)
+p f = f.value_on(MP) #=&gt; z^2 - zy - zx + y^2 - yx + x^2
+x, y, z = MP.vars
+p f == x**2 + y**2 + z**2 - x*y - y*z - z*x #=&gt; true</pre></dd>
+<dt><a name="label-5" id="label-5"><code>Algebra::MPolynomial.convert_to(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::MPolynomial.convert_to" -->
+<dd>
+Returns the ring converted to <var>ring</var> of
+<a href="m-polynomial.html">Algebra::Polynomial</a></dd>
+<dt><a name="label-6" id="label-6"><code>Algebra::MPolynomial#value_on(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::MPolynomial#value_on" -->
+<dd>
+<p>Returns the ring converted to <var>ring</var> of
+<a href="m-polynomial.html">Algebra::Polynomial</a>.</p>
+<p>Example:</p>
+<pre>require "m-polynomial"
+require "polynomial"
+
+MP = Algebra::MPolynomial(Integer, "x", "y", "z")
+x, y, z = MP.vars
+f = x**2 + y**2 + z**2 - x*y - y*z - z*x
+
+P = MP.convert_to(Algebra::Polynomial)
+p f = f.value_on(P) #=&gt; x^2 + (-y - z)x + y^2 - zy + z^2
+x, y, z = P.vars
+p f == x**2 + y**2 + z**2 - x*y - y*z - z*x #=&gt; true</pre></dd>
+</dl>
+
+</body>
+</html>

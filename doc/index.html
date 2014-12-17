@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/index.html</title>
+</head>
+<body>
+<p>[<a href="README.html">README</a>] [<a href="../doc-ja/index-ja.html">Japanese</a>]</p>
+<h1><a name="label-0" id="label-0">Algebra</a></h1><!-- RDLabel: "Algebra" -->
+<pre>Version: 0.72 (2006.09.14)
+Author: Shin-ichiro HARA (sinara@blade.nagaokaut.ac.jp)</pre>
+<p>This is a library of one-variate and multi-variate polynomials.</p>
+<h2><a name="label-1" id="label-1">0. First Step</a></h2><!-- RDLabel: "0. First Step" -->
+<p>Begin with 'require "algebra"'.</p>
+<pre>require "algebra"
+x = Polynomial(Integer, "x").var
+puts( (x+1)**7 )
+  #=&gt; x^7 + 7x^6 + 21x^5 + 35x^4 + 35x^3 + 21x^2 + 7x + 1
+puts( (x**7 + 7*x**6 + 21*x**5 + 35*x**4 + 35*x**3 + 21*x**2 + 7*x + 1).factorize )
+  #=&gt; (x + 1)^7</pre>
+<h2><a name="label-2" id="label-2">1. Samples</a></h2><!-- RDLabel: "1. Samples" -->
+<ul>
+<li><a href="samples.html">Samples</a></li>
+</ul>
+<h2><a name="label-3" id="label-3">2. Class and Module</a></h2><!-- RDLabel: "2. Class and Module" -->
+<ul>
+<li><a href="algebra.html">Algebra</a> (Module of Algebra)
+<ul>
+<li><a href="polynomial.html">Algebra::Polynomial</a> (Class of Polynomial Ring)</li>
+<li><a href="euclidian-ring.html">Algebra::EuclidianRing</a> (Eulcidian Ring Module)</li>
+<li><a href="m-polynomial.html">Algebra::MPolynomial</a> (Multi-variate Polynomial Ring Class)</li>
+<li><a href="residue-class-ring.html">Algebra::ResidueClassRing</a> (Residue Class Ring Class)</li>
+<li><a href="algebraic-extension-field.html">Algebra::AlgebraicExtensionField</a> (Algebraic Extension Class)</li>
+<li><a href="localized-ring.html">Algebra::LocalizedRing</a> (Localized Ring Class)</li>
+<li><a href="matrix-algebra.html">Algebra::MatrixAlgebra</a> (Matrix Algebra Class)</li>
+<li><a href="algebraic-parser.html">Algebra::AlgebraicParser</a> (evaluation of algebraic strings)</li>
+<li><a href="finite-set.html">Algebra::Set</a> (Sets)</li>
+<li><a href="finite-map.html">Algebra::Map</a> (Maps)</li>
+<li><a href="finite-group.html">Algebra::Group</a> (Groups)</li>
+<li><a href="permutation-group.html">Algebra::PermutationGroup</a> (PermutationGroups)</li>
+</ul></li>
+</ul>
+<h2><a name="label-4" id="label-4">3. Other</a></h2><!-- RDLabel: "3. Other" -->
+<ul>
+<li><a href="elementary-divisor.html">Algebra::ElementaryDivisor</a> (Elementary Divisor Module)</li>
+<li><a href="jordan-form.html">Algebra::JordanForm</a> (Jordan Matrix Class)</li>
+<li><a href="matrix-algebra-triplet.html">Algebra::MatrixAlgebraTriplet</a> (Triplete of Matrices Class)</li>
+<li><a href="algebraic-equation.html">Algebraic Equations</a></li>
+<li><a href="polynomial-converter.html">Conversions of Polynomial Classes</a></li>
+</ul>
+<h2><a name="label-5" id="label-5">4. Contents of package</a></h2><!-- RDLabel: "4. Contents of package" -->
+<h3><a name="label-6" id="label-6">General</a></h3><!-- RDLabel: "General" -->
+<pre>algebra.rb               File for using Algebra libraries</pre>
+<h3><a name="label-7" id="label-7">One variate polynomial</a></h3><!-- RDLabel: "One variate polynomial" -->
+<pre>polynomial.rb            Class of one variate polynomial
+euclidian-ring.rb        Module of Euclidian domain
+polynomial-factor.rb     Factorization:
+  polynomial-factor-int.rb   Integer version
+  polynomial-factor-zp.rb    Zp version
+  polynomial-factor-alg.rb   Algebraic number version</pre>
+<h3><a name="label-8" id="label-8">Multi variate polynomial</a></h3><!-- RDLabel: "Multi variate polynomial" -->
+<pre>m-polynomial.rb         Class of multi-variate polynomial
+  m-index.rb            Class of indices of degrees
+m-polynomial-factor.rb     Factorization:
+  m-polynomial-factor-int.rb   Integer version
+  m-polynomial-factor-zp.rb    Zp version
+groebner-basis.rb       Module of Groebner basis
+groebner-basis-coeff.rb Module of division by Groebner basis</pre>
+<h3><a name="label-9" id="label-9">Foundation</a></h3><!-- RDLabel: "Foundation" -->
+<pre>finite-set.rb           Sets
+  finite-map.rb         Maps
+  finite-group.rb       Groups
+    permutation-group.rb  Permutation Groups</pre>
+<h3><a name="label-10" id="label-10">Common part</a></h3><!-- RDLabel: "Common part" -->
+<pre>numeric-supplement.rb   Supplement of Numeric
+prime-gen.rb            Class of prime numbers
+polynomial-converter.rb Conversions between polynomial classes
+algebraic-parser.rb     Evaluation of strings
+algebra-system.rb       Common specification of algebras</pre>
+<h3><a name="label-11" id="label-11">General algebra</a></h3><!-- RDLabel: "General algebra" -->
+<pre>localized-ring.rb       Quotient fields
+matrix-algebra.rb       Matrix
+  elementary-divisor.rb Elementary Divisor Class
+  matrix-algebra-triplet.rb  Triplet of Matrices Class
+  jordan-form.rb        Jordan Block Class
+residue-class-ring.rb   Residue class ring
+algebraic-extention-field.rb Algebraic Extention Field of Polynomial
+splitting-field.rb      Minimal Splitting Field of Polynomial
+galois-group.rb         Galois Group of Polynomial
+linear-algebra.rb       library for linear algebra
+algebraic-equation.rb   library for algebraic equation</pre>
+<h3><a name="label-12" id="label-12">Others</a></h3><!-- RDLabel: "Others" -->
+<pre>array-supplement.rb    Supplement of Array
+doc/                   English Manuals(RD, HTML, TXT)
+doc-ja/                Japanese Manuals(RD, HTML, TXT)
+sample/                Sample Codes
+work/                  (working directory for the developer)</pre>
+<h2><a name="label-13" id="label-13">5. ToDo</a></h2><!-- RDLabel: "5. ToDo" -->
+<ul>
+<li><a href="todo.html">todo.html</a></li>
+</ul>
+<h2><a name="label-14" id="label-14">6. Changes</a></h2><!-- RDLabel: "6. Changes" -->
+<ul>
+<li><a href="changes.html">changes.html</a></li>
+</ul>
+
+</body>
+</html>

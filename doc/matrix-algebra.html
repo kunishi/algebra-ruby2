@@ -1,0 +1,709 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/matrix-algebra.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] </p>
+<p><a href="#label-0">Algebra::MatrixAlgebra</a>
+/
+<a href="#label-60">Algebra::Vector</a>
+/
+<a href="#label-78">Algebra::Covector</a>
+/
+<a href="#label-96">Algebra::SquareMatrix</a>
+/
+<a href="#label-117">Algebra::GaussianElimination</a></p>
+<h1><a name="label-0" id="label-0">Algebra::MatrixAlgebra</a></h1><!-- RDLabel: "Algebra::MatrixAlgebra" -->
+<p><em>(Class of Matrices)</em></p>
+<p>This class expresses matrices.
+For creating an actual class, use the class method 
+<a href="#label-7">::create</a> or the function <a href="#label-5">Algebra.MatrixAlgebra</a>(), 
+giving the ground ring and sizes.</p>
+<p>That has <a href="#label-60">Algebra::Vector</a>(column vectorÅj, 
+<a href="#label-78">Algebra::Covector</a>(row vector), 
+<a href="#label-96">Algebra::SquareMatrix</a>(square matrix) as subclass.</p>
+<h2><a name="label-1" id="label-1">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>matrix-algebra.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">Included Module:</a></h2><!-- RDLabel: "Included Module:" -->
+<ul>
+<li><a href="#label-117">Algebra::GaussianElimination</a></li>
+<li>Enumerable</li>
+</ul>
+<h2><a name="label-4" id="label-4">Associated Function:</a></h2><!-- RDLabel: "Associated Function:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>Algebra.MatrixAlgebra(<var>ring</var>, <var>m</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra.MatrixAlgebra" -->
+<dd>
+Same as <a href="#label-7">::create</a>(ring, m, n).</dd>
+</dl>
+<h2><a name="label-6" id="label-6">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-7" id="label-7"><code>::create(<var>ring</var>, <var>m</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "::create" -->
+<dd>
+<p>Creates the class of matrix of type <code> (m, n) </code> with
+elements of the ring <var>ring</var>.</p>
+<p>The return value of this method is a subclass of
+<a href="#label-0">Algebra::MatrixAlgebra</a>.
+The subclass has class methods:
+<var>ground</var>,  <var>rsize</var>, <var>csize</var> and  <var>sizes</var>, 
+which returns the ground ring, the size of rows( <var>m</var> ),
+the size of columns( <var>n</var> )  and the array of <code> [m, n] </code>
+respectively.</p>
+<p>To create the actual matrix, use the class methods: <a href="#label-8">::new</a>, 
+<a href="#label-9">::matrix</a> or <a href="#label-10">::[]</a>.</p></dd>
+<dt><a name="label-8" id="label-8"><code>::new(<var>array</var>)</code></a></dt><!-- RDLabel: "::new" -->
+<dd>
+<p>Returns the matrix of the elements designated by the array of
+arrays <var>array</var>.</p>
+<p>Example:</p>
+<pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
+a = M.new([[1, 2, 3], [4, 5, 6]])
+a.display
+  #=&gt; [1, 2, 3]
+  #=&gt; [4, 5, 6]</pre></dd>
+<dt><a name="label-9" id="label-9"><code>::matrix{|<var>i</var>, <var>j</var>| ... }</code></a></dt><!-- RDLabel: "::matrix" -->
+<dd>
+<p>Returns the matrix which has the <code>i-j</code>-th elements
+evaluating ..., where <var>i</var> and <var>j</var> are the row 
+and the column indices</p>
+<p>Example:</p>
+<pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
+a = M.matrix{|i, j| 10*(i + 1) + j + 1}
+a.display
+  #=&gt; [11, 12, 13]
+  #=&gt; [21, 22, 23]</pre></dd>
+<dt><a name="label-10" id="label-10"><code>::[<var>array1</var>, <var>array2</var>, ..., <var>array</var>]</code></a></dt><!-- RDLabel: "::[]" -->
+<dd>
+<p>Returns the matrix which has <code>array1, array2, ..., array</code> 
+as rows.</p>
+<p>Example:</p>
+<pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
+a = M[[1, 2, 3], [4, 5, 6]]
+a.display
+  #=&gt; [1, 2, 3]
+  #=&gt; [4, 5, 6]</pre></dd>
+<dt><a name="label-11" id="label-11"><code>::collect_ij{|<var>i</var>, <var>j</var>| ... }</code></a></dt><!-- RDLabel: "::collect_ij" -->
+<dd>
+Returns the array of arrays with the value ... as 
+the <var>j</var>-th element of the <var>i</var>-th array.</dd>
+<dt><a name="label-12" id="label-12"><code>::collect_row{|<var>i</var>| ... }</code></a></dt><!-- RDLabel: "::collect_row" -->
+<dd>
+<p>Returns the matrix whose <var>i</var>-th row is the array
+obtained by evaluating ....</p>
+<p>Example:</p>
+<pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
+A = M.collect_row{|i| [i*10 + 11, i*10 + 12, i*10 + 13]}
+A.display
+  #=&gt; [11, 12, 13]
+  #=&gt; [21, 22, 23]</pre></dd>
+<dt><a name="label-13" id="label-13"><code>::collect_column{|<var>j</var>| ... }</code></a></dt><!-- RDLabel: "::collect_column" -->
+<dd>
+<p>Returns the matrix whose <var>j</var>-th column is the array
+obtained by evaluating ....</p>
+<p>Example:</p>
+<pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
+A = M.collect_column{|j| [11 + j, 21 + j]}
+A.display
+  #=&gt; [11, 12, 13]
+  #=&gt; [21, 22, 23]</pre></dd>
+<dt><a name="label-14" id="label-14"><code>::*(<var>otype</var>)</code></a></dt><!-- RDLabel: "::*" -->
+<dd>
+<p>Returns the class of matrix multiplicated by <var>otype</var>.</p>
+<p>Example:</p>
+<pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
+N = Algebra.MatrixAlgebra(Integer, 3, 4)
+L = M * N
+p L.sizes #=&gt; [3, 4]</pre></dd>
+<dt><a name="label-15" id="label-15"><code>::vector_type</code></a></dt><!-- RDLabel: "::vector_type" -->
+<dd>
+Returns the class of column-vector(Vector) which has the same size of <a href="#label-22">rsize</a>.</dd>
+<dt><a name="label-16" id="label-16"><code>::covector_type</code></a></dt><!-- RDLabel: "::covector_type" -->
+<dd>
+Returns the class of row-vector(CoVector) which has the same size of <a href="#label-23">csize</a>.</dd>
+<dt><a name="label-17" id="label-17"><code>::transpose</code></a></dt><!-- RDLabel: "::transpose" -->
+<dd>
+Returns the transposed matrix</dd>
+<dt><a name="label-18" id="label-18"><code>::zero</code></a></dt><!-- RDLabel: "::zero" -->
+<dd>
+Returns the zero matrix.</dd>
+</dl>
+<h2><a name="label-19" id="label-19">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-20" id="label-20"><code>[<var>i</var>, <var>j</var>]</code></a></dt><!-- RDLabel: "[]" -->
+<dd>
+Returns the <code>(i, j)</code>-th component.</dd>
+<dt><a name="label-21" id="label-21"><code>[<var>i</var>, <var>j</var>] = <var>x</var></code></a></dt><!-- RDLabel: "[]=" -->
+<dd>
+Replaces the <code>(i, j)</code>-th component with <var>x</var>.</dd>
+<dt><a name="label-22" id="label-22"><code>rsize</code></a></dt><!-- RDLabel: "rsize" -->
+<dd>
+Same as <!-- Reference, RDLabel "::rsize" doesn't exist --><em class="label-not-found">::rsize</em><!-- Reference end -->.</dd>
+<dt><a name="label-23" id="label-23"><code>csize</code></a></dt><!-- RDLabel: "csize" -->
+<dd>
+Same as <!-- Reference, RDLabel "::csize" doesn't exist --><em class="label-not-found">::csize</em><!-- Reference end -->.</dd>
+<dt><a name="label-24" id="label-24"><code>sizes</code></a></dt><!-- RDLabel: "sizes" -->
+<dd>
+Same as <!-- Reference, RDLabel "::sizes" doesn't exist --><em class="label-not-found">::sizes</em><!-- Reference end -->.</dd>
+<dt><a name="label-25" id="label-25"><code>rows</code></a></dt><!-- RDLabel: "rows" -->
+<dd>
+<p>Returns the array of rows.</p>
+<p>Example:</p>
+<pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
+a = M.new([[1, 2, 3], [4, 5, 6]])
+p a.rows #=&gt; [[1, 2, 3], [4, 5, 6]]
+p a.row(1) #=&gt; [4, 5, 6]
+a.set_row(1, [40, 50, 60])
+a.display #=&gt; [1, 2, 3]
+          #=&gt; [40, 50, 60]</pre></dd>
+<dt><a name="label-26" id="label-26"><code>row(<var>i</var>)</code></a></dt><!-- RDLabel: "row" -->
+<dd>
+Returns the <var>i</var>-th row as an array.</dd>
+<dt><a name="label-27" id="label-27"><code>set_row(<var>i</var>, <var>array</var>)</code></a></dt><!-- RDLabel: "set_row" -->
+<dd>
+Replaces the <var>i</var>-th row with <var>array</var>.</dd>
+<dt><a name="label-28" id="label-28"><code>columns</code></a></dt><!-- RDLabel: "columns" -->
+<dd>
+<p>Returns the array of columns.</p>
+<p>ó·:</p>
+<pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
+a = M.new([[1, 2, 3], [4, 5, 6]])
+p a.columns #=&gt; [[1, 4], [2, 5], [3, 6]]
+p a.column(1) #=&gt; [2, 5]
+a.set_column(1, [20, 50])
+a.display #=&gt; [1, 20, 3]
+          #=&gt; [4, 50, 6]</pre></dd>
+<dt><a name="label-29" id="label-29"><code>column(<var>j</var>)</code></a></dt><!-- RDLabel: "column" -->
+<dd>
+Returns the <var>j</var>-th column as an array.</dd>
+<dt><a name="label-30" id="label-30"><code>set_column(<var>j</var>, <var>array</var>)</code></a></dt><!-- RDLabel: "set_column" -->
+<dd>
+Replaces the <var>i</var>-th column with <var>array</var>.</dd>
+<dt><a name="label-31" id="label-31"><code>each{|<var>row</var>| ...}</code></a></dt><!-- RDLabel: "each" -->
+<dd>
+Iterates with <var>row</var>.</dd>
+<dt><a name="label-32" id="label-32"><code>each_index{|<var>i</var>, <var>j</var>| ...}</code></a></dt><!-- RDLabel: "each_index" -->
+<dd>
+Iterates with indices <code> (i, j) </code>.</dd>
+<dt><a name="label-33" id="label-33"><code>each_i{|<var>i</var>| ...}</code></a></dt><!-- RDLabel: "each_i" -->
+<dd>
+Iterates with the index <code>i</code> of rows.</dd>
+<dt><a name="label-34" id="label-34"><code>each_j{|<var>j</var>| ...}</code></a></dt><!-- RDLabel: "each_j" -->
+<dd>
+Iterates with the index <code>j</code> of columns.</dd>
+<dt><a name="label-35" id="label-35"><code>each_row{|<var>r</var>| ... }</code></a></dt><!-- RDLabel: "each_row" -->
+<dd>
+Iterates with the row <var>r</var>. Same as <a href="#label-31">each</a>.</dd>
+<dt><a name="label-36" id="label-36"><code>each_column{|<var>c</var>| ... }</code></a></dt><!-- RDLabel: "each_column" -->
+<dd>
+Iterates with the column <var>c</var>.</dd>
+<dt><a name="label-37" id="label-37"><code>matrix{|<var>i</var>, <var>j</var>| ... }</code></a></dt><!-- RDLabel: "matrix" -->
+<dd>
+Same as <a href="#label-9">::matrix</a>.</dd>
+<dt><a name="label-38" id="label-38"><code>collect_ij{|<var>i</var>, <var>j</var>| ... }</code></a></dt><!-- RDLabel: "collect_ij" -->
+<dd>
+Same as <a href="#label-11">::collect_ij</a>.</dd>
+<dt><a name="label-39" id="label-39"><code>collect_row{|<var>i</var>| ... }</code></a></dt><!-- RDLabel: "collect_row" -->
+<dd>
+Same as <a href="#label-12">::collect_row</a>.</dd>
+<dt><a name="label-40" id="label-40"><code>collect_column{|<var>j</var>| ... }</code></a></dt><!-- RDLabel: "collect_column" -->
+<dd>
+Same as <a href="#label-13">::collect_column</a>.</dd>
+<dt><a name="label-41" id="label-41"><code>minor(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "minor" -->
+<dd>
+Returns the minor matrix deleteing <var>i</var>-th row and <var>j</var>-th column.</dd>
+<dt><a name="label-42" id="label-42"><code>cofactor(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "cofactor" -->
+<dd>
+Return the determinant of minor matrix deleteing <var>i</var>-th row and <var>j</var>-th colum multiplied by (-1)**(i+j). 
+This is equal to <code>minor(i, j) ** (i + j)</code>.</dd>
+<dt><a name="label-43" id="label-43"><code>cofactor_matrix</code></a></dt><!-- RDLabel: "cofactor_matrix" -->
+<dd>
+Returns the cofactor_matrix.  This is equal to <code>self.class.transpose.matrix{|i, j| cofactor(j, i)}</code>.</dd>
+<dt><a name="label-44" id="label-44"><code>adjoint</code></a></dt><!-- RDLabel: "adjoint" -->
+<dd>
+Same as <a href="#label-43">cofactor_matrix</a>.</dd>
+<dt><a name="label-45" id="label-45"><code>==(<var>other</var>)</code></a></dt><!-- RDLabel: "==" -->
+<dd>
+Returns true if <var>self</var> is equal to <var>other</var>.</dd>
+<dt><a name="label-46" id="label-46"><code>+(<var>other</var>)</code></a></dt><!-- RDLabel: "+" -->
+<dd>
+Returns the sum of <var>self</var> and <var>other</var>.</dd>
+<dt><a name="label-47" id="label-47"><code>-(<var>other</var>)</code></a></dt><!-- RDLabel: "-" -->
+<dd>
+Returns the difference of <var>self</var> from <var>other</var>.</dd>
+<dt><a name="label-48" id="label-48"><code>*(<var>other</var>)</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+<p>Returns the product of <var>self</var> and <var>other</var>.</p>
+<p>Example:</p>
+<pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
+N = Algebra.MatrixAlgebra(Integer, 3, 4)
+L = M * N
+a = M[[1, 2, 3], [4, 5, 6]]
+b = N[[-3, -2, -1, 0], [1, 2, 3, 4], [5, 6, 7, 8]]
+c = a * b
+p c.type  #=&gt; L
+c.display #=&gt; [14, 20, 26, 32]
+          #=&gt; [23, 38, 53, 68]</pre></dd>
+<dt><a name="label-49" id="label-49"><code>**(<var>n</var>)</code></a></dt><!-- RDLabel: "**" -->
+<dd>
+Returns the <var>n</var>-th power of <var>self</var>.</dd>
+<dt><a name="label-50" id="label-50"><code>/(<var>other</var>)</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+Returns the quotient <var>self</var> by <var>other</var>.</dd>
+<dt><a name="label-51" id="label-51"><code>rank</code></a></dt><!-- RDLabel: "rank" -->
+<dd>
+Returns the rank.</dd>
+<dt><a name="label-52" id="label-52"><code>dsum(<var>other</var>)</code></a></dt><!-- RDLabel: "dsum" -->
+<dd>
+<p>Returns the direct sum of <var>self</var> and <var>other</var>.</p>
+<p>Example:</p>
+<pre>a = Algebra.MatrixAlgebra(Integer, 2, 3)[
+      [1, 2, 3],
+      [4, 5, 6]
+    ]
+b = Algebra.MatrixAlgebra(Integer, 3, 2)[
+      [-1, -2],
+      [-3, -4],
+      [-5, -6]
+    ]
+(a.dsum b).display #=&gt; 1,   2,   3,   0,   0
+                   #=&gt; 4,   5,   6,   0,   0
+                   #=&gt; 0,   0,   0,  -1,  -2
+                   #=&gt; 0,   0,   0,  -3,  -4
+                   #=&gt; 0,   0,   0,  -5,  -6</pre></dd>
+<dt><a name="label-53" id="label-53"><code>to_ary</code></a></dt><!-- RDLabel: "to_ary" -->
+<dd>
+Returns <var>to_a</var>. <var>to_a</var> is defined in <var>Enumerable</var>.</dd>
+<dt><a name="label-54" id="label-54"><code>flatten</code></a></dt><!-- RDLabel: "flatten" -->
+<dd>
+Returns <var>to_a.flatten</var>.</dd>
+<dt><a name="label-55" id="label-55"><code>diag</code></a></dt><!-- RDLabel: "diag" -->
+<dd>
+Returns the array of the diagonal compotents.</dd>
+<dt><a name="label-56" id="label-56"><code>convert_to(<var>ring</var>)</code></a></dt><!-- RDLabel: "convert_to" -->
+<dd>
+<p>Returns the conversion of <var>self</var> to ring's object.</p>
+<p>Example:</p>
+<pre>require "matrix-algebra"
+require "residue-class-ring"
+Z3 = Algebra.ResidueClassRing(Integer, 3)
+a = Algebra.MatrixAlgebra(Integer, 2, 3)[
+  [1, 2, 3],
+  [4, 5, 6]
+]
+a.convert_to(Algebra.MatrixAlgebra(Z3, 2, 3)).display
+                                    #=&gt;  1,   2,   0
+                                    #=&gt;  1,   2,   0</pre></dd>
+<dt><a name="label-57" id="label-57"><code>transpose</code></a></dt><!-- RDLabel: "transpose" -->
+<dd>
+<p>Returns the transposed matrix.</p>
+<p>Example:</p>
+<pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
+a = M.new([[1, 2, 3], [4, 5, 6]])
+Mt = M.transpose
+b = a.transpose
+p b.type  #=&gt; Mt
+b.display #=&gt; [1, 4]
+          #=&gt; [2, 5]
+          #=&gt; [3, 6]</pre></dd>
+<dt><a name="label-58" id="label-58"><code>dup</code></a></dt><!-- RDLabel: "dup" -->
+<dd>
+<p>Returns the duplication of <var>self</var>.</p>
+<p>Example:</p>
+<pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
+a = M.new([[1, 2, 3], [4, 5, 6]])
+b = a.dup
+b[1, 1] = 50
+a.display #=&gt; [1, 2, 3]
+          #=&gt; [4, 5, 6]
+b.display #=&gt; [1, 2, 3]
+          #=&gt; [4, 50, 6]</pre></dd>
+<dt><a name="label-59" id="label-59"><code>display([<var>out</var>])</code></a></dt><!-- RDLabel: "display" -->
+<dd>
+Displays <var>self</var> to  <var>out</var>. If <var>out</var> is omitted, <var>out</var>
+is <var>$stdout</var>.</dd>
+</dl>
+<h1><a name="label-60" id="label-60">Algebra::Vector</a></h1><!-- RDLabel: "Algebra::Vector" -->
+<p><em>(Class of Vector)</em></p>
+<p>The class of column vectors.</p>
+<h2><a name="label-61" id="label-61">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>MatrixAlgebra</var></li>
+</ul>
+<h2><a name="label-62" id="label-62">Included Module</a></h2><!-- RDLabel: "Included Module" -->
+<p>none.</p>
+<h2><a name="label-63" id="label-63">Associated Functions:</a></h2><!-- RDLabel: "Associated Functions:" -->
+<dl>
+<dt><a name="label-64" id="label-64"><code>Algebra.Vector(<var>ring</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra.Vector" -->
+<dd>
+Same as <!-- Reference, RDLabel "Algebra::Matrix::Vector.create" doesn't exist --><em class="label-not-found">Algebra::Matrix::Vector.create</em><!-- Reference end -->(ring, n).</dd>
+</dl>
+<h2><a name="label-65" id="label-65">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-66" id="label-66"><code>Algebra::Vector.create(<var>ring</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra::Vector.create" -->
+<dd>
+<p>Creates the class of the <var>n</var>-th dimensional (column) vector
+over the <var>ring</var>.</p>
+<p>The return value of this is a subclass of 
+<a href="#label-60">Algebra::Vector</a>.
+This subclass has the class methods: 
+<var>ground</var> and 
+<var>size</var>, 
+which returns <var>ring</var> and the size 
+<var>n</var> respectively.</p>
+<p>To get actual vectors, use the class methods: <var>new</var>, 
+<var>matrix</var> or
+<var>[]</var>.</p>
+<p><a href="#label-60">Algebra::Vector</a> is identified with 
+<a href="#label-0">Algebra::MatrixAlgebra</a> of type <code>[n, 1]</code>.</p></dd>
+<dt><a name="label-67" id="label-67"><code>Algebra::Vector::new(<var>array</var>)</code></a></dt><!-- RDLabel: "Algebra::Vector::new" -->
+<dd>
+<p>Returns the vector of the <var>array</var>.</p>
+<p>Example:</p>
+<pre>V = Algebra.Vector(Integer, 3)
+a = V.new([1, 2, 3])
+a.display
+  #=&gt; [1]
+  #=&gt; [2]
+  #=&gt; [3]</pre></dd>
+<dt><a name="label-68" id="label-68"><code>Algebra::Vector::vector{|<var>i</var>| ... }</code></a></dt><!-- RDLabel: "Algebra::Vector::vector" -->
+<dd>
+<p>Returns the vector of ... as the <var>i</var>-th element.</p>
+<p>Example:</p>
+<pre>V = Algebra.Vector(Integer, 3)
+a = V.vector{|j| j + 1}
+a.display
+  #=&gt; [1]
+  #=&gt; [2]
+  #=&gt; [3]</pre></dd>
+<dt><a name="label-69" id="label-69"><code>Algebra::Vector::matrix{|<var>i</var>, <var>j</var>| ... }</code></a></dt><!-- RDLabel: "Algebra::Vector::matrix" -->
+<dd>
+Returns the vector of ... as the <var>i</var>-th element.
+<var>j</var> is always 0.</dd>
+</dl>
+<h2><a name="label-70" id="label-70">Methods</a></h2><!-- RDLabel: "Methods" -->
+<dl>
+<dt><a name="label-71" id="label-71"><code>size</code></a></dt><!-- RDLabel: "size" -->
+<dd>
+Returns the dimension.</dd>
+<dt><a name="label-72" id="label-72"><code>to_a</code></a></dt><!-- RDLabel: "to_a" -->
+<dd>
+Returns the array of elements.</dd>
+<dt><a name="label-73" id="label-73"><code>transpose</code></a></dt><!-- RDLabel: "transpose" -->
+<dd>
+Transpose to the row vector <a href="#label-78">Algebra::Covector</a>.</dd>
+<dt><a name="label-74" id="label-74"><code>inner_product(<var>other</var>)</code></a></dt><!-- RDLabel: "inner_product" -->
+<dd>
+Reurns the inner product with <var>other</var>.</dd>
+<dt><a name="label-75" id="label-75"><code>inner_product_complex(<var>other</var>)</code></a></dt><!-- RDLabel: "inner_product_complex" -->
+<dd>
+Reurns the inner product with <var>other</var>.
+Same as <code>inner_product(other.conjugate)</code>.</dd>
+<dt><a name="label-76" id="label-76"><code>norm2</code></a></dt><!-- RDLabel: "norm2" -->
+<dd>
+Return the square of norm.
+Same as <code>inner_product(self)</code>.</dd>
+<dt><a name="label-77" id="label-77"><code>norm2_complex</code></a></dt><!-- RDLabel: "norm2_complex" -->
+<dd>
+Return the square of norm.
+Same as <code>inner_product(self.conjugate)</code>.</dd>
+</dl>
+<h1><a name="label-78" id="label-78">Algebra::Covector</a></h1><!-- RDLabel: "Algebra::Covector" -->
+<p><em>(Row Vector Class)</em></p>
+<p>The class of row vectors.</p>
+<h2><a name="label-79" id="label-79">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>MatrixAlgebra</var></li>
+</ul>
+<h2><a name="label-80" id="label-80">Included Module</a></h2><!-- RDLabel: "Included Module" -->
+<p>none.</p>
+<h2><a name="label-81" id="label-81">Associated Functions:</a></h2><!-- RDLabel: "Associated Functions:" -->
+<dl>
+<dt><a name="label-82" id="label-82"><code>Algebra.Covector(<var>ring</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra.Covector" -->
+<dd>
+Same as <a href="#label-84">Algebra::Covector::create</a>(ring, n).</dd>
+</dl>
+<h2><a name="label-83" id="label-83">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-84" id="label-84"><code>Algebra::Covector::create(<var>ring</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra::Covector::create" -->
+<dd>
+<p>Creates the class of the <var>n</var>-th dimensional (row) vector
+over the <var>ring</var>.</p>
+<p>The return value of this is a subclass of 
+<!-- Reference, RDLabel "Algebra::MatrixAlgebra::CoVector" doesn't exist --><em class="label-not-found">Algebra::MatrixAlgebra::CoVector</em><!-- Reference end -->.
+This subclass has the class methods: 
+<var>ground</var> and 
+<var>size</var>, whic
+h returns <var>ring</var> and the size 
+<var>n</var> respectively.</p>
+<p>To get actual vectors, use the class methods: <var>new</var>, 
+<var>matrix</var> or
+<var>[]</var>.</p>
+<p><a href="#label-78">Algebra::Covector</a> is identified with 
+<code>[1, n]</code>-type 
+<a href="#label-0">Algebra::MatrixAlgebra</a>.</p></dd>
+<dt><a name="label-85" id="label-85"><code>Algebra::Covector::new(<var>array</var>)</code></a></dt><!-- RDLabel: "Algebra::Covector::new" -->
+<dd>
+<p>Returns the row vector of the <var>array</var>.</p>
+<p>Example:</p>
+<pre>V = Algebra::Covector(Integer, 3)
+a = V.new([1, 2, 3])
+a.display
+  #=&gt; [1, 2, 3]</pre></dd>
+<dt><a name="label-86" id="label-86"><code>Algebra::Covector::covector{|<var>j</var>| ... }</code></a></dt><!-- RDLabel: "Algebra::Covector::covector" -->
+<dd>
+<p>Returns the vector of ... as the <var>j</var>-th element.</p>
+<p>Example:</p>
+<pre>V = Algebra.Covector(Integer, 3)
+a = V.covector{|j| j + 1}
+a.display
+  #=&gt; [1, 2, 3]</pre></dd>
+<dt><a name="label-87" id="label-87"><code>Algebra::Covector::matrix{|<var>i</var>, <var>j</var>| ... }</code></a></dt><!-- RDLabel: "Algebra::Covector::matrix" -->
+<dd>
+Returns the vector of ... as the <var>j</var>-th element.
+<var>i</var> is always 0.</dd>
+</dl>
+<h2><a name="label-88" id="label-88">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-89" id="label-89"><code>size</code></a></dt><!-- RDLabel: "size" -->
+<dd>
+Returns the dimension.</dd>
+<dt><a name="label-90" id="label-90"><code>to_a</code></a></dt><!-- RDLabel: "to_a" -->
+<dd>
+Returns the array of elements.</dd>
+<dt><a name="label-91" id="label-91"><code>transpose</code></a></dt><!-- RDLabel: "transpose" -->
+<dd>
+Transpose to the column vector <a href="#label-60">Algebra::Vector</a>.</dd>
+<dt><a name="label-92" id="label-92"><code>inner_product(<var>other</var>)</code></a></dt><!-- RDLabel: "inner_product" -->
+<dd>
+Reurns the inner product with <var>other</var>.</dd>
+<dt><a name="label-93" id="label-93"><code>inner_product_complex(<var>other</var>)</code></a></dt><!-- RDLabel: "inner_product_complex" -->
+<dd>
+Reurns the inner product with <var>other</var>.
+Same as <code>inner_product(other.conjugate)</code>.</dd>
+<dt><a name="label-94" id="label-94"><code>norm2</code></a></dt><!-- RDLabel: "norm2" -->
+<dd>
+Return the square of norm.
+Same as <code>inner_product(self)</code>.</dd>
+<dt><a name="label-95" id="label-95"><code>norm2_complex</code></a></dt><!-- RDLabel: "norm2_complex" -->
+<dd>
+Return the square of norm.
+Same as <code>inner_product(self.conjugate)</code>.</dd>
+</dl>
+<h1><a name="label-96" id="label-96">Algebra::SquareMatrix</a></h1><!-- RDLabel: "Algebra::SquareMatrix" -->
+<p><em>(Class of SquareMatrix)</em></p>
+<p>The Ring of Square Matrices over a ring.</p>
+<h2><a name="label-97" id="label-97">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Algebra::MatrixAlgebra</var></li>
+</ul>
+<h2><a name="label-98" id="label-98">Included Module</a></h2><!-- RDLabel: "Included Module" -->
+<p>none.</p>
+<h2><a name="label-99" id="label-99">Associated Functions:</a></h2><!-- RDLabel: "Associated Functions:" -->
+<dl>
+<dt><a name="label-100" id="label-100"><code>Algebra.SquareMatrix(<var>ring</var>, <var>size</var>)</code></a></dt><!-- RDLabel: "Algebra.SquareMatrix" -->
+<dd>
+Same as <!-- Reference, RDLabel "Algebra::SquareMatrix.create" doesn't exist --><em class="label-not-found">Algebra::SquareMatrix.create</em><!-- Reference end -->(ring, n).</dd>
+</dl>
+<h2><a name="label-101" id="label-101">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-102" id="label-102"><code>Algebra::SquareMatrix::create(<var>ring</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra::SquareMatrix::create" -->
+<dd>
+<p>Creates the class of square matrices.</p>
+<p>The return value of this is the subclass of 
+<a href="#label-96">Algebra::SquareMatrix</a>.
+This subclass has the class methods <var>ground</var> and
+<var>size</var> which returns <var>ring</var> and the size <var>n</var> respectively.</p>
+<p><a href="#label-96">Algebra::SquareMatrix</a> is identified 
+with <!-- Reference, RDLabel "Algebra::MatrixAlgebra::MatrixAlgebra" doesn't exist --><em class="label-not-found">Algebra::MatrixAlgebra::MatrixAlgebra</em><!-- Reference end --> of type 
+<code>[n, n]</code>.</p>
+<p>To get the actual matrices, use the class methods
+<!-- Reference, RDLabel "Algebra::SquareMatrix::new" doesn't exist --><em class="label-not-found">Algebra::SquareMatrix::new</em><!-- Reference end -->,  
+<!-- Reference, RDLabel "Algebra::SquareMatrix::matrix" doesn't exist --><em class="label-not-found">Algebra::SquareMatrix::matrix</em><!-- Reference end --> or 
+<!-- Reference, RDLabel "Algebra::SquareMatrix::[]" doesn't exist --><em class="label-not-found">Algebra::SquareMatrix::[]</em><!-- Reference end -->.</p></dd>
+<dt><a name="label-103" id="label-103"><code>Algebra::SquareMatrix.determinant(<var>aa</var>)</code></a></dt><!-- RDLabel: "Algebra::SquareMatrix.determinant" -->
+<dd>
+Return the determinat of a array of arrays <var>aa</var>.</dd>
+<dt><a name="label-104" id="label-104"><code>Algebra::SquareMatrix.det(<var>aa</var>)</code></a></dt><!-- RDLabel: "Algebra::SquareMatrix.det" -->
+<dd>
+Same as <!-- Reference, RDLabel "Algebra::SquareMatrix.determinat" doesn't exist --><em class="label-not-found">Algebra::SquareMatrix.determinat</em><!-- Reference end -->.</dd>
+<dt><a name="label-105" id="label-105"><code>Algebra::SquareMatrix::unity</code></a></dt><!-- RDLabel: "Algebra::SquareMatrix::unity" -->
+<dd>
+Returns the unity.</dd>
+<dt><a name="label-106" id="label-106"><code>Algebra::SquareMatrix::zero</code></a></dt><!-- RDLabel: "Algebra::SquareMatrix::zero" -->
+<dd>
+Returns the zero.</dd>
+<dt><a name="label-107" id="label-107"><code>Algebra::SquareMatrix::const(<var>x</var>)</code></a></dt><!-- RDLabel: "Algebra::SquareMatrix::const" -->
+<dd>
+Returns the scalar matrix with by the diagonal components <var>x</var>.</dd>
+</dl>
+<h2><a name="label-108" id="label-108">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-109" id="label-109"><code>size</code></a></dt><!-- RDLabel: "size" -->
+<dd>
+Returns the dimension.</dd>
+<dt><a name="label-110" id="label-110"><code>const(<var>x</var>)</code></a></dt><!-- RDLabel: "const" -->
+<dd>
+Returns the scalar matrix with the diagonal components <var>x</var>.</dd>
+<dt><a name="label-111" id="label-111"><code>determinant</code></a></dt><!-- RDLabel: "determinant" -->
+<dd>
+Returns the determinant.</dd>
+<dt><a name="label-112" id="label-112"><code>inverse</code></a></dt><!-- RDLabel: "inverse" -->
+<dd>
+Returns the inverse matrix.</dd>
+<dt><a name="label-113" id="label-113"><code>/(<var>other</var>)</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+Returns <code>self * other.inverse</code>. If <var>other</var> is a schalar,
+divides each entries by <var>other</var>.</dd>
+<dt><a name="label-114" id="label-114"><code>char_polynomial(<var>ring</var>)</code></a></dt><!-- RDLabel: "char_polynomial" -->
+<dd>
+Returns the characteristic polynomial over <var>ring</var>.</dd>
+<dt><a name="label-115" id="label-115"><code>char_matrix(<var>ring</var>)</code></a></dt><!-- RDLabel: "char_matrix" -->
+<dd>
+Returns the characteristic matrix over <var>ring</var>.</dd>
+<dt><a name="label-116" id="label-116"><code>_char_matrix(<var>poly_ring_matrix</var>)</code></a></dt><!-- RDLabel: "_char_matrix" -->
+<dd>
+Returns the characteristic matrix over <var>poly_ring_matrix</var>.</dd>
+</dl>
+<h1><a name="label-117" id="label-117">Algebra::GaussianElimination</a></h1><!-- RDLabel: "Algebra::GaussianElimination" -->
+<p><em>(Module of Gaussian Elimination)</em></p>
+<p>Module of the elimination method of Gauss.</p>
+<h2><a name="label-118" id="label-118">FileName:</a></h2><!-- RDLabel: "FileName:" -->
+<p><var>gaussian-elimination.rb</var></p>
+<h2><a name="label-119" id="label-119">Included Module</a></h2><!-- RDLabel: "Included Module" -->
+<p>none.</p>
+<h2><a name="label-120" id="label-120">Class Method:</a></h2><!-- RDLabel: "Class Method:" -->
+<p>none.</p>
+<h2><a name="label-121" id="label-121">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-122" id="label-122"><code>swap_r!(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "swap_r!" -->
+<dd>
+Swaps <var>i</var>-th row and <var>j</var>-th row.</dd>
+<dt><a name="label-123" id="label-123"><code>swap_r(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "swap_r" -->
+<dd>
+Returns the new matrix with <var>i</var>-th row and <var>j</var>-th row swapped.</dd>
+<dt><a name="label-124" id="label-124"><code>swap_c!(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "swap_c!" -->
+<dd>
+Swaps <var>i</var>-th column and <var>j</var>-th column.</dd>
+<dt><a name="label-125" id="label-125"><code>swap_c(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "swap_c" -->
+<dd>
+Returns the new matrix with <var>i</var>-th column and <var>j</var>-th
+column swapped.</dd>
+<dt><a name="label-126" id="label-126"><code>multiply_r!(<var>i</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "multiply_r!" -->
+<dd>
+Multiplys the <var>i</var>-th row by <var>c</var>.</dd>
+<dt><a name="label-127" id="label-127"><code>multiply_r(<var>i</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "multiply_r" -->
+<dd>
+Returns the new Matrix with the <var>i</var>-th row multiplied
+by <var>c</var>.</dd>
+<dt><a name="label-128" id="label-128"><code>multiply_c!(<var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "multiply_c!" -->
+<dd>
+Multiplys the <var>j</var>-th column by <var>c</var>.</dd>
+<dt><a name="label-129" id="label-129"><code>multiply_c(<var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "multiply_c" -->
+<dd>
+Returns the new Matrix with the <var>j</var>-th column multiplied
+by <var>c</var>.</dd>
+<dt><a name="label-130" id="label-130"><code>divide_r!(<var>i</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "divide_r!" -->
+<dd>
+Divides the <var>i</var>-th row by <var>c</var>.</dd>
+<dt><a name="label-131" id="label-131"><code>divide_r(<var>i</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "divide_r" -->
+<dd>
+Returns the new Matrix with the <var>i</var>-th row divided
+by <var>c</var>.</dd>
+<dt><a name="label-132" id="label-132"><code>divide_c!(<var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "divide_c!" -->
+<dd>
+Divides the <var>j</var>-th column by <var>c</var>.</dd>
+<dt><a name="label-133" id="label-133"><code>divide_c(<var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "divide_c" -->
+<dd>
+Returns the new Matrix with the <var>j</var>-th column divided
+by <var>c</var>.</dd>
+<dt><a name="label-134" id="label-134"><code>mix_r!(<var>i</var>, <var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "mix_r!" -->
+<dd>
+Adds the <var>j</var>-th row multiplied by <var>c</var> to the <var>i</var>-th row.</dd>
+<dt><a name="label-135" id="label-135"><code>mix_r(<var>i</var>, <var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "mix_r" -->
+<dd>
+Returns the new matrix such that
+the <var>j</var>-th row multiplied by <var>c</var> is added to
+the <var>i</var>-th row.</dd>
+<dt><a name="label-136" id="label-136"><code>mix_c!(<var>i</var>, <var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "mix_c!" -->
+<dd>
+Adds the <var>j</var>-th column multiplied by <var>c</var> to the <var>i</var>-th column.</dd>
+<dt><a name="label-137" id="label-137"><code>mix_c(<var>i</var>, <var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "mix_c" -->
+<dd>
+Returns the new matrix such that
+the <var>j</var>-th column multiplied by <var>c</var> is added to
+the <var>i</var>-th column.</dd>
+<dt><a name="label-138" id="label-138"><code>left_eliminate!</code></a></dt><!-- RDLabel: "left_eliminate!" -->
+<dd>
+<p>Transform to the step matrix by the left fundamental transformation.</p>
+<p>The return value is the array of the square matrix which used to transform,
+its determinant and the <a href="#label-51">rank</a>.</p>
+<p>Example:</p>
+<pre>require "matrix-algebra"
+require "mathn"
+class Rational &lt; Numeric
+  def inspect; to_s; end
+end
+M = Algebra.MatrixAlgebra(Rational, 4, 3)
+a = M.matrix{|i, j| i*10 + j}
+b = a.dup
+c, d, e = b.left_eliminate!
+b.display #=&gt; [1, 0, -1]
+          #=&gt; [0, 1, 2]
+          #=&gt; [0, 0, 0]
+          #=&gt; [0, 0, 0]
+c.display #=&gt; [-11/10, 1/10, 0, 0]
+          #=&gt; [1, 0, 0, 0]
+          #=&gt; [1, -2, 1, 0]
+          #=&gt; [2, -3, 0, 1]
+p c*a == b#=&gt; true
+p d       #=&gt; 1/10
+p e       #=&gt; 2</pre></dd>
+<dt><a name="label-139" id="label-139"><code>left_inverse</code></a></dt><!-- RDLabel: "left_inverse" -->
+<dd>
+The general inverse matrix obtained by the left fundamental
+transformation.</dd>
+<dt><a name="label-140" id="label-140"><code>left_sweep</code></a></dt><!-- RDLabel: "left_sweep" -->
+<dd>
+Returns the step matrix by the left fundamental transformation.</dd>
+<dt><a name="label-141" id="label-141"><code>step_matrix?</code></a></dt><!-- RDLabel: "step_matrix?" -->
+<dd>
+Returns the array of pivots if <var>self</var> is a step matrix, otherwise
+returns <var>nil</var>.</dd>
+<dt><a name="label-142" id="label-142"><code>kernel_basis</code></a></dt><!-- RDLabel: "kernel_basis" -->
+<dd>
+<p>Returns the array of vector( <a href="#label-60">Algebra::Vector</a> ) such that
+the right multiplication of it is null.</p>
+<p>Example:</p>
+<pre>require "matrix-algebra"
+require "mathn"
+M = Algebra.MatrixAlgebra(Rational, 5, 4)
+a = M.matrix{|i, j| i + j}
+a.display #=&gt;
+  #[0, 1, 2, 3]
+  #[1, 2, 3, 4]
+  #[2, 3, 4, 5]
+  #[3, 4, 5, 6]
+  #[4, 5, 6, 7]
+a.kernel_basis.each do |v|
+  puts "a * #{v} = #{a * v}"
+    #=&gt; a * [1, -2, 1, 0] = [0, 0, 0, 0, 0]
+    #=&gt; a * [2, -3, 0, 1] = [0, 0, 0, 0, 0]
+end</pre></dd>
+<dt><a name="label-143" id="label-143"><code>determinant_by_elimination</code></a></dt><!-- RDLabel: "determinant_by_elimination" -->
+<dd>
+Calculate the determinant by elimination.</dd>
+</dl>
+
+</body>
+</html>

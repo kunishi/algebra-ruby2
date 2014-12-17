@@ -1,0 +1,88 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/algebraic-parser.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] </p>
+<h1><a name="label-0" id="label-0">Algebra::AlgebraicParser</a></h1><!-- RDLabel: "Algebra::AlgebraicParser" -->
+<p><em>(Class of Evaluation of Algebraic Expression)</em></p>
+<h2><a name="label-1" id="label-1">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>algebraic-parser.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">Included Module:</a></h2><!-- RDLabel: "Included Module:" -->
+<p>none.</p>
+<h2><a name="label-4" id="label-4">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>Algebra::AlgebraicParser.eval(<var>string</var>, <var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::AlgebraicParser.eval" -->
+<dd>
+Calculates the <var>string</var> on <var>ring</var>.</dd>
+</dl>
+<h2><a name="label-6" id="label-6">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<p>none.</p>
+<h2><a name="label-7" id="label-7">Specification:</a></h2><!-- RDLabel: "Specification:" -->
+<h3><a name="label-8" id="label-8">Evaluation</a></h3><!-- RDLabel: "Evaluation" -->
+<p>The value of variable is obtained by the class method 
+<var>indeterminate</var> of <var>ring</var>. The value of numeral is 
+the return value of the class method <var>indeterminate</var> of
+<var>ring.ground</var>.</p>
+<pre>require "algebraic-parser"
+class A
+  def self.indeterminate(str)
+    case str
+    when "x"; 7
+    when "y"; 11
+    end
+  end
+  def A.ground
+    Integer
+  end
+end
+p Algebra::AlgebraicParser.eval("x * y - x^2 + x/8", A)
+    #=&gt; 7*11 - 7**2 + 7/8 = 28</pre>
+<p><var>indeterminate</var> of <var>Integer</var> is defined as following:</p>
+<pre>def Integer.indeterminate(x)
+  eval(x)
+end</pre>
+<p>in algebra-supplement.rb which is required by algebraic-parser.rb</p>
+<h3><a name="label-9" id="label-9">Identifier</a></h3><!-- RDLabel: "Identifier" -->
+<p>Identifier is "a alphabet + some digits". For example,</p>
+<pre>"a13bc04def0"</pre>
+<p>is interpreted as</p>
+<pre>"a13 * b * c04 * d * e * f0".</pre>
+<h3><a name="label-10" id="label-10">Operations</a></h3><!-- RDLabel: "Operations" -->
+<p>The order of strength of operations:</p>
+<pre>;               intermediate evaluation
++, -            sum, difference
++, -            unary +, unary -
+*, /            product, quotient
+(juxtaposition) product
+**, ^           power</pre>
+<h3><a name="label-11" id="label-11">Example:</a></h3><!-- RDLabel: "Example:" -->
+<p>In <var>Algebra::Polynomial</var> and <var>Algebra::MPolynomial</var>, 
+<var>indeterminate</var>
+and<var>ground</var> are defined suitably. So we can obtain the
+value of strings as following:</p>
+<pre>require "algebraic-parser"
+require "rational"
+require "m-polynomial"
+F = Algebra::MPolynomial(Rational)
+p Algebra::AlgebraicParser.eval("- (2*y)**3 + x", F) #=&gt; -8y^3 + x</pre>
+<p>In <var>Algebra::MPolynomial</var>, <var>indeterminate</var> resists the objects 
+representing
+variables in order that they appear. So we may set the order, using `;'.</p>
+<pre>F.variables.clear
+p Algebra::AlgebraicParser.eval("x; y; - (2*y)**3 + x", F) #=&gt; x - 8y^3</pre>
+
+</body>
+</html>

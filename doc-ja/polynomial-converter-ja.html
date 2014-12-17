@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/polynomial-converter-ja.html</title>
+</head>
+<body>
+<p>[<a href="index-ja.html">index-ja</a>] </p>
+<h1><a name="label-0" id="label-0">多項式環相互変換ユーティリティー</a></h1><!-- RDLabel: "多項式環相互変換ユーティリティー" -->
+<p>Polynomial &lt;-&gt; MPolynomial の相互変換ユーティリティーです。</p>
+<h2><a name="label-1" id="label-1">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>polyomimial-converter.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">メソッド</a></h2><!-- RDLabel: "メソッド" -->
+<dl>
+<dt><a name="label-3" id="label-3"><code>Algebra::Polynomial.convert_to(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::Polynomial.convert_to" -->
+<dd>
+<a href="m-polynomial-ja.html">Algebra::MPolynomial</a> である <var>ring</var>
+に変換します。</dd>
+<dt><a name="label-4" id="label-4"><code>Algebra::Polynomial#value_on(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::Polynomial#value_on" -->
+<dd>
+<p><a href="m-polynomial-ja.html">Algebra::MPolynomial</a> である <var>ring</var>
+における値を返します。</p>
+<p>例:</p>
+<pre>require "m-polynomial"
+require "polynomial"
+
+P = Algebra::Polynomial(Integer, "x", "y", "z")
+x, y, z = P.vars
+f = x**2 + y**2 + z**2 - x*y - y*z - z*x
+
+MP = P.convert_to(Algebra::MPolynomial)
+p f = f.value_on(MP) #=&gt; z^2 - zy - zx + y^2 - yx + x^2
+x, y, z = MP.vars
+p f == x**2 + y**2 + z**2 - x*y - y*z - z*x #=&gt; true</pre></dd>
+<dt><a name="label-5" id="label-5"><code>Algebra::MPolynomial.convert_to(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::MPolynomial.convert_to" -->
+<dd>
+<a href="m-polynomial-ja.html">Algebra::Polynomial</a> である <var>ring</var>
+に変換します。</dd>
+<dt><a name="label-6" id="label-6"><code>Algebra::MPolynomial#value_on(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::MPolynomial#value_on" -->
+<dd>
+<p><a href="m-polynomial-ja.html">Algebra::Polynomial</a> である <var>ring</var>
+における値を返します。</p>
+<p>例:</p>
+<pre>require "m-polynomial"
+require "polynomial"
+
+MP = Algebra::MPolynomial(Integer, "x", "y", "z")
+x, y, z = MP.vars
+f = x**2 + y**2 + z**2 - x*y - y*z - z*x
+
+P = MP.convert_to(Algebra::Polynomial)
+p f = f.value_on(P) #=&gt; x^2 + (-y - z)x + y^2 - zy + z^2
+x, y, z = P.vars
+p f == x**2 + y**2 + z**2 - x*y - y*z - z*x #=&gt; ture</pre></dd>
+</dl>
+
+</body>
+</html>

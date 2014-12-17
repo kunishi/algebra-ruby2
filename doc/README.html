@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/README.html</title>
+</head>
+<body>
+<h1><a name="label-0" id="label-0">Algebra</a></h1><!-- RDLabel: "Algebra" -->
+<p>2006.09.14</p>
+<ul>
+<li>Version: 0.72</li>
+<li>Author: Shin-ichiro HARA</li>
+<li>e-mail: sinara@blade.nagaokaut.ac.jp</li>
+<li>Home Page: <a href="http://blade.nagaokaut.ac.jp/~sinara/ruby/math/">&lt;URL:http://blade.nagaokaut.ac.jp/~sinara/ruby/math/&gt;</a></li>
+</ul>
+<h2><a name="label-1" id="label-1">Preface</a></h2><!-- RDLabel: "Preface" -->
+<p>This is a library for mathematical computations. 
+Our purpose is to express the mathematical object naturally in Ruby.
+Though it is not operated fast, we can see the algorithm of the
+mathematical processing not in black box but in scripts.</p>
+<p>This library is in development stage.
+At present, things we can handle are as follows:</p>
+<ul>
+<li>One-variate polynomial
+<ul>
+<li>Fundamental operations (addition, multiplication, quotient/remainder, ...)</li>
+<li>factorization</li>
+<li>Galois group</li>
+</ul></li>
+<li>Multi-variate polynomial
+<ul>
+<li>Fundamental operations (addition, multiplication, ...)</li>
+<li>factorization</li>
+<li>Creating Groebner-basis, quotient/remainder by Groebner-basis.</li>
+</ul></li>
+<li>Algebraic systems
+<ul>
+<li>Creating quotient fields</li>
+<li>Creating residue class fields</li>
+<li>Operating matrices</li>
+<li>Operating permutation groups</li>
+</ul></li>
+<li>Sets and Maps</li>
+</ul>
+<h2><a name="label-2" id="label-2">Installation</a></h2><!-- RDLabel: "Installation" -->
+<p>Install Ruby (See: <a href="http://www.ruby-lang.org/">&lt;URL:http://www.ruby-lang.org/&gt;</a> ).</p>
+<p>After expanding this archive, do</p>
+<pre>ruby install.rb</pre>
+<p>Then all files and directories under <var>lib</var> are copyed in
+the directory where Ruby can load.</p>
+<p>To accelerate calculation, it is better to use an extension 
+library of rational number:
+(<a href="http://blade.nagaokaut.ac.jp/~sinara/ruby/rational/">&lt;URL:http://blade.nagaokaut.ac.jp/~sinara/ruby/rational/&gt;</a>
+than to use the stardard library rational.rb.</p>
+<h2><a name="label-3" id="label-3">Usage and Samples</a></h2><!-- RDLabel: "Usage and Samples" -->
+<p>See <a href="index.html">index.html</a> in <var>doc</var> directory, where 
+manuals and sample codes are.</p>
+<h2><a name="label-4" id="label-4">Reference</a></h2><!-- RDLabel: "Reference" -->
+<ul>
+<li>D.Cox, J.Little and D.O'Shea, "IDEALS, VARIETIES AND ALGORITHMS", 1997, Springer.</li>
+<li>K. Kodama, "Polynomial", <a href="http://www.math.kobe-u.ac.jp/HOME/kodama/tips-RubyPoly.html">&lt;URL:http://www.math.kobe-u.ac.jp/HOME/kodama/tips-RubyPoly.html&gt;</a></li>
+<li>H.Anai, M.Noro and K.Yokoyama, "Computation of the splitting fields and the Galois groups of polynomials", Progres in Mathematics, 28-50, Vo.143, 1996</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/algebraic-extension-field-ja.html</title>
+</head>
+<body>
+<p>[<a href="index-ja.html">index-ja</a>] </p>
+<h1><a name="label-0" id="label-0">AlgebraicExtensionField</a></h1><!-- RDLabel: "AlgebraicExtensionField" -->
+<p><em>(代数拡大体)</em></p>
+<p>代数拡大体を表現するクラス</p>
+<h2><a name="label-1" id="label-1">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>algebraic-Extension-feild.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">スーパークラス:</a></h2><!-- RDLabel: "スーパークラス:" -->
+<ul>
+<li><var>ResidueClassRing</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">インクルードしているモジュール:</a></h2><!-- RDLabel: "インクルードしているモジュール:" -->
+<p>なし。</p>
+<h2><a name="label-4" id="label-4">関連するメソッド:</a></h2><!-- RDLabel: "関連するメソッド:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>Algebra.AlgebraicExtensionField(<var>field</var>, <var>obj</var>){|<var>x</var>| ... }</code></a></dt><!-- RDLabel: "Algebra.AlgebraicExtensionField" -->
+<dd>
+<a href="#label-7">::create</a> と同じ。</dd>
+</dl>
+<h2><a name="label-6" id="label-6">クラスメソッド:</a></h2><!-- RDLabel: "クラスメソッド:" -->
+<dl>
+<dt><a name="label-7" id="label-7"><code>::create(<var>k</var>, <var>obj</var>){|<var>x</var>| <var>p</var>(<var>x</var>) }</code></a></dt><!-- RDLabel: "::create" -->
+<dd>
+<p>体 <var>k</var> を、<var>obj</var> で表される変数 <var>x</var> の多項式
+<var>p(x)</var> で拡大した環 <var>k[x]/(p(x))</var>を返します。
+この環には、クラスメソッド <a href="#label-9">::var</a>、<a href="#label-11">::def_polys</a>、
+<a href="#label-12">::env_ring</a> が定義されます。</p>
+<p>例: 有理数を方程式 <code>x**2 + x + 1 == 0</code> で拡大した体 F を作る。</p>
+<pre>require "rational"
+require "algebraic-extension-field"
+F = Algebra::AlgebraicExtensionField.create(Rational, "x") {|x| x**2 + x + 1}
+x = F.var
+p( (x-1)** 3 / (x**2 - 1) ) #=&gt; -3x - 3</pre></dd>
+<dt><a name="label-8" id="label-8"><code>::to_ary</code></a></dt><!-- RDLabel: "::to_ary" -->
+<dd>
+<p><code>[self, var]</code> を返します。</p>
+<p>例: 代数拡大体と添加元を同時に定義する</p>
+<pre>require "rational"
+require "algebraic-extension-field"
+F, a = Algebra.AlgebraicExtensionField(Rational, "a") {|a| a**2 + a + 1}</pre></dd>
+<dt><a name="label-9" id="label-9"><code>::var</code></a></dt><!-- RDLabel: "::var" -->
+<dd>
+<a href="#label-7">::create</a> の返り値 <var>k[x]/(p(x))</var> に定義され、
+この剰余環における <var>x</var> で
+代表される剰余類を返します。</dd>
+<dt><a name="label-10" id="label-10"><code>::modulus</code></a></dt><!-- RDLabel: "::modulus" -->
+<dd>
+<a href="#label-7">::create</a> の返り値 <var>k[x]/(p(x))</var> に定義され、<var>k[x]</var> 
+の要素 <var>p(x)</var>  を返します。</dd>
+<dt><a name="label-11" id="label-11"><code>::def_polys</code></a></dt><!-- RDLabel: "::def_polys" -->
+<dd>
+<p><a href="#label-7">::create</a> の返り値 <var>k[x]/(p(x))</var> に定義され、
+長さ <var>n</var> の各 <a href="#label-10">::modulus</a> の配列を返します。
+ここで、自身は、基礎体 <var>k0</var> 上高さ <var>n</var> の
+再帰的な <var>AlgebraicExtensionField</var> であるとします。</p>
+<p>例: 基礎体を有理数とし、2, 3, 5 の立方根による拡大体を作る</p>
+<pre>require "algebra"
+# K0 == Rational
+K1 = AlgebraicExtensionField(Rational, "x1") { |x|
+  x ** 3 - 2
+}
+K2 = AlgebraicExtensionField(K1, "x2") { |y|
+  y ** 3 - 3
+}
+K3 = AlgebraicExtensionField(K2, "x3") { |z|
+  z ** 3 - 5
+}
+
+p K3.def_polys #=&gt; [x1^3 - 2, x2^3 - 3, x3^3 - 5]
+
+x1, x2, x3 = K1.var, K2.var, K3.var
+f = x1**2 + 2*x2**2 + 3*x3**2
+f0 = f.abs_lift
+
+p f0.type     #=&gt; (Polynomial/(Polynomial/(Polynomial/Rational)))
+p f0.type == K3.env_ring #=&gt; true
+
+p f #=&gt; 3x3^2 + 2x2^2 + x1^2
+p f0.evaluate(x3.abs_lift, x2.abs_lift, x1.abs_lift)
+    #=&gt; x3^2 + 2x2^2 + 3x3^2</pre></dd>
+<dt><a name="label-12" id="label-12"><code>::env_ring</code></a></dt><!-- RDLabel: "::env_ring" -->
+<dd>
+<a href="#label-7">::create</a> の返り値 <var>k[x]/(p(x))</var> に定義され、
+多変数多項式環 <var>k0[x1, x2,.., xn]</var> を返します。
+ここで、自身は、基礎体 <var>k0</var> 上高さ <var>n</var> の
+再帰的な <var>AlgebraicExtensionField</var> であるとします。</dd>
+<dt><a name="label-13" id="label-13"><code>::ground</code></a></dt><!-- RDLabel: "::ground" -->
+<dd>
+剰余環のもとになる多項式環 <var>k[x]</var> を返します。</dd>
+</dl>
+<h2><a name="label-14" id="label-14">メソッド</a></h2><!-- RDLabel: "メソッド" -->
+<dl>
+<dt><a name="label-15" id="label-15"><code>abs_lift</code></a></dt><!-- RDLabel: "abs_lift" -->
+<dd>
+<a href="#label-12">::env_ring</a> すなわち基礎体 <var>k0</var> 上
+の多変数多項式環 <var>k0[x1, x2,.., xn]</var>
+へのリフトを返します。</dd>
+<dt><a name="label-16" id="label-16"><code>[<var>n</var>]</code></a></dt><!-- RDLabel: "[]" -->
+<dd>
+<p><!-- Reference, RDLabel "n" doesn't exist --><em class="label-not-found">n</em><!-- Reference end --> 次の係数を返します。<code>lift[n]</code> と同じです。</p>
+<p>例: Fibonacci 数列</p>
+<pre>require "algebra"
+t = AlgebraicExtensionField(Integral, "t"){|x| x**2-x-1}.var
+(0..10).each do |n|
+  p( (t**n)[1] ) #=&gt; 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+end</pre></dd>
+</dl>
+
+</body>
+</html>

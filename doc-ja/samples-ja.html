@@ -1,0 +1,885 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/samples-ja.html</title>
+</head>
+<body>
+<p>[<a href="index-ja.html">index-ja</a>] </p>
+<h1><a name="label-0" id="label-0">練習帖</a></h1><!-- RDLabel: "練習帖" -->
+<h2><a name="label-1" id="label-1">CONTENTS</a></h2><!-- RDLabel: "CONTENTS" -->
+<ul>
+<li><a href="#label-2">有限集合</a>
+<ul>
+<li><a href="#label-3">集合</a></li>
+<li><a href="#label-4">写像</a></li>
+<li><a href="#label-5">群</a></li>
+</ul></li>
+<li><a href="#label-6">多項式の計算</a></li>
+<li><a href="#label-7">多変数多項式の計算</a></li>
+<li><a href="#label-8">多変数多項式の計算その２</a></li>
+<li><a href="#label-9">多項式を複数の多項式で割った余りを求める</a></li>
+<li><a href="#label-10">多項式のグレブナ基底を求める</a></li>
+<li><a href="#label-11">素体を作る</a></li>
+<li><a href="#label-12">代数体を作る</a></li>
+<li><a href="#label-15">商体の生成</a>
+<ul>
+<li><a href="#label-16">整数環の商体を取って有理数を作る</a></li>
+<li><a href="#label-17">有理関数体の生成</a></li>
+<li><a href="#label-18">代数拡大体上の有理式の計算</a></li>
+<li><a href="#label-19">代数関数体</a></li>
+</ul></li>
+<li><a href="#label-20">線形代数</a>
+<ul>
+<li><a href="#label-21">連立1次方程式を解く</a></li>
+<li><a href="#label-22">正方行列の対角化</a></li>
+<li><a href="#label-23">行列の単因子を求める</a></li>
+<li><a href="#label-24">行列の Jordan 標準形を求める</a></li>
+<li><a href="#label-25">Cayley-Hamilton の定理の（次元毎の）証明</a></li>
+</ul></li>
+<li><a href="#label-26">グレブナ基底を元の基底で表現する</a></li>
+<li><a href="#label-27">任意の基底で割った商と余りを求める（余り＝０に意味がある）</a></li>
+<li><a href="#label-28">因数分解</a>
+<ul>
+<li><a href="#label-29">整数係数多項式の因数分解</a></li>
+<li><a href="#label-30">Zp 係数多項式の因数分解</a></li>
+<li><a href="#label-31">有理数の代数拡大上の多項式の因数分解</a></li>
+<li><a href="#label-32">有理数の代数拡大の代数拡大上の多項式の因数分解</a></li>
+<li><a href="#label-33">x^4 + 10x^2 + 1 の因数分解</a></li>
+<li><a href="#label-34">整数、有理係数多変数多項式の因数分解</a></li>
+<li><a href="#label-35">Zp 係数多変数多項式の因数分解</a></li>
+</ul></li>
+<li><a href="#label-36">代数方程式</a>
+<ul>
+<li><a href="#label-37">最小多項式</a></li>
+<li><a href="#label-38">最小分解体</a></li>
+<li><a href="#label-39">多項式のガロア群</a></li>
+</ul></li>
+<li><a href="#label-40">初等幾何</a>
+<ul>
+<li><a href="#label-41">重心の存在</a></li>
+<li><a href="#label-42">外心の存在</a></li>
+<li><a href="#label-43">垂心の存在</a></li>
+<li><a href="#label-44">4 つの等面積</a></li>
+</ul></li>
+<li><a href="#label-45">解析</a>
+<ul>
+<li><a href="#label-46">ラグランジュの乗数法</a></li>
+</ul></li>
+</ul>
+<h2><a name="label-2" id="label-2">有限集合</a></h2><!-- RDLabel: "有限集合" -->
+<h3><a name="label-3" id="label-3">集合</a></h3><!-- RDLabel: "集合" -->
+<pre># sample-set01.rb
+
+require "algebra"
+#intersection
+p Set[0, 1, 2, 4] &amp; Set[1, 3, 5] == Set[1]
+p Set[0, 1, 2, 4] &amp; Set[7, 3, 5] == Set.phi
+
+#union
+p Set[0, 1, 2, 4] | Set[1, 3, 5] == Set[0, 1, 2, 3, 4, 5]
+
+#membership
+p Set[1, 3, 2].has?(1)
+
+#inclusion
+p Set[3, 2, 1, 3] &lt; Set[3, 1, 4, 2, 0]</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-4" id="label-4">写像</a></h3><!-- RDLabel: "写像" -->
+<pre># sample-map01.rb
+
+require "algebra"
+a = Map[0=&gt;2, 1=&gt;2, 2=&gt;0]
+b = Map[0=&gt;1, 1=&gt;1, 2=&gt;1]
+p a * b #=&gt; {0=&gt;2, 1=&gt;2, 2=&gt;2}</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-5" id="label-5">群</a></h3><!-- RDLabel: "群" -->
+<pre># sample-group01.rb
+
+require "algebra"
+e = Permutation[0, 1, 2, 3, 4]
+a = Permutation[1, 0, 3, 4, 2]
+b = Permutation[0, 2, 1, 3, 4]
+p a * b #=&gt; [2, 0, 3, 4, 1]
+
+g = Group.new(e, a, b)
+g.complete!
+p g == PermutationGroup.symmetric(5) #=&gt; true</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-6" id="label-6">多項式の計算</a></h2><!-- RDLabel: "多項式の計算" -->
+<pre># sample-polynomial01.rb
+
+require "algebra"
+P = Polynomial.create(Integer, "x")
+x = P.var
+p((x + 1)**100) #=&gt; x^100 + 100x^99 + ... + 100x + 1</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-7" id="label-7">多変数多項式の計算</a></h2><!-- RDLabel: "多変数多項式の計算" -->
+<pre># sample-polynomial02.rb
+
+require "algebra"
+P = Polynomial(Integer, "x", "y", "z")
+x, y, z = P.vars
+p((-x + y + z)*(x + y - z)*(x - y + z))
+#=&gt; -z^3 + (y + x)z^2 + (y^2 - 2xy + x^2)z - y^3 + xy^2 + x^2y - x^3</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-8" id="label-8">多変数多項式の計算その２</a></h2><!-- RDLabel: "多変数多項式の計算その２" -->
+<pre># sample-m-polynomial01.rb
+
+require "algebra"
+P = MPolynomial(Integer)
+x, y, z, w = P.vars("xyz")
+p((-x + y + z)*(x + y - z)*(x - y + z))
+#=&gt; -x^3 + x^2y + x^2z + xy^2 - 2xyz + xz^2 - y^3 + y^2z + yz^2 - z^3</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-9" id="label-9">多項式を複数の多項式で割った余りを求める</a></h2><!-- RDLabel: "多項式を複数の多項式で割った余りを求める" -->
+<pre># sample-divmod01.rb
+
+require "algebra"
+P = MPolynomial(Rational)
+x, y, z = P.vars("xyz")
+f = x**2*y + x*y**2 + y*2 + z**3
+g = x*y-z**3
+h = y*2-6*z
+
+P.set_ord(:lex) # lex, grlex, grevlex
+puts "(#{f}).divmod([#{g}, #{h}]) =&gt;", "#{f.divmod(g, h).inspect}"
+#=&gt; (x^2y + xy^2 + 2y + z^3).divmod([xy - z^3, 2y - 6z]) =&gt;
+#   [[x + y, 1/2z^3 + 1], xz^3 + 3z^4 + z^3 + 6z]
+#   = [[Quotient1,Quotient2], Remainder]</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-10" id="label-10">多項式のグレブナ基底を求める</a></h2><!-- RDLabel: "多項式のグレブナ基底を求める" -->
+<pre># sample-groebner01.rb
+
+require "algebra"
+P = MPolynomial(Rational, "xyz")
+x, y, z = P.vars("xyz")
+f1 = x**2 + y**2 + z**2 -1
+f2 = x**2 + z**2 - y
+f3 = x - z
+p Groebner.basis([f1, f2, f3])
+#=&gt; [x - z, y - 2z^2, z^4 + 1/2z^2 - 1/4]</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-11" id="label-11">素体を作る</a></h2><!-- RDLabel: "素体を作る" -->
+<pre># sample-primefield01.rb
+
+require "algebra"
+Z13 = ResidueClassRing(Integer, 13)
+
+a, b, c, d, e, f, g = Z13
+p [e + c, e - c, e * c, e * 2001, 3 + c, 1/c, 1/c * c, d / d, b * 1 / b]
+  #=&gt; [6, 2, 8, 9, 5, 7, 1, 1, 1]
+p( (1...13).collect{|i|  Z13[i]**12} )
+  #=&gt; [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-12" id="label-12">代数体を作る</a></h2><!-- RDLabel: "代数体を作る" -->
+<pre># sample-algebraicfield01.rb
+
+require "algebra"
+
+Px = Polynomial(Rational, "x")
+x = Px.var
+F = ResidueClassRing(Px, x**2 + x + 1)
+x = F[x]
+p( (x + 1)**100 )
+    #=&gt; -x - 1
+p( (x-1)** 3 / (x**2 - 1) )
+    #=&gt; -3x - 3
+
+G = Polynomial(F, "y")
+y = G.var
+p( (x + y + 1)** 7 )
+    #=&gt; y^7 + (7x + 7)y^6 + 8xy^5 + 4y^4 + (4x + 4)y^3 + 5xy^2 + 7y + x + 1
+
+H = ResidueClassRing(G, y**5 + x*y + 1)
+y = H[y]
+p( 1/(x + y + 1)**7 )
+  #=&gt; (1798/3x + 1825/9)y^4 + (-74x + 5176/9)y^3 + 
+  #     (-6886/9x - 5917/9)y^2 + (1826/3x - 3101/9)y + 2146/9x + 4702/9</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-13" id="label-13">これと同じものが次の様に書ける。</a></h3><!-- RDLabel: "これと同じものが次の様に書ける。" -->
+<pre># sample-algebraicfield02.rb
+
+require "algebra"
+
+F = AlgebraicExtensionField(Rational, "x") {|x| x**2 + x + 1}
+x = F.var
+p( (x + 1)**100 )
+p( (x-1)** 3 / (x**2 - 1) )
+
+H = AlgebraicExtensionField(F, "y") {|y| y**5 + x*y + 1}
+y = H.var
+p( 1/(x + y + 1)**7 )</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-14" id="label-14">ルートの計算</a></h3><!-- RDLabel: "ルートの計算" -->
+<pre># sample-algebraic-root01.rb
+
+require "algebra"
+
+R2, r2, r2_ = Root(Rational, 2) # r2 = sqrt(2), -sqrt(2)
+p r2 #=&gt; sqrt(2)
+R3, r3, r3_ = Root(R2, 3)       # r3 = sqrt(3), -sqrt(3)
+p r3 #=&gt; sqrt(3)
+R6, r6, r6_ = Root(R3, 6)       # R6 = R3, r6 = sqrt(6), -sqrt(6)
+p r6 #=&gt; -r2r3
+p( (r6 + r2)*(r6 - r2) ) #=&gt; 4
+
+F, a, b =  QuadraticExtensionField(Rational){|x| x**2 - x - 1}
+# fibonacci numbers
+(0..100).each do |n|
+  puts( (a**n - b**n)/(a - b) )
+end</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-15" id="label-15">商体の生成</a></h2><!-- RDLabel: "商体の生成" -->
+<h3><a name="label-16" id="label-16">整数環の商体を取って有理数を作る</a></h3><!-- RDLabel: "整数環の商体を取って有理数を作る" -->
+<pre># sample-quotientfield01.rb
+
+require "algebra"
+Q = LocalizedRing(Integer)
+a = Q.new(3, 5)
+b = Q.new(5, 3)
+p [a + b, a - b, a * b, a / b, a + 3, 1 + a]
+  #=&gt; [34/15, -16/15, 15/15, 9/25, 18/5, 8/5]</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-17" id="label-17">有理関数体の生成</a></h3><!-- RDLabel: "有理関数体の生成" -->
+<pre># sample-quotientfield02.rb
+
+require "algebra"
+
+F13 = ResidueClassRing(Integer, 13)
+
+P = Polynomial(F13, "x")
+Q = LocalizedRing(P)
+x = Q[P.var]
+p ( 1 / (x**2 - 1) - 1 / (x**3 - 1) )
+
+#This is equivalent to the following
+F = RationalFunctionField(F13, "x")
+x = F.var
+p ( 1 / (x**2 - 1) - 1 / (x**3 - 1) )</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-18" id="label-18">代数拡大体上の有理式の計算</a></h3><!-- RDLabel: "代数拡大体上の有理式の計算" -->
+<pre># sample-quotientfield03.rb
+
+require "algebra"
+
+F13 = ResidueClassRing(Integer, 13)
+F = AlgebraicExtensionField(F13, "a") {|a| a**2 - 2}
+a = F.var
+RF = RationalFunctionField(F, "x")
+x = RF.var
+
+p( (a/4*x + RF.unity/2)/(x**2 + a*x + 1) +
+  (-a/4*x + RF.unity/2)/(x**2 - a*x + 1) )
+#=&gt; 1/(x**4 + 1)</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-19" id="label-19">代数関数体</a></h3><!-- RDLabel: "代数関数体" -->
+<pre># sample-quotientfield04.rb
+
+require "algebra"
+
+F13 = ResidueClassRing(Integer, 13)
+F = RationalFunctionField(F13, "x")
+x = F.var
+AF = AlgebraicExtensionField(F, "a") {|a| a**2 - 2*x}
+a = AF.var
+
+p( (a/4*x + AF.unity/2)/(x**2 + a*x + 1) +
+  (-a/4*x + AF.unity/2)/(x**2 - a*x + 1) )
+#=&gt; (-x^3 + x^2 + 1)/(x^4 + 11x^3 + 2x^2 + 1)</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-20" id="label-20">線形代数</a></h2><!-- RDLabel: "線形代数" -->
+<h3><a name="label-21" id="label-21">連立1次方程式を解く</a></h3><!-- RDLabel: "連立1次方程式を解く" -->
+<pre># sample-gaussian-elimination01.rb
+
+require "algebra"
+M = MatrixAlgebra(Rational, 5, 4)
+a = M.matrix{|i, j| i + j}
+a.display #=&gt;
+  #[0, 1, 2, 3]
+  #[1, 2, 3, 4]
+  #[2, 3, 4, 5]
+  #[3, 4, 5, 6]
+  #[4, 5, 6, 7]
+a.kernel_basis.each do |v|
+  puts "a * #{v} = #{a * v}"
+  #=&gt; a * [1, -2, 1, 0] = [0, 0, 0, 0, 0]
+  #=&gt; a * [2, -3, 0, 1] = [0, 0, 0, 0, 0]
+end</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-22" id="label-22">正方行列の対角化</a></h3><!-- RDLabel: "正方行列の対角化" -->
+<pre># sample-diagonalization01.rb
+
+require "algebra"
+M = SquareMatrix(Rational, 3)
+a = M[[1,-1,-1], [-1,1,-1], [2,1,-1]]
+puts "A = "; a.display; puts
+#A =
+#  1,  -1,  -1
+# -1,   1,  -1
+#  2,   1,  -1
+
+e = a.diagonalize
+
+puts "Charactoristic Poly.: #{e.chpoly} =&gt; #{e.facts}";puts
+#Charactoristic Poly.: t^3 - t^2 + t - 6 =&gt; (t - 2)(t^2 + t + 3)
+
+puts "Algebraic Numbers:"
+e.roots.each do |po, rs|
+  puts "#{rs.join(', ')} : roots of #{po} == 0"
+end; puts
+#Algebraic Numbers:
+#a, -a - 1 : roots of t^2 + t + 3 == 0
+
+puts "EigenSpaces: "
+e.evalues.uniq.each do |ev|
+  puts "W_{#{ev}} = &lt;#{e.espaces[ev].join(', ')}&gt;"
+end; puts
+#EigenSpaces:
+#W_{2} = &lt;[4, -5, 1]&gt;
+#W_{a} = &lt;[1/3a + 1/3, 1/3a + 1/3, 1]&gt;
+#W_{-a - 1} = &lt;[-1/3a, -1/3a, 1]&gt;
+
+puts "Trans. Matrix:"
+puts "P ="
+e.tmatrix.display; puts
+puts "P^-1 * A * P = "; (e.tmatrix.inverse * a * e.tmatrix).display; puts
+#P =
+#  4, 1/3a + 1/3, -1/3a
+# -5, 1/3a + 1/3, -1/3a
+#  1,   1,   1
+#
+#P^-1 * A * P =
+#  2,   0,   0
+#  0,   a,   0
+#  0,   0, -a - 1</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-23" id="label-23">行列の単因子を求める</a></h3><!-- RDLabel: "行列の単因子を求める" -->
+<pre># sample-elementary-divisor01.rb
+
+require "algebra"
+
+M = SquareMatrix(Rational, 4)
+a = M[
+  [2, 0, 0, 0],
+  [0, 2, 0, 0],
+  [0, 0, 2, 0],
+  [5, 0, 0, 2]
+]
+P = Polynomial(Rational, "x")
+MP = SquareMatrix(P, 4)
+
+ac = a._char_matrix(MP)
+ac.display; puts #=&gt;
+#x - 2,   0,   0,   0
+#  0, x - 2,   0,   0
+#  0,   0, x - 2,   0
+# -5,   0,   0, x - 2
+
+p ac.elementary_divisor #=&gt; [1, x - 2, x - 2, x^2 - 4x + 4]
+
+require "algebra/matrix-algebra-triplet"
+at = ac.to_triplet.e_diagonalize
+
+at.body.display; puts #=&gt;
+#  1,   0,   0,   0
+#  0, x - 2,   0,   0
+#  0,   0, x - 2,   0
+#  0,   0,   0, x^2 - 4x + 4
+
+at.left.display; puts #=&gt;
+#  0,   0,   0, -1/5
+#  0,   1,   0,   0
+#  0,   0,   1,   0
+#  5,   0,   0, x - 2
+
+at.right.display; puts #=&gt;
+#  1,   0,   0, 1/5x - 2/5
+#  0,   1,   0,   0
+#  0,   0,   1,   0
+#  0,   0,   0,   1
+
+p at.left * ac * at.right == at.body #=&gt; true</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-24" id="label-24">行列の Jordan 標準形を求める</a></h3><!-- RDLabel: "行列の Jordan 標準形を求める" -->
+<pre># sample-jordan-form01.rb
+
+require "algebra"
+
+M4 = SquareMatrix(Rational, 4)
+m = M4[
+    [-1, 1, 2, -1],
+    [-5, 3, 4, -2],
+    [3, -1, 0, 1],
+    [5, -2, -2, 3]
+]
+m.jordan_form.display; #=&gt;
+#  2,   0,   0,   0
+#  0,   1,   1,   0
+#  0,   0,   1,   1
+#  0,   0,   0,   1
+puts
+
+#-----------------------------------
+m = M4[
+  [3, 1, -1, 1],
+  [-3, -1, 3, -1],
+  [-2, -2, 0, 0],
+  [0, 0, -4, 2]
+]
+jf, pt, qt, field, modulus  = m.jordan_form_info
+p modulus #=&gt; [a^2 + 4]
+jf.display; puts #=&gt;
+#  2,   1,   0,   0
+#  0,   2,   0,   0
+#  0,   0,   a,   0
+#  0,   0,   0,  -a
+
+m = m.convert_to(jf.class)
+p jf == pt * m * qt #=&gt; true
+
+#-----------------------------------
+m = M4[
+    [-1, 1, 2, -1],
+    [-5, 3, 4, -2],
+    [3, -1, 0, 1],
+    [5, -2, -2, 0]
+]
+jf, pt, qt, field, modulus  = m.jordan_form_info
+p modulus #=&gt; [a^3 + 3a - 1, b^2 + ab + a^2 + 3]
+jf.display; puts #=&gt;
+#  2,   0,   0,   0
+#  0,   a,   0,   0
+#  0,   0,   b,   0
+#  0,   0,   0, -b - a
+
+m = m.convert_to(jf.class)
+p jf == pt * m * qt #=&gt; true</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-25" id="label-25">Cayley-Hamilton の定理の（次元毎の）証明</a></h3><!-- RDLabel: "Cayley-Hamilton の定理の（次元毎の）証明" -->
+<pre># sample-cayleyhamilton01.rb
+
+require "algebra"
+
+n = 4
+R = MPolynomial(Integer)
+MR = SquareMatrix(R, n)
+m = MR.matrix{|i, j| R.var("x#{i}#{j}") }
+Rx = Polynomial(R, "x")
+ch = m.char_polynomial(Rx)
+p ch.evaluate(m) #=&gt; 0</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-26" id="label-26">グレブナ基底を元の基底で表現する</a></h2><!-- RDLabel: "グレブナ基底を元の基底で表現する" -->
+<pre># sample-groebner02.rb
+
+require "algebra"
+
+P = MPolynomial(Rational)
+x, y, z = P.vars "xyz"
+f1 = x**2 + y**2 + z**2 -1
+f2 = x**2 + z**2 - y
+f3 = x - z
+
+coeff, basis = Groebner.basis_coeff([f1, f2, f3])
+basis.each_with_index do |b, i|
+  p [coeff[i].inner_product([f1, f2, f3]), b]
+  p coeff[i].inner_product([f1, f2, f3]) == b #=&gt; true
+end</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-27" id="label-27">任意の基底で割った商と余りを求める（余り＝０に意味がある）</a></h2><!-- RDLabel: "任意の基底で割った商と余りを求める（余り＝０に意味がある）" -->
+<pre># sample-groebner03.rb
+
+require "algebra"
+F5 = ResidueClassRing(Integer, 2)
+F = AlgebraicExtensionField(F5, "a") {|a| a**3 + a + 1}
+a = F.var
+P = MPolynomial(F)
+
+x, y, z = P.vars("xyz")
+f1 = x + y**2 + z**2 - 1
+f2 = x**2 + z**2 - y * a
+f3 = x - z - a
+
+f = x**3 + y**3 + z**3
+q, r = f.divmod_s(f1, f2, f3)
+p f == q.inner_product([f1, f2, f3]) + r #=&gt; true</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-28" id="label-28">因数分解</a></h2><!-- RDLabel: "因数分解" -->
+<h3><a name="label-29" id="label-29">整数係数多項式の因数分解</a></h3><!-- RDLabel: "整数係数多項式の因数分解" -->
+<pre># sample-factorize01.rb
+
+require "algebra"
+
+P = Polynomial(Integer, "x")
+x = P.var
+f = 8*x**7 - 20*x**6 + 6*x**5 - 11*x**4 + 44*x**3 - 9*x**2 - 27
+p f.factorize #=&gt; (2x - 3)^3(x^2 + x + 1)^2</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-30" id="label-30">Zp 係数多項式の因数分解</a></h3><!-- RDLabel: "Zp 係数多項式の因数分解" -->
+<pre># sample-factorize02.rb
+
+require "algebra"
+
+Z7 = ResidueClassRing(Integer, 7)
+P = Polynomial(Z7, "x")
+x = P.var
+f = 8*x**7 - 20*x**6 + 6*x**5 - 11*x**4 + 44*x**3 - 9*x**2 - 27
+p f.factorize #=&gt; (x + 5)^2(x + 3)^2(x + 2)^3</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-31" id="label-31">有理数の代数拡大上の多項式の因数分解</a></h3><!-- RDLabel: "有理数の代数拡大上の多項式の因数分解" -->
+<pre># sample-factorize03.rb
+
+require "algebra"
+
+A = AlgebraicExtensionField(Rational, "a") {|a| a**2 + a + 1}
+a = A.var
+P = Polynomial(A, "x")
+x = P.var
+f = x**4 + (2*a + 1)*x**3 + 3*a*x**2 + (-3*a - 5)*x - a + 1
+p f.factorize #=&gt; (x + a)^3(x - a + 1)</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-32" id="label-32">有理数の代数拡大の代数拡大上の多項式の因数分解</a></h3><!-- RDLabel: "有理数の代数拡大の代数拡大上の多項式の因数分解" -->
+<pre># sample-factorize04.rb
+
+require "algebra"
+
+A = AlgebraicExtensionField(Rational, "a") {|a| a**2 - 2}
+B = AlgebraicExtensionField(A, "b"){|b| b**2 + 1}
+P = Polynomial(B, "x")
+x = P.var
+f = x**4 + 1
+p f.factorize
+#=&gt; (x - 1/2ab - 1/2a)(x + 1/2ab - 1/2a)(x + 1/2ab + 1/2a)(x - 1/2ab + 1/2a)</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-33" id="label-33">x^4 + 10x^2 + 1 の因数分解</a></h3><!-- RDLabel: "x^4 + 10x^2 + 1 の因数分解" -->
+<pre># sample-factorize05.rb
+
+require "algebra"
+
+def show(f, mod = 0)
+  if mod &gt; 0
+    zp = ResidueClassRing(Integer, mod)
+    pzp = Polynomial(zp, f.variable)
+    f = f.convert_to(pzp)
+  end
+  fact = f.factorize
+  printf "mod %2d: %-15s  =&gt;  %s\n", mod, f, fact
+end
+
+Px = Polynomial(Integer, "x")
+x = Px.var
+f = x**4 + 10*x**2 + 1
+#f = x**4 - 10*x**2 + 1
+show(f)
+Primes.new.each do |mod|
+  break if mod &gt; 100
+  show(f, mod)
+end
+
+#mod  0: x^4 + 10x^2 + 1  =&gt;  x^4 + 10x^2 + 1
+#mod  2: x^4 + 1          =&gt;  (x + 1)^4
+#mod  3: x^4 + x^2 + 1    =&gt;  (x + 2)^2(x + 1)^2
+#mod  5: x^4 + 1          =&gt;  (x^2 + 3)(x^2 + 2)
+#mod  7: x^4 + 3x^2 + 1   =&gt;  (x^2 + 4x + 6)(x^2 + 3x + 6)
+#mod 11: x^4 - x^2 + 1    =&gt;  (x^2 + 5x + 1)(x^2 + 6x + 1)
+#mod 13: x^4 + 10x^2 + 1  =&gt;  (x^2 - x + 12)(x^2 + x + 12)
+#mod 17: x^4 + 10x^2 + 1  =&gt;  (x^2 + 3x + 1)(x^2 + 14x + 1)
+#mod 19: x^4 + 10x^2 + 1  =&gt;  (x + 17)(x + 10)(x + 9)(x + 2)
+#mod 23: x^4 + 10x^2 + 1  =&gt;  (x^2 + 6)(x^2 + 4)
+#mod 29: x^4 + 10x^2 + 1  =&gt;  (x^2 + 21)(x^2 + 18)
+#mod 31: x^4 + 10x^2 + 1  =&gt;  (x^2 + 22x + 30)(x^2 + 9x + 30)
+#mod 37: x^4 + 10x^2 + 1  =&gt;  (x^2 + 32x + 36)(x^2 + 5x + 36)
+#mod 41: x^4 + 10x^2 + 1  =&gt;  (x^2 + 19x + 1)(x^2 + 22x + 1)
+#mod 43: x^4 + 10x^2 + 1  =&gt;  (x + 40)(x + 29)(x + 14)(x + 3)
+#mod 47: x^4 + 10x^2 + 1  =&gt;  (x^2 + 32)(x^2 + 25)
+#mod 53: x^4 + 10x^2 + 1  =&gt;  (x^2 + 41)(x^2 + 22)
+#mod 59: x^4 + 10x^2 + 1  =&gt;  (x^2 + 13x + 1)(x^2 + 46x + 1)
+#mod 61: x^4 + 10x^2 + 1  =&gt;  (x^2 + 54x + 60)(x^2 + 7x + 60)
+#mod 67: x^4 + 10x^2 + 1  =&gt;  (x + 55)(x + 39)(x + 28)(x + 12)
+#mod 71: x^4 + 10x^2 + 1  =&gt;  (x^2 + 43)(x^2 + 38)
+#mod 73: x^4 + 10x^2 + 1  =&gt;  (x + 68)(x + 44)(x + 29)(x + 5)
+#mod 79: x^4 + 10x^2 + 1  =&gt;  (x^2 + 64x + 78)(x^2 + 15x + 78)
+#mod 83: x^4 + 10x^2 + 1  =&gt;  (x^2 + 18x + 1)(x^2 + 65x + 1)
+#mod 89: x^4 + 10x^2 + 1  =&gt;  (x^2 + 9x + 1)(x^2 + 80x + 1)
+#mod 97: x^4 + 10x^2 + 1  =&gt;  (x + 88)(x + 54)(x + 43)(x + 9)</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-34" id="label-34">整数、有理係数多変数多項式の因数分解</a></h3><!-- RDLabel: "整数、有理係数多変数多項式の因数分解" -->
+<pre># sample-m-factorize01.rb
+
+require "algebra"
+P = MPolynomial(Integer)
+x, y, z = P.vars("xyz")
+f = x**3 + y**3 + z**3 - 3*x*y*z
+p f.factorize #=&gt; (x + y + z)(x^2 - xy - xz + y^2 - yz + z^2)
+
+PQ = MPolynomial(Rational)
+x, y, z = PQ.vars("xyz")
+f = x**3 + y**3/8 + z**3 - 3*x*y*z/2
+p f.factorize #=&gt; (1/8)(2x + y + 2z)(4x^2 - 2xy - 4xz + y^2 - 2yz + 4z^2)</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-35" id="label-35">Zp 係数多変数多項式の因数分解</a></h3><!-- RDLabel: "Zp 係数多変数多項式の因数分解" -->
+<pre># sample-m-factorize02.rb
+
+require "algebra"
+
+Z7 = ResidueClassRing(Integer, 7)
+P = MPolynomial(Z7)
+x, y, z = P.vars("xyz")
+f = x**3 + y**3 + z**3 - 3*x*y*z
+p f.factorize #=&gt; (x + 4y + 2z)(x + 2y + 4z)(x + y + z)</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-36" id="label-36">代数方程式</a></h2><!-- RDLabel: "代数方程式" -->
+<h3><a name="label-37" id="label-37">最小多項式</a></h3><!-- RDLabel: "最小多項式" -->
+<pre># sample-algebraic-equation01.rb
+
+require "algebra"
+
+PQ = MPolynomial(Rational)
+a, b, c = PQ.vars("abc")
+p AlgebraicEquation.minimal_polynomial(a + b + c, a**2-2, b**2-3, c**2-5)
+#=&gt; x^8 - 40x^6 + 352x^4 - 960x^2 + 576</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-38" id="label-38">最小分解体</a></h3><!-- RDLabel: "最小分解体" -->
+<pre># sample-splitting-field01.rb
+
+require "algebra"
+
+PQ = Polynomial(Rational, "x")
+x = PQ.var
+f = x**4 + 2
+p f #=&gt; x^4 + 2
+field, modulus, facts = f.decompose
+p modulus #=&gt; [a^4 + 2, b^2 + a^2]
+p facts #=&gt; (x - a)(x + a)(x - b)(x + b)
+
+fp = Polynomial(field, "x")
+x = fp.var
+facts = Factors.new(facts.collect{|g, n| [g.evaluate(x), n]})
+p facts.pi == f.convert_to(fp) #=&gt; true</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-39" id="label-39">多項式のガロア群</a></h3><!-- RDLabel: "多項式のガロア群" -->
+<pre># sample-galois-group01.rb
+
+require "algebra/rational"
+require "algebra/polynomial"
+
+P = Algebra.Polynomial(Rational, "x")
+x = P.var
+
+(x**3 - 3*x + 1).galois_group.each do |g|
+  p g
+end
+#=&gt; [0, 1, 2]
+#   [1, 2, 0]
+#   [2, 0, 1]]
+
+(x**3 - x + 1).galois_group.each do |g|
+  p g
+end
+#=&gt; [0, 1, 2]
+#   [1, 0, 2]
+#   [2, 0, 1]
+#   [0, 2, 1]
+#   [1, 2, 0]
+#   [2, 1, 0]</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-40" id="label-40">初等幾何</a></h2><!-- RDLabel: "初等幾何" -->
+<h3><a name="label-41" id="label-41">重心の存在</a></h3><!-- RDLabel: "重心の存在" -->
+<pre># sample-geometry01.rb
+
+require 'algebra'
+R = MPolynomial(Rational)
+x,y,a1,a2,b1,b2,c1,c2 = R.vars('xya1a2b1b2c1c2')
+
+V = Vector(R, 2)
+X, A, B, C = V[x,y], V[a1,a2], V[b1,b2], V[c1,c2]
+
+D = (B + C) /2
+E = (C + A) /2
+F = (A + B) /2
+
+def line(p1, p2, p3)
+  SquareMatrix.det([[1, *p1], [1, *p2], [1, *p3]])
+end
+
+l1 = line(X, A, D)
+l2 = line(X, B, E)
+l3 = line(X, C, F)
+s = line(A, B, C)
+
+g = Groebner.basis [l1, l2, l3, s-1] #s-1 means non degeneracy
+
+g.each_with_index do |f, i|
+  p f
+end
+#x - 1/3a1 - 1/3b1 - 1/3c1
+#y - 1/3a2 - 1/3b2 - 1/3c2
+#a1b2 - a1c2 - a2b1 + a2c1 + b1c2 - b2c1 - 1</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-42" id="label-42">外心の存在</a></h3><!-- RDLabel: "外心の存在" -->
+<pre># sample-geometry02.rb
+
+require 'algebra'
+R = MPolynomial(Rational)
+x,y,a1,a2,b1,b2,c1,c2 = R.vars('xya1a2b1b2c1c2')
+
+V = Vector(R, 2)
+X, A, B, C = V[x,y], V[a1,a2], V[b1,b2], V[c1,c2]
+
+def line(p1, p2, p3)
+  SquareMatrix.det([[1, *p1], [1, *p2], [1, *p3]])
+end
+
+def vline(p1, p2, p3)
+  (p1-p2).norm2 - (p1-p3).norm2
+end
+
+l1 = vline(X, A, B)
+l2 = vline(X, B, C)
+l3 = vline(X, C, A)
+
+s = line(A, B, C)
+
+g = Groebner.basis [l1, l2, l3, s-1] #s-1 means non degeneracy
+
+g.each do |f|
+  p f
+end
+#x - 1/2a1a2b1 + 1/2a1a2c1 + 1/2a1b1c2 - 1/2a1c1c2 - 1/2a1 - 1/2a2^2b2 + 1/2a2^2c2 + 1/2a2b1^2 - 1/2a2b1c1 + 1/2a2b2^2 - 1/2a2c2^2 - 1/2b1^2c2 + 1/2b1c1c2 - 1/2b2^2c2 + 1/2b2c2^2 - 1/2c1
+#y + 1/2a1^2b1 - 1/2a1^2c1 - 1/2a1b1^2 + 1/2a1c1^2 + 1/2a2^2b1 - 1/2a2^2c1 - 1/2a2b1b2 - 1/2a2b1c2 + 1/2a2b2c1 + 1/2a2c1c2 + 1/2b1^2c1 + 1/2b1b2c2 - 1/2b1c1^2 -1/2b2c1c2 - 1/2b2 - 1/2c2
+#a1b2 - a1c2 - a2b1 + a2c1 + b1c2 - b2c1 - 1</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-43" id="label-43">垂心の存在</a></h3><!-- RDLabel: "垂心の存在" -->
+<pre># sample-geometry04.rb
+
+require 'algebra'
+
+R = MPolynomial(Rational)
+x,y,a1,a2,b1,b2,c1,c2 = R.vars('xya1a2b1b2c1c2')
+V = Vector(R, 2)
+X, A, B, C = V[x,y], V[a1,a2], V[b1,b2], V[c1,c2]
+
+def perpendicular(p0, p1, p2, p3)
+  (p0-p1).inner_product(p2-p3)
+end
+
+def line(p1, p2, p3)
+  SquareMatrix.det([[1, *p1], [1, *p2], [1, *p3]])
+end
+
+l1 = perpendicular(X, A, B, C)
+l2 = perpendicular(X, B, C, A)
+l3 = perpendicular(X, C, A, B)
+
+s = line(A, B, C)
+g = Groebner.basis [l1, l2, l3, s-1] #s-1 means non degeneracy
+
+g.each do |f|
+  p f
+end
+#x + a1a2b1 - a1a2c1 - a1b1c2 + a1c1c2 + a2^2b2 - a2^2c2 - a2b1^2 + a2b1c1 - a2b2^2 + a2c2^2 + b1^2c2 - b1c1c2 - b1 + b2^2c2 - b2c2^2
+#y - a1^2b1 + a1^2c1 + a1b1^2 - a1c1^2 - a2^2b1 + a2^2c1 + a2b1b2 + a2b1c2 - a2b2c1 - a2c1c2 - a2 - b1^2c1 - b1b2c2 + b1c1^2 + b2c1c2
+#a1b2 - a1c2 - a2b1 + a2c1 + b1c2 - b2c1 - 1</pre>
+<p><a href="#label-1">_</a></p>
+<h3><a name="label-44" id="label-44">4 つの等面積</a></h3><!-- RDLabel: "4 つの等面積" -->
+<p>see <a href="http://www1.odn.ne.jp/drinkcat/topic/column/quest/quest_2/quest_2.html">&lt;URL:http://www1.odn.ne.jp/drinkcat/topic/column/quest/quest_2/quest_2.html&gt;</a> Question 3.</p>
+<pre># sample-geometry07.rb
+
+require "algebra"
+R = MPolynomial(Rational)
+m, b, a = R.vars("mba")
+K = LocalizedRing(R)
+a0, b0, m0 = K[a], K[b], K[m]
+
+M = SquareMatrix(K, 3)
+l0, l1, l2 = M[[0, 1, 0], [1, 1, -1], [1, 0, 0]]
+m4 = M[[a0, 1, -a0], [1, b0, -b0], [m0, -1, 0]]
+m40 = m4.dup; m40.set_row(0, l0)
+m41 = m4.dup; m41.set_row(1, l1)
+m42 = m4.dup; m42.set_row(2, l2)
+
+def mdet(m, i)
+  i = i % 3
+  m.minor(i, 2).determinant * (-1) ** i
+end
+
+def tris(m, i)
+  pts = [0, 1, 2] - [i]
+  (m.determinant)**2 / mdet(m, pts[0]) / mdet(m, pts[1])
+end
+
+u0 = (tris(m4, 0) - tris(m40, 0)).numerator
+u1 = (tris(m4, 1) - tris(m41, 1)).numerator
+u2 = (tris(m4, 2) - tris(m42, 2)).numerator
+
+puts [u0, u1, u2]
+puts
+
+[u0, u1, u2].each do |um|
+  p um.factorize
+end
+puts
+
+x = u0 / a / (m*b+1)
+y = u1 / (m+a) / (b-1)
+z = u2 / (-b*a+1)
+
+p x
+p y
+p z
+puts
+
+gb = Groebner.basis([x, y, z])
+puts gb
+puts
+
+gb.each do |v|
+  p v.factorize
+end
+#(-1)(-mb + m + ba^3 + ba^2 - ba - a^2)
+#(-1)(-ma + m + ba^2 - a^2)
+#(-1)(b + a - 1)(-ba + 1)(a)
+#(-1)(-ba + 1)(a)(a^2 + a - 1)
+
+# =&gt; a = -1/2 + \sqrt{5}/2</pre>
+<p><a href="#label-1">_</a></p>
+<h2><a name="label-45" id="label-45">解析</a></h2><!-- RDLabel: "解析" -->
+<h3><a name="label-46" id="label-46">ラグランジュの乗数法</a></h3><!-- RDLabel: "ラグランジュの乗数法" -->
+<pre># sample-lagrange-multiplier01.rb
+
+require 'algebra'
+P = MPolynomial(Rational)
+t, x, y, z = P.vars('txyz')
+f = x**3+2*x*y*z - z**2
+g = x**2 + y**2 + z**2 - 1
+
+fx = f.derivate(x)
+fy = f.derivate(y)
+fz = f.derivate(z)
+
+gx = g.derivate(x)
+gy = g.derivate(y)
+gz = g.derivate(z)
+
+F = [fx - t * gx, fy - t * gy, fz - t * gz, g]
+
+Groebner.basis(F).each do |h|
+  p h.factorize
+end
+
+#(1/7670)(7670t - 11505x - 11505yz - 335232z^6 + 477321z^4 - 134419z^2)
+#x^2 + y^2 + z^2 - 1
+#(1/3835)(3835xy - 19584z^5 + 25987z^3 - 6403z)
+#(1/3835)(3835x + 3835yz - 1152z^4 - 1404z^2 + 2556)(z)
+#(1/3835)(3835y^3 + 3835yz^2 - 3835y - 9216z^5 + 11778z^3 - 2562z)
+#(1/3835)(3835y^2 - 6912z^4 + 10751z^2 - 3839)(z)
+#(1/118)(118y - 1152z^3 + 453z)(z)(z - 1)(z + 1)
+#(1/1152)(z)(z - 1)(3z - 2)(3z + 2)(z + 1)(128z^2 - 11)</pre>
+<p><a href="#label-1">_</a></p>
+
+</body>
+</html>

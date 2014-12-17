@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/residue-class-ring.html</title>
+</head>
+<body>
+<p>[<a href="index.html">index</a>] </p>
+<h1><a name="label-0" id="label-0">Algebra::ResidueClassRing</a></h1><!-- RDLabel: "Algebra::ResidueClassRing" -->
+<p><em>(Class of Residue Class Ring)</em></p>
+<p>This class represents a residue class ring. To create concrete class,
+use the class method <a href="#label-7">::create</a> or 
+the function <a href="#label-5">Algebra.ResidueClassRing</a>()
+designating the base ring and the element of it.</p>
+<h2><a name="label-1" id="label-1">File Name:</a></h2><!-- RDLabel: "File Name:" -->
+<ul>
+<li><var>residue-class-ring.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">SuperClass:</a></h2><!-- RDLabel: "SuperClass:" -->
+<ul>
+<li><var>Object</var></li>
+</ul>
+<h2><a name="label-3" id="label-3">Included Modules:</a></h2><!-- RDLabel: "Included Modules:" -->
+<p>none.</p>
+<h2><a name="label-4" id="label-4">Associated Functions:</a></h2><!-- RDLabel: "Associated Functions:" -->
+<dl>
+<dt><a name="label-5" id="label-5"><code>Algebra.ResidueClassRing(<var>ring</var>, <var>mod</var>)</code></a></dt><!-- RDLabel: "Algebra.ResidueClassRing" -->
+<dd>
+Same as <!-- Reference, RDLabel "::create(ring, mod)" doesn't exist --><em class="label-not-found">::create(ring, mod)</em><!-- Reference end -->.</dd>
+</dl>
+<h2><a name="label-6" id="label-6">Class Methods:</a></h2><!-- RDLabel: "Class Methods:" -->
+<dl>
+<dt><a name="label-7" id="label-7"><code>::create(<var>ring</var>, <var>mod</var>)</code></a></dt><!-- RDLabel: "::create" -->
+<dd>
+<p>Returns the class of the residue class ring of the 
+<var>ring</var> and the modulus <var>mod</var>.</p>
+<p>This class is a subclass of <!-- Reference, RDLabel "ResidueClassRing" doesn't exist --><em class="label-not-found">ResidueClassRing</em><!-- Reference end --> and
+has the class methods <var>::ground</var>, <var>::modulus</var> and <code> [x] </code>
+, which return the fundamental ring <var>ring</var>, the modulus 
+<var>mod</var> and the representing residue class of <var>x</var>, respectively.</p>
+<p>Example: divide the polynomial ring by the modulus <code>x**2 + x + 1</code>.</p>
+<pre>require "rational"
+require "polynomial"
+require "residue-class-ring"
+Px = Algebra.Polynomial(Rational, "x")
+x = Px.var
+F = ResidueClassRing(Px, x**2 + x + 1)
+p F[x + 1]**100     #=&gt; -x - 1</pre>
+<p>When <var>ring</var> is <var>Integer</var>, all inverse elements are calculated
+in advance. And we can obtain the residue classes of 
+<code>0, 1, ... , mod-1</code> by <var>to_ary</var>.</p>
+<p>Example: the prime field of modulo 7</p>
+<pre>require "residue-class-ring"
+F7 = Algebra::ResidueClassRing.create(Integer, 7)
+a, b, c, d, e, f, g = F7
+p [e + c, e - c, e * c, e * 2001, 3 + c, 1/c, 1/c * c]
+  #=&gt; [6, 2, 1, 3, 5, 4, 1]
+p( (1...7).collect{|i| F7[i]**6} )
+  #=&gt; [1, 1, 1, 1, 1, 1]</pre></dd>
+<dt><a name="label-8" id="label-8"><code>::[<var>x</var>]</code></a></dt><!-- RDLabel: "::[]" -->
+<dd>
+Returns the residue class represented bye <var>x</var>.</dd>
+<dt><a name="label-9" id="label-9"><code>::zero</code></a></dt><!-- RDLabel: "::zero" -->
+<dd>
+Returns zero.</dd>
+<dt><a name="label-10" id="label-10"><code>::unity</code></a></dt><!-- RDLabel: "::unity" -->
+<dd>
+Returns unity.</dd>
+</dl>
+<h2><a name="label-11" id="label-11">Methods:</a></h2><!-- RDLabel: "Methods:" -->
+<dl>
+<dt><a name="label-12" id="label-12"><code>lift</code></a></dt><!-- RDLabel: "lift" -->
+<dd>
+Returns the representative of <var>self</var>.</dd>
+<dt><a name="label-13" id="label-13"><code>zero?</code></a></dt><!-- RDLabel: "zero?" -->
+<dd>
+Returns true if <var>self</var> is zero.</dd>
+<dt><a name="label-14" id="label-14"><code>zero</code></a></dt><!-- RDLabel: "zero" -->
+<dd>
+Returns zero.</dd>
+<dt><a name="label-15" id="label-15"><code>unity</code></a></dt><!-- RDLabel: "unity" -->
+<dd>
+Returns unity.</dd>
+<dt><a name="label-16" id="label-16"><code>==(<var>other</var>)</code></a></dt><!-- RDLabel: "==" -->
+<dd>
+Returns true if <var>self</var> equals <var>other</var>.</dd>
+<dt><a name="label-17" id="label-17"><code>+(<var>other</var>)</code></a></dt><!-- RDLabel: "+" -->
+<dd>
+Returns the sum of <var>self</var> and <var>other</var>.</dd>
+<dt><a name="label-18" id="label-18"><code>-(<var>other</var>)</code></a></dt><!-- RDLabel: "-" -->
+<dd>
+Returns the difference of <var>self</var> from <var>other</var>.</dd>
+<dt><a name="label-19" id="label-19"><code>*(<var>other</var>)</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+Returns the product of <var>self</var> and <var>other</var>.</dd>
+<dt><a name="label-20" id="label-20"><code>**(<var>n</var>)</code></a></dt><!-- RDLabel: "**" -->
+<dd>
+Returns the <var>n</var>-th power of <var>self</var>.</dd>
+<dt><a name="label-21" id="label-21"><code>/(<var>other</var>)</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+Returns the quotient of <var>self</var> by <var>other</var> using <a href="#label-22">inverse</a>.</dd>
+<dt><a name="label-22" id="label-22"><code>inverse</code></a></dt><!-- RDLabel: "inverse" -->
+<dd>
+Returns the inverse element, assuming the fundamental ring
+is Euclidian. When it does not exist, this returns nil.</dd>
+</dl>
+
+</body>
+</html>

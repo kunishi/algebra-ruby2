@@ -1,0 +1,285 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html 
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>algebra/finite-group-ja.html</title>
+</head>
+<body>
+<p>[<a href="index-ja.html">index-ja</a>] 
+<a href="#label-0">Algebra::OperatorDomain</a>
+/
+<a href="#label-18">Algebra::Set</a>
+/
+<a href="#label-27">Algebra::Group</a>
+/
+<a href="#label-64">Algebra::QuotientGroup</a></p>
+<h1><a name="label-0" id="label-0">Algebra::OperatorDomain</a></h1><!-- RDLabel: "Algebra::OperatorDomain" -->
+<p>群が作用する集合の性質を集めたモジュールです。
+<!-- Reference, RDLabel "Group" doesn't exist --><em class="label-not-found">Group</em><!-- Reference end --> クラスがインクルードしています。</p>
+<h2><a name="label-1" id="label-1">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>finite-group.rb</var></li>
+</ul>
+<h2><a name="label-2" id="label-2">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-3" id="label-3"><code>right_act(<var>other</var>)</code></a></dt><!-- RDLabel: "right_act" -->
+<dd>
+<var>self</var> と <var>other</var> の積を返します。すなわち <var>self</var>
+の元 <var>x</var> と <var>other</var> の元 <var>y</var> に対して <code>x * y</code> の
+形の元の集合（<var>Set</var>）を返します。</dd>
+<dt><a name="label-4" id="label-4"><code>act</code></a></dt><!-- RDLabel: "act" -->
+<dd>
+<a href="#label-3">right_act</a> のエイリアスです。</dd>
+<dt><a name="label-5" id="label-5"><code>left_act(<var>other</var>)</code></a></dt><!-- RDLabel: "left_act" -->
+<dd>
+<var>self</var> と <var>other</var> の積を返します。すなわち <var>self</var>
+の元 <var>x</var> と <var>other</var> の元 <var>y</var> に対して <code>y * x</code> の
+形の元の集合（<var>Set</var>）を返します。</dd>
+<dt><a name="label-6" id="label-6"><code>right_quotient(<var>other</var>)</code></a></dt><!-- RDLabel: "right_quotient" -->
+<dd>
+<var>self</var> を <var>other</var> で割った右剰余類の集合（<var>Set</var>）
+を返します。</dd>
+<dt><a name="label-7" id="label-7"><code>quotient</code></a></dt><!-- RDLabel: "quotient" -->
+<dt><a name="label-8" id="label-8"><code>right_coset</code></a></dt><!-- RDLabel: "right_coset" -->
+<dt><a name="label-9" id="label-9"><code>coset</code></a></dt><!-- RDLabel: "coset" -->
+<dd>
+<a href="#label-6">right_quotient</a> のエイリアスです。</dd>
+<dt><a name="label-10" id="label-10"><code>left_quotient(<var>other</var>)</code></a></dt><!-- RDLabel: "left_quotient" -->
+<dd>
+<var>self</var> を <var>other</var> で割った左剰余類の集合（<var>Set</var>）
+を返します。</dd>
+<dt><a name="label-11" id="label-11"><code>left_coset</code></a></dt><!-- RDLabel: "left_coset" -->
+<dd>
+<a href="#label-10">left_quotient</a> のエイリアスです。</dd>
+<dt><a name="label-12" id="label-12"><code>right_representatives(<var>other</var>)</code></a></dt><!-- RDLabel: "right_representatives" -->
+<dd>
+右剰余類 <a href="#label-6">right_quotient</a> から取った代表元の集合を返します。</dd>
+<dt><a name="label-13" id="label-13"><code>representatives</code></a></dt><!-- RDLabel: "representatives" -->
+<dd>
+<a href="#label-12">right_representatives</a> のエイリアスです。</dd>
+<dt><a name="label-14" id="label-14"><code>left_representatives(<var>other</var>)</code></a></dt><!-- RDLabel: "left_representatives" -->
+<dd>
+左剰余類 <a href="#label-10">left_quotient</a> から取った代表元の集合を返します。</dd>
+<dt><a name="label-15" id="label-15"><code>right_orbit!(<var>other</var>)</code></a></dt><!-- RDLabel: "right_orbit!" -->
+<dd>
+<var>self</var> を <var>other</var> を繰り返し右から作用させて広げます。
+作用は <var>*</var> によります。</dd>
+<dt><a name="label-16" id="label-16"><code>orbit!</code></a></dt><!-- RDLabel: "orbit!" -->
+<dd>
+<a href="#label-15">right_orbit!</a> のエイリアスです。</dd>
+<dt><a name="label-17" id="label-17"><code>left_orbit!(<var>other</var>)</code></a></dt><!-- RDLabel: "left_orbit!" -->
+<dd>
+<var>self</var> を <var>other</var> を繰り返し左から作用させて広げます。
+作用は <var>*</var> によります。</dd>
+</dl>
+<h1><a name="label-18" id="label-18">Algebra::Set</a></h1><!-- RDLabel: "Algebra::Set" -->
+<h2><a name="label-19" id="label-19">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>finite-group.rb</var>
+  ここでは <var>finite-set.rb</var> で定義された <a href="finite-set.html">Set</a>
+  に付け加えるべきメソッドを定義しています。</li>
+</ul>
+<h2><a name="label-20" id="label-20">インクルードしているモジュール:</a></h2><!-- RDLabel: "インクルードしているモジュール:" -->
+<ul>
+<li><var>OperatorDomain</var></li>
+</ul>
+<h2><a name="label-21" id="label-21">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-22" id="label-22"><code>*</code></a></dt><!-- RDLabel: "*" -->
+<dd>
+<a href="#label-4">act</a> のエイリアスです。</dd>
+<dt><a name="label-23" id="label-23"><code>/</code></a></dt><!-- RDLabel: "/" -->
+<dd>
+<a href="#label-7">quotient</a> のエイリアスです。</dd>
+<dt><a name="label-24" id="label-24"><code>%</code></a></dt><!-- RDLabel: "%" -->
+<dd>
+<a href="#label-13">representatives</a> のエイリアスです。</dd>
+<dt><a name="label-25" id="label-25"><code>increasing_series([<var>x</var>])</code></a></dt><!-- RDLabel: "increasing_series" -->
+<dd>
+<p><var>x</var> から始まる増大列の配列を返します。これは次のコードと同値
+です。</p>
+<pre>def increasing_series(x = unit_group)
+  a = []
+  loop do
+    a.push x
+    if x &gt;= (y = yield x)
+      break
+    end
+    x = y
+  end
+  a
+end</pre></dd>
+<dt><a name="label-26" id="label-26"><code>decreasing_series([<var>x</var>])</code></a></dt><!-- RDLabel: "decreasing_series" -->
+<dd>
+<p><var>x</var> から始まる減少の配列を返します。これは次のコードと同値
+です。</p>
+<pre>def decreasing_series(x = self)
+  a = []
+  loop do
+    a.push x
+    if x &lt;= (y = yield x)
+      break
+    end
+    x = y
+  end
+  a
+end</pre></dd>
+</dl>
+<h1><a name="label-27" id="label-27">Algebra::Group</a></h1><!-- RDLabel: "Algebra::Group" -->
+<h2><a name="label-28" id="label-28">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>finite-group.rb</var></li>
+</ul>
+<h2><a name="label-29" id="label-29">スーパークラス:</a></h2><!-- RDLabel: "スーパークラス:" -->
+<ul>
+<li><var>Set</var></li>
+</ul>
+<h2><a name="label-30" id="label-30">クラスメソッド:</a></h2><!-- RDLabel: "クラスメソッド:" -->
+<dl>
+<dt><a name="label-31" id="label-31"><code>::new(<var>u</var>, [<var>g0</var>, <var>g1</var>, ...]])</code></a></dt><!-- RDLabel: "::new" -->
+<dd>
+<var>u</var> を単位元とし、<var>g0</var>, <var>g1</var>, ... で構成される群を
+返します。</dd>
+<dt><a name="label-32" id="label-32"><code>::generate_strong(<var>u</var>, [<var>g0</var>, [<var>g1</var>, ...]])</code></a></dt><!-- RDLabel: "::generate_strong" -->
+<dd>
+単位元を <var>u</var>、強生成元を <var>g0</var>, <var>g1</var>, ... として、
+生成される群を返します。</dd>
+</dl>
+<h2><a name="label-33" id="label-33">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-34" id="label-34"><code>quotient_group(<var>u</var>)</code></a></dt><!-- RDLabel: "quotient_group" -->
+<dd>
+正規部分群 <var>u</var> による剰余群を返します。</dd>
+<dt><a name="label-35" id="label-35"><code>separate</code></a></dt><!-- RDLabel: "separate" -->
+<dd>
+ブロックを真とする元からなる部分群を返します。</dd>
+<dt><a name="label-36" id="label-36"><code>to_a</code></a></dt><!-- RDLabel: "to_a" -->
+<dd>
+各要素を配列にして返します。最初の要素は単位元です。</dd>
+<dt><a name="label-37" id="label-37"><code>unity</code></a></dt><!-- RDLabel: "unity" -->
+<dd>
+単位元を返します。</dd>
+<dt><a name="label-38" id="label-38"><code>unit_group</code></a></dt><!-- RDLabel: "unit_group" -->
+<dd>
+単位元で生成される単位群を返します。</dd>
+<dt><a name="label-39" id="label-39"><code>semi_complete!</code></a></dt><!-- RDLabel: "semi_complete!" -->
+<dd>
+現在の要素を掛け合わせて半群を構成します。</dd>
+<dt><a name="label-40" id="label-40"><code>semi_complete</code></a></dt><!-- RDLabel: "semi_complete" -->
+<dd>
+現在の要素を掛け合わせて半群を構成たものを返します。</dd>
+<dt><a name="label-41" id="label-41"><code>complete!</code></a></dt><!-- RDLabel: "complete!" -->
+<dd>
+現在の要素を掛け合わせて群を構成します。</dd>
+<dt><a name="label-42" id="label-42"><code>complete</code></a></dt><!-- RDLabel: "complete" -->
+<dd>
+現在の要素を掛け合わせて群を構成たものを返します。</dd>
+<dt><a name="label-43" id="label-43"><code>closed?</code></a></dt><!-- RDLabel: "closed?" -->
+<dd>
+群として閉じているとき真を返します。</dd>
+<dt><a name="label-44" id="label-44"><code>subgroups</code></a></dt><!-- RDLabel: "subgroups" -->
+<dd>
+全ての部分群の集合を返します。</dd>
+<dt><a name="label-45" id="label-45"><code>centralizer(<var>s</var>)</code></a></dt><!-- RDLabel: "centralizer" -->
+<dd>
+<var>self</var> における <var>s</var> の中心化群を返します。</dd>
+<dt><a name="label-46" id="label-46"><code>center</code></a></dt><!-- RDLabel: "center" -->
+<dd>
+<var>self</var> の中心化群を返します。</dd>
+<dt><a name="label-47" id="label-47"><code>center?(<var>x</var>)</code></a></dt><!-- RDLabel: "center?" -->
+<dd>
+<var>self</var> の中で元 <var>x</var> が中心に含まれているとき、真を返します。</dd>
+<dt><a name="label-48" id="label-48"><code>normalizer(<var>s</var>)</code></a></dt><!-- RDLabel: "normalizer" -->
+<dd>
+<var>self</var> における <var>s</var> の正規化群を返します。</dd>
+<dt><a name="label-49" id="label-49"><code>normal?(<var>s</var>)</code></a></dt><!-- RDLabel: "normal?" -->
+<dd>
+<var>s</var> が <var>self</var> の正規部分群であるとき真を返します。</dd>
+<dt><a name="label-50" id="label-50"><code>normal_subgroups</code></a></dt><!-- RDLabel: "normal_subgroups" -->
+<dd>
+全ての正規部分群の集合を返します。</dd>
+<dt><a name="label-51" id="label-51"><code>conjugacy_class(<var>x</var>)</code></a></dt><!-- RDLabel: "conjugacy_class" -->
+<dd>
+元 <var>x</var> の共役類を返します</dd>
+<dt><a name="label-52" id="label-52"><code>conjugacy_classes</code></a></dt><!-- RDLabel: "conjugacy_classes" -->
+<dd>
+<var>self</var> の全ての共役類の集合を返します。</dd>
+<dt><a name="label-53" id="label-53"><code>simple?</code></a></dt><!-- RDLabel: "simple?" -->
+<dd>
+単純群であるとき、真を返します。</dd>
+<dt><a name="label-54" id="label-54"><code>commutator([<var>h</var>])</code></a></dt><!-- RDLabel: "commutator" -->
+<dd>
+<var>self</var> と <var>h</var> との交換子群を返します。<var>h</var> を省略
+すると <var>self</var> が用いられます。</dd>
+<dt><a name="label-55" id="label-55"><code>D([<var>n</var>])</code></a></dt><!-- RDLabel: "D" -->
+<dd>
+<var>n</var> 番目の交換子群を返します。<code>D(0) = 自分自身</code>,
+<code>D(n+1) = [D[n], D[n]]</code> で定義されています。
+<var>n</var> を省略すると 1 が用いられます。</dd>
+<dt><a name="label-56" id="label-56"><code>commutator_series</code></a></dt><!-- RDLabel: "commutator_series" -->
+<dd>
+<code>[D(0), D(1), D(2),..., D(n)]</code> という配列を返します。この配列は
+<code>D(n) == D(n+1)</code> となる <var>n</var> で停止します。 </dd>
+<dt><a name="label-57" id="label-57"><code>solvable?</code></a></dt><!-- RDLabel: "solvable?" -->
+<dd>
+可解群であるとき真を返します。</dd>
+<dt><a name="label-58" id="label-58"><code>K([<var>n</var>])</code></a></dt><!-- RDLabel: "K" -->
+<dd>
+<code>K(0) = 自分自身</code>,
+<code>K(n+1) = [self, K[n]]</code> で定義される群を返します。
+<var>n</var> を省略すると 1 が用いられます。</dd>
+<dt><a name="label-59" id="label-59"><code>descending_central_series</code></a></dt><!-- RDLabel: "descending_central_series" -->
+<dd>
+降中心列
+<code>[K(0), K(1), K(2),..., K(n)]</code> という配列を返します。この配列は
+<code>K(n) == K(n+1)</code> となる <var>n</var> で停止します。 </dd>
+<dt><a name="label-60" id="label-60"><code>Z([<var>n</var>])</code></a></dt><!-- RDLabel: "Z" -->
+<dd>
+<code>Z(0) = 単位群</code>,
+<code>Z(n+1) = separate{|x| commutator(Set[x]) &lt;= Z(n-1)}</code> 
+で定義される群を返します。
+<var>n</var> を省略すると 1 が用いられます。</dd>
+<dt><a name="label-61" id="label-61"><code>ascending_central_series</code></a></dt><!-- RDLabel: "ascending_central_series" -->
+<dd>
+昇中心列
+<code>[Z(0), Z(1), Z(2),..., Z(n)]</code> という配列を返します。この配列は
+<code>Z(n) == Z(n+1)</code> となる <var>n</var> で停止します。 </dd>
+<dt><a name="label-62" id="label-62"><code>nilpotent?</code></a></dt><!-- RDLabel: "nilpotent?" -->
+<dd>
+冪零群であるとき真を返します。</dd>
+<dt><a name="label-63" id="label-63"><code>nilpotency_class</code></a></dt><!-- RDLabel: "nilpotency_class" -->
+<dd>
+冪零クラスを返します。冪例群でないとき <var>nil</var> を返します。</dd>
+</dl>
+<h1><a name="label-64" id="label-64">Algebra::QuotientGroup</a></h1><!-- RDLabel: "Algebra::QuotientGroup" -->
+<h2><a name="label-65" id="label-65">ファイル名:</a></h2><!-- RDLabel: "ファイル名:" -->
+<ul>
+<li><var>finite-group.rb</var></li>
+</ul>
+<h2><a name="label-66" id="label-66">スーパークラス:</a></h2><!-- RDLabel: "スーパークラス:" -->
+<ul>
+<li><var>Group</var></li>
+</ul>
+<h2><a name="label-67" id="label-67">クラスメソッド:</a></h2><!-- RDLabel: "クラスメソッド:" -->
+<dl>
+<dt><a name="label-68" id="label-68"><code>new(<var>u</var>, [<var>g0</var>, [<var>g1</var>,...]])</code></a></dt><!-- RDLabel: "new" -->
+<dd>
+<var>self</var> の正規部分群を <var>u</var> として、
+<var>u</var>, <var>g0</var>, <var>g1</var>, .. を剰余類とする剰余群を返します。</dd>
+</dl>
+<h2><a name="label-69" id="label-69">メソッド:</a></h2><!-- RDLabel: "メソッド:" -->
+<dl>
+<dt><a name="label-70" id="label-70"><code>inverse</code></a></dt><!-- RDLabel: "inverse" -->
+<dd>
+逆元を返します</dd>
+<dt><a name="label-71" id="label-71"><code>inv</code></a></dt><!-- RDLabel: "inv" -->
+<dd>
+<a href="#label-70">inverse</a> のエイリアスです。</dd>
+</dl>
+
+</body>
+</html>
