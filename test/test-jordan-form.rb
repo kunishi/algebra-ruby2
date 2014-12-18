@@ -84,7 +84,7 @@ A = [
 ]
 Ai = (0...A.size).to_a
 
-class TestJordanForm < Runit
+class TestJordanForm < Test::Unit::TestCase
   PR = Algebra.Polynomial(Rational, "x")
   def test_jordan_form0
     puts
@@ -99,10 +99,10 @@ class TestJordanForm < Runit
     m = Algebra.SquareMatrix(Rational, a.size)[*a]
     m.display; puts
     asr = Algebra.SquareMatrix(PR, a.size)
-   
+
     me = m._char_matrix(asr).to_quint.e_diagonalize
     elem_divs = me.body.diag
-    
+
     p elem_divs; puts
     me.body.display;puts
 
@@ -114,7 +114,7 @@ class TestJordanForm < Runit
     pfield = Algebra.Polynomial(field, "x")
     pfm_alg = Algebra.SquareMatrix(pfield, a.size)
 
-    jm = Algebra::JordanForm.construct(elem_divs, facts, field, pfield) 
+    jm = Algebra::JordanForm.construct(elem_divs, facts, field, pfield)
     jme = jm._char_matrix(pfm_alg).to_quint.e_diagonalize
 
     mebody = pfm_alg.convert_from(me.body)

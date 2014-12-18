@@ -22,7 +22,7 @@ MI = SquareMatrix(Integer, 5)
 MR56 = MatrixAlgebra(Rational, 5, 7)
 MI56 = MatrixAlgebra(Integer, 5, 7)
 
-class TestGaussianElimination < Runit
+class TestGaussianElimination < Test::Unit::TestCase
   def test_left_elimination
     a0 = [
       [3, 2, 0, -1, 7, 2, 3],
@@ -61,7 +61,7 @@ class TestGaussianElimination < Runit
       [0,   0,   0,   0,   0,   0,   0],
     ]
     assert_equal(MI56[*b0], a)
-    
+
   end
   def test_determinant_by_elimination
     a0 = [

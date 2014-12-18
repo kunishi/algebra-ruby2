@@ -48,7 +48,7 @@ m3 = M3[
   [6, 7, 8]]
 p f = m3.char_polynomial(Px)
 
-class TestMatrixAlgebra < Runit
+class TestMatrixAlgebra < Test::Unit::TestCase
   def test_basic
     m = M2[[0, 1], [2, 3]]
     assert_equal(m[1, 1], 3)

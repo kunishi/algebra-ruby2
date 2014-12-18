@@ -15,7 +15,7 @@ Q2 = Algebra.AlgebraicExtensionField(Rational, "a") {|a|
 }
 
 
-class TestPolyDecompose < Runit
+class TestPolyDecompose < Test::Unit::TestCase
   def test_mdf
     x = PQ.var
     #    f = x**2 - 3*x + 2
@@ -44,7 +44,7 @@ class TestPolyDecompose < Runit
       #    assert_equal(y, poly)
     end
   end
-  
+
   def _test_perm
     x = PQ.var
     [
@@ -72,7 +72,7 @@ class TestPolyDecompose < Runit
       #    a = Q2.var
       #    assert_equal(y, poly)
     end
-    
+
   end
 end
 

@@ -11,12 +11,12 @@ require "algebra/galois-group"
 
 class Rational;def inspect; to_s; end;end
 
-class TestAEF < Runit
+class TestAEF < Test::Unit::TestCase
   P = Algebra.Polynomial(Rational, "x")
 
   def test_galois_gr
     x = P.var
-    
+
     for i in 0..3
 #      next if i != 2
       f = [

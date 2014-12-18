@@ -5,7 +5,7 @@ class Rational;def inspect; to_s; end;end
 require "algebra/linear-algebra"
 #include Algebra
 
-class TestDiagonalize < Runit
+class TestDiagonalize < Test::Unit::TestCase
 
   def test_diagonalize
     m = Algebra.SquareMatrix(Rational, 4)
@@ -61,27 +61,27 @@ class TestDiagonalize < Runit
 
   def _test_diagonalize(a)
     puts "A = "; a.display; puts
-    
+
     extfield, proots, tmatrix, evalues, elms, evectors, espaces,
       chpoly, facts = a.diagonalize
 
     puts "Charactristic Polynomial: #{chpoly}"
     puts "                          => #{facts}"
     puts
-    
+
     puts "Algebraic Numbers:"
     proots.each do |po, rs|
       puts "#{rs.join(', ')} : roots of #{po} == 0"
     end
     puts
-    
+
     puts "Eigen Spaces: "
     evalues.uniq.each do |ev|
       puts "W_{#{ev}} = <#{espaces[ev].join(', ')}>"
     end
-    
+
     puts
-    
+
     puts "P = "; tmatrix.display; puts
 
     q = tmatrix.inverse

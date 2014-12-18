@@ -9,7 +9,7 @@ include Algebra
 
 PF = Factors
 
-class TestProductFactors < Runit
+class TestProductFactors < Test::Unit::TestCase
   def test_int
     facts = PF.new
     probrem = [2, 3, 5, 7, 11, 13, 3, 2, 7, 3]
@@ -25,4 +25,3 @@ class TestProductFactors < Runit
 end
 
 Tests(TestProductFactors)
-

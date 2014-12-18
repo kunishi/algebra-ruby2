@@ -21,7 +21,7 @@ exit
 =end
 class Rational;def inspect; to_s; end;end
 
-class TestFiniteSet < Runit
+class TestFiniteSet < Test::Unit::TestCase
   include Algebra
 
   def test_initialize #test for initialize
@@ -258,7 +258,7 @@ class TestFiniteSet < Runit
     end
     assert_equal(s, Set[[0, 1], [0, 2], [1, 2]])
   end
-  
+
   def test_each_member #test for each_member
     s = Set.phi
     Set[0, 1, 2].each_member(1) do |a|

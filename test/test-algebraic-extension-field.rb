@@ -10,7 +10,7 @@ require "algebra/rational"
 
 class Rational;def inspect; to_s; end;end
 
-class TestAEF < Runit
+class TestAEF < Test::Unit::TestCase
   AEF = Algebra.AlgebraicExtensionField(Rational, "x") { |x|
     x ** 2 + 1
   }

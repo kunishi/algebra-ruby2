@@ -6,7 +6,7 @@
 require "rubyunit"
 class Rational;def inspect; to_s; end;end
 
-class TestProtoType < Runit
+class TestProtoType < Test::Unit::TestCase
   def test_factorize
     assert_equal(0, 0)
     assert(1 > 0)
