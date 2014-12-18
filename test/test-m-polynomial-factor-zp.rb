@@ -44,5 +44,3 @@ class TestMPolynomialFactorZp < Test::Unit::TestCase
     end
   end
 end
-
-Tests(TestMPolynomialFactorZp)

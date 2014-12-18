@@ -59,5 +59,3 @@ class TestMPolynomialFactorInt < Test::Unit::TestCase
     end
   end
 end
-
-Tests(TestMPolynomialFactorInt)

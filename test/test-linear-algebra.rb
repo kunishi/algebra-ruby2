@@ -91,5 +91,3 @@ class TestDiagonalize < Test::Unit::TestCase
     [tmatrix, extfield, evalues, elms]
   end
 end
-
-Tests(TestDiagonalize)

@@ -12,5 +12,3 @@ class TestProtoType < Test::Unit::TestCase
     assert(1 > 0)
   end
 end
-
-Tests(TestProtoType)

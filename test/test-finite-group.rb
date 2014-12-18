@@ -273,4 +273,3 @@ class TestFiniteGroup < Test::Unit::TestCase
     assert_equal(a*a, e)
   end
 end
-Tests(TestFiniteGroup)

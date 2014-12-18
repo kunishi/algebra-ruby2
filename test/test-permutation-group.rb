@@ -130,4 +130,3 @@ class TestPermutationGroup < Test::Unit::TestCase
   end
 
 end
-Tests(TestPermutationGroup)

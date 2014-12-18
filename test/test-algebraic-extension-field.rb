@@ -29,5 +29,3 @@ class TestAEF < Test::Unit::TestCase
     assert_equal(w, 2*x*y-2)
   end
 end
-
-Tests(TestAEF)

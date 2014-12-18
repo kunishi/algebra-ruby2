@@ -235,5 +235,3 @@ class TestFiniteMap < Test::Unit::TestCase
     assert_equal(s.inv_image(Set[]), Set[])
   end
 end
-
-Tests(TestFiniteMap)

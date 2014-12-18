@@ -35,5 +35,3 @@ class TestPolynomialFactorZp < Test::Unit::TestCase
     end
   end
 end
-
-Tests(TestPolynomialFactorZp)

@@ -61,5 +61,3 @@ class TestMIndex < Test::Unit::TestCase
     end
   end
 end
-
-Tests(TestMIndex)

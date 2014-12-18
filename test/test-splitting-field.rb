@@ -41,5 +41,3 @@ class TestSF < Test::Unit::TestCase
     end
   end
 end
-
-Tests(TestSF)

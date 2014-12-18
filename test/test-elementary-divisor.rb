@@ -45,5 +45,3 @@ class TestElementaryDivisor < Test::Unit::TestCase
     assert_equal(d, fac)
   end
 end
-
-Tests(TestElementaryDivisor)

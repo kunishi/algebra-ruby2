@@ -486,4 +486,3 @@ class TestFiniteSet < Test::Unit::TestCase
 #    assert(true)
 #  end
 end
-Tests(TestFiniteSet)

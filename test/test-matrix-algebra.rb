@@ -113,5 +113,3 @@ class TestMatrixAlgebra < Test::Unit::TestCase
     assert_equal(MZ3, (mQ*mZ3).class)
   end
 end
-
-Tests(TestMatrixAlgebra)

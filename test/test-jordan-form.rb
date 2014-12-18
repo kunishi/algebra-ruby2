@@ -154,5 +154,3 @@ class TestJordanForm < Test::Unit::TestCase
     end
   end
 end
-
-Tests(TestJordanForm)

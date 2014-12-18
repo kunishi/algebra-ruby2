@@ -17,7 +17,4 @@ if __FILE__ == $0
       assert_equal(x**3 + 3*x**2 + 3*x + 1, (x + 1)**3)
     end
   end
-
-  #RUNIT::CUI::TestRunner.run(TestPolynomial.suite).succeed?
-  Tests(TestPolynomial)
 end

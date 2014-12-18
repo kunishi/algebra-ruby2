@@ -23,5 +23,3 @@ class TestProductFactors < Test::Unit::TestCase
     assert_equal(PF.mk(2,2, 3,3, 5,1, 7,2, 11,1, 13,1), PF[*probrem])
   end
 end
-
-Tests(TestProductFactors)

@@ -39,5 +39,3 @@ class TestAEF < Test::Unit::TestCase
   end
 
 end
-
-Tests(TestAEF)

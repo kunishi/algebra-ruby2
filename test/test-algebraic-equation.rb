@@ -75,5 +75,3 @@ class TestPolyDecompose < Test::Unit::TestCase
 
   end
 end
-
-Tests(TestPolyDecompose)

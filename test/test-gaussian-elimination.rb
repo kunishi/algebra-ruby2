@@ -112,7 +112,6 @@ class TestGaussianElimination < Test::Unit::TestCase
 		 ], k)
   end
 end
-Tests(TestGaussianElimination)
 
 
 #  R = MPolynomial(Integer)
