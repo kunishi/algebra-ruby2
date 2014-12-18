@@ -10,7 +10,7 @@ require "algebra/m-polynomial"
 class Rational;def inspect; to_s; end;end
 P = Algebra::MPolynomial.create(Integer, "x", "y", "z")
 
-class TestMIndex < Runit
+class TestMIndex < Test::Unit::TestCase
   def test_compare
     x, y, z = P.vars
     P.with_ord(:lex) do
@@ -61,6 +61,3 @@ class TestMIndex < Runit
     end
   end
 end
-
-Tests(TestMIndex)
-

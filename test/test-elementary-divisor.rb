@@ -6,7 +6,7 @@ require "algebra/linear-algebra"
 require "algebra/matrix-algebra-triplet"
 #include Algebra
 
-class TestElementaryDivisor < Runit
+class TestElementaryDivisor < Test::Unit::TestCase
   M4 = Algebra.SquareMatrix(Rational, 4)
   PR = Algebra.Polynomial(Rational, "x")
   SPR4 = Algebra.SquareMatrix(PR, 4)
@@ -45,5 +45,3 @@ class TestElementaryDivisor < Runit
     assert_equal(d, fac)
   end
 end
-
-Tests(TestElementaryDivisor)

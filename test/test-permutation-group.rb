@@ -10,7 +10,7 @@ Pg = PermutationGroup
 P = Permutation
 class Rational;def inspect; to_s; end;end
 
-class TestPermutationGroup < Runit
+class TestPermutationGroup < Test::Unit::TestCase
   #PermutationGropu
   def test_self_dot_unity #test for self.unity
     assert_equal(P.unity(3), [0, 1, 2])
@@ -130,4 +130,3 @@ class TestPermutationGroup < Runit
   end
 
 end
-Tests(TestPermutationGroup)

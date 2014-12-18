@@ -27,7 +27,7 @@ C = PG[e, a, b, a*b]
 
 class Rational;def inspect; to_s; end;end
 
-class TestFiniteGroup < Runit
+class TestFiniteGroup < Test::Unit::TestCase
   #Operator Domain
   def test__star #test for *
     ab = A * B
@@ -273,4 +273,3 @@ class TestFiniteGroup < Runit
     assert_equal(a*a, e)
   end
 end
-Tests(TestFiniteGroup)

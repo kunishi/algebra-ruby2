@@ -17,7 +17,7 @@ FS = [
   (x**8+x**6+x**5+x**4+x**3+x**2+1)*(x**2+x+1)**3
 ]
 
-class TestPolynomialFactorZp < Runit
+class TestPolynomialFactorZp < Test::Unit::TestCase
   def test_factorize
     [2, 3, 5, 7, 11].each do |n|
       fn = ResidueClassRing(Integer, n)
@@ -35,5 +35,3 @@ class TestPolynomialFactorZp < Runit
     end
   end
 end
-
-Tests(TestPolynomialFactorZp)

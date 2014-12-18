@@ -36,7 +36,7 @@ FSQ = [
 #PF = PolynomialFactorization::Factors
 PF = Algebra::Factors
 
-class TestMPolynomialFactorInt < Runit
+class TestMPolynomialFactorInt < Test::Unit::TestCase
   def test_factorize_int
     puts
     FS.each_with_index do |fs, i|
@@ -59,5 +59,3 @@ class TestMPolynomialFactorInt < Runit
     end
   end
 end
-
-Tests(TestMPolynomialFactorInt)

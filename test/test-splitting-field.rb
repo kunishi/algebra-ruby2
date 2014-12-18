@@ -9,7 +9,7 @@ require "algebra/splitting-field"
 
 class Rational;def inspect; to_s; end;end
 
-class TestSF < Runit
+class TestSF < Test::Unit::TestCase
   P = Algebra.Polynomial(Rational, "x")
   def test_sf
     x = P.var
@@ -41,5 +41,3 @@ class TestSF < Runit
     end
   end
 end
-
-Tests(TestSF)

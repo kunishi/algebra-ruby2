@@ -32,7 +32,7 @@ FS = [
 #PF = PolynomialFactorization::Factors
 PF = Algebra::Factors
 
-class TestMPolynomialFactorZp < Runit
+class TestMPolynomialFactorZp < Test::Unit::TestCase
   def test_factorize
     puts
     FS.each do |fs|
@@ -44,5 +44,3 @@ class TestMPolynomialFactorZp < Runit
     end
   end
 end
-
-Tests(TestMPolynomialFactorZp)

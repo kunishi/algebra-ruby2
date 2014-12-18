@@ -9,7 +9,7 @@ include Algebra
 
 class Rational;def inspect; to_s; end;end
 
-class TestFiniteMap < Runit
+class TestFiniteMap < Test::Unit::TestCase
   def test_initialize #test for initialize
     s = Map.new(0 => 10, 1 => 11, 2 => 12)
     t = Map.new({0 => 10, 1 => 11, 2 => 12})
@@ -22,16 +22,16 @@ class TestFiniteMap < Runit
     s = Map.new(0 => 10, 1 => 11, 2 => 12)
     assert_equal(s, t)
   end
-  
+
   def test_new_h #test for self.new_h
     s0 = Map.new(0 => 10, 1 => 11, 2 => 12)
     s = Map.new_h({0 => 10, 1 => 11, 2 => 12})
     t = Map.new_h(0 => 10, 1 => 11, 2 => 12)
-    
+
     assert_equal(s0, s)
     assert_equal(s, t)
   end
-  
+
   def test_self_dot__bra #test for self.[]
     s = Map.new(0 => 10, 1 => 11, 2 => 12)
     t = Map[0 => 10, 1 => 11, 2 => 12]
@@ -39,17 +39,17 @@ class TestFiniteMap < Runit
     assert_equal(s, t)
     assert_equal(s, u)
   end
-  
+
   def test_self_dot_empty_set #test for self.empty_set
     assert_equal(Map.empty_set.size, 0)
     assert_equal(Map.empty_set(Set[0, 1]).target, Set[0, 1])
   end
-  
+
   def test_self_dot_phi #test for self.phi
     assert_equal(Map.phi.size, 0)
     assert_equal(Map.phi(Set[0, 1]).target, Set[0, 1])
   end
-  
+
   def test_self_dot_singleton #test for self.single
     assert_equal(Map.singleton(0, 1).size, 1)
   end
@@ -57,7 +57,7 @@ class TestFiniteMap < Runit
   def test_each #test for each
     h = {0 => 10, 1 => 11, 2 => 12}
     s = Map.new(0 => 10, 1 => 11, 2 => 12)
-    
+
     assert_equal(s.size, h.size)
     s.each do |x,  y|
       assert_equal(x + 10, y)
@@ -68,7 +68,7 @@ class TestFiniteMap < Runit
     s = Map.new(0 => 10, 1 => 11, 2 => 12)
     t = s.dup
     assert_equal(s.size, t.size)
-    
+
     t.each do |x, y|
       t[x] = y + 10
     end
@@ -235,5 +235,3 @@ class TestFiniteMap < Runit
     assert_equal(s.inv_image(Set[]), Set[])
   end
 end
-
-Tests(TestFiniteMap)
