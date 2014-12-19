@@ -4,7 +4,6 @@
 #                                                     #
 #######################################################
 require "rubyunit"
-class Rational;def inspect; to_s; end;end
 
 class TestProtoType < Test::Unit::TestCase
   def test_factorize

@@ -19,7 +19,6 @@ exit
 #p Set[Set[0,3],Set[5,2],Set[1,4]] == Set[Set[1,4],Set[5,2],Set[0,3]]
 #exit
 =end
-class Rational;def inspect; to_s; end;end
 
 class TestFiniteSet < Test::Unit::TestCase
   include Algebra
@@ -105,13 +104,13 @@ class TestFiniteSet < Test::Unit::TestCase
   def test_separate
     s = Set[0, 1, 2, 3, 4, 5]
     t = s.separate{|x| x % 3 == 0}
-    assert(t.class, Set[0, 3])
+    assert(t.class, "#{Set[0, 3]}")
   end
 
   def test_map_s
     s = Set[0, 1, 2]
     t = s.separate{|x| x ** 2}
-    assert(t.class, Set[0, 1, 4])
+    assert(t.class, "#{Set[0, 1, 4]}")
   end
 
   def test_dup #test for dup
@@ -120,7 +119,7 @@ class TestFiniteSet < Test::Unit::TestCase
     b.each do |x|
       x.push x[0]
     end
-    assert(a.id != b.id)
+    assert(a.object_id != b.object_id)
     a.each do |x|
       assert_equal(x.size, 2)
     end

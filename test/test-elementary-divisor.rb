@@ -1,7 +1,5 @@
 require "rubyunit"
 require "algebra/rational"
-class Rational;def inspect; to_s; end;end
-#class Rational < Numeric;def inspect; to_s; end;end
 require "algebra/linear-algebra"
 require "algebra/matrix-algebra-triplet"
 #include Algebra

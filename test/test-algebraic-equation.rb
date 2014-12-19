@@ -6,8 +6,6 @@
 require "rubyunit"
 require "algebra/algebraic-equation.rb"
 require "algebra/rational"
-class Rational;def inspect; to_s; end;end
-#class Rational < Numeric;def inspect; to_s; end;end
 
 PQ = Algebra.Polynomial(Rational, "x")
 Q2 = Algebra.AlgebraicExtensionField(Rational, "a") {|a|

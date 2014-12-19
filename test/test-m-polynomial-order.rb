@@ -5,9 +5,7 @@
 #######################################################
 require "rubyunit"
 require "algebra/m-polynomial"
-#class Rational < Numeric;def inspect; to_s; end;end
 
-class Rational;def inspect; to_s; end;end
 P = Algebra::MPolynomial.create(Integer, "x", "y", "z")
 
 class TestMIndex < Test::Unit::TestCase

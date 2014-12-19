@@ -10,11 +10,11 @@ include Algebra
 def gb(f, sw = false)
   f0 = f.first
   print "Basis of: "
-  sw ? puts('', *f) : puts(f.join(", "))
+  sw ? puts('', *f) : puts(f.map { |v| v.to_s }.join(", "))
 #  gbase = Groebner.reduced_basis(f)
   gbase = Groebner.basis(f)
   print "Is: "
-  sw ? puts('', *gbase) : puts(gbase.join(", "))
+  sw ? puts('', *gbase) : puts(gbase.map { |v| v.to_s }.join(", "))
   puts
 end
 

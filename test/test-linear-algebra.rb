@@ -1,7 +1,5 @@
 require "rubyunit"
 require "algebra/rational"
-#class Rational < Numeric;def inspect; to_s; end;end
-class Rational;def inspect; to_s; end;end
 require "algebra/linear-algebra"
 #include Algebra
 
@@ -77,7 +75,7 @@ class TestDiagonalize < Test::Unit::TestCase
 
     puts "Eigen Spaces: "
     evalues.uniq.each do |ev|
-      puts "W_{#{ev}} = <#{espaces[ev].join(', ')}>"
+      puts "W_{#{ev}} = <#{espaces[ev].map { |v| v.to_s}.join(', ')}>"
     end
 
     puts

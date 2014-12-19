@@ -9,8 +9,6 @@ require "algebra/polynomial"
 require "algebra/splitting-field"
 require "algebra/galois-group"
 
-class Rational;def inspect; to_s; end;end
-
 class TestAEF < Test::Unit::TestCase
   P = Algebra.Polynomial(Rational, "x")
 
