@@ -7,8 +7,6 @@ require "rubyunit"
 require "algebra/rational"
 require "algebra/splitting-field"
 
-class Rational;def inspect; to_s; end;end
-
 class TestSF < Test::Unit::TestCase
   P = Algebra.Polynomial(Rational, "x")
   def test_sf

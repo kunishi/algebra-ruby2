@@ -73,10 +73,10 @@ class TestGaussianElimination < Test::Unit::TestCase
     ]
     puts
     d = MR[*a0].determinant_by_elimination
-    p [d, d.type]
+    p [d, d.class]
     assert_equal(1383, d)
     d = MI[*a0].determinant_by_elimination_euclidian
-    p [d, d.type]
+    p [d, d.class]
     assert_equal(1383, d)
   end
   def test_kernel_basis_2x2

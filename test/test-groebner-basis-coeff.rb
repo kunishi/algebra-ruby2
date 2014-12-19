@@ -12,18 +12,24 @@ include Algebra
 def gbc(f)
   f0 = f.first
   print "Basis of: "
-  puts(f.join(", "))
+  p f.class
+  f.each do |elem|
+    p elem.class
+    p elem.to_s
+  end
+  p f
+  puts(f.map { |v| v.to_s }.join(", "))
   c, g = Groebner.basis_coeff(f)
   print "is: "
-  puts(g.join(", "))
+  puts(g.map { |v| v.to_s }.join(", "))
   puts "Coeefitients are: "
   c.each do |x|
-    puts x.join(", ")
+    puts x.map { |v| v.to_s }.join(", ")
   end
   p 3333
   p g
   p c.collect{|x| f.inner_product x}
-  
+
   if g == c.collect{|x| f.inner_product x}
     puts "Success!"
   else

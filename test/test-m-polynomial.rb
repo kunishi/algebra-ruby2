@@ -15,7 +15,7 @@ f = Foo[MIndex[1,1]=>1, MIndex[1,3]=>4, MIndex[]=>9]
 g = Foo[MIndex[1,1]=>1, MIndex[1,3]=>4, MIndex[]=>9,
   MIndex[0,2,3]=>6, MIndex[2,3]=>-1, MIndex[2]=>-5,MIndex[0,1]=>7]
 $DEBUG = true
-puts f, g, f*g
+puts f.to_s, g.to_s, (f*g).to_s
 $DEBUG = false
 puts
 

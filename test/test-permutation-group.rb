@@ -8,7 +8,6 @@ require "algebra/permutation-group.rb"
 include Algebra
 Pg = PermutationGroup
 P = Permutation
-class Rational;def inspect; to_s; end;end
 
 class TestPermutationGroup < Test::Unit::TestCase
   #PermutationGropu

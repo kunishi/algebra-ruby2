@@ -7,8 +7,6 @@ require "rubyunit"
 require "algebra/finite-map.rb"
 include Algebra
 
-class Rational;def inspect; to_s; end;end
-
 class TestFiniteMap < Test::Unit::TestCase
   def test_initialize #test for initialize
     s = Map.new(0 => 10, 1 => 11, 2 => 12)
