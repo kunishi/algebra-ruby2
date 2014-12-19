@@ -113,13 +113,17 @@ module MPolynomialFactorization
       # raise "unknown gound type #{ground}" #20030606
       # ground.new(n, d)
       #end
-      ground.new(n, d)
+      if ground == Rational
+        Rational(n, d)
+      else
+        ground.new(n, d)
+      end
     end
 
     def ppQ(ring)
       (self / contQ).project(ring){|c, j| c.to_i}
     end
-    
+
     def factorize_rational
       pz = Algebra.MPolynomial(Integer)
       pz.vars(*self.class.variables)
@@ -129,7 +133,13 @@ module MPolynomialFactorization
       # ground == Rational, ground.ground == Integer
       u = ground.ground.unity
       b = a.collect{|f, i|
-	[f.project(self.class){|c, j| ground.new(c, u)}, i]
+        [f.project(self.class){|c, j|
+          if ground == Rational
+            Rational(c, u)
+          else
+            ground.new(c, u)
+          end
+          }, i]
       }
       contQ == ground.unity ? b : b.unshift([self.class.const(contQ), 1])
     end

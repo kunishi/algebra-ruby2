@@ -21,14 +21,14 @@ module MPolynomialFactorization
     m = 0
     loop do
       each_point_zp(n0, na, m + pblock) do |pb0|
-	next if (1...n0-na).find{|k| pb0[na+k] < m}
-	yield pb0
+        next if (1...n0-na).find{|k| pb0[na+k] < m}
+        yield pb0
       end
       m += pblock
       $stderr.puts "warning (each_point_int): it's hard to find adequate zero point"
     end
   end
- 
+
   def each_point_zp(n0, na, char)
     avoid_indice = indice_of_constant
     Combinatorial.power_cubic(char, n0 - na - 1) do |a|
@@ -44,23 +44,25 @@ module MPolynomialFactorization
 
     f, f_one, pb0 = self, nil, nil
     # f     : m-poly. moved by pb0 reduced onto f_one
-    # f_one : sqfree poly. 
+    # f_one : sqfree poly.
     # pb0   : parallel moving vector
-    
+
     if ground == Integer
-      each_point_int(vars.size, na) do |pb0|
+      each_point_int(vars.size, na) do |pb0_dash|
+        pb0 = pb0_dash
         f = move_const(pb0) if pb0.find{|x|!x.zero?}
-	 f_one = f.reduce2onevar(pring, na)
-	 break if f_one.psqfree?
+        f_one = f.reduce2onevar(pring, na)
+        break if f_one.psqfree?
       end
       fact_one, char = f_one._factorize
       hensel = :hensel_lift_int
     else # ground == Zp
       char = ground.char
-      each_point_zp(vars.size, na, char) do |pb0|
-	 f = move_const(pb0) if pb0.find{|x|!x.zero?}
-	 f_one = f.reduce2onevar(pring, na)
-	 break if f_one.sqfree?
+      each_point_zp(vars.size, na, char) do |pb0_dash|
+        pb0 = pb0_dash
+        f = move_const(pb0) if pb0.find{|x|!x.zero?}
+        f_one = f.reduce2onevar(pring, na)
+        break if f_one.sqfree?
       end
       fact_one = f_one.factorize_modp
       hensel = :hensel_lift_zp
@@ -77,14 +79,14 @@ module MPolynomialFactorization
     fact_one.each_product do |g0|
       f1_one = f1.reduce2onevar(pring, na)
       next if g0.deg > f1_one.deg
-#      fact_q = f1.send(hensel, g0, f1_one, char, height)
+      #      fact_q = f1.send(hensel, g0, f1_one, char, height)
       fact_q = f1.send(hensel, g0, f1_one, char, height, na)
       if fact_q
-#        if fact_q = f1.hensel_lift(g0, f1_one, char, height)
-	 f0, f1 = fact_q
-	 factors.push [f0, 1]
-	 break if f1.totdeg <= 0
-	 true
+        #        if fact_q = f1.hensel_lift(g0, f1_one, char, height)
+        f0, f1 = fact_q
+        factors.push [f0, 1]
+        break if f1.totdeg <= 0
+        true
       end
     end
 
@@ -176,7 +178,7 @@ module MPolynomialFactorization
 	raise 'fatal contradiction!'
       end
     }
-    
+
     index_eval(self.class, ary, MIndex.monomial(na, d)) + m
   end
 end
@@ -304,7 +306,7 @@ if __FILE__ == $0
   x, y, z = P.vars("xyz")
 #  f = x**2*y*z + (-z**2 - y*z + y + z + 2)*x + (y*z**3 - z**3 - y**2*z - y*z + 2*z)
 #  f = x**2*y + x**2*z + x * y * z
-#  f = x**2*y + x**2*z + x * y 
+#  f = x**2*y + x**2*z + x * y
   f = (x + y)*(y + z)*(z + x)
 
 #  p f.lc_at(0)

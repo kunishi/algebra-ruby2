@@ -25,7 +25,7 @@ u0 = (tris(m4, 0) - tris(m40, 0)).numerator
 u1 = (tris(m4, 1) - tris(m41, 1)).numerator
 u2 = (tris(m4, 2) - tris(m42, 2)).numerator
 
-puts [u0, u1, u2]
+puts [u0.to_s, u1.to_s, u2.to_s]
 puts
 
 [u0, u1, u2].each do |um|
@@ -43,7 +43,8 @@ p z
 puts
 
 gb = Groebner.basis([x, y, z])
-puts gb
+p gb
+# puts gb
 puts
 
 gb.each do |v|

@@ -55,13 +55,13 @@ class MPolynomial
     def lex(me, other)
       me.to_a <=> other.to_a
     end
-    
+
     def grlex(me, other)
       s = (me.totdeg <=> other.totdeg)
       return s unless s.zero?
       lex(me, other)
     end
-    
+
     def grevlex(me, other)
       s = (me.totdeg <=> other.totdeg)
       return s unless s.zero?
@@ -82,13 +82,13 @@ class MPolynomial
       end
       0
     end
-    
+
     def grlex_t(me, other)
       s = (me.totdeg <=> other.totdeg)
       return s unless s.zero?
       lex_t(me, other)
     end
-    
+
     def grevlex_t(me, other)
       s = (me.totdeg <=> other.totdeg)
       return s unless s.zero?
@@ -128,7 +128,7 @@ class MPolynomial
 
   def variables; self.class.variables; end
   def vars; self.class.vars; end
-  
+
   def self.vars(*vs)
     if vs.size > 0
       vs = vs[0].scan(/[a-zA-Z]_?\d*/) if vs.size == 1 && vs[0].is_a?(String)
@@ -285,7 +285,7 @@ class MPolynomial
 #    self.order = MonomialOrder.new(ord, v_ord) #o
     self.order = ord if ord #n
     self.v_order = v_ord if v_ord #n
-    
+
     MIndex.set_ord(ord) if ord #n
     MIndex.set_v_ord(v_ord) if v_ord #n
   end
@@ -403,7 +403,7 @@ class MPolynomial
       true
     }
   end
-  
+
   def <=>(other)
     if o = regulate(other)
       # THIS IS RATHER VAGUE
@@ -548,12 +548,12 @@ class MPolynomial
   def lc
     @lc ||= self[multideg]
   end
-  
+
   def lm
     #@lm ||= monomial(multideg).extend(Monomial)
     monomial(multideg).extend(Monomial)
   end
-  
+
   def lt
     md = multideg
     @lt ||= monomial(md, self[md]).extend(Monomial)
@@ -584,7 +584,7 @@ class MPolynomial
     end
     e
   end
-  
+
   alias map_to project0
 
   def project(ring = self.class, ary = ring.vars)
@@ -730,20 +730,38 @@ class MPolynomial
       obj.coeff
       self
     end
-    
+
     def ind
-      return @ind if @ind
-      each do |@ind, @coeff|
-	return @ind
+      if @ind
+        return @ind
+      else
+        each do |obj|
+          @ind = obj[0]
+          @coeff = obj[1]
+        end
+        return @ind
       end
+      # return @ind if @ind
+  #     each do |@ind, @coeff|
+	# return @ind
+  #     end
       raise "internal error"
     end
-    
+
     def coeff
-      return @coeff if @coeff
-      each do |@ind, @coeff|
-	return @coeff
+      if @coeff
+        return @coeff
+      else
+        each do |obj|
+          @ind = obj[0]
+          @coeff = obj[1]
+        end
+        return @coeff
       end
+      # return @coeff if @coeff
+  #     each do |@ind, @coeff|
+	# return @coeff
+  #     end
       raise "internal error"
     end
 
@@ -752,7 +770,7 @@ class MPolynomial
 #      self.class.order.cmp(@ind, other.ind) #o
       @ind <=> other.ind #n
     end
-    
+
     def divide?(other)
       return true if other.zero?
       case other
@@ -764,7 +782,7 @@ class MPolynomial
 	raise "unkown self.class #{other}(#{other.class})"
       end
     end
-    
+
     def divide_or?(other0, other1)
       return true if other0.zero? && other1.zero?
       if other0.is_a? Monomial and other1.is_a? Monomial
@@ -773,7 +791,7 @@ class MPolynomial
 	raise "unkown self.class #{other0.class}, #{other1.class}"
       end
     end
-    
+
     def prime_to?(other)
       return false if other.zero?
       case other
@@ -783,7 +801,7 @@ class MPolynomial
 	raise "unkown self.class #{other}(#{other.class})"
       end
     end
-    
+
     def /(other)
       case other
       when self.class
@@ -792,7 +810,7 @@ class MPolynomial
 	super
       end
     end
-    
+
     def lcm(other)
       monomial(ind.lcm(other.ind)).extend(Monomial)
     end
