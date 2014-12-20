@@ -4,7 +4,7 @@
 
 require 'rbconfig'
 require 'getoptlong'
-require 'ftools'
+require 'fileutils'
 
 project = (File.split(Dir.getwd)).last.sub(/-((?:\d+\.)*\d+)\z/, "")
 version = File.file?("VERSION") ? open("VERSION"){|f| f.read}.strip : $1
@@ -14,9 +14,9 @@ libdir = "lib"
 mandir, manjadir = "doc", "doc-ja"
 logfile = "InstalledFiles"
 
-destdir = Config::CONFIG["sitelibdir"]
-destmandir = File.join(Config::CONFIG["prefix"], "doc", "ruby", libname, "doc")
-destmanjadir = File.join(Config::CONFIG["prefix"], "doc", "ruby", libname, "doc-ja")
+destdir = RbConfig::CONFIG["sitelibdir"]
+destmandir = File.join(RbConfig::CONFIG["prefix"], "doc", "ruby", libname, "doc")
+destmanjadir = File.join(RbConfig::CONFIG["prefix"], "doc", "ruby", libname, "doc-ja")
 
 instman = false
 noharm = false
