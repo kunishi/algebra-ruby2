@@ -6,7 +6,6 @@
 #                                             #
 ###############################################
 require 'test/unit'
-require "assert"
 require "algebra/rational.rb"
 require "algebra/m-polynomial.rb"
 require "mathn"
