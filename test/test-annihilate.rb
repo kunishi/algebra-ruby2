@@ -3,14 +3,23 @@
 #  This is test script for 'annihilate.rb'  #
 #                                           #
 #############################################
+require 'test/unit'
 require "algebra/annihilate.rb"
 require "algebra/residue-class-ring"
 include Algebra
-Z7 = ResidueClassRing(Integer, 7)
-P = MPolynomial(Z7)
-x, y, z = P.vars("xyz")
 
-f, g  = (x + y) * (x + 2*y), (x + 2*y) * (x + 3*y)
-#  f, g  = x**2*y, x*y**2
-p f.lcm(g)
-p f.gcd(g)
+class TestAnnihilate < Test::Unit::TestCase
+  def test_annihilate
+    capital_z7 = ResidueClassRing(Integer, 7)
+    capital_p = MPolynomial(capital_z7)
+    x, y, z = capital_p.vars("xyz")
+
+    f, g  = (x + y) * (x + 2*y), (x + 2*y) * (x + 3*y)
+    #  f, g  = x**2*y, x*y**2
+
+    assert_equal(x**3 - x**2*y + 4*x*y**2 - y**3, f.lcm(g))
+    assert_equal(x + 2 * y, f.gcd(g))
+    # p f.lcm(g)
+    # p f.gcd(g)
+  end
+end

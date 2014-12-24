@@ -11,15 +11,16 @@ PF = Factors
 
 class TestProductFactors < Test::Unit::TestCase
   def test_int
-    facts = PF.new
+    capital_p_capital_f = Factors
+    facts = capital_p_capital_f.new
     probrem = [2, 3, 5, 7, 11, 13, 3, 2, 7, 3]
     pi = 1
     probrem.each do |n|
       pi *= n
       facts << n
     end
-    p facts
+    # p facts
     assert_equal(pi, facts.pi)
-    assert_equal(PF.mk(2,2, 3,3, 5,1, 7,2, 11,1, 13,1), PF[*probrem])
+    assert_equal(capital_p_capital_f.mk(2,2, 3,3, 5,1, 7,2, 11,1, 13,1), capital_p_capital_f[*probrem])
   end
 end

@@ -58,33 +58,33 @@ class TestDiagonalize < Test::Unit::TestCase
   end
 
   def _test_diagonalize(a)
-    puts "A = "; a.display; puts
+    # puts "A = "; a.display; puts
 
     extfield, proots, tmatrix, evalues, elms, evectors, espaces,
       chpoly, facts = a.diagonalize
 
-    puts "Charactristic Polynomial: #{chpoly}"
-    puts "                          => #{facts}"
-    puts
-
-    puts "Algebraic Numbers:"
-    proots.each do |po, rs|
-      puts "#{rs.join(', ')} : roots of #{po} == 0"
-    end
-    puts
-
-    puts "Eigen Spaces: "
-    evalues.uniq.each do |ev|
-      puts "W_{#{ev}} = <#{espaces[ev].map { |v| v.to_s}.join(', ')}>"
-    end
-
-    puts
-
-    puts "P = "; tmatrix.display; puts
+    # puts "Charactristic Polynomial: #{chpoly}"
+    # puts "                          => #{facts}"
+    # puts
+    #
+    # puts "Algebraic Numbers:"
+    # proots.each do |po, rs|
+    #   puts "#{rs.join(', ')} : roots of #{po} == 0"
+    # end
+    # puts
+    #
+    # puts "Eigen Spaces: "
+    # evalues.uniq.each do |ev|
+    #   puts "W_{#{ev}} = <#{espaces[ev].map { |v| v.to_s}.join(', ')}>"
+    # end
+    #
+    # puts
+    #
+    # puts "P = "; tmatrix.display; puts
 
     q = tmatrix.inverse
-    puts "P^-1 = "; q.display; puts
-    puts "P^-1 * A * P = "; (q * a * tmatrix).display; puts
+    # puts "P^-1 = "; q.display; puts
+    # puts "P^-1 * A * P = "; (q * a * tmatrix).display; puts
 
     [tmatrix, extfield, evalues, elms]
   end
