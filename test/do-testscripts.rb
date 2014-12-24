@@ -96,5 +96,5 @@ puts
 SKIPED.each do |s|
   puts "SKIPED: #{s}."
 end
-puts "\007"; sleep 0.2; puts "\007"
-print mktitle("     ALL TEST SUCCEEDED. (#{spendtime} sec.)     ", "o", "|")
+# puts "\007"; sleep 0.2; puts "\007"
+# print mktitle("     ALL TEST SUCCEEDED. (#{spendtime} sec.)     ", "o", "|")
