@@ -6,9 +6,9 @@
 require "rubyunit"
 require "algebra/m-polynomial"
 
-P = Algebra::MPolynomial.create(Integer, "x", "y", "z")
-
 class TestMIndex < Test::Unit::TestCase
+  P = Algebra::MPolynomial.create(Integer, "x", "y", "z")
+
   def test_compare
     x, y, z = P.vars
     P.with_ord(:lex) do

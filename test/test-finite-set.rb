@@ -65,7 +65,7 @@ class TestFiniteSet < Test::Unit::TestCase
     assert(s > t)
   end
 
-  def test_shift
+  def test_pick
     s = Set[0, 1, 2]
     t = s.dup
     x = t.pick

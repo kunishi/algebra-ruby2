@@ -26,14 +26,14 @@ class TestPolyDecompose < Test::Unit::TestCase
       x**3 - 2,
       x**4 + 2,
     ].each do |f|
-      puts
-      p f
+      # puts
+      # p f
       field, modulus, facts, roots, addelems = f.decompose
       fp = Algebra.Polynomial(field, "x")
       facts = facts.collect{|g, n| [g.evaluate(fp.var), n]}
-      p( {:modulus => modulus})
-      p( {:facts => facts})
-      p( {:roots => roots, :addelems => addelems})
+      # p( {:modulus => modulus})
+      # p( {:facts => facts})
+      # p( {:roots => roots, :addelems => addelems})
       assert_equal(facts.pi, f.convert_to(fp))
       #    g = f.convert_to(Algebra.Polynomial(field, "y"))
       #    p g

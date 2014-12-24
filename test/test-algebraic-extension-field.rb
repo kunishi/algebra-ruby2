@@ -19,15 +19,19 @@ class TestAEF < Test::Unit::TestCase
   end
 
   def test_aef
-    p @aef1.def_polys
-    # TODO: type method is missing.
-    p @aef1.def_polys.collect{|f| f.class}
-    p @aef1.env_ring
     x, y = @aef.var, @aef1.var
+
+    assert_equal([x**2 + 1, y**3 - 2], @aef1.def_polys.to_ary)
+    # p @aef1.def_polys
+    # p @aef1.def_polys.collect{|f| f.class}
+    # p @aef1.env_ring
+
     z = (x + y)*(x + y)
-    p z
+    # p z
+    assert_equal(y**2 + 2r*x*y - 1, z)
+
     w = z.abs_lift.evaluate(y, x)
-    p w
+    # p w
     assert_equal(w, 2*x*y-2)
   end
 end

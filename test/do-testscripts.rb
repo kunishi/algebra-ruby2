@@ -53,19 +53,19 @@ end
 def testscript(fname)
   script = File.basename(fname)
   command = "ruby" + " " + fname
-  print mktitle("TEST of '#{script}'")
+  # print mktitle("TEST of '#{script}'")
   r = system(command)
-  if r
-    print mktitle("TEST SUCCEEDED. '#{script}'", "*", "|")
-    puts
-  else
-    print mktitle("TEST FAILED. '#{script}'", "X")
-    puts
-    if $SUDDEN_DETH
-      puts "\007"
-      exit(255)
-    end
-  end
+  # if r
+  #   print mktitle("TEST SUCCEEDED. '#{script}'", "*", "|")
+  #   puts
+  # else
+  #   print mktitle("TEST FAILED. '#{script}'", "X")
+  #   puts
+  #   if $SUDDEN_DETH
+  #     puts "\007"
+  #     exit(255)
+  #   end
+  # end
 end
 
 starttime = Time.new

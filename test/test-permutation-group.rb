@@ -6,14 +6,15 @@
 require "rubyunit"
 require "algebra/permutation-group.rb"
 include Algebra
-Pg = PermutationGroup
-P = Permutation
 
 class TestPermutationGroup < Test::Unit::TestCase
-  #PermutationGropu
-  def test_self_dot_unity #test for self.unity
-    assert_equal(P.unity(3), [0, 1, 2])
-  end
+  Pg = PermutationGroup
+  P = Permutation
+
+  #PermutationGroup
+  # def test_self_dot_unity #test for self.unity
+  #   assert_equal(P.unity(3), [0, 1, 2])
+  # end
 
   def test_self_dot_perm #test for self.perm
     assert_equal(Pg.perm([0, 1, 2]), P.new([0, 1, 2]))
