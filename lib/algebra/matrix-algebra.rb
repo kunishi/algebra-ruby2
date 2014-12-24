@@ -68,7 +68,7 @@ class MatrixAlgebra
       raise "csize error (#{v.size} for #{csize})" if v.size != csize
     end
     if conv
-      @bone = array.collect{|cv| cv.collect{|x| 
+      @bone = array.collect{|cv| cv.collect{|x|
           ground.regulate(x) or
             raise "initialize: unknown type #{x.class} (#{x})"
         }}
@@ -311,7 +311,7 @@ class MatrixAlgebra
 #    new((0...rsize).collect{(0...csize).collect{ground.zero}})
     matrix{ground.zero}
   end
-    
+
   def self.regulate(x)
     case x
     when Vector, Covector, MatrixAlgebra #,SquareMatrix
@@ -356,7 +356,7 @@ class MatrixAlgebra
       yield i
     end
   end
-  
+
   def each_j
     (0...csize).each do |j|
       yield j
@@ -374,7 +374,7 @@ class MatrixAlgebra
       yield column(i)
     end
   end
-  
+
   def ==(other)
     super{ |o|
       rais "type error" unless sizes == o.sizes
@@ -392,7 +392,7 @@ class MatrixAlgebra
       end
     end
   end
-  
+
   def collect_ij(*x, &b); self.class.collect_ij(*x, &b); end
 
   def self.matrix(m = rsize, n = csize)
@@ -418,7 +418,7 @@ class MatrixAlgebra
   end
 
   alias adjoint cofactor_matrix
-  
+
   def self.collect_row(m = rsize)
     new((0...m).collect{|i| yield i})
   end
@@ -435,7 +435,7 @@ class MatrixAlgebra
   def collect_column(n = csize)
     self.class.collect_columns(n){|j| yield j}
   end
-  
+
   def +(other)
     super{ |o|
       raise "type error" unless sizes == o.sizes
@@ -561,7 +561,7 @@ module InnerProductSpace
     end
     ip
   end
-  
+
   def inner_product_complex(other)
     inner_product(other.conjugate)
   end
@@ -590,9 +590,9 @@ class Vector < MatrixAlgebra
       yield x
     end
   end
-  
+
   def size; self.class.size; end
-  
+
   #def to_a
   #  column(0)
   #end
@@ -607,17 +607,17 @@ class Vector < MatrixAlgebra
       raise "size of index be 1 or 2"
     end
   end
-  
+
   def self.create(ground, n)
     klass = super(ground, n, 1)
     klass.sysvar(:size, n)
     klass
   end
-  
+
   def transpose
     Algebra::Covector.create(ground, size).new(to_a)
   end
-  
+
   def self.vector(conv = false, &b)
     new((0...size).collect(&b), conv)
   end
@@ -625,15 +625,15 @@ class Vector < MatrixAlgebra
   def self.[](*a)
     vector(true){|i| a[i]}
   end
-  
+
   def self.matrix(r = size, s = 1)
     vector{|i| yield(i, 0)}
   end
-  
+
   def inspect
     @bone0.inspect
   end
-  
+
   def to_s
     @bone0.inspect
   end
@@ -654,13 +654,13 @@ class Covector < MatrixAlgebra
       yield x
     end
   end
-  
+
   def size; self.class.size; end
-  
+
   #    def to_a
   #      row(0)
   #    end
-  
+
   def [](*x)
     case x.size
     when 1; super(0, x[0])
@@ -669,21 +669,21 @@ class Covector < MatrixAlgebra
       raise "size of index be 1 or 2"
     end
   end
-  
+
   def self.create(ground, n)
     klass = super(ground, 1, n)
     klass.sysvar(:size, n)
     klass
   end
-  
+
   def transpose
     Algebra::Vector.create(ground, size).new(to_a)
   end
-  
+
   def self.[](*a)
     covector(true){|i| a[i]}
   end
-  
+
   def self.covector(conv = false, &b)
     new((0...size).collect(&b), true)
   end
@@ -695,35 +695,35 @@ class Covector < MatrixAlgebra
   def inspect
     @bone0.inspect
   end
-  
+
   def to_s
     super
   end
 end
-  
+
 class SquareMatrix < MatrixAlgebra
   Matrices = {}
-  
+
   def self.unity
     matrix{|i, j| i == j ? ground.unity : ground.zero }
   end
-  
+
   def self.const(x)
     matrix{|i, j| i == j ? ground.regulate(x) : ground.zero }
   end
-  
+
   def const(x)
     self.class.const(x)
   end
-  
+
   def self.matrices
     Matrices
   end
-  
+
   def initialzie(array, conv = false)
     super
   end
-  
+
   def self.create(ground, n, m = nil)
     if m && n != m
       raise "type error to create SquareMatrix"
@@ -732,9 +732,9 @@ class SquareMatrix < MatrixAlgebra
     klass.sysvar(:size, n)
     klass
   end
-  
+
   def size; self.class.size; end
-  
+
   def self.regulate(x)
     if x.is_a? superclass #SquareMatrix
       x
@@ -766,7 +766,7 @@ class SquareMatrix < MatrixAlgebra
       super
     end
   end
-  
+
   def determinant
     sum = ground.zero
     perm do |idx|
@@ -778,7 +778,7 @@ class SquareMatrix < MatrixAlgebra
     end
     sum
   end
-  
+
   alias determinant! determinant
   alias det determinant
 
@@ -796,7 +796,7 @@ class SquareMatrix < MatrixAlgebra
       a / d
     end
   end
-  
+
   def sign(a)
     n = a.size
     a = a.dup
@@ -809,7 +809,7 @@ class SquareMatrix < MatrixAlgebra
     end
     s
   end
-  
+
   def perm(n = size, stack = [])
     (0...n).each do |x|
       unless stack.include? x
@@ -823,7 +823,7 @@ class SquareMatrix < MatrixAlgebra
       end
     end
   end
-  
+
   def char_polynomial0(obj = "x")
     require "algebra/polynomial"
     a = Algebra.Polynomial(ground, obj)
@@ -852,7 +852,7 @@ class Scalar # fake class for SCALAR * MATRIX
   def initialize(x)
     @value = x
   end
-  
+
   def +(other)
     case other
     when Algebra::SquareMatrix
@@ -861,7 +861,7 @@ class Scalar # fake class for SCALAR * MATRIX
       raise "Fail: Scalar(#{@value}) + #{other}"
     end
   end
-  
+
   def -(other)
     case other
     when Algebra::SquareMatrix
@@ -870,7 +870,7 @@ class Scalar # fake class for SCALAR * MATRIX
       raise "Fail: Scalar(#{@value}) - #{other}"
     end
   end
-  
+
   def *(other)
     case other
     when Algebra::MatrixAlgebra
