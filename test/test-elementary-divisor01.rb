@@ -17,10 +17,10 @@ class TestElementaryDivisor01 < Test::Unit::TestCase
     ac = a._char_matrix(capital_m_capital_p)
     assert_equal(
       [
-        [x - 2r, 0, 0, 0],
-        [0, x - 2r, 0, 0],
-        [0, 0, x - 2r, 0],
-        [-5r, 0, 0, x - 2r]
+        [x - 2, 0, 0, 0],
+        [0, x - 2, 0, 0],
+        [0, 0, x - 2, 0],
+        [-5, 0, 0, x - 2]
       ],
       ac.to_ary
     )
@@ -31,7 +31,7 @@ class TestElementaryDivisor01 < Test::Unit::TestCase
     # -5,   0,   0, x - 2
 
     assert_equal(
-      [1r, x - 2r, x - 2r, x**2 - 4r*x + 4r],
+      [1, x - 2, x - 2, x**2 - 4*x + 4],
       ac.elementary_divisor.to_ary
     )
     # p ac.elementary_divisor #=> [1, x - 2, x - 2, x^2 - 4x + 4]
@@ -41,10 +41,10 @@ class TestElementaryDivisor01 < Test::Unit::TestCase
 
     assert_equal(
       [
-        [1r, 0, 0, 0],
-        [0, x - 2r, 0, 0],
-        [0, 0, x - 2r, 0],
-        [0, 0, 0, x**2 - 4r*x + 4]
+        [1, 0, 0, 0],
+        [0, x - 2, 0, 0],
+        [0, 0, x - 2, 0],
+        [0, 0, 0, x**2 - 4*x + 4]
       ],
       at.body.to_ary
     )
@@ -56,10 +56,10 @@ class TestElementaryDivisor01 < Test::Unit::TestCase
 
     assert_equal(
       [
-        [0, 0, 0, -1/5r],
-        [0, 1r, 0, 0],
-        [0, 0, 1r, 0],
-        [5r, 0, 0, x - 2r]
+        [0, 0, 0, -Rational(1, 5)],
+        [0, 1, 0, 0],
+        [0, 0, 1, 0],
+        [5, 0, 0, x - 2]
       ],
       at.left.to_ary
     )
@@ -71,10 +71,10 @@ class TestElementaryDivisor01 < Test::Unit::TestCase
 
     assert_equal(
       [
-        [1r, 0, 0, 1/5r*x - 2/5r],
-        [0, 1r, 0, 0],
-        [0, 0, 1r, 0],
-        [0, 0, 0, 1r]
+        [1, 0, 0, Rational(1, 5)*x - Rational(2, 5)],
+        [0, 1, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 1]
       ],
       at.right.to_ary
     )

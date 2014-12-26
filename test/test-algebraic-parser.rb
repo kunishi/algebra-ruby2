@@ -54,10 +54,10 @@ class TestAlgebraicParser < Test::Unit::TestCase
   def test_algebraic_parser_04
     capital_f = MPolynomial(Rational)
     x, y = capital_f.vars("xy")
-    assert_equal(x -8r*y**3, AlgebraicParser.eval("- (2*y)**3 + x", capital_f))
+    assert_equal(x - Rational(8)*y**3, AlgebraicParser.eval("- (2*y)**3 + x", capital_f))
     # p  AlgebraicParser.eval("- (2*y)**3 + x", capital_f) #=> -8y^3 + x
     capital_f.variables.clear
-    assert_equal(x - 8r*y**3, AlgebraicParser.eval("x; y; - (2*y)**3 + x", capital_f))
+    assert_equal(x - Rational(8)*y**3, AlgebraicParser.eval("x; y; - (2*y)**3 + x", capital_f))
     # p  AlgebraicParser.eval("x; y; - (2*y)**3 + x", capital_f) #=> x - 8y^3
   end
 end

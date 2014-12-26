@@ -150,7 +150,7 @@ class TestMatrixAlgebra < Test::Unit::TestCase
       [3, 4],
       ]
     x = Px.var
-    assert_equal(x**2 - 5/1r*x - 2/1r, m2.char_polynomial(Px))
+    assert_equal(x**2 - Rational(5, 1)*x - Rational(2, 1), m2.char_polynomial(Px))
     # p f = m2.char_polynomial(Px)
   end
 
@@ -162,7 +162,7 @@ class TestMatrixAlgebra < Test::Unit::TestCase
       [3, 4, 5],
       [6, 7, 8]]
     x = Px.var
-    assert_equal(x**3 - 12r*x**2 - 18r*x, m3.char_polynomial(Px))
+    assert_equal(x**3 - 12*x**2 - 18*x, m3.char_polynomial(Px))
     # p f = m3.char_polynomial(Px)
   end
 
@@ -196,37 +196,38 @@ class TestMatrixAlgebra < Test::Unit::TestCase
     assert_equal(m.cofactor_matrix * m, m.unity * m.determinant)
   end
 
-  R = Polynomial(Rational, "x")
-  MR = SquareMatrix(R, 2)
-  MQ = SquareMatrix(Rational, 2)
-  MZ = SquareMatrix(Rational, 2)
-  Z3 = ResidueClassRing(Integer, 3)
-  MZ3 = SquareMatrix(Z3, 2)
 #  class R0 < MatrixAlgebra
 #  end
 #  ME = SquareMatrix(R0, 2)
 
   def test_conversion
-    x = R.var
-    mR = MR[[x,2*x],[3*x,4*x]]
-    mQ = MQ[[1,2],[3,4]]
+    r = Polynomial(Rational, "x")
+    @mr = SquareMatrix(r, 2)
+    @mq = SquareMatrix(Rational, 2)
+    @mz = SquareMatrix(Rational, 2)
+    @z3 = ResidueClassRing(Integer, 3)
+    @mz3 = SquareMatrix(@z3, 2)
+
+    x = r.var
+    mR = @mr[[x,2*x],[3*x,4*x]]
+    mQ = @mq[[1,2],[3,4]]
 #    mE = ME.new [[1,2],[3,4]]
-    mZ = MZ[[1,2],[3,4]]
-    mZ3 = MZ3[[1,2],[3,4]]
-    assert_equal(MR, (mR*mQ).class)
-    assert_equal(MR, (mQ*mR).class)
+    mZ = @mz[[1,2],[3,4]]
+    mZ3 = @mz3[[1,2],[3,4]]
+    assert_equal(@mr, (mR*mQ).class)
+    assert_equal(@mr, (mQ*mR).class)
 
 #    assert_raises(RuntimeError) {mR * mE}
 
-    assert_equal(MQ, (mZ*mQ).class)
-    assert_equal(MQ, (mQ*mZ).class)
+    assert_equal(@mq, (mZ*mQ).class)
+    assert_equal(@mq, (mQ*mZ).class)
 
-    assert_equal(MZ3, (mZ3*mZ).class)
-    assert_equal(MZ3, (mZ*mZ3).class)
+    assert_equal(@mz3, (mZ3*mZ).class)
+    assert_equal(@mz3, (mZ*mZ3).class)
 
-    assert_equal(Z3, Z3.wedge(Rational))
-    assert_equal(MZ3, (mZ3*mQ).class)
-    assert_equal(Z3, Rational.wedge(Z3))
-    assert_equal(MZ3, (mQ*mZ3).class)
+    assert_equal(@z3, @z3.wedge(Rational))
+    assert_equal(@mz3, (mZ3*mQ).class)
+    assert_equal(@z3, Rational.wedge(@z3))
+    assert_equal(@mz3, (mQ*mZ3).class)
   end
 end
