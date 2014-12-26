@@ -74,7 +74,7 @@ class TestGaussianElimination < Test::Unit::TestCase
     # puts
     d = MR[*a0].determinant_by_elimination
     # p [d, d.class]
-    assert_equal(1383r, d)
+    assert_equal(1383, d)
     d = MI[*a0].determinant_by_elimination_euclidian
     # p [d, d.class]
     assert_equal(1383, d)

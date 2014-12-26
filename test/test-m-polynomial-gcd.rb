@@ -21,6 +21,6 @@ class TestMPolynomialGcd < Test::Unit::TestCase
     # p k = f.gcd(g)
     assert_equal(x + 2*y, f.gcd(g))
     # p k/3 == x + 2*y
-    assert_not_equal(x + 2*y, 1/3r*f.gcd(g))
+    assert_not_equal(x + 2*y, Rational(1, 3)*f.gcd(g))
   end
 end

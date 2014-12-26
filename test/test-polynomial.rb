@@ -39,7 +39,7 @@ class TestPolynomial < Test::Unit::TestCase
     g = y**6 - 1
     h = y**4 - 1
 
-    assert_equal(f.gcd_all(g, h), -14/9r*y + 14/9r)
+    assert_equal(f.gcd_all(g, h), -Rational(14, 9)*y + Rational(14, 9))
   end
 
   def test_polynomial_03

@@ -28,7 +28,7 @@ class TestAEF < Test::Unit::TestCase
 
     z = (x + y)*(x + y)
     # p z
-    assert_equal(y**2 + 2r*x*y - 1, z)
+    assert_equal(y**2 + Rational(2)*x*y - 1, z)
 
     w = z.abs_lift.evaluate(y, x)
     # p w

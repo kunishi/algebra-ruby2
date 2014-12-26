@@ -29,19 +29,19 @@ class TestElementaryDivisor < Test::Unit::TestCase
     mced = mct.e_diagonalize
     assert_equal(
       [
-        [1/3r, 0, 0, 0],
-        [1/12r*x - 1/12r, -1/4r, 0, 0],
+        [Rational('1/3'), 0, 0, 0],
+        [Rational('1/12')*x - Rational('1/12'), -Rational('1/4'), 0, 0],
         [
-          -1/64r*x**3 - 1/64r*x**2 + 11/32r*x - 9/16r,
-          3/64r*x**2 + 3/32r*x - 15/16r,
-          3/4r,
+          -Rational('1/64')*x**3 - Rational('1/64')*x**2 + Rational('11/32')*x - Rational('9/16'),
+          Rational('3/64')*x**2 + Rational('3/32')*x - Rational('15/16'),
+          Rational('3/4'),
           0
         ],
         [
-          -1/12r*x**5 - 1/12r*x**4 + 13/6r*x**3 - 4/3r*x**2 - 34/3r*x - 4/3r,
-          1/4r*x**4 + 1/2r*x**3 - 6*x**2 - 6*x + 28,
+          -Rational('1/12')*x**5 - Rational('1/12')*x**4 + Rational('13/6')*x**3 - Rational('4/3')*x**2 - Rational('34/3')*x - Rational('4/3'),
+          Rational('1/4')*x**4 + Rational('1/2')*x**3 - 6*x**2 - 6*x + 28,
           4*x**2 - 16,
-          16r
+          Rational(16)
         ]
 
       ],
@@ -58,17 +58,17 @@ class TestElementaryDivisor < Test::Unit::TestCase
     )
     assert_equal(
       [
-        [0, 1, -2/3r, 1/8r*x**2 + 1/2r],
-        [1, -1, 2, -3/8r*x**2 + 1/2r],
-        [0, 1/4r*x, 5/3r, -5/16r*x**2 + 1/4r*x + 3/4r],
-        [0, 0, -1/3r*x - 4/3r, 1/16r*x**3 + 1/4r*x**2 - 1/4r*x]
+        [0, 1, -Rational(2, 3), Rational(1, 8)*x**2 + Rational(1, 2)],
+        [1, -1, 2, -Rational(3, 8)*x**2 + Rational(1, 2)],
+        [0, Rational(1, 4)*x, Rational(5, 3), -Rational(5, 16)*x**2 + Rational(1, 4)*x + Rational(3, 4)],
+        [0, 0, -Rational(1, 3)*x - Rational(4, 3), Rational(1, 16)*x**3 + Rational(1, 4)*x**2 - Rational(1, 4)*x]
       ],
       mced.right.to_ary
     )
     # mced.display;puts
 
     assert_equal(
-      [1r, 1r, 1r, (x - 2r)**2 * (x + 2r)**2],
+      [Rational(1), Rational(1), Rational(1), (x - Rational(2))**2 * (x + Rational(2))**2],
       mc.elementary_divisor.to_ary
     )
     # p d
@@ -77,10 +77,10 @@ class TestElementaryDivisor < Test::Unit::TestCase
     a = (left*mc*right)
     assert_equal(
       [
-        [1r, 0, 0, 0],
-        [0, 1r, 0, 0],
-        [0, 0, 1r, 0],
-        [0, 0, 0, x**4 - 8r*x**2 + 16]
+        [Rational(1), 0, 0, 0],
+        [0, Rational(1), 0, 0],
+        [0, 0, Rational(1), 0],
+        [0, 0, 0, x**4 - Rational(8)*x**2 + 16]
       ],
       a.to_ary
     )

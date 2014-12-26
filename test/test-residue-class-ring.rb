@@ -103,7 +103,7 @@ class TestResidueClassRing < Test::Unit::TestCase
     y = h[y]
 
     assert_equal(
-      (1798/3r*x + 1825/9r)*y**4 + (-74*x + 5176/9r)*y**3 + (-6886/9r*x - 5917/9r)*y**2 + (1826/3r*x - 3101/9r)*y + 2146/9r*x + 4702/9r,
+      (Rational(1798, 3)*x + Rational(1825, 9))*y**4 + (-74*x + Rational(5176, 9))*y**3 + (-Rational(6886, 9)*x - Rational(5917, 9))*y**2 + (Rational(1826, 3)*x - Rational(3101, 9))*y + Rational(2146, 9)*x + Rational(4702, 9),
       1/(x + y + 1)**7
     )
     # p( 1/(x + y + 1)**7 )

@@ -34,8 +34,8 @@ class TestGroebnerBasis < Test::Unit::TestCase
     # gb([f1, f2, f3])
     gbase = Groebner.basis [f1, f2, f3]
     assert_equal(x - z, gbase[0])
-    assert_equal(y - 2r*z**2, gbase[1])
-    assert_equal(z**4 + 1/2r*z**2 - 1/4r, gbase[2])
+    assert_equal(y - 2*z**2, gbase[1])
+    assert_equal(z**4 + Rational(1, 2)*z**2 - Rational(1, 4), gbase[2])
   end
 
   def test_groebner_basis_02
@@ -50,7 +50,7 @@ class TestGroebnerBasis < Test::Unit::TestCase
     gbase = Groebner.basis [f1, f2, f3]
     assert_equal(x - z, gbase[0])
     assert_equal(y + 3*z**2, gbase[1])
-    assert_equal(z**4 + 3r*z**2 + 1r, gbase[2])
+    assert_equal(z**4 + 3*z**2 + 1, gbase[2])
   end
 
   def test_groebner_basis_03
@@ -63,7 +63,7 @@ class TestGroebnerBasis < Test::Unit::TestCase
     # gb([f1, f2, f3])
     gbase = Groebner.basis [f1, f2, f3]
     assert_equal(x - z, gbase[0])
-    assert_equal(y - 2r*z**2, gbase[1])
+    assert_equal(y - 2*z**2, gbase[1])
     assert_equal(z**4 - 1, gbase[2])
   end
 end

@@ -45,6 +45,6 @@ class TestEuclidianRing < Test::Unit::TestCase
     f = 6*(x + 1)*(x + 2)*(y - 1)* (y + 2)
     g = 9*(x + 1)*(x - 3)*(y - 1)* (y - 1)
     # p [f, g, f.gcd_rec(g)]
-    assert_equal((-3r*x - 3r)*y + 3r*x + 3r, f.gcd_rec(g))
+    assert_equal((-3*x - 3)*y + 3*x + 3, f.gcd_rec(g))
   end
 end
