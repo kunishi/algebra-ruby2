@@ -6,10 +6,10 @@
 #
 #  Ver. 0.78
 #    beta1: adopt ruby-1.8.0
-#    beta2: 
-#    beta3: 
-#    beta4: 
-#    beta5: 
+#    beta2:
+#    beta3:
+#    beta4:
+#    beta5:
 #
 #  2003.04.30
 #
@@ -67,15 +67,15 @@ module Import_Module
 	end
       end
     end
-    
+
     def adopt_module(mod)
-      sw = Thread.critical or Thread.critical = true # this 'or' is safe
+      # sw = Thread.critical or Thread.critical = true # this 'or' is safe
       unless scope = (@__IMPORT_MODULE_PREFIX_scopes ||= {})[mod.object_id]
 	scope = Scope.create(self, mod)
 	@__IMPORT_MODULE_PREFIX_scopes[mod.object_id] = scope
       end
       scope.push
-      Thread.critical = sw
+      # Thread.critical = sw
       scope
     end
 
@@ -88,11 +88,11 @@ module Import_Module
   end
 
   def self.name(meth, s, prefix = true)
-    name = s.to_s.gsub(/_|::|[^\w]/){|c| "_%03d" % [c[0]]}
+    name = s.to_s.gsub(/_|::|[^\w]/){|c| "_%03d" % [c[0].ord]}
     if meth =~ /^[_a-zA-Z][_\w]*$/
       meth = "__" + meth
     else
-      meth = "_op" + meth.gsub(/[^\w]/){|c| "%03d" % [c[0]]} + "__"
+      meth = "_op" + meth.to_s.gsub(/[^\w]/){|c| "%03d" % [c[0].ord]} + "__"
     end
     (prefix ? "__IMPORT_MODULE_PREFIX_" : "") + name + meth
   end
@@ -207,14 +207,14 @@ module Import_Module
     attr_accessor :klass, :stack
     attr_accessor :orig_methods, :saved_methods
     attr_accessor :publics, :privates, :protecteds
-    
+
     def self.enclose(klass)
       s = self
       klass.instance_eval do
 	@__IMPORT_MODULE_PREFIX_target ||= s.new(klass)
       end
     end
-    
+
     def initialize(klass)
       @scopes = {}
       @meth_no = {}
@@ -385,7 +385,7 @@ end
 
 class << Thread
   alias new_org new
-  
+
   def new(*opts, &b)
     Thread.new_org(Thread.current, *opts) do |parent, *opts|
       Thread.current.__IMPORT_MODULE_PREFIX_stack =

@@ -13,13 +13,13 @@ module Algebra
       cast.product(other.cast) {|x, y| x * y}
 #      product(other, self.class[unity]) {|x, y| x * y}
     end
-    
+
     alias act right_act
-    
+
     def left_act(other)
       other.right_act(self)
     end
-    
+
     def right_quotient(other)
       s = Set.phi
       remain = cast.dup
@@ -31,7 +31,7 @@ module Algebra
       end
       s
     end
-    
+
     alias quotient right_quotient
     alias right_coset right_quotient
     alias coset right_quotient
@@ -54,10 +54,10 @@ module Algebra
       s = Set.phi
       remain = cast.dup
       while !remain.empty?
-	x = remain.shift
-	t = self.class[x].act(other)
-	s.push x
-	remain -= t
+        x = remain.shift
+        t = self.class[x].act(other)
+        s.push x
+        remain -= t
       end
       s
     end
@@ -96,7 +96,7 @@ module Algebra
     end
 
     alias orbit! right_orbit!
-    
+
     def left_orbit!(other)
       other.right_orbit!(self)
     end
@@ -132,7 +132,7 @@ module Algebra
       a
     end
   end
-  
+
   class Group < Set
 #    include OperatorDomain
     attr_reader :unity
@@ -160,20 +160,20 @@ module Algebra
     def semi_complete!
       orbit!(self)
     end
-    
+
     def semi_complete
       dup.semi_complete!
     end
-    
+
     def complete!
       concat collect{|x| x.inverse}
       orbit!(self)
     end
-    
+
     def complete
       dup.complete!
     end
-    
+
     def self.generate_strong(u, *ary_of_gens)
       unless a = ary_of_gens.shift
 	return new(u)
@@ -201,7 +201,7 @@ module Algebra
       end
       true
     end
-    
+
     def subgroups(&b)
       e = unit_group
       if block_given?
@@ -214,7 +214,7 @@ module Algebra
       end
       subgrs
     end
-    
+
     def _subgroups(h, subgrs, &b)
       while true
 	new_elem = false
@@ -241,23 +241,23 @@ module Algebra
     def centralizer(s)  # C_{self}(s) not C_{s}(self) !!!!
       separate{|x| s.all?{|y| x * y == y * x}}
     end
-    
+
     def center  # C_{self}(self)
       centralizer(self)
     end
-    
+
     def center?(x)  # self == C_{self}(x)
       all?{|y| x * y == y * x}
     end
-    
+
     def normalizer(s)
       separate{|x| s.right_act(Set[x]) == s.left_act(Set[x])}
     end
-    
+
     def normal?(s)
       all?{|x| s.right_act(Set[x]) == s.left_act(Set[x])}
     end
-    
+
     def normal_subgroups
       s = Set.phi
       subgroups.each{|x|
@@ -274,7 +274,7 @@ module Algebra
     def conjugacy_class(x)
       (self % centralizer(Set[x])).map_s{|y| x.conjugate(y)}
     end
-    
+
     def conjugacy_classes
       s = Set.phi
       t = cast
@@ -288,7 +288,7 @@ module Algebra
       end
       s
     end
-    
+
     def simple?
       subgroups.all?{|x|
 	x.size == 1 or x.size == size or
@@ -305,7 +305,7 @@ module Algebra
       end
       self == h ? gr.semi_complete! : gr.complete!
     end
-    
+
     def D(n = 1)
       if n == 0
 	self
@@ -313,17 +313,17 @@ module Algebra
 	D(n - 1).commutator D(n-1)
       end
     end
-    
+
     def commutator_series
       decreasing_series do |s|
 	s.D
       end
     end
-    
+
     def solvable?
       commutator_series.last.size == 1
     end
-    
+
     def K(n = 1)
       if n == 0
 	self
@@ -331,13 +331,13 @@ module Algebra
 	commutator K(n-1)
       end
     end
-    
+
     def descending_central_series
       decreasing_series do |s|
 	commutator s
       end
     end
-    
+
     def Z(n = 1)
       if n == 0
 	unit_group
@@ -347,18 +347,18 @@ module Algebra
 	}
       end
     end
-    
+
     def ascending_central_series
       increasing_series do |s|
 	s.Z
       end
     end
-    
+
     def nilpotent?
       descending_central_series.last.size == 1
       #ascending_central_series.last.size == size
     end
-    
+
     def nilpotency_class
       a = descending_central_series
       if a.last.size == 1
@@ -383,12 +383,12 @@ module Algebra
     def inverse
       map_s{|x| x.inverse}
     end
-    
+
     alias inv inverse
   end
 
 end
 
 if __FILE__ == $0
-  
+
 end

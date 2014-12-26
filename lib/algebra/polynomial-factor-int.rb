@@ -105,7 +105,7 @@ module PolynomialFactorization
       h0, r0 = f0.divmod g0
       unless r0.zero?
 	raise "each_product does not work well"
-	#return nil 
+	#return nil
       end
 
       g = lifting(g0, ring)
@@ -139,7 +139,7 @@ module PolynomialFactorization
       f = sqfree_over_integral
       flc = f.lc
       f = f.monic_int(flc)
-      
+
       f0 = reduce_over_prime_field(f)
       fa = f0.factorize_modp
 
@@ -175,7 +175,7 @@ module PolynomialFactorization
       d = ds.first.lcm_all(* ds[1..-1])
 #      ground.new(n, d)
       if ground == Rational #in 1.8.0, Rational.new is private.
-	ground.new!(n, d)
+        Rational(n, d)
       else
 	raise "unknown gound type #{ground}" #20030606
 	ground.new(n, d)
@@ -185,7 +185,7 @@ module PolynomialFactorization
     def ppQ(ring)
       (self / contQ).project(ring){|c, j| c.to_i}
     end
-    
+
     def factorize_rational
       pz = Algebra.Polynomial(Integer, "x")
       fz = ppQ(pz)
@@ -195,13 +195,13 @@ module PolynomialFactorization
 	[f.project(self.class){|c, j|
 #	    ground.new
 	    ##in 1.8.0, Rational.new is private.
-	    ground == Rational ? ground.new!(c, u) : ground.new(c, u)
+	    ground == Rational ? Rational(c, u) : Rational(c, u)
 	  }, i]
       }
       contQ == ground.unity ? b : b.unshift([self.class.const(contQ), 1])
     end
   end
-  
+
   include Z
   include Q
 end

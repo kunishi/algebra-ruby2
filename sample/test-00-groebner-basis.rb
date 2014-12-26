@@ -26,7 +26,7 @@ include Algebra
 def gb(k, f, ord = :lex, sw = false)
   f0 = f.first
   print "Basis of: "
-  sw ? puts('', *f) : puts(f.join(", "))
+  sw ? puts('', *f.to_s) : puts(f.map { |v| v.to_s }.join(', '))
   gbase = b = nil
   $stot.start {
     a = Time.now
@@ -36,7 +36,7 @@ def gb(k, f, ord = :lex, sw = false)
     b = Time.now - a
   }
   print "Is: "
-  sw ? puts('', *gbase) : puts(gbase.join(", "))
+  sw ? puts('', *gbase.to_s) : puts(gbase.map { |v| v.to_s }.join(", "))
   puts "(#{b} seconds.)"
   true
 end
@@ -178,22 +178,22 @@ def test_gb(n, m)
     gbks(["2x+3y+3","x+5y+2","x*y-1"], m)
   when 14
     gbks(["3x^2*y+7y","4x*y^2-5x"], m)
-  when 15  
+  when 15
     $variables=(["y","x"])
 #    MPolynomial.set_ord(:lex)
     Monomial.setVarOrder(["y","x"]) if $lp
     Monomial.setTermOrder("lex") if $lp
-    
+
     gbks(["2x*y-x,3y-x^2"], m, :lex)
   when 16
     Monomial.setTermOrder("deglex") if $lp
 #    MPolynomial.set_ord(:grlex)
-    
+
     gbks(["3x^2y-3y*z+y", "5x^2z-8z^2"], m, :grlex)
   when 17
     Monomial.setTermOrder("lex") if $lp
 #    MPolynomial.set_ord(:lex)
-    
+
     gbks(["6x^2+y^2", "10x^2y+2x*y"], m, :lex)
   else
     puts "All tests succeed."

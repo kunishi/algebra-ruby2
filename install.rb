@@ -4,7 +4,7 @@
 
 require 'rbconfig'
 require 'getoptlong'
-require 'ftools'
+require 'fileutils'
 
 project = (File.split(Dir.getwd)).last.sub(/-((?:\d+\.)*\d+)\z/, "")
 version = File.file?("VERSION") ? open("VERSION"){|f| f.read}.strip : $1
@@ -14,9 +14,9 @@ libdir = "lib"
 mandir, manjadir = "doc", "doc-ja"
 logfile = "InstalledFiles"
 
-destdir = Config::CONFIG["sitelibdir"]
-destmandir = File.join(Config::CONFIG["prefix"], "doc", "ruby", libname, "doc")
-destmanjadir = File.join(Config::CONFIG["prefix"], "doc", "ruby", libname, "doc-ja")
+destdir = RbConfig::CONFIG["sitelibdir"]
+destmandir = File.join(RbConfig::CONFIG["prefix"], "doc", "ruby", libname, "doc")
+destmanjadir = File.join(RbConfig::CONFIG["prefix"], "doc", "ruby", libname, "doc-ja")
 
 instman = false
 noharm = false
@@ -25,22 +25,22 @@ uninstall = false
 
 Usage = "\
   Usage: ruby install.rb [options]
-  
+
       option      argument      action
       ------      --------      ------
       --destdir   dir           Destination dir
       -d                        (default is #{destdir})
-      
+
       --mandir    dir[,dir-ja]  Manual dir
                                 (default is #{destmandir},#{destmanjadir})
-      
+
       --man                     Install manuals
 
       --uninstall               UnInstall
 
       --help                    Print this help
       -h
-      
+
       --noharm                  Do not install, just print commands
       -n
 "
@@ -109,19 +109,19 @@ dirs = {}
 for src, dest in files
   d = File.dirname(dest)
   if !dirs[d] && !File.directory?(d)
-    puts "File.makedir #{d}" unless uninstall
-    File.makedirs(d) unless noharm || uninstall
+    puts "FileUtils.mkdir #{d}, :mode => 0755" unless uninstall
+    FileUtils.mkdir(d, :mode => 0755) unless noharm || uninstall
     dirs[d] = true
   end
 
   if uninstall
     if File.file?(dest)
-      puts "File.unlink #{dest}"
-      File.unlink(dest) unless noharm
+      puts "FileUtils.rm #{dest}"
+      FileUtils.rm(dest) unless noharm
     end
   else
-    puts "File.install #{src}, #{dest}, 0644"
-    File.install(src, dest, 0644, false) unless noharm
+    puts "FileUtils.install #{src}, #{dest}, :mode => 0644"
+    FileUtils.install(src, dest, :mode => 0644, :verbose => false) unless noharm
     log.puts dest unless noharm
   end
 end

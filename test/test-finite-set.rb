@@ -19,9 +19,8 @@ exit
 #p Set[Set[0,3],Set[5,2],Set[1,4]] == Set[Set[1,4],Set[5,2],Set[0,3]]
 #exit
 =end
-class Rational;def inspect; to_s; end;end
 
-class TestFiniteSet < Runit
+class TestFiniteSet < Test::Unit::TestCase
   include Algebra
 
   def test_initialize #test for initialize
@@ -66,7 +65,7 @@ class TestFiniteSet < Runit
     assert(s > t)
   end
 
-  def test_shift
+  def test_pick
     s = Set[0, 1, 2]
     t = s.dup
     x = t.pick
@@ -105,13 +104,13 @@ class TestFiniteSet < Runit
   def test_separate
     s = Set[0, 1, 2, 3, 4, 5]
     t = s.separate{|x| x % 3 == 0}
-    assert(t.class, Set[0, 3])
+    assert(t.class, "#{Set[0, 3]}")
   end
 
   def test_map_s
     s = Set[0, 1, 2]
     t = s.separate{|x| x ** 2}
-    assert(t.class, Set[0, 1, 4])
+    assert(t.class, "#{Set[0, 1, 4]}")
   end
 
   def test_dup #test for dup
@@ -120,7 +119,7 @@ class TestFiniteSet < Runit
     b.each do |x|
       x.push x[0]
     end
-    assert(a.id != b.id)
+    assert(a.object_id != b.object_id)
     a.each do |x|
       assert_equal(x.size, 2)
     end
@@ -258,7 +257,7 @@ class TestFiniteSet < Runit
     end
     assert_equal(s, Set[[0, 1], [0, 2], [1, 2]])
   end
-  
+
   def test_each_member #test for each_member
     s = Set.phi
     Set[0, 1, 2].each_member(1) do |a|
@@ -486,4 +485,3 @@ class TestFiniteSet < Runit
 #    assert(true)
 #  end
 end
-Tests(TestFiniteSet)

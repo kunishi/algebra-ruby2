@@ -26,9 +26,9 @@ module Algebra
       end
       a
     end
-    
+
     def minimal_polynomial(e, *fs)
-      raise "too many polys" if fs.size > ?x - ?a#("a"..."x").size
+      raise "too many polys" if fs.size > "x".ord - "a".ord #("a"..."x").size
       require "algebra/groebner-basis"
       (mpring = e.class).vars("x")
       x = mpring.var("x")
@@ -37,7 +37,7 @@ module Algebra
       }
       gb.last
     end
-    
+
     module_function :minimal_polynomial
     module_function :symmetric_product
   end

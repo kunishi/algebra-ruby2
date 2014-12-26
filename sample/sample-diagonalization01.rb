@@ -21,7 +21,7 @@ end; puts
 
 puts "EigenSpaces: "
 e.evalues.uniq.each do |ev|
-  puts "W_{#{ev}} = <#{e.espaces[ev].join(', ')}>"
+  puts "W_{#{ev}} = <#{e.espaces[ev].map { |e| e.to_s }.join(', ')}>"
 end; puts
 #EigenSpaces:
 #W_{2} = <[4, -5, 1]>

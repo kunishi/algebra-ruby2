@@ -5,12 +5,10 @@
 #######################################################
 require "rubyunit"
 require "algebra/m-polynomial"
-#class Rational < Numeric;def inspect; to_s; end;end
 
-class Rational;def inspect; to_s; end;end
-P = Algebra::MPolynomial.create(Integer, "x", "y", "z")
+class TestMIndex < Test::Unit::TestCase
+  P = Algebra::MPolynomial.create(Integer, "x", "y", "z")
 
-class TestMIndex < Runit
   def test_compare
     x, y, z = P.vars
     P.with_ord(:lex) do
@@ -61,6 +59,3 @@ class TestMIndex < Runit
     end
   end
 end
-
-Tests(TestMIndex)
-

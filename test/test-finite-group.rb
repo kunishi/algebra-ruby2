@@ -27,7 +27,7 @@ C = PG[e, a, b, a*b]
 
 class Rational;def inspect; to_s; end;end
 
-class TestFiniteGroup < Runit
+class TestFiniteGroup < Test::Unit::TestCase
   #Operator Domain
   def test__star #test for *
     ab = A * B
@@ -49,7 +49,13 @@ class TestFiniteGroup < Runit
     s = S3 % S2
     t6 = Set[P[0, 2, 1], P[2, 1, 0], P[0, 1, 2]]
     t7 = Set[P[2, 1, 0], P[1, 0, 2], P[1, 2, 0]]
-    assert(s == t6 || s == t7)
+    # assert(s == t6 || s == t7, "S3 = #{S3}, S2 = #{S2}, s = #{s}, t6 = #{t6}, t7 = #{t7}")
+    assert_not_equal(Set.phi, s & Set[P[2, 1, 0], P[2, 0 ,1]])
+    assert(! s.superset?(Set[P[2, 1, 0], P[2, 0, 1]]))
+    assert_not_equal(Set.phi, s & Set[P[1, 0, 2], P[0, 1, 2]])
+    assert(! s.superset?(Set[P[1, 0, 2], P[0, 1, 2]]))
+    assert_not_equal(Set.phi, s & Set[P[1, 2, 0], P[0, 2, 1]])
+    assert(! s.superset?(Set[P[1, 2, 0], P[0, 2, 1]]))
   end
 
   def test_orbit! #test for orbit!
@@ -273,4 +279,3 @@ class TestFiniteGroup < Runit
     assert_equal(a*a, e)
   end
 end
-Tests(TestFiniteGroup)
