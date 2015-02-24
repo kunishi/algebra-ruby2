@@ -33,12 +33,9 @@ module Algebra
   require "algebra/algebraic-extension-field"
   require "algebra/localized-ring"
   require "algebra/matrix-algebra"
-  require "algebra/matrix-algebra"
-  require "algebra/algebraic-extension-field"
 
   require "algebra/finite-set"
   require "algebra/finite-map"
-  require "algebra/permutation-group"
   require "algebra/permutation-group"
 end
 include Algebra
@@ -70,17 +67,7 @@ require "algebra/m-polynomial"
 
 require "algebra/residue-class-ring"
 require "algebra/algebraic-extension-field"
-require "algebra/algebraic-extension-field"
-require "algebra/algebraic-extension-field"
-require "algebra/algebraic-extension-field"
-
 require "algebra/localized-ring"
-require "algebra/localized-ring"
-require "algebra/localized-ring"
-
-require "algebra/matrix-algebra"
-require "algebra/matrix-algebra"
-require "algebra/matrix-algebra"
 require "algebra/matrix-algebra"
 
 #for backward compatibility

@@ -109,8 +109,8 @@ dirs = {}
 for src, dest in files
   d = File.dirname(dest)
   if !dirs[d] && !File.directory?(d)
-    puts "FileUtils.mkdir #{d}, :mode => 0755" unless uninstall
-    FileUtils.mkdir(d, :mode => 0755) unless noharm || uninstall
+    puts "FileUtils.mkdir_p #{d}, :mode => 0755" unless uninstall
+    FileUtils.mkdir_p(d, :mode => 0755) unless noharm || uninstall
     dirs[d] = true
   end
 

@@ -41,9 +41,10 @@ end
 
 class MatrixAlgebra
   include Orthogonalization
-  auto_req_init
-  auto_req :e_diagonalize, "algebra/elementary-divisor"
-  auto_req :elementary_divisor, "algebra/elementary-divisor"
+  # auto_req_init
+  # auto_req :e_diagonalize, "algebra/elementary-divisor"
+  # auto_req :elementary_divisor, "algebra/elementary-divisor"
+  require 'algebra/elementary-divisor'
 end
 
 class SquareMatrix < MatrixAlgebra
@@ -106,7 +107,7 @@ class SquareMatrix < MatrixAlgebra
     raise "can't Diagonalize" if evalues.size < size
     ttype = Algebra.SquareMatrix(mdf, size)
     r = ttype.collect_column{|i| evectors[i]}
-#    :extfield, :roots, :tmatrix, :evalues, :addelms, :evectors, 
+#    :extfield, :roots, :tmatrix, :evalues, :addelms, :evectors,
 #                   :espaces, :chpoly, :facts
     e = EigenSystem.new(mdf, roots0, r, evalues, proots, evectors,
                     espaces, chp, facts)
@@ -116,23 +117,23 @@ class SquareMatrix < MatrixAlgebra
 
   def solve_eigen_value_problem
     puts "A = "; display; puts
-    
+
     e = diagonalize
     puts "Charactoristic Poly.: #{e.chpoly} => #{e.facts}"; puts
     puts "Algebraic Numbers:"
     e.roots.each do |po, rs|
       puts "#{rs.join(', ')} : roots of #{po} == 0"
     end; puts
-    
+
     puts "EigenSpaces: "
     e.evalues.uniq.each do |ev|
       puts "W_{#{ev}} = <#{e.espaces[ev].join(', ')}>"
     end; puts
-    
+
     puts "Trans. Matrix:"
     puts "P ="
     e.tmatrix.display; puts
-    
+
     puts "P^-1 * A * P = "; (e.tmatrix.inverse * self * e.tmatrix).display; puts
   end
 end
