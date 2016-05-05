@@ -1,4 +1,4 @@
-require "rubyunit"
+require "test/unit"
 require "algebra/rational"
 class Rational; def inspect; to_s; end;end
 #class Rational < Numeric;def inspect; to_s; end;end

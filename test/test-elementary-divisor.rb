@@ -1,4 +1,4 @@
-require "rubyunit"
+require "test/unit"
 require "algebra/rational"
 require "algebra/linear-algebra"
 require "algebra/matrix-algebra-triplet"

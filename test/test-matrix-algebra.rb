@@ -3,7 +3,7 @@
 #  This is test script for 'matrix-algebra.rb'  #
 #                                               #
 #################################################
-require "rubyunit"
+require "test/unit"
 require "algebra"
 require "algebra/polynomial"
 

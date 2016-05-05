@@ -3,7 +3,7 @@
 #  This is test script for 'product-factors.rb'  #
 #                                                #
 ##################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/factors.rb"
 include Algebra
 

@@ -3,7 +3,7 @@
 #   Test Script for lib/finite-group.rb                                #
 #                                                                      #
 ########################################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/finite-group"
 require "algebra/permutation-group"
 

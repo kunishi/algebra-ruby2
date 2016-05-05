@@ -3,7 +3,7 @@
 #  This is test script for 'splitting-field.rb'  #
 #                                                          #
 ############################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/rational"
 require "algebra/splitting-field"
 

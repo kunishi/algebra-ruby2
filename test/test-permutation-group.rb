@@ -3,7 +3,7 @@
 #   Test Script for lib/permutation-group.rb                           #
 #                                                                      #
 ########################################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/permutation-group.rb"
 include Algebra
 

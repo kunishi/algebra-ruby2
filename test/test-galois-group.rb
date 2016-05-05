@@ -3,7 +3,7 @@
 #  This is test script for 'galois-group.rb'  #
 #                                                          #
 ############################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/rational"
 require "algebra/polynomial"
 require "algebra/splitting-field"

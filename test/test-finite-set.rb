@@ -4,7 +4,7 @@
 #                                                                      #
 ########################################################################
 
-require "rubyunit"
+require "test/unit"
 require "algebra/finite-set.rb"
 include Algebra
 =begin

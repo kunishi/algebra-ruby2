@@ -3,7 +3,7 @@
 #  This is test script for 'polynomial-factor-zp.rb'  #
 #                                                     #
 #######################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/polynomial"
 require "algebra/polynomial-factor"
 require "algebra/residue-class-ring"
