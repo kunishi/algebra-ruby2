@@ -20,9 +20,10 @@ exit
 #exit
 =end
 
-class TestFiniteSet < Test::Unit::TestCase
-  include Algebra
+Object.send(:remove_const, :Set)
+Set = Algebra::Set
 
+class TestFiniteSet < Test::Unit::TestCase
   def test_initialize #test for initialize
     s = Set.new(0, "a", [1, 2])
     assert(s.is_a?(Set))

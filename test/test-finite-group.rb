@@ -8,6 +8,8 @@ require "algebra/finite-group"
 require "algebra/permutation-group"
 
 include Algebra
+Object.send(:remove_const, :Set)
+Set = Algebra::Set
 
 class Rational;def inspect; to_s; end;end
 
