@@ -6,6 +6,8 @@
 require "rubyunit"
 require "algebra/finite-map.rb"
 include Algebra
+Object.send(:remove_const, :Set)
+Set = Algebra::Set
 
 class TestFiniteMap < Test::Unit::TestCase
   def test_initialize #test for initialize
