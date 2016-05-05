@@ -12,10 +12,12 @@ require "algebra/permutation-group"
 include Algebra
 
 class TestAEF < Test::Unit::TestCase
-  P = Algebra.Polynomial(Rational, "x")
+  def setup
+    @P = Algebra.Polynomial(Rational, "x")
+  end
 
   def test_galois_group_0
-    x = P.var
+    x = @P.var
     f = x**2 - 1
     expected = PermutationGroup[
       Permutation[0, 1]
@@ -24,7 +26,7 @@ class TestAEF < Test::Unit::TestCase
   end
 
   def test_galois_group_1
-    x = P.var
+    x = @P.var
     f = x**3 - 3*x + 1
     expected = PermutationGroup[
       Permutation[2, 0, 1],
@@ -35,7 +37,7 @@ class TestAEF < Test::Unit::TestCase
   end
 
   def test_galois_group_2
-    x = P.var
+    x = @P.var
     f = x**3 - 2
     expected = PermutationGroup[
       Permutation[2, 1, 0],
@@ -49,7 +51,7 @@ class TestAEF < Test::Unit::TestCase
   end
 
   def test_galois_group_3
-    x = P.var
+    x = @P.var
     f = (x**2 - 2)*(x**2 - 3)
     expected = PermutationGroup[
       Permutation[0, 3, 2, 1],
@@ -61,7 +63,7 @@ class TestAEF < Test::Unit::TestCase
   end
 
   def test_galois_gr
-    x = P.var
+    x = @P.var
 
     for i in 0..3
       #      next if i != 2

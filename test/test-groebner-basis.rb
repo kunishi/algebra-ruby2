@@ -12,7 +12,9 @@ require "algebra/rational"
 include Algebra
 
 class TestGroebnerBasis < Test::Unit::TestCase
-  F5 = ResidueClassRing(Integer, 5)
+  def setup
+    @F5 = ResidueClassRing(Integer, 5)
+  end
 
   # def gb(f, sw = false)
   #   f0 = f.first
@@ -41,7 +43,7 @@ class TestGroebnerBasis < Test::Unit::TestCase
   def test_groebner_basis_02
     # puts "mod 5"
     #require "algebra/residue-class-ring"
-    x, y, z = MPolynomial(F5).vars "xyz"
+    x, y, z = MPolynomial(@F5).vars "xyz"
     f1 = x**2 + y**2 + z**2 -1
     f2 = x**2 + z**2 - y
     f3 = x - z

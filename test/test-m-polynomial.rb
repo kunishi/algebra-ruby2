@@ -13,14 +13,16 @@ require "mathn"
 include Algebra
 
 class TestMPolynomial < Test::Unit::TestCase
-  Foo = MPolynomial(Integer)
-  P0 = Algebra.MPolynomial(Rational)
-  P = MPolynomial(Rational)
-  Q = MPolynomial(Integer)
+  def setup
+    @Foo = MPolynomial(Integer)
+    @P0 = Algebra.MPolynomial(Rational)
+    @P = MPolynomial(Rational)
+    @Q = MPolynomial(Integer)
+  end
 
   def test_m_polynomial_01
-    f = Foo[MIndex[1,1]=>1, MIndex[1,3]=>4, MIndex[]=>9]
-    g = Foo[MIndex[1,1]=>1, MIndex[1,3]=>4, MIndex[]=>9,
+    f = @Foo[MIndex[1,1]=>1, MIndex[1,3]=>4, MIndex[]=>9]
+    g = @Foo[MIndex[1,1]=>1, MIndex[1,3]=>4, MIndex[]=>9,
       MIndex[0,2,3]=>6, MIndex[2,3]=>-1, MIndex[2]=>-5,MIndex[0,1]=>7]
     # puts f.to_s, g.to_s, (f*g).to_s
     # assert_equal("4[1,3] + [1,1] + 9", f.to_s)
@@ -32,47 +34,47 @@ class TestMPolynomial < Test::Unit::TestCase
   end
 
   def test_m_polynomial_02
-    x, y = P0.vars("xy")
+    x, y = @P0.vars("xy")
 
-    P0.with_ord(:lex) do
+    @P0.with_ord(:lex) do
       assert_equal((x*y**2 -x).divmod(x*y - 1, y**2 - 1), [[y, 0], -x + y])
       assert_equal((x*y**2 -x).divmod(x*y - 1, y**2 - 1), [[y, 0], -x + y])
     end
   end
 
   def test_m_polynomial_03
-    x, y = P0.vars("xy")
-    P0.with_ord(:lex) do
+    x, y = @P0.vars("xy")
+    @P0.with_ord(:lex) do
       assert_equal((x+y**2).divmod(x+y), [[1], y**2 - y])
     end
   end
 
   def test_m_polynomial_04
-    x, y = P0.vars("xy")
+    x, y = @P0.vars("xy")
 
-    P0.with_ord(:lex, [1,0]) do
+    @P0.with_ord(:lex, [1,0]) do
       assert_equal((x+y**2).divmod(x+y), [[y - x], x**2 + x])
     end
   end
 
   def test_m_polynomial_05
-    x, y = P0.vars("xy")
+    x, y = @P0.vars("xy")
 
-    P0.with_ord(:lex, nil) do
+    @P0.with_ord(:lex, nil) do
       assert_equal((x*y+y**2).divmod(x + y**2), [[y], -y**3 + y**2])
     end
   end
 
   def test_m_polynomial_06
-    x, y = P0.vars("xy")
+    x, y = @P0.vars("xy")
 
-    P0.with_ord(:grlex, nil) do
+    @P0.with_ord(:grlex, nil) do
       assert_equal((x*y+y**2).divmod(x + y**2), [[1], x*y - x])
     end
   end
 
   def test_m_polynomial_07
-    x, y, z = P.vars("xyz")
+    x, y, z = @P.vars("xyz")
     f = x**2*y + x*y**2 + y*2 + z**3
     g = x*y-z**3
     h = y*2-6*z
@@ -83,12 +85,12 @@ class TestMPolynomial < Test::Unit::TestCase
   end
 
   def test_m_polynomial_08
-    x, y, z = P.vars("xyz")
+    x, y, z = @P.vars("xyz")
     f = x**2*y + x*y**2 + y*2 + z**3
     g = x*y-z**3
     h = y*2-6*z
 
-    P.set_ord(:lex)
+    @P.set_ord(:lex)
     #puts "LEX:"
     #puts "(#{f}).divmod([#{g}, #{h}]) =>"
     fgh = f.divmod(g, h)
@@ -97,13 +99,13 @@ class TestMPolynomial < Test::Unit::TestCase
   end
 
   def test_m_polynomial_09
-    x, y, z = P.vars("xyz")
+    x, y, z = @P.vars("xyz")
     f = x**2*y + x*y**2 + y*2 + z**3
     g = x*y-z**3
     h = y*2-6*z
 
-    P.method_cash_clear(f, g, h)
-    P.set_ord(:grlex)
+    @P.method_cash_clear(f, g, h)
+    @P.set_ord(:grlex)
     #puts "GRLEX:"
     #puts "(#{f}).divmod([#{g}, #{h}]) =>"
     fgh = f.divmod(g, h)
@@ -113,13 +115,13 @@ class TestMPolynomial < Test::Unit::TestCase
   end
 
   def test_m_polynomial_10
-    x, y, z = P.vars("xyz")
+    x, y, z = @P.vars("xyz")
     f = x**2*y + x*y**2 + y*2 + z**3
     g = x*y-z**3
     h = y*2-6*z
 
-    P.method_cash_clear(f, g, h)
-    P.set_ord(:grevlex)
+    @P.method_cash_clear(f, g, h)
+    @P.set_ord(:grevlex)
     #puts "GREVLEX:"
     #puts "(#{f}).divmod([#{g}, #{h}]) =>"
     fgh = f.divmod(g, h)
@@ -128,8 +130,8 @@ class TestMPolynomial < Test::Unit::TestCase
   end
 
   def test_m_polynomial_11
-    P.variables.clear
-    z, y, x = P.vars("zyx")
+    @P.variables.clear
+    z, y, x = @P.vars("zyx")
     f = x**2*y + x*y**2 + y*2 + z**3
     g = x*y-z**3
     h = y*2-6*z
@@ -141,7 +143,7 @@ class TestMPolynomial < Test::Unit::TestCase
   end
 
   def test_m_polynomial_12
-    x, y, z = Q.vars('xyz')
+    x, y, z = @Q.vars('xyz')
     f = x * y * z
     assert_equal(f.sub(y, y-1), x*(y-1)*z)
     f = (x - y)*(y - z - 1)

@@ -12,7 +12,9 @@ require "algebra/rational"
 include Algebra
 
 class TestGroebnerBasisCoeff < Test::Unit::TestCase
-  P = MPolynomial(Rational)
+  def setup
+    @P = MPolynomial(Rational)
+  end
 
   def gbc(f)
     f0 = f.first
@@ -44,7 +46,7 @@ class TestGroebnerBasisCoeff < Test::Unit::TestCase
   end
 
   def test_gbc
-    x, y, z = P.vars("xyz")
+    x, y, z = @P.vars("xyz")
 
     f1 = x**2 + y**2 + z**2 -1
     f2 = x**2 + z**2 - y
@@ -87,7 +89,7 @@ class TestGroebnerBasisCoeff < Test::Unit::TestCase
   #  P = MPolynomial(Z5)
   def test_groebner_basis_coeff_01
 
-    x, y, z = P.vars("xyz")
+    x, y, z = @P.vars("xyz")
 
     f1 = x**2 + y**2 + z**2 -1
     f2 = x**2 + z**2 - y

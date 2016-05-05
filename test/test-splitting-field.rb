@@ -8,10 +8,12 @@ require "algebra/rational"
 require "algebra/splitting-field"
 
 class TestSF < Test::Unit::TestCase
-  P = Algebra.Polynomial(Rational, "x")
+  def setup
+    @P = Algebra.Polynomial(Rational, "x")
+  end
 
   def test_splitting_field_0
-    x = P.var
+    x = @P.var
     f = x**2 + 3*x + 1
     afs = f.splitting_field
     dfs, roots, proots = afs.def_polys, afs.roots, afs.proots
@@ -22,7 +24,7 @@ class TestSF < Test::Unit::TestCase
   end
 
   def test_splitting_field_1
-    x = P.var
+    x = @P.var
     f = x**3 + x + 1
     afs = f.splitting_field
     dfs, roots, proots = afs.def_polys, afs.roots, afs.proots
@@ -34,7 +36,7 @@ class TestSF < Test::Unit::TestCase
   end
 
   def test_splitting_field_2
-    x = P.var
+    x = @P.var
     f = x**5 - x**4 + 2*x - 2
     afs = f.splitting_field
     dfs, roots, proots = afs.def_polys, afs.roots, afs.proots

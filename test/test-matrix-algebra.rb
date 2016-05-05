@@ -11,22 +11,29 @@ require "algebra/polynomial"
 #include Algebra
 
 class TestMatrixAlgebra < Test::Unit::TestCase
-  M33 = Algebra.MatrixAlgebra(Integer, 3, 3)
-  M34 = Algebra.MatrixAlgebra(Integer, 3, 4)
+  def setup
+    @M33 = Algebra.MatrixAlgebra(Integer, 3, 3)
+    @M34 = Algebra.MatrixAlgebra(Integer, 3, 4)
+    @M43 = @M34.transpose
+    @M44 = @M43 * @M34
+    @Px =  Algebra.Polynomial(Integer, "x")
+    @M2 = Algebra.SquareMatrix(Rational, 2)
+    @M3 = Algebra.SquareMatrix(Rational, 3)
+  end
 
   def test_matrix_algebra_01
-    m0 = M33[
+    m0 = @M33[
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8]
     ]
-    m1 = M33[
+    m1 = @M33[
       [10, 11, 12],
       [13, 14, 15],
       [16, 17, 18]]
 
     assert_equal(
-      M33[
+      @M33[
         [10, 12, 14],
         [16, 18, 20],
         [22, 24, 26]
@@ -37,7 +44,7 @@ class TestMatrixAlgebra < Test::Unit::TestCase
   end
 
   def test_matrix_algebra_02
-    m0 = M33[
+    m0 = @M33[
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8]
@@ -56,17 +63,17 @@ class TestMatrixAlgebra < Test::Unit::TestCase
   end
 
   def test_matrix_algebra_03
-    m0 = M33[
+    m0 = @M33[
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8]
     ]
-    m1 = M33[
+    m1 = @M33[
       [10, 11, 12],
       [13, 14, 15],
       [16, 17, 18]
     ]
-    m2 = M34[
+    m2 = @M34[
       [20, 21, 22, 23],
       [24, 25, 26, 27],
       [28, 29, 30, 31]
@@ -84,17 +91,17 @@ class TestMatrixAlgebra < Test::Unit::TestCase
   end
 
   def test_matrix_algebra_04
-    m0 = M33[
+    m0 = @M33[
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8]
     ]
-    m1 = M33[
+    m1 = @M33[
       [10, 11, 12],
       [13, 14, 15],
       [16, 17, 18]
     ]
-    m2 = M34[
+    m2 = @M34[
       [20, 21, 22, 23],
       [24, 25, 26, 27],
       [28, 29, 30, 31]
@@ -107,22 +114,18 @@ class TestMatrixAlgebra < Test::Unit::TestCase
     # m = m0 * m2
   end
 
-  M43 = M34.transpose
-
   def test_matrix_algebra_05
-    assert_equal([3, 4], M34.sizes)
+    assert_equal([3, 4], @M34.sizes)
     # p M34.sizes
   end
 
   def test_matrix_algebra_06
-    assert_equal([4, 3], M43.sizes)
+    assert_equal([4, 3], @M43.sizes)
     # p M43.sizes
   end
 
-  M44 = M43 * M34
-
   def test_matrix_algebra_07
-    m2 = M34[
+    m2 = @M34[
       [20, 21, 22, 23],
       [24, 25, 26, 27],
       [28, 29, 30, 31]
@@ -140,46 +143,40 @@ class TestMatrixAlgebra < Test::Unit::TestCase
     # p m2.t * m2
   end
 
-  Px =  Algebra.Polynomial(Integer, "x")
-  M2 = Algebra.SquareMatrix(Rational, 2)
-#M2 = SquareMatrix(Integer, 2)
-
   def test_matrix_algebra_08
-    m2 = M2[
+    m2 = @M2[
       [1, 2],
       [3, 4],
       ]
-    x = Px.var
-    assert_equal(x**2 - Rational(5, 1)*x - Rational(2, 1), m2.char_polynomial(Px))
+    x = @Px.var
+    assert_equal(x**2 - Rational(5, 1)*x - Rational(2, 1), m2.char_polynomial(@Px))
     # p f = m2.char_polynomial(Px)
   end
 
-  M3 = Algebra.SquareMatrix(Rational, 3)
-
   def test_matrix_algebra_09
-    m3 = M3[
+    m3 = @M3[
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8]]
-    x = Px.var
-    assert_equal(x**3 - 12*x**2 - 18*x, m3.char_polynomial(Px))
+    x = @Px.var
+    assert_equal(x**3 - 12*x**2 - 18*x, m3.char_polynomial(@Px))
     # p f = m3.char_polynomial(Px)
   end
 
   def test_basic
-    m = M2[[0, 1], [2, 3]]
+    m = @M2[[0, 1], [2, 3]]
     assert_equal(m[1, 1], 3)
     m[1, 1] = 4
     assert_equal(m[1, 1], 4)
   end
   def test_rank
-    assert_equal(M3[[0, 0, 0], [0, 0, 0], [0, 0, 0]].rank, 0)
-    assert_equal(M3[[1, 2, 3], [-2, -4, -6], [-1, -2, -3]].rank, 1)
-    assert_equal(M3[[1, 2, 3], [-2, -4, -5], [-1, -2, -2]].rank, 2)
-    assert_equal(M3[[1, 2, 3], [-2, -4, -5], [-1, 0, -3]].rank, 3)
+    assert_equal(@M3[[0, 0, 0], [0, 0, 0], [0, 0, 0]].rank, 0)
+    assert_equal(@M3[[1, 2, 3], [-2, -4, -6], [-1, -2, -3]].rank, 1)
+    assert_equal(@M3[[1, 2, 3], [-2, -4, -5], [-1, -2, -2]].rank, 2)
+    assert_equal(@M3[[1, 2, 3], [-2, -4, -5], [-1, 0, -3]].rank, 3)
   end
   def test_inverse
-    m = M3[
+    m = @M3[
       [0, 1, 3],
       [1, 0, 1],
       [0, 1, 2]
@@ -188,7 +185,7 @@ class TestMatrixAlgebra < Test::Unit::TestCase
     assert_equal(m.inverse * m, 1)
   end
   def test_cofactor_matirx
-    m = M3[
+    m = @M3[
       [0, 1, 3],
       [1, 0, 1],
       [0, 1, 2]

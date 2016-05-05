@@ -11,10 +11,11 @@ require "algebra/rational"
 include Algebra
 
 class TestMPolynomialFactorInt < Test::Unit::TestCase
-  P = MPolynomial(Integer)
-  x, y, z, t = P.vars("xyzt")
+  def setup
+  @P = MPolynomial(Integer)
+  x, y, z, t = @P.vars("xyzt")
 
-  FS = [
+  @FS = [
     [x, y, z],
     #  [3*x + 2*y, x + y],
     #  [3*x + 2*y, 5*x + 7*y, 4*x + 5*z],
@@ -28,35 +29,36 @@ class TestMPolynomialFactorInt < Test::Unit::TestCase
     [t + x, t + y, t + z],
   ]
 
-  PQ = MPolynomial(Rational)
-  x, y, z, t = PQ.vars("xyzt")
-  FSQ = [
+  @PQ = MPolynomial(Rational)
+  x, y, z, t = @PQ.vars("xyzt")
+  @FSQ = [
     [x / 2 + y / 3, x / 5 + y / 5],
     [x / 2 + y / 3, y / 5 + z / 3, z / 7 + x / 11],
   ]
 
   #PF = PolynomialFactorization::Factors
-  PF = Algebra::Factors
+  @PF = Algebra::Factors
+  end
 
   def test_factorize_int
     # puts
-    FS.each_with_index do |fs, i|
-      f = PF.seki(fs)
+    @FS.each_with_index do |fs, i|
+      f = @PF.seki(fs)
       # print "Factorize Int(#{i+1}): #{f}\n"
       a = f.factorize_int
       # print "  -> #{a}\n"
-      assert_equal(PF[*fs], a)
+      assert_equal(@PF[*fs], a)
     end
   end
 
   def test_factorize_rational
     # puts
-    FSQ.each_with_index do |fs, i|
-      f = PF.seki(fs)
+    @FSQ.each_with_index do |fs, i|
+      f = @PF.seki(fs)
       # print "Factorize Rational(#{i+1}): #{f}\n"
       a = f.factorize_rational
       # print "  -> #{a}\n"
-      assert_equal(PF[*fs], a)
+      assert_equal(@PF[*fs], a)
     end
   end
 end

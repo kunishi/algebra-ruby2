@@ -9,11 +9,12 @@ require "algebra/m-polynomial-factor"
 include Algebra
 
 class TestMPolynomialFactorZp < Test::Unit::TestCase
-  Z7 = ResidueClassRing(Integer, 7)
-  P = MPolynomial(Z7)
-  x, y, z, t = P.vars("xyzt")
+  def setup
+  @Z7 = ResidueClassRing(Integer, 7)
+  @P = MPolynomial(@Z7)
+  x, y, z, t = @P.vars("xyzt")
 
-  FS = [
+  @FS = [
     [x, y, z],
     [z, z],
     [x+y+z, x**2+y**2+z**2-x*y-y*z-z*x],
@@ -31,16 +32,17 @@ class TestMPolynomialFactorZp < Test::Unit::TestCase
   ]
 
   #PF = PolynomialFactorization::Factors
-  PF = Algebra::Factors
+  @PF = Algebra::Factors
+  end
 
   def test_factorize
     # puts
-    FS.each do |fs|
-      f = PF.seki(fs)
+    @FS.each do |fs|
+      f = @PF.seki(fs)
       # print "Factorize: #{f}\n"
       a = f.factorize_modp
       # print "  -> #{a}\n"
-      assert_equal(PF[*fs], a)
+      assert_equal(@PF[*fs], a)
     end
   end
 end

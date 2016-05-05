@@ -11,7 +11,8 @@ require "algebra/algebraic-equation"
 
 class TestJordanForm < Test::Unit::TestCase
   # "Jordan Hyouzyunkei I & Isa, Tokudai Syuppan Kai # pp.96-97
-  A = [
+  def setup
+  @A = [
     [#0
       [4, 1, 1, 1],
       [1, 5, 3, -1],
@@ -83,12 +84,13 @@ class TestJordanForm < Test::Unit::TestCase
       [0, 1, 1, 1]
     ],
   ]
-  Ai = (0...A.size).to_a
+  @Ai = (0...@A.size).to_a
+  @PR = Algebra.Polynomial(Rational, "x")
+  end
 
-  PR = Algebra.Polynomial(Rational, "x")
   def test_jordan_form0
     # puts
-    Ai.each do |i|; m = A[i]
+    @Ai.each do |i|; m = @A[i]
 #    Ai[0..9].each do |i|; m = A[i]
       # puts "##{i}"
       _test_jordan_form(m)
@@ -98,7 +100,7 @@ class TestJordanForm < Test::Unit::TestCase
   def _test_jordan_form(a)
     m = Algebra.SquareMatrix(Rational, a.size)[*a]
     # m.display; puts
-    asr = Algebra.SquareMatrix(PR, a.size)
+    asr = Algebra.SquareMatrix(@PR, a.size)
 
     me = m._char_matrix(asr).to_quint.e_diagonalize
     elem_divs = me.body.diag
@@ -136,7 +138,7 @@ class TestJordanForm < Test::Unit::TestCase
 
   def test_jordan_form
     puts
-    Ai[0..0].each do |i|; a = A[i]
+    @Ai[0..0].each do |i|; a = @A[i]
       # puts "##{i}"
       m = Algebra.SquareMatrix(Rational, a.size)[*a]
       # m.display; puts
