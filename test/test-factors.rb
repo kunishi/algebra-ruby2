@@ -7,9 +7,13 @@ require "rubyunit"
 require "algebra/factors.rb"
 include Algebra
 
-PF = Factors
+#PF = Factors
 
 class TestProductFactors < Test::Unit::TestCase
+  def setup
+    @PF = Factors
+  end
+
   def test_int
     capital_p_capital_f = Factors
     facts = capital_p_capital_f.new

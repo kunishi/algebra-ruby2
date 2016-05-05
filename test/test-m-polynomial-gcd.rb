@@ -9,12 +9,14 @@ require "algebra/residue-class-ring"
 include Algebra
 
 class TestMPolynomialGcd < Test::Unit::TestCase
-  Z7 = ResidueClassRing(Integer, 7)
-  P = MPolynomial(Z7)
+  def setup
+    @Z7 = ResidueClassRing(Integer, 7)
+    @P = MPolynomial(@Z7)
+  end
 
   def test_m_polynomial_gcd
     #  P = MPolynomial(Integer)
-    x, y, z = P.vars("xyz")
+    x, y, z = @P.vars("xyz")
 
     f, g  = (x + y) * (x + 2*y), (x + 2*y) * (x + 3*y)
     #  f, g  = x**2*y, x*y**2

@@ -7,15 +7,16 @@ require "rubyunit"
 require "algebra/algebraic-equation.rb"
 require "algebra/rational"
 
-PQ = Algebra.Polynomial(Rational, "x")
-Q2 = Algebra.AlgebraicExtensionField(Rational, "a") {|a|
-  a**2 - 2
-}
-
-
 class TestPolyDecompose < Test::Unit::TestCase
+  def setup
+    @PQ = Algebra.Polynomial(Rational, "x")
+    @Q2 = Algebra.AlgebraicExtensionField(Rational, "a") {|a|
+      a**2 - 2
+    }
+  end
+
   def test_mdf
-    x = PQ.var
+    x = @PQ.var
     #    f = x**2 - 3*x + 2
     #    f = (x**2 - 2*x - 1)*(x**2 + x + 1)
     #    f = x**4 + 1
@@ -44,7 +45,7 @@ class TestPolyDecompose < Test::Unit::TestCase
   end
 
   def _test_perm
-    x = PQ.var
+    x = @PQ.var
     [
       x**3 - 3*x + 1,
       x**3 - x + 1,

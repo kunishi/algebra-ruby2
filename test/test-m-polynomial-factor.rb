@@ -10,11 +10,13 @@ require "algebra/m-polynomial"
 include Algebra
 
 class TestMPolynomialFactor < Test::Unit::TestCase
-  Z7 = ResidueClassRing(Integer, 7)
-  P = MPolynomial(Z7)
+  def setup
+    @Z7 = ResidueClassRing(Integer, 7)
+    @P = MPolynomial(@Z7)
+  end
 
   def test_m_polynomial_factor
-    x, y, z = P.vars("xyz")
+    x, y, z = @P.vars("xyz")
     #  f = x**2*y*z + (-z**2 - y*z + y + z + 2)*x + (y*z**3 - z**3 - y**2*z - y*z + 2*z)
     #  f = x**2*y + x**2*z + x * y * z
     #  f = x**2*y + x**2*z + x * y

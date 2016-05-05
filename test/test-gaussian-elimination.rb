@@ -13,15 +13,18 @@ require "algebra/rational";class Rational<Numeric;def inspect;to_s;end;end
 include Algebra
 
 class TestGaussianElimination < Test::Unit::TestCase
-  G = MatrixAlgebra(Rational, 2, 2)
-  R = MPolynomial(Rational)
   require "algebra/residue-class-ring"
-  F2 = ResidueClassRing(Integer, 2)
-  M = SquareMatrix(F2, 8)
-  MR = SquareMatrix(Rational, 5)
-  MI = SquareMatrix(Integer, 5)
-  MR56 = MatrixAlgebra(Rational, 5, 7)
-  MI56 = MatrixAlgebra(Integer, 5, 7)
+
+  def setup
+    @G = MatrixAlgebra(Rational, 2, 2)
+    @R = MPolynomial(Rational)
+    @F2 = ResidueClassRing(Integer, 2)
+    @M = SquareMatrix(@F2, 8)
+    @MR = SquareMatrix(Rational, 5)
+    @MI = SquareMatrix(Integer, 5)
+    @MR56 = MatrixAlgebra(Rational, 5, 7)
+    @MI56 = MatrixAlgebra(Integer, 5, 7)
+  end
 
   def test_left_elimination
     a0 = [
@@ -32,7 +35,7 @@ class TestGaussianElimination < Test::Unit::TestCase
       [7, 5, 0, -9, -9, 1, -3]
     ]
     # puts
-    a = MR56[*a0]
+    a = @MR56[*a0]
     # a.display
     # puts "=>"
     a.left_eliminate!
@@ -44,11 +47,11 @@ class TestGaussianElimination < Test::Unit::TestCase
       [0,   0,   0, 0,   0,   0,   0],
       [0,   0,   0, 0,   0,   0,   0]
     ]
-    assert_equal(MR56[*b0], a)
+    assert_equal(@MR56[*b0], a)
 
     # puts
     #
-    a = MI56[*a0]
+    a = @MI56[*a0]
     # a.display
     # puts "=>"
     a.left_eliminate_euclidian!
@@ -60,7 +63,7 @@ class TestGaussianElimination < Test::Unit::TestCase
       [0,   0,   0,   0,   0,   0,   0],
       [0,   0,   0,   0,   0,   0,   0],
     ]
-    assert_equal(MI56[*b0], a)
+    assert_equal(@MI56[*b0], a)
 
   end
   def test_determinant_by_elimination
@@ -72,23 +75,23 @@ class TestGaussianElimination < Test::Unit::TestCase
       [3, -1, 3, 4, 5]
     ]
     # puts
-    d = MR[*a0].determinant_by_elimination
+    d = @MR[*a0].determinant_by_elimination
     # p [d, d.class]
     assert_equal(1383, d)
-    d = MI[*a0].determinant_by_elimination_euclidian
+    d = @MI[*a0].determinant_by_elimination_euclidian
     # p [d, d.class]
     assert_equal(1383, d)
   end
   def test_kernel_basis_2x2
     # puts
-    a = G[[0, 0], [1, -1]]
+    a = @G[[0, 0], [1, -1]]
     k = a.kernel_basis
     # p Hash[a, k]
     assert_equal([Vector(Rational, 2)[1, 1]], k, "#{Hash[a, k]}")
   end
   def test_kernel_basis_8x8_Z2
     # puts "Kernel of"
-    m = M[
+    m = @M[
       "10001101".scan(/./).collect{|x|x.to_i},
       "00000011".scan(/./).collect{|x|x.to_i},
       "01001011".scan(/./).collect{|x|x.to_i},
@@ -106,9 +109,9 @@ class TestGaussianElimination < Test::Unit::TestCase
     #   puts "Vector(F2, 8)#{b}"
     # end
     assert_equal([
-		   Vector(F2, 8)[1, 0, 0, 0, 0, 0, 0, 0],
-		   Vector(F2, 8)[0, 1, 1, 1, 1, 1, 1, 0],
-		   Vector(F2, 8)[0, 1, 1, 0, 1, 0, 0, 1],
+		   Vector(@F2, 8)[1, 0, 0, 0, 0, 0, 0, 0],
+		   Vector(@F2, 8)[0, 1, 1, 1, 1, 1, 1, 0],
+		   Vector(@F2, 8)[0, 1, 1, 0, 1, 0, 0, 1],
 		 ], k)
   end
 end

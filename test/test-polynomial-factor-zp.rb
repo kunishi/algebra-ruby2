@@ -10,19 +10,21 @@ require "algebra/residue-class-ring"
 include Algebra
 
 class TestPolynomialFactorZp < Test::Unit::TestCase
-  PQ = Polynomial(Integer, "x")
-  x = PQ.var
-  FS = [
-    x**2+x+1,
-    (x**2+x+1)*(x+1)**3,
-    (x**8+x**6+x**5+x**4+x**3+x**2+1)*(x**2+x+1)**3
-  ]
+  def setup
+    @PQ = Polynomial(Integer, "x")
+    x = @PQ.var
+    @FS = [
+        x**2+x+1,
+        (x**2+x+1)*(x+1)**3,
+        (x**8+x**6+x**5+x**4+x**3+x**2+1)*(x**2+x+1)**3
+    ]
+  end
 
   def test_factorize
     [2, 3, 5, 7, 11].each do |n|
       fn = ResidueClassRing(Integer, n)
       pfn = Polynomial(fn, "y")
-      FS.each do |fs|
+      @FS.each do |fs|
         #        f = PF.seki(fs)
         f = fs
         g = f.project(pfn){|c, i| fn[c]}
