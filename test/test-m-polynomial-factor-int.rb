@@ -3,7 +3,7 @@
 #  This is test script for 'm-polynomial-factor-int.rb'  #
 #                                                        #
 ##########################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/m-polynomial-factor-int.rb"
 require "algebra/m-polynomial-factor"
 require "algebra/rational"

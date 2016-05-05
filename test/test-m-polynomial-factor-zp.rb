@@ -3,7 +3,7 @@
 #  This is test script for 'm-polynomial-factor-zp.rb'  #
 #                                                       #
 #########################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/m-polynomial-factor-zp.rb"
 require "algebra/m-polynomial-factor"
 include Algebra

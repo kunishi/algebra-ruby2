@@ -3,7 +3,7 @@
 #  This is the test of order of MPolynomial           #
 #                                                     #
 #######################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/m-polynomial"
 
 class TestMIndex < Test::Unit::TestCase

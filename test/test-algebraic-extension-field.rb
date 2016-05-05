@@ -3,7 +3,7 @@
 #  This is test script for 'algebraic-extension-field.rb'  #
 #                                                          #
 ############################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/algebraic-extension-field"
 require "algebra/polynomial"
 require "algebra/rational"

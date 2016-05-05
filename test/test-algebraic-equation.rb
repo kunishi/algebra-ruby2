@@ -3,7 +3,7 @@
 #  This is test script for 'algebraic-equation.rb'  #
 #                                                    #
 ######################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/algebraic-equation.rb"
 require "algebra/rational"
 

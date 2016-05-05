@@ -3,7 +3,7 @@
 #  This is test script for 'gaussian-elimination.rb'  #
 #                                                     #
 #######################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/gaussian-elimination.rb"
 require "algebra/m-polynomial"
 require "algebra/polynomial"

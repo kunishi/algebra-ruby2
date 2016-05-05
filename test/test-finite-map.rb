@@ -3,7 +3,7 @@
 #   Test Script for finite-map.rb                                      #
 #                                                                      #
 ########################################################################
-require "rubyunit"
+require "test/unit"
 require "algebra/finite-map.rb"
 include Algebra
 Object.send(:remove_const, :Set)
