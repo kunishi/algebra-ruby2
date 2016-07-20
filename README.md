@@ -1,14 +1,14 @@
 
-Algebra
+# Algebra
 
 2006.09.14
    
- *  Version: 0.72
- *  Author: Shin-ichiro HARA
- *  e-mail: sinara@blade.nagaokaut.ac.jp
- *  Home Page: <URL:http://blade.nagaokaut.ac.jp/~sinara/ruby/math/>
+*  Version: 0.72
+*  Author: Shin-ichiro HARA
+*  e-mail: sinara@blade.nagaokaut.ac.jp
+*  Home Page: <URL:http://blade.nagaokaut.ac.jp/~sinara/ruby/math/>
 
-Preface
+## Preface
 
 This is a library for mathematical computations. Our purpose is to express the
 mathematical object naturally in Ruby. Though it is not operated fast, we can
@@ -18,31 +18,30 @@ scripts.
 This library is in development stage. At present, things we can handle are as
 follows:
    
- *  One-variate polynomial
-     +  Fundamental operations (addition, multiplication, quotient/remainder,
+*  One-variate polynomial
+   +  Fundamental operations (addition, multiplication, quotient/remainder,
         ...)
-     +  factorization
-     +  Galois group
-   
- *  Multi-variate polynomial
-     +  Fundamental operations (addition, multiplication, ...)
-     +  factorization
-     +  Creating Groebner-basis, quotient/remainder by Groebner-basis.
-   
- *  Algebraic systems
-     +  Creating quotient fields
-     +  Creating residue class fields
-     +  Operating matrices
-     +  Operating permutation groups
-   
- *  Sets and Maps
+   +  factorization
+   +  Galois group
+* Multi-variate polynomial
+   +  Fundamental operations (addition, multiplication, ...)
+   +  factorization
+   +  Creating Groebner-basis, quotient/remainder by Groebner-basis.
+*  Algebraic systems
+   +  Creating quotient fields
+   +  Creating residue class fields
+   +  Operating matrices
+   +  Operating permutation groups
+*  Sets and Maps
 
-Installation
+## Installation
 
 Install Ruby (See: <URL:http://www.ruby-lang.org/> ).
 
 After expanding this archive, do
+```
 ruby install.rb
+```
 
 Then all files and directories under lib are copyed in the directory where Ruby
 can load.
@@ -51,11 +50,11 @@ To accelerate calculation, it is better to use an extension library of rational
 number: (<URL:http://blade.nagaokaut.ac.jp/~sinara/ruby/rational/> than to use
 the stardard library rational.rb.
 
-Usage and Samples
+## Usage and Samples
 
 See index.html in doc directory, where manuals and sample codes are.
 
-Reference
+## Reference
 
  *  D.Cox, J.Little and D.O'Shea, "IDEALS, VARIETIES AND ALGORITHMS", 1997,
     Springer.
