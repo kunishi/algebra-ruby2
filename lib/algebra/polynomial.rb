@@ -279,313 +279,314 @@ module Algebra
       if d1 <= 0
         [self.class.new(*collect{|c|
           c / o.lc
-          }), zero]
-        elsif d0 < d1
-          [zero, self]
-        else
-          tk = monomial(d0 - d1) * ground_div(lc, o.lc)
-          e = rt - o.rt * tk
-          #      e.compact!
-          q, r = e.divmod(o)
-          [q + tk, r]
-        end
-      end
-
-      def div(other)
-        if o = regulate(other)
-          divmod(o).first
-        else
-          raise "unknown divisor self.class #{other.class}"
-        end
-      end
-
-      alias / div
-
-      def rem(other)
-        if o = regulate(other)
-          divmod(o)[1]
-        else
-          raise "unknown divisor self.class #{other.class}"
-        end
-      end
-
-      alias % rem
-
-      def divide?(other)
-        _q, r = other.divmod(self)
-        r.zero?
-      end
-
-      def pdivmod(other)
-        if o = regulate(other)
-          deg0, deg1 = deg,  o.deg
-          if deg0 < deg1
-            [zero, self]
-          else
-            ((o.lc)**(deg0 - deg1 + 1) * self).divmod(o)
-          end
-        else
-          raise "unknown divisor self.class #{other.class}"
-        end
-      end
-
-      def pdiv(other)
-        if o = regulate(other)
-          pdivmod(o).first
-        else
-          raise "unknown divisor self.class #{other.class}"
-        end
-      end
-
-      def prem(other)
-        if _o = regulate(other)
-          pdivmod(other).last
-        else
-          raise "unknown divisor self.class #{other.class}"
-        end
-      end
-
-      def lc
-        self[deg]
-      end
-
-      def lm
-        monomial(deg)
-      end
-
-      def lt
-        lc * lm
-      end
-
-      def rt
-        self - lt
-      end
-
-      def monic
-        self / lc
-      end
-
-      #  def cont; @coeff.first.gcd_all(* @coeff[1..-1]); end
-      #  def pp; self / cont; end
-
-      def need_paren_in_coeff?
-        if constant?
-          c = @coeff[0]
-          if c.respond_to?(:need_paren_in_coeff?)
-            c.need_paren_in_coeff?
-          elsif c.is_a?(Numeric)
-            false
-          else
-            true
-          end
-        elsif !monomial?
-          true
-        else
-          false
-        end
-      end
-
-      def to_s
-        a = []
-        case self.class.display_type
-        when :code
-          pr, po =  "*",  "**"
-        else
-          pr, po =  "",  "^"
-        end
-
-        x = variable ? variable.to_s : "x"
-        each_with_index do |c, i|
-          next if c.zero?
-          s = case i
-          when 0
-            c.to_s
-          else
-            c = if c == 1
-              ""
-            elsif c == -1
-              "-"
-            elsif c.respond_to?(:need_paren_in_coeff?)
-              if c.need_paren_in_coeff?
-                "(#{c})" + pr
-              else
-                c.to_s + pr
-              end
-            elsif c.is_a?(Numeric)
-              c.to_s + pr
-            else
-              "(#{c})" + pr
-            end
-            i == 1 ? c + x :  c + x + "#{po}#{i}"
-          end
-          a.unshift s
-        end
-        a.unshift "0" if a.empty?
-        a.join(" + ").gsub(/\+ -/, "- ")
-      end
-
-      alias _inspect inspect
-      alias inspect to_s unless $DEBUG
-
-      def evaluate_old(obj)
-        e = ground.zero
-        reverse_each do |c|
-          e = e * obj + c
-        end
-        e
-      end
-
-      def project(ring, x = ring.var)
-        e = ring.zero
-        n = size
-        reverse_each do |c|
-          n -= 1
-          e = e * x + yield(c, n)
-        end
-        e
-      end
-
-      def evaluate(*a)
-        #project(self.class, x){|c, n| c}
-        x = a.last
-        if a.size > 1
-          project(ground, x){|c, n| c.evaluate(* a[0...-1])}
-        elsif a.size == 1
-          project(ground, x){|c, n| c}
-        else
-          raise "can't evaluate"
-        end
-      end
-
-      def to_proc
-        Proc.new{|*a| evaluate(*a)}
-      end
-
-      def sub(var, value)
-        vs = self.class.vars
-        if i = vs.index(var)
-          vs = vs.dup
-          vs[i] = value
-          evaluate(*vs)
-        else
-          raise "#{var} is not a variable"
-        end
-      end
-
-      alias evaluateR evaluate
-      alias call evaluate
-      alias callR evaluateR
-
-      def projectL(ring = self.class, x = ring.var)
-        e = ring.zero
-        n = size
-        reverse_each do |c|
-          n -= 1
-          e = x * e + yield(c, n)
-        end
-        e
-      end
-
-      def evaluateL(x)
-        projectL(ground, x){|c, n| c}
-      end
-
-      alias callL evaluateL
-
-      def move_const(a, coef = 1)
-        evaluate(self.class.var + a*coef)
-      end
-
-      def convert_to(ring)
-        project(ring){|c, n| c}
-      end
-
-      def derivate
-        e = zero
-        n = size - 1
-        reverse_each do |c|
-          e = e * var + c * n
-          break if n <= 1
-          n -= 1
-        end
-        e
-      end
-
-      def sylvester_matrix(o, k = 0)
-        m, n = deg, o.deg
-        if k.zero?
-          sm = Algebra.SquareMatrix(ground, m + n - 2*k)
-        else
-          sm = Algebra.MatrixAlgebra(ground, m + n - 2*k, m + n - k)
-        end
-        sm.matrix{|i, j|
-          if i < n - k
-            i0 = j - i
-            i0 >= 0 && i0 <= m ? self[m-i0] : ground.zero
-          else
-            i0 = j - i + n - k
-            i0 >= 0 && i0 <= n ? o[n-i0] : ground.zero
-          end
-        }
-      end
-
-      def resultant(other)
-        sylvester_matrix(other).determinant
+          }), zero
+        ]
+      elsif d0 < d1
+        [zero, self]
+      else
+        tk = monomial(d0 - d1) * ground_div(lc, o.lc)
+        e = rt - o.rt * tk
+        #      e.compact!
+        q, r = e.divmod(o)
+        [q + tk, r]
       end
     end
+
+    def div(other)
+      if o = regulate(other)
+        divmod(o).first
+      else
+        raise "unknown divisor self.class #{other.class}"
+      end
+    end
+
+    alias / div
+
+    def rem(other)
+      if o = regulate(other)
+        divmod(o)[1]
+      else
+        raise "unknown divisor self.class #{other.class}"
+      end
+    end
+
+    alias % rem
+
+    def divide?(other)
+      _q, r = other.divmod(self)
+      r.zero?
+    end
+
+    def pdivmod(other)
+      if o = regulate(other)
+        deg0, deg1 = deg,  o.deg
+        if deg0 < deg1
+          [zero, self]
+        else
+          ((o.lc)**(deg0 - deg1 + 1) * self).divmod(o)
+        end
+      else
+        raise "unknown divisor self.class #{other.class}"
+      end
+    end
+
+    def pdiv(other)
+      if o = regulate(other)
+        pdivmod(o).first
+      else
+        raise "unknown divisor self.class #{other.class}"
+      end
+    end
+
+    def prem(other)
+      if _o = regulate(other)
+        pdivmod(other).last
+      else
+        raise "unknown divisor self.class #{other.class}"
+      end
+    end
+
+    def lc
+      self[deg]
+    end
+
+    def lm
+      monomial(deg)
+    end
+
+    def lt
+      lc * lm
+    end
+
+    def rt
+      self - lt
+    end
+
+    def monic
+      self / lc
+    end
+
+    #  def cont; @coeff.first.gcd_all(* @coeff[1..-1]); end
+    #  def pp; self / cont; end
+
+    def need_paren_in_coeff?
+      if constant?
+        c = @coeff[0]
+        if c.respond_to?(:need_paren_in_coeff?)
+          c.need_paren_in_coeff?
+        elsif c.is_a?(Numeric)
+          false
+        else
+          true
+        end
+      elsif !monomial?
+        true
+      else
+        false
+      end
+    end
+
+    def to_s
+      a = []
+      case self.class.display_type
+      when :code
+        pr, po =  "*",  "**"
+      else
+        pr, po =  "",  "^"
+      end
+
+      x = variable ? variable.to_s : "x"
+      each_with_index do |c, i|
+        next if c.zero?
+        s = case i
+        when 0
+          c.to_s
+        else
+          c = if c == 1
+            ""
+          elsif c == -1
+            "-"
+          elsif c.respond_to?(:need_paren_in_coeff?)
+            if c.need_paren_in_coeff?
+              "(#{c})" + pr
+            else
+              c.to_s + pr
+            end
+          elsif c.is_a?(Numeric)
+            c.to_s + pr
+          else
+            "(#{c})" + pr
+          end
+          i == 1 ? c + x :  c + x + "#{po}#{i}"
+        end
+        a.unshift s
+      end
+      a.unshift "0" if a.empty?
+      a.join(" + ").gsub(/\+ -/, "- ")
+    end
+
+    alias _inspect inspect
+    alias inspect to_s unless $DEBUG
+
+    def evaluate_old(obj)
+      e = ground.zero
+      reverse_each do |c|
+        e = e * obj + c
+      end
+      e
+    end
+
+    def project(ring, x = ring.var)
+      e = ring.zero
+      n = size
+      reverse_each do |c|
+        n -= 1
+        e = e * x + yield(c, n)
+      end
+      e
+    end
+
+    def evaluate(*a)
+      #project(self.class, x){|c, n| c}
+      x = a.last
+      if a.size > 1
+        project(ground, x){|c, n| c.evaluate(* a[0...-1])}
+      elsif a.size == 1
+        project(ground, x){|c, n| c}
+      else
+        raise "can't evaluate"
+      end
+    end
+
+    def to_proc
+      Proc.new{|*a| evaluate(*a)}
+    end
+
+    def sub(var, value)
+      vs = self.class.vars
+      if i = vs.index(var)
+        vs = vs.dup
+        vs[i] = value
+        evaluate(*vs)
+      else
+        raise "#{var} is not a variable"
+      end
+    end
+
+    alias evaluateR evaluate
+    alias call evaluate
+    alias callR evaluateR
+
+    def projectL(ring = self.class, x = ring.var)
+      e = ring.zero
+      n = size
+      reverse_each do |c|
+        n -= 1
+        e = x * e + yield(c, n)
+      end
+      e
+    end
+
+    def evaluateL(x)
+      projectL(ground, x){|c, n| c}
+    end
+
+    alias callL evaluateL
+
+    def move_const(a, coef = 1)
+      evaluate(self.class.var + a*coef)
+    end
+
+    def convert_to(ring)
+      project(ring){|c, n| c}
+    end
+
+    def derivate
+      e = zero
+      n = size - 1
+      reverse_each do |c|
+        e = e * var + c * n
+        break if n <= 1
+        n -= 1
+      end
+      e
+    end
+
+    def sylvester_matrix(o, k = 0)
+      m, n = deg, o.deg
+      if k.zero?
+        sm = Algebra.SquareMatrix(ground, m + n - 2*k)
+      else
+        sm = Algebra.MatrixAlgebra(ground, m + n - 2*k, m + n - k)
+      end
+      sm.matrix{|i, j|
+        if i < n - k
+          i0 = j - i
+          i0 >= 0 && i0 <= m ? self[m-i0] : ground.zero
+        else
+          i0 = j - i + n - k
+          i0 >= 0 && i0 <= n ? o[n-i0] : ground.zero
+        end
+      }
+    end
+
+    def resultant(other)
+      sylvester_matrix(other).determinant
+    end
   end
+end
 
-  if $0 == __FILE__
-    #  include Algebra
-    require "algebra/residue-class-ring"
-    require "algebra/mathn"
+if $0 == __FILE__
+  #  include Algebra
+  require "algebra/residue-class-ring"
+  require "algebra/mathn"
 
-    Fx = Algebra::Polynomial.create(Integer, "x")
-    x = Fx.var
+  Fx = Algebra::Polynomial.create(Integer, "x")
+  x = Fx.var
 
-    f = x**6 - 1
-    g = (x^4) -1
+  f = x**6 - 1
+  g = (x^4) -1
 
-    #  p f.sylvester_matrix g
-    #  p f.resultant g
+  #  p f.sylvester_matrix g
+  #  p f.resultant g
 
 
-    d, t, u = f.gcd_coeff(g)
-    puts "(#{t})(#{f}) + (#{u})(#{g}) = #{t * f + u * g} = #{d}"
+  d, t, u = f.gcd_coeff(g)
+  puts "(#{t})(#{f}) + (#{u})(#{g}) = #{t * f + u * g} = #{d}"
 
-    Fy = Algebra::Polynomial.create(Rational, "y")
-    y = Fy.var
+  Fy = Algebra::Polynomial.create(Rational, "y")
+  y = Fy.var
 
-    f = y**3 - 3*y + 2
-    g = y**6 - 1
-    h = y**4 - 1
+  f = y**3 - 3*y + 2
+  g = y**6 - 1
+  h = y**4 - 1
 
-    p f.gcd_all(g, h)
-    d, a, b, c =  f.gcd_coeff_all(g, h)
+  p f.gcd_all(g, h)
+  d, a, b, c =  f.gcd_coeff_all(g, h)
 
-    p a*f+b*g+c*h == d
+  p a*f+b*g+c*h == d
 
-    # Polynimial is a commutative multi-variable ring
-    Fxy = Algebra::Polynomial.create(Fx, "y")
-    x = Fx.var
-    y = Fxy.var
-    p  x**2 * y**2 - y**2 * x**2 #=> 0
+  # Polynimial is a commutative multi-variable ring
+  Fxy = Algebra::Polynomial.create(Fx, "y")
+  x = Fx.var
+  y = Fxy.var
+  p  x**2 * y**2 - y**2 * x**2 #=> 0
 
-    require "algebra/algebraic-parser"
-    p  Algebra::AlgebraicParser.eval("(x + y)**10 - (y**2 + 2*x*y + x**2)**5)", Fxy) #=> 0
+  require "algebra/algebraic-parser"
+  p  Algebra::AlgebraicParser.eval("(x + y)**10 - (y**2 + 2*x*y + x**2)**5)", Fxy) #=> 0
 
-    require "algebra/rational"
-    #  A = Polynomial.create(Rational, "x")
-    #  x = A.var
-    #  B = Polynomial.create(A, "y")
-    #  y = B.var
-    #  C = Polynomial.create(B, "z")
-    #  z = C.var
-    #  D = Polynomial.create(C, "w")
-    #  w = D.var
-    #  p( (x+y+z+w)**4 )
+  require "algebra/rational"
+  #  A = Polynomial.create(Rational, "x")
+  #  x = A.var
+  #  B = Polynomial.create(A, "y")
+  #  y = B.var
+  #  C = Polynomial.create(B, "z")
+  #  z = C.var
+  #  D = Polynomial.create(C, "w")
+  #  w = D.var
+  #  p( (x+y+z+w)**4 )
 
-    K = Algebra::Polynomial.create(Integer, "x", "y", "z", "w")
-    x, y, z, w = K.vars
-    p( (x+y+z+w)**4 )
-  end
+  K = Algebra::Polynomial.create(Integer, "x", "y", "z", "w")
+  x, y, z, w = K.vars
+  p( (x+y+z+w)**4 )
+end
