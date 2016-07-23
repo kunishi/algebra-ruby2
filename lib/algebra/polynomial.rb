@@ -47,7 +47,7 @@ module Algebra
     def initialize(*coeff)
       @coeff = coeff
     end
-    
+
     def self.create(ground, *vs)
       if vs.empty?
 	#raise "parameter objects must be given"
@@ -58,9 +58,9 @@ module Algebra
       klass.sysvar(:display_type, :norm)
       klass
     end
-    
+
     def self.vars; mvar; end
-    
+
     def self.mvar
       g = self
       a = []
@@ -70,7 +70,7 @@ module Algebra
       end
       a
     end
-    
+
     def self.variables
       g = self
       a = []
@@ -80,7 +80,7 @@ module Algebra
       end
       a
     end
-    
+
     def self.indeterminate(obj)
       if obj == variable
 	new(ground.zero, ground.unity)
@@ -88,9 +88,10 @@ module Algebra
 	new(ground.indeterminate(obj))
       end
     end
-    
+
     def self.monomial(n = 1)
       m = new(*([ground.zero] * n + [ground.unity]))
+      m
     end
 
     def self.to_ary
@@ -100,27 +101,27 @@ module Algebra
     def monomial(n = 1)
       self.class.monomial(n)
     end
-    
+
     def self.var
       monomial
     end
-    
+
     def var
       self.class.monomial
     end
-    
+
     def variable; self.class.variable; end
-    
+
     def variable=(bf); self.class.variable = bf; end
-    
+
     def self.const(c)
       new(c)
     end
-    
+
     def constant?
       deg <= 0
     end
-    
+
 #  def self.[](obj)
 #    ground = obj
 #    monomial
@@ -129,23 +130,23 @@ module Algebra
     def each(&b)
       @coeff.each(&b)
     end
-    
+
     def reverse_each(&b)
       @coeff.reverse_each(&b)
     end
-    
+
     def size
       @coeff.size
     end
-    
+
     def [](x)
       @coeff[x] || ground.zero
     end
-    
+
     def []=(x, v)
       @coeff[x]= v
     end
-    
+
     def monomial?
       flag = false
       each do |x|
@@ -165,25 +166,25 @@ module Algebra
       end
       flag
     end
-    
+
     def self.euclidian?
 #    ground.euclidian? or ground.field?
       ground.field?
     end
-    
+
     def compact!
       d = deg
       @coeff.slice!((d+1)..-1) if d >= 0
       self
     end
-    
+
     def deg
       i = size - 1
       i -= 1 while i >= 0 && self[i].zero?
 #    i >= 0 ? i : nil
       i
     end
-    
+
     def ==(other)
       super {|o|
 	d0, d1 = deg, o.deg
@@ -195,7 +196,7 @@ module Algebra
 	true
       }
     end
-    
+
     def <=>(o)
       d0, d1 = deg, o.deg
       return d0 <=> d1 unless d0 == d1
@@ -210,13 +211,13 @@ module Algebra
       end
       0
     end
-    
+
     def +(other)
       super { |o|
 	d0, d1 = deg, o.deg
 	d = [d0, d1].max
 	a = []
-	i = 0
+	# i = 0
 	0.upto d do |i|
 	  c = (i <= d0 ? self[i] : ground.zero)
 	  d = (i <= d1 ? o[i] : ground.zero)
@@ -225,13 +226,13 @@ module Algebra
 	self.class.new(*a)
       }
     end
-    
+
     def -(other)
       super { |o|
 	d0, d1 = deg, o.deg
 	d = [d0, d1].max
 	a = []
-	i = 0
+	# i = 0
 	0.upto d do |i|
 	  a.push( (i <= d0 ? self[i] : ground.zero) -
 		 (i <= d1 ? o[i] : ground.zero))
@@ -239,15 +240,15 @@ module Algebra
 	self.class.new(*a)
       }
     end
-    
+
     def *(other)
       super { |o|
 	d0, d1 = deg, o.deg
 	return zero if d0 < 0 or d1 < 0
-	
-	d = [d0, d1].max
+
+	# d = [d0, d1].max
 	a = (0..(d0+d1)).collect{ground.zero}
-	i = j = 0
+	# i = j = 0
 	0.upto d0 do |i|
 	  0.upto d1 do |j|
 	    a[i+j] += self[i]*o[j]
@@ -271,7 +272,7 @@ module Algebra
 	q
       end
     end
-    
+
     def divmod(o)
       raise ZeroDivisionError, "divisor is zero" if o.zero?
       d0, d1 = deg, o.deg
@@ -289,7 +290,7 @@ module Algebra
 	[q + tk, r]
       end
     end
-    
+
     def div(other)
       if o = regulate(other)
 	divmod(o).first
@@ -297,9 +298,9 @@ module Algebra
 	raise "unknown divisor self.class #{other.class}"
       end
     end
-    
+
     alias / div
-    
+
     def rem(other)
       if o = regulate(other)
         divmod(o)[1]
@@ -307,14 +308,14 @@ module Algebra
 	raise "unknown divisor self.class #{other.class}"
       end
     end
-    
+
     alias % rem
-    
+
     def divide?(other)
-      q, r = other.divmod(self)
+      _q, r = other.divmod(self)
       r.zero?
     end
-    
+
     def pdivmod(other)
       if o = regulate(other)
 	deg0, deg1 = deg,  o.deg
@@ -327,7 +328,7 @@ module Algebra
 	raise "unknown divisor self.class #{other.class}"
       end
     end
-    
+
     def pdiv(other)
       if o = regulate(other)
 	pdivmod(o).first
@@ -335,31 +336,31 @@ module Algebra
 	raise "unknown divisor self.class #{other.class}"
       end
     end
-    
+
     def prem(other)
-      if o = regulate(other)
+      if _o = regulate(other)
 	pdivmod(other).last
       else
 	raise "unknown divisor self.class #{other.class}"
       end
     end
-    
+
     def lc
       self[deg]
     end
-    
+
     def lm
       monomial(deg)
     end
-    
+
     def lt
       lc * lm
     end
-    
+
     def rt
       self - lt
     end
-    
+
     def monic
       self / lc
     end
@@ -422,10 +423,10 @@ module Algebra
       a.unshift "0" if a.empty?
       a.join(" + ").gsub(/\+ -/, "- ")
     end
-    
+
     alias _inspect inspect
     alias inspect to_s unless $DEBUG
-    
+
     def evaluate_old(obj)
       e = ground.zero
       reverse_each do |c|
@@ -433,7 +434,7 @@ module Algebra
       end
       e
     end
-    
+
     def project(ring, x = ring.var)
       e = ring.zero
       n = size
@@ -443,7 +444,7 @@ module Algebra
       end
       e
     end
-    
+
     def evaluate(*a)
     #project(self.class, x){|c, n| c}
       x = a.last
@@ -459,7 +460,7 @@ module Algebra
     def to_proc
       Proc.new{|*a| evaluate(*a)}
     end
-    
+
     def sub(var, value)
       vs = self.class.vars
       if i = vs.index(var)
@@ -474,7 +475,7 @@ module Algebra
     alias evaluateR evaluate
     alias call evaluate
     alias callR evaluateR
-    
+
     def projectL(ring = self.class, x = ring.var)
       e = ring.zero
       n = size
@@ -484,21 +485,21 @@ module Algebra
       end
       e
     end
-    
+
     def evaluateL(x)
       projectL(ground, x){|c, n| c}
     end
-    
+
     alias callL evaluateL
-    
+
     def move_const(a, coef = 1)
       evaluate(self.class.var + a*coef)
     end
-    
+
     def convert_to(ring)
       project(ring){|c, n| c}
     end
-    
+
     def derivate
       e = zero
       n = size - 1
@@ -509,7 +510,7 @@ module Algebra
       end
       e
     end
-    
+
     def sylvester_matrix(o, k = 0)
       m, n = deg, o.deg
       if k.zero?
@@ -527,7 +528,7 @@ module Algebra
 	end
       }
     end
-    
+
     def resultant(other)
       sylvester_matrix(other).determinant
     end
@@ -541,7 +542,7 @@ if $0 == __FILE__
 
   Fx = Algebra::Polynomial.create(Integer, "x")
   x = Fx.var
-  
+
   f = x**6 - 1
   g = (x^4) -1
 
