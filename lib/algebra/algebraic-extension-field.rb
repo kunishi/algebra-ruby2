@@ -123,9 +123,9 @@ module Algebra
 end
 
 if $PROGRAM_NAME == __FILE__
-  R2, r2, r2_ = Root(Rational, 2)
-  R3, r3, r3_ = Root(R2, 3)
-  R6, r6, r6_ = Root(R3, 6)
+  R2, r2, _r2_ = Root(Rational, 2)
+  R3, r3, _r3_ = Root(R2, 3)
+  R6, r6, _r6_ = Root(R3, 6)
 
   p r6
   p (r6 + r2 + r3) * (r6 + r2 - r3)
