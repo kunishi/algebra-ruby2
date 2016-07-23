@@ -29,7 +29,7 @@ class TestPolyDecompose < Test::Unit::TestCase
     ].each do |f|
       # puts
       # p f
-      field, modulus, facts, roots, addelems = f.decompose
+      field, _modulus, facts, _roots, _addelems = f.decompose
       fp = Algebra.Polynomial(field, "x")
       facts = facts.collect{|g, n| [g.evaluate(fp.var), n]}
       # p( {:modulus => modulus})
