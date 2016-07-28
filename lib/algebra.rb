@@ -8,7 +8,6 @@
 require "algebra/auto-require"
 #autoload :Rational, "algebra/rational"
 require "algebra/rational"
-#require "algebra/ruby-version"
 
 module Algebra
   # autoload :AlgebraicEquation, "algebra/algebraic-equation"

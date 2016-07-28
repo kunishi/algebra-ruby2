@@ -4,8 +4,8 @@
 #
 # Version 1.1 (2001.04.20)
 
-require "algebra/numeric-supplement"
-require "algebra/auto-require"
+require 'algebra/numeric-supplement'
+require 'algebra/auto-require'
 
 module Algebra
   module AlgebraCreator
@@ -15,10 +15,11 @@ module Algebra
       def klass.inspect
         to_s
       end
+
       def klass.to_s
         s = super
-        s = "(#{superclass.inspect}/#{ground.inspect})" if s =~ /^#/ #/
-        s.gsub(/Algebra::/ , '')
+        s = "(#{superclass.inspect}/#{ground.inspect})" if s =~ /^#/ # /
+        s.gsub(/Algebra::/, '')
       end
       klass
     end
@@ -37,8 +38,8 @@ module Algebra
     def superior?(otype)
       if otype <= Numeric || self <= otype
         true
-      elsif self.respond_to?(:ground) && self.ground.respond_to?(:superior?)
-        self.ground.superior?(otype)
+      elsif respond_to?(:ground) && ground.respond_to?(:superior?)
+        ground.superior?(otype)
       else
         false
       end
@@ -53,7 +54,7 @@ module Algebra
       def self.#{var_name}=(value); @@#{var_name} = value; end
 __END_OF_CLASS_DEFINITION__
 
-      send(var_name + "=", value) if value
+      send(var_name + '=', value) if value
 
       if sw
         class_eval <<__END_OF_CLASS_DEFINITION__
@@ -65,15 +66,34 @@ __END_OF_CLASS_DEFINITION__
   end
 
   module AlgebraBase
-    def zero; self.class.zero; end
-    def unity; self.class.unity; end
+    def zero
+      self.class.zero
+    end
 
-    def zero?; zero == self; end
-    def unit?; unity == self or -unity == self; end
-    def unity?; unity == self; end
+    def unity
+      self.class.unity
+    end
 
-    def ground; self.class.ground; end
-    def ground=(bf); self.class.ground = bf; end
+    def zero?
+      zero == self
+    end
+
+    def unit?
+      unity == self || -unity == self
+    end
+
+    def unity?
+      unity == self
+    end
+
+    def ground
+      self.class.ground
+    end
+
+    def ground=(bf)
+      self.class.ground = bf
+    end
+
     def devide?(other)
       if self.class.field?
         true
@@ -103,18 +123,20 @@ __END_OF_CLASS_DEFINITION__
         euclidian? #  may be overwrited
       end
 
-      def klass.zero; new(ground.zero); end
+      def klass.zero
+        new(ground.zero)
+      end
 
-      def klass.unity; new(ground.unity); end
+      def klass.unity
+        new(ground.unity)
+      end
 
       def klass.regulate(x)
         if x.is_a? self
           x
         elsif y = ground.regulate(x)
           new(y)
-        else
-          nil
-        end
+                end
       end
       super
     end
@@ -132,7 +154,7 @@ __END_OF_CLASS_DEFINITION__
       if o = regulate(other)
         yield o
       else
-        x , y = other.coerce(self)
+        x, y = other.coerce(self)
         x == y
       end
     end
@@ -141,7 +163,7 @@ __END_OF_CLASS_DEFINITION__
       if o = regulate(other)
         yield o
       else
-        x , y = other.coerce(self)
+        x, y = other.coerce(self)
         x + y
       end
     end
@@ -150,7 +172,7 @@ __END_OF_CLASS_DEFINITION__
       if o = regulate(other)
         yield o
       else
-        x , y = other.coerce(self)
+        x, y = other.coerce(self)
         x - y
       end
     end
@@ -159,7 +181,7 @@ __END_OF_CLASS_DEFINITION__
       if o = regulate(other)
         yield o
       else
-        x , y = other.coerce(self)
+        x, y = other.coerce(self)
         x * y
       end
     end
@@ -168,23 +190,23 @@ __END_OF_CLASS_DEFINITION__
       if o = regulate(other)
         yield o
       else
-        x , y = other.coerce(self)
+        x, y = other.coerce(self)
         x / y
       end
     end
 
     def **(n)
-      if ! n.is_a? Integer or n < 0
-        raise "index must be non negative integer"
+      if !n.is_a?(Integer) || n < 0
+        raise 'index must be non negative integer'
       elsif n == 0
         return unity
       elsif n == 1
         self
       else
-        q , r = n.divmod 2
-        x = self ** q
-        x = x * x
-        x = x * self if r > 0
+        q, r = n.divmod 2
+        x = self**q
+        x *= x
+        x *= self if r > 0
         x
       end
     end

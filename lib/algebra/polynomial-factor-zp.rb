@@ -19,7 +19,7 @@ module PolynomialFactorization
       end
       e
     end
-    
+
     def weak_factors_and_r
       #self asumed to be square and p- free
       y = var ** ground.char
@@ -33,7 +33,7 @@ module PolynomialFactorization
       u -= u.unity
 
       basis = u.kernel_basis
-      
+
       wf = []
       basis.each_with_index do |h, i|
 #	next if i == 0
@@ -48,7 +48,7 @@ module PolynomialFactorization
       end
       [wf, basis.size]
     end
-    
+
     def factors_of_sqfree
       #self assumed to be square and p-free
       wf, fact_size = weak_factors_and_r
@@ -74,7 +74,7 @@ module PolynomialFactorization
 	  end
 	end
       end
-      
+
       facts = []
       degwize.each_with_index do |a, i|
 	b = []
@@ -106,7 +106,7 @@ module PolynomialFactorization
 	end
 	fs.push [f, i]
       end
-      
+
       # for 'over Zp'
       if ch = ground.char
 	if me.deg > 0
@@ -149,8 +149,8 @@ if __FILE__ == $0
     puts "mod = #{n}"
     fn = Algebra.ResidueClassRing(Integer, n)
     pfn = Algebra.Polynomial(fn, "y")
-    
-    y = pfn.var
+
+    _y = pfn.var
     x = PQ.var
     fs = [
       x**2+x+1,

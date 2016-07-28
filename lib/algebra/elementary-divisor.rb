@@ -14,7 +14,7 @@ module Algebra
             Algebra.SquareMatrix(mground, size)
           else
             Algebra.MatrixAlgebra(mground, rsize, csize)
-    end
+          end
 
       rx = Algebra.Polynomial(r, 'x')
       x = rx.var

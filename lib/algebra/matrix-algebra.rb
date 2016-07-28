@@ -905,7 +905,7 @@ if $0 == __FILE__
   p m0 + m1
   p m0 * m0
   p( (m0 * m0).t )
-  m = m0 * m2
+  # m = m0 * m2
   M43 = M34.transpose
   p M34.sizes
   p M43.sizes
@@ -917,10 +917,10 @@ if $0 == __FILE__
   require "algebra/rational"
 
   M3 = Algebra.SquareMatrix(Rational, 3)
-  m3 = M3[
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8]]
+  # m3 = M3[
+  #   [0, 1, 2],
+  #   [3, 4, 5],
+  #   [6, 7, 8]]
 
 #  require "algebra/polynomial"
 #  Px =  Algebra.Polynomial(Rational, "x")

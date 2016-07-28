@@ -22,7 +22,7 @@ module EuclidianRing
   def gcd3(b)
     x, y = self, b
     until y.zero?
-      q, r = x.divmod y
+      _q, r = x.divmod y
       x, y = y, r
     end
     x
@@ -59,7 +59,7 @@ module EuclidianRing
   end
 
   alias gcd_coeff gcd_ext
-  
+
   def gcd_coeff0(b)
     if b.zero?
       [self, unity, zero]
@@ -87,7 +87,7 @@ module EuclidianRing
   def pgcd(b)
     x, y = self, b
     until y.zero?
-      q, r = x.pdivmod y
+      _q, r = x.pdivmod y
       x, y = y, r
     end
     x
