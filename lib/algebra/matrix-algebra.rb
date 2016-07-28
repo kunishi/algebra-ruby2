@@ -47,22 +47,22 @@ class MatrixAlgebra
   extend AlgebraCreator
   include AlgebraBase
   include Enumerable
-  # auto_req_init
-  # auto_req :solve_eigen_value_problem, "algebra/linear-algebra"
-  # auto_req :diagonalize, "algebra/linear-algebra"
-  # auto_req :to_triplet, "algebra/matrix-algebra-triplet"
-  # auto_req :to_quint, "algebra/matrix-algebra-triplet"
-  # auto_req :e_inverse, "algebra/elementary-divisor"
-  # auto_req :elementary_divisor, "algebra/elementary-divisor"
-  # auto_req :e_diagonalize, "algebra/elementary-divisor"
-  # auto_req :e_diagonalize!, "algebra/elementary-divisor"
-  # autoload :JordanForm, "algebra/jordan-form"
-  # auto_req :jordan_form, "algebra/jordan-form"
-  # auto_req :jordan_form_info, "algebra/jordan-form"
-  require 'algebra/linear-algebra'
-  require 'algebra/matrix-algebra-triplet'
-  require 'algebra/elementary-divisor'
-  require 'algebra/jordan-form'
+  auto_req_init
+  auto_req :solve_eigen_value_problem, "algebra/linear-algebra"
+  auto_req :diagonalize, "algebra/linear-algebra"
+  auto_req :to_triplet, "algebra/matrix-algebra-triplet"
+  auto_req :to_quint, "algebra/matrix-algebra-triplet"
+  auto_req :e_inverse, "algebra/elementary-divisor"
+  auto_req :elementary_divisor, "algebra/elementary-divisor"
+  auto_req :e_diagonalize, "algebra/elementary-divisor"
+  auto_req :e_diagonalize!, "algebra/elementary-divisor"
+  autoload :JordanForm, "algebra/jordan-form"
+  auto_req :jordan_form, "algebra/jordan-form"
+  auto_req :jordan_form_info, "algebra/jordan-form"
+  # require 'algebra/linear-algebra'
+  # require 'algebra/matrix-algebra-triplet'
+  # require 'algebra/elementary-divisor'
+  # require 'algebra/jordan-form'
 
   Matrices = {}
 
