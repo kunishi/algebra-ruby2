@@ -4,10 +4,8 @@
 #                                                 #
 ###################################################
 require 'test/unit'
-require 'algebra/algebraic-parser.rb'
-require 'algebra/rational'
-require 'algebra/m-polynomial'
-# include Algebra
+require 'algebra'
+require 'algebra/algebraic-parser'
 
 class TestAlgebraicParser < Test::Unit::TestCase
   class A

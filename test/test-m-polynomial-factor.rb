@@ -4,10 +4,8 @@
 #                                                    #
 ######################################################
 require 'test/unit'
-require "algebra/m-polynomial-factor.rb"
-require "algebra/residue-class-ring"
-require "algebra/m-polynomial"
-include Algebra
+require 'algebra'
+require 'algebra/m-polynomial-factor'
 
 class TestMPolynomialFactor < Test::Unit::TestCase
   def setup
@@ -16,20 +14,20 @@ class TestMPolynomialFactor < Test::Unit::TestCase
   end
 
   def test_m_polynomial_factor
-    x, y, z = @P.vars("xyz")
+    x, y, z = @P.vars('xyz')
     #  f = x**2*y*z + (-z**2 - y*z + y + z + 2)*x + (y*z**3 - z**3 - y**2*z - y*z + 2*z)
     #  f = x**2*y + x**2*z + x * y * z
     #  f = x**2*y + x**2*z + x * y
-    f = (x + y)*(y + z)*(z + x)
+    f = (x + y) * (y + z) * (z + x)
 
     #  p f.lc_at(0)
     # p f
-    assert_equal(x**2*y + x**2*z + x*y**2 + 2*x*y*z + x*z**2 + y**2*z + y*z**2, f)
+    assert_equal(x**2 * y + x**2 * z + x * y**2 + 2 * x * y * z + x * z**2 + y**2 * z + y * z**2, f)
     #  p f.monic_int
     # p f.coeffs_at(0)
     assert_equal(
       [
-        y**2*z + y*z**2, y**2 + 2*y*z + z**2, y + z
+        y**2 * z + y * z**2, y**2 + 2 * y * z + z**2, y + z
       ],
       f.coeffs_at(0).to_ary
     )

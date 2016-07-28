@@ -1,5 +1,5 @@
-require "test/unit"
-require "algebra"
+require 'test/unit'
+require 'algebra'
 
 class TestElementaryDivisor01 < Test::Unit::TestCase
   def test_elementary_divisor01
@@ -10,7 +10,7 @@ class TestElementaryDivisor01 < Test::Unit::TestCase
       [0, 0, 2, 0],
       [5, 0, 0, 2]
     ]
-    capital_p = Polynomial(Rational, "x")
+    capital_p = Polynomial(Rational, 'x')
     capital_m_capital_p = SquareMatrix(capital_p, 4)
     x = capital_p.var
 
@@ -25,18 +25,18 @@ class TestElementaryDivisor01 < Test::Unit::TestCase
       ac.to_ary
     )
     # ac.display; puts #=>
-    #x - 2,   0,   0,   0
+    # x - 2,   0,   0,   0
     #  0, x - 2,   0,   0
     #  0,   0, x - 2,   0
     # -5,   0,   0, x - 2
 
     assert_equal(
-      [1, x - 2, x - 2, x**2 - 4*x + 4],
+      [1, x - 2, x - 2, x**2 - 4 * x + 4],
       ac.elementary_divisor.to_ary
     )
     # p ac.elementary_divisor #=> [1, x - 2, x - 2, x^2 - 4x + 4]
 
-    require "algebra/matrix-algebra-triplet"
+    require 'algebra/matrix-algebra-triplet'
     at = ac.to_triplet.e_diagonalize
 
     assert_equal(
@@ -44,7 +44,7 @@ class TestElementaryDivisor01 < Test::Unit::TestCase
         [1, 0, 0, 0],
         [0, x - 2, 0, 0],
         [0, 0, x - 2, 0],
-        [0, 0, 0, x**2 - 4*x + 4]
+        [0, 0, 0, x**2 - 4 * x + 4]
       ],
       at.body.to_ary
     )
@@ -71,7 +71,7 @@ class TestElementaryDivisor01 < Test::Unit::TestCase
 
     assert_equal(
       [
-        [1, 0, 0, Rational(1, 5)*x - Rational(2, 5)],
+        [1, 0, 0, Rational(1, 5) * x - Rational(2, 5)],
         [0, 1, 0, 0],
         [0, 0, 1, 0],
         [0, 0, 0, 1]

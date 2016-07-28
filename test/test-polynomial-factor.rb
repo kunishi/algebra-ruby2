@@ -4,11 +4,7 @@
 #                                                  #
 ####################################################
 require 'test/unit'
-require "algebra/polynomial-factor.rb"
-require "algebra/polynomial"
-require "algebra/residue-class-ring"
-require "algebra/rational"
-include Algebra
+require 'algebra'
 
 class TestPolynomialFactor < Test::Unit::TestCase
   # def test(f)
@@ -20,12 +16,12 @@ class TestPolynomialFactor < Test::Unit::TestCase
   # end
 
   def test_polynomial_factor_01
-    p0 = Polynomial(Integer, "x")
+    p0 = Polynomial(Integer, 'x')
     x = p0.var
     #  PQ = Polynomial(Rational, "x")
-    pq = Polynomial(Integer, "x")
+    pq = Polynomial(Integer, 'x')
     x = pq.var
-    f = (x**2+x+1)*(x+1)**3
+    f = (x**2 + x + 1) * (x + 1)**3
 
     # test(f)
     # print "#{f}\n  => "
@@ -37,13 +33,13 @@ class TestPolynomialFactor < Test::Unit::TestCase
   end
 
   def test_polynomial_factor_02
-    pq = Polynomial(Integer, "x")
+    pq = Polynomial(Integer, 'x')
     x = pq.var
-    f = (x**2+x+1)*(x+1)**3
-    
+    f = (x**2 + x + 1) * (x + 1)**3
+
     n = 5
     # puts "mod = #{n}"
-    pf = Polynomial.reduction(Integer, n, "y")
+    pf = Polynomial.reduction(Integer, n, 'y')
     g = pf.reduce(f)
     # test(g)
     # print "#{g}\n  => "

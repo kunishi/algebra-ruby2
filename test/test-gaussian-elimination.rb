@@ -3,18 +3,10 @@
 #  This is test script for 'gaussian-elimination.rb'  #
 #                                                     #
 #######################################################
-require "test/unit"
-require "algebra/gaussian-elimination.rb"
-require "algebra/m-polynomial"
-require "algebra/polynomial"
-require "algebra/matrix-algebra"
-#require "algebra/numeric-supplement"
-require "algebra/rational";class Rational<Numeric;def inspect;to_s;end;end
-include Algebra
+require 'test/unit'
+require 'algebra'
 
 class TestGaussianElimination < Test::Unit::TestCase
-  require "algebra/residue-class-ring"
-
   def setup
     @G = MatrixAlgebra(Rational, 2, 2)
     @R = MPolynomial(Rational)
@@ -41,9 +33,9 @@ class TestGaussianElimination < Test::Unit::TestCase
     a.left_eliminate!
     # a.display
     b0 = [
-      [1,   0,   0, 0, Rational(319)/85, Rational(82)/85, Rational(134)/85],
-      [0,   1,   0, 0, -Rational(4)/17, -Rational(3)/17, -Rational(2)/17],
-      [0,   0,   0, 1, Rational(322)/85, Rational(46)/85, Rational(127)/85],
+      [1,   0,   0, 0, Rational(319) / 85, Rational(82) / 85, Rational(134) / 85],
+      [0,   1,   0, 0, -Rational(4) / 17, -Rational(3) / 17, -Rational(2) / 17],
+      [0,   0,   0, 1, Rational(322) / 85, Rational(46) / 85, Rational(127) / 85],
       [0,   0,   0, 0,   0,   0,   0],
       [0,   0,   0, 0,   0,   0,   0]
     ]
@@ -57,15 +49,15 @@ class TestGaussianElimination < Test::Unit::TestCase
     a.left_eliminate_euclidian!
     # a.display
     b0 = [
-      [1,   5,   0,  -2,  -5,  -1,  -2],
+      [1,   5,   0, -2, -5, -1, -2],
       [0,   1,   0, -20, -76, -11, -30],
       [0,   0,   0, -85, -322, -46, -127],
       [0,   0,   0,   0,   0,   0,   0],
-      [0,   0,   0,   0,   0,   0,   0],
+      [0,   0,   0,   0,   0,   0,   0]
     ]
     assert_equal(@MI56[*b0], a)
-
   end
+
   def test_determinant_by_elimination
     a0 = [
       [3, 2, -1, 7, 2],
@@ -82,24 +74,26 @@ class TestGaussianElimination < Test::Unit::TestCase
     # p [d, d.class]
     assert_equal(1383, d)
   end
+
   def test_kernel_basis_2x2
     # puts
     a = @G[[0, 0], [1, -1]]
     k = a.kernel_basis
     # p Hash[a, k]
-    assert_equal([Vector(Rational, 2)[1, 1]], k, "#{Hash[a, k]}")
+    assert_equal([Vector(Rational, 2)[1, 1]], k, (Hash[a, k]).to_s)
   end
+
   def test_kernel_basis_8x8_Z2
     # puts "Kernel of"
     m = @M[
-      "10001101".scan(/./).collect{|x|x.to_i},
-      "00000011".scan(/./).collect{|x|x.to_i},
-      "01001011".scan(/./).collect{|x|x.to_i},
-      "00001111".scan(/./).collect{|x|x.to_i},
-      "00101011".scan(/./).collect{|x|x.to_i},
-      "00001001".scan(/./).collect{|x|x.to_i},
-      "00011011".scan(/./).collect{|x|x.to_i},
-      "00000111".scan(/./).collect{|x|x.to_i}
+      '10001101'.scan(/./).collect(&:to_i),
+      '00000011'.scan(/./).collect(&:to_i),
+      '01001011'.scan(/./).collect(&:to_i),
+      '00001111'.scan(/./).collect(&:to_i),
+      '00101011'.scan(/./).collect(&:to_i),
+      '00001001'.scan(/./).collect(&:to_i),
+      '00011011'.scan(/./).collect(&:to_i),
+      '00000111'.scan(/./).collect(&:to_i)
     ]
     cm = m - m.unity
     # cm.display
@@ -109,27 +103,26 @@ class TestGaussianElimination < Test::Unit::TestCase
     #   puts "Vector(F2, 8)#{b}"
     # end
     assert_equal([
-		   Vector(@F2, 8)[1, 0, 0, 0, 0, 0, 0, 0],
-		   Vector(@F2, 8)[0, 1, 1, 1, 1, 1, 1, 0],
-		   Vector(@F2, 8)[0, 1, 1, 0, 1, 0, 0, 1],
-		 ], k)
+                   Vector(@F2, 8)[1, 0, 0, 0, 0, 0, 0, 0],
+                   Vector(@F2, 8)[0, 1, 1, 1, 1, 1, 1, 0],
+                   Vector(@F2, 8)[0, 1, 1, 0, 1, 0, 0, 1]
+                 ], k)
   end
 end
 
-
 #  R = MPolynomial(Integer)
-#a, b, c, d, e, f, g, h, i, j, k, l, x, y, z = R.vars("abcdefghijklxyz")
-#M3 = MatrixAlgebra(R, 3, 4)
-#m = M3[
+# a, b, c, d, e, f, g, h, i, j, k, l, x, y, z = R.vars("abcdefghijklxyz")
+# M3 = MatrixAlgebra(R, 3, 4)
+# m = M3[
 #  [a, b, c, d],
 #  [e, f, g, h],
 #  [i, j, k, l]
-#]
-#m.display
-#m.swap_r(0, 2).display
+# ]
+# m.display
+# m.swap_r(0, 2).display
 #  m.set_column(1, [1,2,3]).display
-#m.swap_c(0, 2).display
-#m.multiply_r(2, x).display
-#m.multiply_c(0, x).display
-#m.mix_r(0, 2, x).display
-#m.mix_c(0, 2, x).display
+# m.swap_c(0, 2).display
+# m.multiply_r(2, x).display
+# m.multiply_c(0, x).display
+# m.mix_r(0, 2, x).display
+# m.mix_c(0, 2, x).display

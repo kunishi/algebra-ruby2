@@ -3,11 +3,8 @@
 #  This is test script for 'product-factors.rb'  #
 #                                                #
 ##################################################
-require "test/unit"
-require "algebra/factors.rb"
-include Algebra
-
-#PF = Factors
+require 'test/unit'
+require 'algebra'
 
 class TestProductFactors < Test::Unit::TestCase
   def setup
@@ -25,6 +22,7 @@ class TestProductFactors < Test::Unit::TestCase
     end
     # p facts
     assert_equal(pi, facts.pi)
-    assert_equal(capital_p_capital_f.mk(2,2, 3,3, 5,1, 7,2, 11,1, 13,1), capital_p_capital_f[*probrem])
+    assert_equal(capital_p_capital_f.mk(2, 2, 3, 3, 5, 1, 7, 2, 11, 1, 13, 1),
+                 capital_p_capital_f[*probrem])
   end
 end

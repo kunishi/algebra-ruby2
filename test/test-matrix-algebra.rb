@@ -3,12 +3,8 @@
 #  This is test script for 'matrix-algebra.rb'  #
 #                                               #
 #################################################
-require "test/unit"
-require "algebra"
-require "algebra/polynomial"
-
-#require "algebra/matrix-algebra.rb"
-#include Algebra
+require 'test/unit'
+require 'algebra'
 
 class TestMatrixAlgebra < Test::Unit::TestCase
   def setup
@@ -16,7 +12,7 @@ class TestMatrixAlgebra < Test::Unit::TestCase
     @M34 = Algebra.MatrixAlgebra(Integer, 3, 4)
     @M43 = @M34.transpose
     @M44 = @M43 * @M34
-    @Px =  Algebra.Polynomial(Integer, "x")
+    @Px =  Algebra.Polynomial(Integer, 'x')
     @M2 = Algebra.SquareMatrix(Rational, 2)
     @M3 = Algebra.SquareMatrix(Rational, 3)
   end
@@ -149,7 +145,7 @@ class TestMatrixAlgebra < Test::Unit::TestCase
       [3, 4],
       ]
     x = @Px.var
-    assert_equal(x**2 - Rational(5, 1)*x - Rational(2, 1), m2.char_polynomial(@Px))
+    assert_equal(x**2 - Rational(5, 1) * x - Rational(2, 1), m2.char_polynomial(@Px))
     # p f = m2.char_polynomial(Px)
   end
 
@@ -159,7 +155,7 @@ class TestMatrixAlgebra < Test::Unit::TestCase
       [3, 4, 5],
       [6, 7, 8]]
     x = @Px.var
-    assert_equal(x**3 - 12*x**2 - 18*x, m3.char_polynomial(@Px))
+    assert_equal(x**3 - 12 * x**2 - 18 * x, m3.char_polynomial(@Px))
     # p f = m3.char_polynomial(Px)
   end
 
@@ -169,12 +165,14 @@ class TestMatrixAlgebra < Test::Unit::TestCase
     m[1, 1] = 4
     assert_equal(m[1, 1], 4)
   end
+
   def test_rank
     assert_equal(@M3[[0, 0, 0], [0, 0, 0], [0, 0, 0]].rank, 0)
     assert_equal(@M3[[1, 2, 3], [-2, -4, -6], [-1, -2, -3]].rank, 1)
     assert_equal(@M3[[1, 2, 3], [-2, -4, -5], [-1, -2, -2]].rank, 2)
     assert_equal(@M3[[1, 2, 3], [-2, -4, -5], [-1, 0, -3]].rank, 3)
   end
+
   def test_inverse
     m = @M3[
       [0, 1, 3],
@@ -184,6 +182,7 @@ class TestMatrixAlgebra < Test::Unit::TestCase
     assert_equal(m * m.inverse, 1)
     assert_equal(m.inverse * m, 1)
   end
+
   def test_cofactor_matirx
     m = @M3[
       [0, 1, 3],
@@ -193,12 +192,12 @@ class TestMatrixAlgebra < Test::Unit::TestCase
     assert_equal(m.cofactor_matrix * m, m.unity * m.determinant)
   end
 
-#  class R0 < MatrixAlgebra
-#  end
-#  ME = SquareMatrix(R0, 2)
+  #  class R0 < MatrixAlgebra
+  #  end
+  #  ME = SquareMatrix(R0, 2)
 
   def test_conversion
-    r = Polynomial(Rational, "x")
+    r = Polynomial(Rational, 'x')
     @mr = SquareMatrix(r, 2)
     @mq = SquareMatrix(Rational, 2)
     @mz = SquareMatrix(Rational, 2)
@@ -206,25 +205,25 @@ class TestMatrixAlgebra < Test::Unit::TestCase
     @mz3 = SquareMatrix(@z3, 2)
 
     x = r.var
-    mR = @mr[[x,2*x],[3*x,4*x]]
-    mQ = @mq[[1,2],[3,4]]
-#    mE = ME.new [[1,2],[3,4]]
-    mZ = @mz[[1,2],[3,4]]
-    mZ3 = @mz3[[1,2],[3,4]]
-    assert_equal(@mr, (mR*mQ).class)
-    assert_equal(@mr, (mQ*mR).class)
+    mR = @mr[[x, 2 * x], [3 * x, 4 * x]]
+    mQ = @mq[[1, 2], [3, 4]]
+    #    mE = ME.new [[1,2],[3,4]]
+    mZ = @mz[[1, 2], [3, 4]]
+    mZ3 = @mz3[[1, 2], [3, 4]]
+    assert_equal(@mr, (mR * mQ).class)
+    assert_equal(@mr, (mQ * mR).class)
 
-#    assert_raises(RuntimeError) {mR * mE}
+    #    assert_raises(RuntimeError) {mR * mE}
 
-    assert_equal(@mq, (mZ*mQ).class)
-    assert_equal(@mq, (mQ*mZ).class)
+    assert_equal(@mq, (mZ * mQ).class)
+    assert_equal(@mq, (mQ * mZ).class)
 
-    assert_equal(@mz3, (mZ3*mZ).class)
-    assert_equal(@mz3, (mZ*mZ3).class)
+    assert_equal(@mz3, (mZ3 * mZ).class)
+    assert_equal(@mz3, (mZ * mZ3).class)
 
     assert_equal(@z3, @z3.wedge(Rational))
-    assert_equal(@mz3, (mZ3*mQ).class)
+    assert_equal(@mz3, (mZ3 * mQ).class)
     assert_equal(@z3, Rational.wedge(@z3))
-    assert_equal(@mz3, (mQ*mZ3).class)
+    assert_equal(@mz3, (mQ * mZ3).class)
   end
 end

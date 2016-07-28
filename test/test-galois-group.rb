@@ -3,17 +3,12 @@
 #  This is test script for 'galois-group.rb'  #
 #                                                          #
 ############################################################
-require "test/unit"
-require "algebra/rational"
-require "algebra/polynomial"
-require "algebra/splitting-field"
-require "algebra/galois-group"
-require "algebra/permutation-group"
-include Algebra
+require 'test/unit'
+require 'algebra'
 
 class TestAEF < Test::Unit::TestCase
   def setup
-    @P = Algebra.Polynomial(Rational, "x")
+    @P = Algebra.Polynomial(Rational, 'x')
   end
 
   def test_galois_group_0
@@ -27,7 +22,7 @@ class TestAEF < Test::Unit::TestCase
 
   def test_galois_group_1
     x = @P.var
-    f = x**3 - 3*x + 1
+    f = x**3 - 3 * x + 1
     expected = PermutationGroup[
       Permutation[2, 0, 1],
       Permutation[1, 2, 0],
@@ -52,7 +47,7 @@ class TestAEF < Test::Unit::TestCase
 
   def test_galois_group_3
     x = @P.var
-    f = (x**2 - 2)*(x**2 - 3)
+    f = (x**2 - 2) * (x**2 - 3)
     expected = PermutationGroup[
       Permutation[0, 3, 2, 1],
       Permutation[2, 3, 0, 1],
@@ -68,13 +63,13 @@ class TestAEF < Test::Unit::TestCase
     for i in 0..3
       #      next if i != 2
       f = [
-        x**2 - 1,             #0
-        x**3 - 3*x + 1,       #1
-        x**3 - 2,             #2
-        (x**2 - 2)*(x**2 - 3),#3
-        x**3 - x + 1,         #4
-        x**4  + 1,            #5
-        ][i]
+        x**2 - 1, # 0
+        x**3 - 3 * x + 1, # 1
+        x**3 - 2, # 2
+        (x**2 - 2) * (x**2 - 3), # 3
+        x**3 - x + 1, # 4
+        x**4 + 1, # 5
+      ][i]
       gsize = [1, 3, 6, 4, 6, 4]
       g = f.galois_group
       # puts "Galois group of #{f} is"
@@ -85,5 +80,4 @@ class TestAEF < Test::Unit::TestCase
       assert_equal(gsize[i], g.size)
     end
   end
-
 end

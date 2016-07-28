@@ -3,12 +3,12 @@
 #  This is the test of order of MPolynomial           #
 #                                                     #
 #######################################################
-require "test/unit"
-require "algebra/m-polynomial"
+require 'test/unit'
+require 'algebra'
 
 class TestMIndex < Test::Unit::TestCase
   def setup
-    @P = Algebra::MPolynomial.create(Integer, "x", "y", "z")
+    @P = Algebra::MPolynomial.create(Integer, 'x', 'y', 'z')
   end
 
   def test_compare
@@ -48,16 +48,16 @@ class TestMIndex < Test::Unit::TestCase
     x, y, z = @P.vars
     f = x + y + z
     @P.with_ord(nil, [0, 1, 2], [f]) do
-      assert_equal("x + y + z", f.to_s)
+      assert_equal('x + y + z', f.to_s)
     end
     @P.with_ord(nil, [1, 0, 2], [f]) do
-      assert_equal("y + x + z", f.to_s)
+      assert_equal('y + x + z', f.to_s)
     end
     @P.with_ord(nil, [2, 1, 0], [f]) do
-      assert_equal("z + y + x", f.to_s)
+      assert_equal('z + y + x', f.to_s)
     end
     @P.with_ord(nil, [0, 2, 1], [f]) do
-      assert_equal("x + z + y", f.to_s)
+      assert_equal('x + z + y', f.to_s)
     end
   end
 end

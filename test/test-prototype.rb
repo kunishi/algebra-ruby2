@@ -3,7 +3,7 @@
 #  This is the prototype test script                  #
 #                                                     #
 #######################################################
-require "test/unit"
+require 'test/unit'
 
 class TestProtoType < Test::Unit::TestCase
   def test_factorize

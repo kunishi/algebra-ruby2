@@ -1,97 +1,91 @@
-require "test/unit"
-require "algebra/rational"
-class Rational; def inspect; to_s; end;end
-#class Rational < Numeric;def inspect; to_s; end;end
-require "algebra/linear-algebra"
-require "algebra/matrix-algebra-triplet"
-require "algebra/elementary-divisor"
-require "algebra/jordan-form"
-require "algebra/algebraic-equation"
-#include Algebra
+require 'test/unit'
+require 'algebra'
+require 'algebra/jordan-form'
 
 class TestJordanForm < Test::Unit::TestCase
   # "Jordan Hyouzyunkei I & Isa, Tokudai Syuppan Kai # pp.96-97
   def setup
-  @A = [
-    [#0
-      [4, 1, 1, 1],
-      [1, 5, 3, -1],
-      [-1, -2, 1, -1],
-      [-1, -1, -1, 2]
-    ],
-    [#1
-      [-3, -3, 4, 2],
-      [5, 1, -4, -6],
-      [4, -1, -2, -5],
-      [-5, -3, 4, 4]
-    ],
-    [#2
-      [3, -1, 3],
-      [-1, 3, 3],
-      [1, -1, 5]
-    ],
-    [#3
-      [-1, 1, 2, -1],
-      [-5, 3, 4, -2],
-      [3, -1, 0, 1],
-      [5, -2, -2, 3]
-    ],
-    [#4
-      [1, 2, 0, 0],
-      [0, 1, 2, 0],
-      [0, 0, 1, 2],
-      [0, 0, 0, 1]
-    ],
-    [#5
-      [3, 0, 2, 1],
-      [0, 3, 0, 2],
-      [0, 0, 3, 0],
-      [0, 0, 0, 3]
-    ],
-    [#6
-      [1, 0, 0, 0],
-      [2, 1, 0, 0],
-      [0, 2, 1, 0],
-      [0, 0, 2, 1]
-    ],
-    [#7
-      [2, 0, 0, 0],
-      [0, 2, 0, 0],
-      [0, 0, 2, 0],
-      [5, 0, 0, 2]
-    ],
-    [#8
-      [0, 0, 8],
-      [1, 0, 4],
-      [0, 1, -2]
-    ],
+    @A = [
+      [ # 0
+        [4, 1, 1, 1],
+        [1, 5, 3, -1],
+        [-1, -2, 1, -1],
+        [-1, -1, -1, 2]
+      ],
+      [ # 1
+        [-3, -3, 4, 2],
+        [5, 1, -4, -6],
+        [4, -1, -2, -5],
+        [-5, -3, 4, 4]
+      ],
+      [ # 2
+        [3, -1, 3],
+        [-1, 3, 3],
+        [1, -1, 5]
+      ],
+      [ # 3
+        [-1, 1, 2, -1],
+        [-5, 3, 4, -2],
+        [3, -1, 0, 1],
+        [5, -2, -2, 3]
+      ],
+      [ # 4
+        [1, 2, 0, 0],
+        [0, 1, 2, 0],
+        [0, 0, 1, 2],
+        [0, 0, 0, 1]
+      ],
+      [ # 5
+        [3, 0, 2, 1],
+        [0, 3, 0, 2],
+        [0, 0, 3, 0],
+        [0, 0, 0, 3]
+      ],
+      [ # 6
+        [1, 0, 0, 0],
+        [2, 1, 0, 0],
+        [0, 2, 1, 0],
+        [0, 0, 2, 1]
+      ],
+      [ # 7
+        [2, 0, 0, 0],
+        [0, 2, 0, 0],
+        [0, 0, 2, 0],
+        [5, 0, 0, 2]
+      ],
+      [ # 8
+        [0, 0, 8],
+        [1, 0, 4],
+        [0, 1, -2]
+      ],
 
-    #### Original
-    [#9
-      [1, 1, 0],
-      [1, 1, 1],
-      [0, 1, 1]
-    ],
-    [#10
-      [1, 0, 8],
-      [1, 1, 4],
-      [0, 1, -2]
-    ],
-    [#11 288sec.
-      [0, 0, 1, 0],
-      [1, 1, 1, 1],
-      [1, 1, 1, 1],
-      [0, 1, 1, 1]
-    ],
-  ]
-  @Ai = (0...@A.size).to_a
-  @PR = Algebra.Polynomial(Rational, "x")
+      #### Original
+      [ # 9
+        [1, 1, 0],
+        [1, 1, 1],
+        [0, 1, 1]
+      ],
+      [ # 10
+        [1, 0, 8],
+        [1, 1, 4],
+        [0, 1, -2]
+      ],
+      [ # 11 288sec.
+        [0, 0, 1, 0],
+        [1, 1, 1, 1],
+        [1, 1, 1, 1],
+        [0, 1, 1, 1]
+      ]
+    ]
+    @Ai = (0...@A.size).to_a
+    @PR = Algebra.Polynomial(Rational, 'x')
   end
 
   def test_jordan_form0
     # puts
-    @Ai.each do |i|; m = @A[i]
-#    Ai[0..9].each do |i|; m = A[i]
+    @Ai.each do |i|
+      m = @A[i]
+      #    Ai[0..9].each do |i|; m = A[i]
       # puts "##{i}"
       _test_jordan_form(m)
     end
@@ -110,10 +104,10 @@ class TestJordanForm < Test::Unit::TestCase
 
     facts = Algebra::ElementaryDivisor.factorize(elem_divs)
     dl = facts.last
-    field, modulus, facts, roots, elms =dl.pi.decompose(dl)
+    field, modulus, facts, roots, elms = dl.pi.decompose(dl)
     # p [facts, roots, elms]
 
-    pfield = Algebra.Polynomial(field, "x")
+    pfield = Algebra.Polynomial(field, 'x')
     pfm_alg = Algebra.SquareMatrix(pfield, a.size)
 
     jm = Algebra::JordanForm.construct(elem_divs, facts, field, pfield)
@@ -138,12 +132,13 @@ class TestJordanForm < Test::Unit::TestCase
 
   def test_jordan_form
     puts
-    @Ai[0..0].each do |i|; a = @A[i]
+    @Ai[0..0].each do |i|
+      a = @A[i]
       # puts "##{i}"
       m = Algebra.SquareMatrix(Rational, a.size)[*a]
       # m.display; puts
 
-      jf, p, q, field, modulus  = Algebra::JordanForm.decompose(m)
+      jf, p, q, field, modulus = Algebra::JordanForm.decompose(m)
       # print "extension = "
       # p modulus
       # jf.display; puts
