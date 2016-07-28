@@ -101,9 +101,9 @@ module Algebra
       end
     end
 
-    def ==(other)
-      @body == other.to_a
-    end
+    # def ==(other)
+    #   @body == other.to_a
+    # end
 
     def eql?(other)
       @body.eql? other.to_a
