@@ -68,7 +68,7 @@ class TestPolynomial < Test::Unit::TestCase
     require "algebra/algebraic-parser"
     fx = Algebra::Polynomial.create(Integer, "x")
     fxy = Algebra::Polynomial.create(fx, "y")
-    assert_equal(AlgebraicParser.eval("(x + y)**10 - (y**2 + 2*x*y + x**2)**5)", fxy), 0)
+    assert_equal(Algebra::AlgebraicParser.eval("(x + y)**10 - (y**2 + 2*x*y + x**2)**5)", fxy), 0)
   end
 
   def test_polynomial_06
