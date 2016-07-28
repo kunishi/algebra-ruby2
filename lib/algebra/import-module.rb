@@ -274,7 +274,7 @@ module Import_Module
     def self.enclose(mod)
       s = self
       mod.instance_eval do
-	@__IMPORT_MODULE_PREFIX_source or
+	defined? @__IMPORT_MODULE_PREFIX_source or
 	   @__IMPORT_MODULE_PREFIX_source = s.new(mod)
       end
     end
