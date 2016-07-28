@@ -4,7 +4,7 @@
 #
 # Version 0.96 (2003.11.06)
 
-#require "algebra/persistence"
+Object.send(:remove_const, :Set)
 
 module Algebra
   class Set
@@ -20,21 +20,21 @@ module Algebra
 
     def self.new_h(h)
       new.instance_eval do
-	@body = h
-	self
+        @body = h
+        self
       end
     end
 
     def initialize(*m)
       @body = {}
       m.each do |x|
-	@body.store(x, true)
+        @body.store(x, true)
       end
     end
     attr_accessor :body
 
     def self.empty_set
-      new()
+      new
     end
 
     class << self
@@ -49,17 +49,17 @@ module Algebra
     def cast(klass = Set)
       x = klass.new_h(@body)
       if block_given?
-	x.instance_eval do
-	  yield
-	end
+        x.instance_eval do
+          yield
+        end
       end
       x
     end
-    
+
     def empty_set
-      self.class.new()
+      self.class.new
     end
-    
+
     alias phi empty_set
     alias null empty_set
 
@@ -74,7 +74,7 @@ module Algebra
     def size
       @body.size
     end
-    
+
     def empty?
       @body.empty?
     end
@@ -90,7 +90,7 @@ module Algebra
     def separate(&b)
       self.class.new(*find_all(&b))
     end
-    
+
     alias select_s separate
     alias find_all_s separate
 
@@ -100,7 +100,7 @@ module Algebra
 
     def pick
       each do |x|
-	return x
+        return x
       end
       nil
     end
@@ -128,13 +128,13 @@ module Algebra
     def concat(other)
       case other
       when Set
-	@body.update other.body
+        @body.update other.body
       when Array
-	other.each do |x|
-	  append!(x)
-	end
+        other.each do |x|
+          append!(x)
+        end
       else
-	raise "unknown self.class #{other.class}"
+        raise "unknown self.class #{other.class}"
       end
       self
     end
@@ -144,7 +144,7 @@ module Algebra
     end
 
     def eql?(other)
-      subset?(other) and superset?(other)
+      subset?(other) && superset?(other)
     end
 
     alias == eql?
@@ -152,7 +152,7 @@ module Algebra
     def hash
       s = 0
       @body.each_key do |k|
-	s ^= k.hash
+        s ^= k.hash
       end
       s
     end
@@ -166,14 +166,14 @@ module Algebra
     alias contains? include?
 
     def superset?(other) # self includes other
-      other.is_a?(Set) and other.all?{|x| member?(x)}
+      other.is_a?(Set) && other.all? { |x| member?(x) }
     end
 
     alias >= superset?
     alias incl? superset?
 
     def subset?(other) # self is a part of other
-      other.is_a?(Set) and all?{|x| other.member?(x)}
+      other.is_a?(Set) && all? { |x| other.member?(x) }
     end
 
     alias <= subset?
@@ -189,25 +189,25 @@ module Algebra
 
     def union(other = nil)
       if other
-	h = @body.dup
-	h.update other.body
-	self.class.new_h(h)
+        h = @body.dup
+        h.update other.body
+        self.class.new_h(h)
       else
-	u = phi
-	each do |s|
-	  u = u.union(s)
-	end
-	u
+        u = phi
+        each do |s|
+          u = u.union(s)
+        end
+        u
       end
     end
 
     alias | union
     alias + union
     alias cup union
-    
+
     def difference(other)
       h = @body.dup
-      h.delete_if {|k, v| other.include?(k)}
+      h.delete_if { |k, _v| other.include?(k) }
       self.class.new_h(h)
     end
 
@@ -215,19 +215,19 @@ module Algebra
 
     def intersection(other = nil)
       if other
-	h = @body.dup
-	h.delete_if {|k, v| !other.include?(k)}
-	self.class.new_h(h)
+        h = @body.dup
+        h.delete_if { |k, _v| !other.include?(k) }
+        self.class.new_h(h)
       else
-	i = nil # nil is a universe?
-	each do |s|
-	  if i.nil?
-	    i = s
-	  else
-	    i = i.intersection(s)
-	  end
-	end
-	i
+        i = nil # nil is a universe?
+        each do |s|
+          i = if i.nil?
+                s
+              else
+                i.intersection(s)
+              end
+        end
+        i
       end
     end
 
@@ -237,53 +237,53 @@ module Algebra
     def each_pair
       stock = []
       each do |x|
-	stock.each do |a|
-	  yield a, x
-	end
-	stock.push x
+        stock.each do |a|
+          yield a, x
+        end
+        stock.push x
       end
     end
-    
+
     def each_member(n)
       if n == 0
-	yield []
-      elsif n == 1 #redundant but effective
-	each do |x|
-	  yield [x]
-	end
+        yield []
+      elsif n == 1 # redundant but effective
+        each do |x|
+          yield [x]
+        end
       else
-	stock = self.class[]
-	each do |x|
-	  stock.each_member(n-1) do |a|
-	    yield a + [x]
-	  end
-	  stock.push x
-	end
+        stock = self.class[]
+        each do |x|
+          stock.each_member(n - 1) do |a|
+            yield a + [x]
+          end
+          stock.push x
+        end
       end
     end
-        
+
     def each_subset
       yield phi
       _each_subset do |s|
-	yield s
+        yield s
       end
     end
 
     def each_non_trivial_subset # each without empty set and total set
       n = size
       _each_subset do |x|
-	yield x unless x.size == n
+        yield x unless x.size == n
       end
     end
-    
+
     def _each_subset
       stock = phi
       each do |x|
-	yield self.class[x]
-	stock._each_subset do |a|
-	  yield a + self.class[x]
-	end
-	stock.push x
+        yield self.class[x]
+        stock._each_subset do |a|
+          yield a + self.class[x]
+        end
+        stock.push x
       end
       stock
     end
@@ -292,28 +292,28 @@ module Algebra
     def power_set
       s = phi
       each_subset do |u|
-	s.append! u
+        s.append! u
       end
       s
     end
 
     def each_product(other)
       each do |x|
-	other.each do |y|
-	  yield [x, y]
-	end
+        other.each do |y|
+          yield [x, y]
+        end
       end
     end
 
     def product(other, s = phi)
       if block_given?
-	each_product(other) do |x, y|
-	  s.append! yield(x, y)
-	end
+        each_product(other) do |x, y|
+          s.append! yield(x, y)
+        end
       else
-	each_product(other) do |x, y|
-	  s.append! [x, y]
-	end
+        each_product(other) do |x, y|
+          s.append! [x, y]
+        end
       end
       s
     end
@@ -323,52 +323,52 @@ module Algebra
     def equiv_class(equiv = nil)
       classes = Set.phi
       if equiv && equiv.is_a?(Symbol) && !block_given?
-	each do |e|
-	  if c = classes.find{|s|
-	      send(equiv, s.pick, e)
-	    }
-	    c.push e
-	    classes.rehash
-	  else
-	    classes.push singleton(e)
-	  end
-	end
+        each do |e|
+          if c = classes.find do |s|
+               send(equiv, s.pick, e)
+             end
+            c.push e
+            classes.rehash
+          else
+            classes.push singleton(e)
+          end
+        end
       elsif equiv && !block_given?
-	each do |e|
-	  if c = classes.find{|s|
-	      equiv.call(s.pick, e)
-	    }
-	    c.push e
-	    classes.rehash
-	  else
-	    classes.push singleton(e)
-	  end
-	end
+        each do |e|
+          if c = classes.find do |s|
+               equiv.call(s.pick, e)
+             end
+            c.push e
+            classes.rehash
+          else
+            classes.push singleton(e)
+          end
+        end
       elsif !equiv && block_given?
-	each do |e|
-	  if c = classes.find{|s|
-	      yield(s.pick, e)
-	    }
-	    c.push e
-	    classes.rehash
-	  else
-	    classes.push singleton(e)
-	  end
-	end
+        each do |e|
+          if c = classes.find do |s|
+               yield(s.pick, e)
+             end
+            c.push e
+            classes.rehash
+          else
+            classes.push singleton(e)
+          end
+        end
       else
-	raise "illegal call `equiv_class'"
+        raise "illegal call `equiv_class'"
       end
       classes
     end
-    
+
     alias / equiv_class
 
     def to_s
-      "{" + @body.keys.collect{|x| x.inspect}.join(', ') + "}"
+      '{' + @body.keys.collect(&:inspect).join(', ') + '}'
     end
 
     def inspect
-      "{" + @body.keys.collect{|x| x.inspect}.join(', ') + "}"
+      '{' + @body.keys.collect(&:inspect).join(', ') + '}'
     end
 
     def to_a
@@ -387,13 +387,13 @@ module Algebra
       a = Map.phi(self)
       s = [a]
       other.each do |x|
-	tmp = []
-	each do |y|
-	  s.each do |m|
-	    tmp << m.append(x, y)
-	  end
-	end
-	s = tmp
+        tmp = []
+        each do |y|
+          s.each do |m|
+            tmp << m.append(x, y)
+          end
+        end
+        s = tmp
       end
       self.class[*s]
     end
@@ -401,39 +401,39 @@ module Algebra
     def identity_map
       a = Map.phi(self)
       each do |x|
-	a.append!(x, x)
+        a.append!(x, x)
       end
       a
     end
-    
+
     alias ** power
-    
+
     def surjections(other)
-      (self**other).separate{|m| m.surjective?}
+      (self**other).separate(&:surjective?)
     end
-    
+
     def injections0(other)
-      (self**other).separate{|m| m.injective?}
+      (self**other).separate(&:injective?)
     end
-    
+
     def injections(other)
       maps = Set[]
       if size < other.size
-	phi;
+        phi
       elsif other.empty?
-	maps.push Map.phi(self)
+        maps.push Map.phi(self)
       else
-	each do |x|
-	  a = self - self.class[x]
-	  o = other.dup
-	  h = o.shift
-	  maps.concat a.injections(other)
-	  maps.concat a.injections(o).map_s{|m| m.append(h, x)}
-	end
+        each do |x|
+          a = self - self.class[x]
+          o = other.dup
+          h = o.shift
+          maps.concat a.injections(other)
+          maps.concat a.injections(o).map_s { |m| m.append(h, x) }
+        end
       end
       maps
     end
-    
+
     def bijections(other)
       size == other.size ? injections(other) : Set[]
     end
@@ -441,16 +441,16 @@ module Algebra
 end
 
 module Enumerable
-  unless instance_methods(true).include?("any?")
+  unless instance_methods(true).include?('any?')
     def any?
-      each{|x|
-    	return true if yield(x)
-      }
+      each do |x|
+        return true if yield(x)
+      end
       false
     end
-    
+
     def all?
-      !any?{|x| !yield(x)}
+      !any? { |x| !yield(x) }
     end
   end
 end
