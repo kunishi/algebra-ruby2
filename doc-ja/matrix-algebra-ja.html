@@ -1,12 +1,12 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html 
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<link rel="stylesheet" type="text/css" href="style.css" />
-<title>algebra/matrix-algebra-ja.html</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>doc-ja/matrix-algebra-ja.rd</title>
+<link href="style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <p>[<a href="index-ja.html">index-ja</a>] 
@@ -20,49 +20,49 @@
 /
 <a href="#label-117">Algebra::GaussianElimination</a></p>
 <h1><a name="label-0" id="label-0">Algebra::MatrixAlgebra</a></h1><!-- RDLabel: "Algebra::MatrixAlgebra" -->
-<p><em>(s—ñƒNƒ‰ƒX)</em></p>
-<p>s—ñ‚ğ•\Œ»‚µ‚Ü‚·BÀÛ‚ÌƒNƒ‰ƒX‚ğ¶¬‚·‚é‚É‚ÍŠî’êŠÂ‚ÆƒTƒCƒY‚ğw’è‚µ‚ÄA
-ƒNƒ‰ƒXƒƒ\ƒbƒh <a href="#label-7">::create</a> ‚ ‚é‚¢‚ÍŠÖ” <a href="#label-0">Algebra::MatrixAlgebra</a>()
-‚ğ—p‚¢‚Ü‚·B</p>
-<p>ƒTƒuƒNƒ‰ƒX‚Æ‚µ‚Ä <a href="#label-60">Algebra::Vector</a>(cƒxƒNƒgƒ‹j, 
-<a href="#label-78">Algebra::Covector</a>(‰¡ƒxƒNƒgƒ‹), 
-<a href="#label-96">Algebra::SquareMatrix</a>(³•ûs—ñ) ‚ğ‚¿‚Ü‚·B</p>
-<h2><a name="label-1" id="label-1">ƒtƒ@ƒCƒ‹–¼:</a></h2><!-- RDLabel: "ƒtƒ@ƒCƒ‹–¼:" -->
+<p><em>(è¡Œåˆ—ã‚¯ãƒ©ã‚¹)</em></p>
+<p>è¡Œåˆ—ã‚’è¡¨ç¾ã—ã¾ã™ã€‚å®Ÿéš›ã®ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã«ã¯åŸºåº•ç’°ã¨ã‚µã‚¤ã‚ºã‚’æŒ‡å®šã—ã¦ã€
+ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ <a href="#label-7">::create</a> ã‚ã‚‹ã„ã¯é–¢æ•° <a href="#label-0">Algebra::MatrixAlgebra</a>()
+ã‚’ç”¨ã„ã¾ã™ã€‚</p>
+<p>ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã¨ã—ã¦ <a href="#label-60">Algebra::Vector</a>(ç¸¦ãƒ™ã‚¯ãƒˆãƒ«ï¼‰, 
+<a href="#label-78">Algebra::Covector</a>(æ¨ªãƒ™ã‚¯ãƒˆãƒ«), 
+<a href="#label-96">Algebra::SquareMatrix</a>(æ­£æ–¹è¡Œåˆ—) ã‚’æŒã¡ã¾ã™ã€‚</p>
+<h2><a name="label-1" id="label-1">ãƒ•ã‚¡ã‚¤ãƒ«å:</a></h2><!-- RDLabel: "ãƒ•ã‚¡ã‚¤ãƒ«å:" -->
 <ul>
 <li><var>matrix-algebra.rb</var></li>
 </ul>
-<h2><a name="label-2" id="label-2">ƒX[ƒp[ƒNƒ‰ƒX:</a></h2><!-- RDLabel: "ƒX[ƒp[ƒNƒ‰ƒX:" -->
+<h2><a name="label-2" id="label-2">ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:</a></h2><!-- RDLabel: "ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:" -->
 <ul>
 <li><var>Object</var></li>
 </ul>
-<h2><a name="label-3" id="label-3">ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:</a></h2><!-- RDLabel: "ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:" -->
+<h2><a name="label-3" id="label-3">ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:</a></h2><!-- RDLabel: "ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:" -->
 <ul>
 <li><a href="#label-117">Algebra::GaussianElimination</a></li>
 <li>Enumerable</li>
 </ul>
-<h2><a name="label-4" id="label-4">ŠÖ˜A‚·‚éŠÖ”:</a></h2><!-- RDLabel: "ŠÖ˜A‚·‚éŠÖ”:" -->
+<h2><a name="label-4" id="label-4">é–¢é€£ã™ã‚‹é–¢æ•°:</a></h2><!-- RDLabel: "é–¢é€£ã™ã‚‹é–¢æ•°:" -->
 <dl>
 <dt><a name="label-5" id="label-5"><code>Algebra.MatrixAlgebra(<var>ring</var>, <var>m</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra.MatrixAlgebra" -->
 <dd>
-<a href="#label-7">::create</a>(ring, m, n)‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-7">::create</a>(ring, m, n)ã¨åŒã˜ã§ã™ã€‚</dd>
 </dl>
-<h2><a name="label-6" id="label-6">ƒNƒ‰ƒXƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒNƒ‰ƒXƒƒ\ƒbƒh:" -->
+<h2><a name="label-6" id="label-6">ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-7" id="label-7"><code>::create(<var>ring</var>, <var>m</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "::create" -->
 <dd>
-<p>ŠÂ <var>ring</var> ‚ğ—v‘f‚Æ‚·‚é, <code> (m, n) </code> Œ^‚Ìs—ñ‚ğ
-•\Œ»‚·‚éƒNƒ‰ƒX‚ğ¶¬‚µ‚Ü‚·B</p>
-<p>‚±‚Ìƒƒ\ƒbƒh‚Ì–ß‚è’l‚Í <a href="#label-0">Algebra::MatrixAlgebra</a> ƒNƒ‰ƒX‚ÌƒTƒuƒNƒ‰ƒX
-‚Å‚·B‚±‚ÌƒTƒuƒNƒ‰ƒX‚É‚ÍƒNƒ‰ƒXƒƒ\ƒbƒh‚Æ‚µ‚Ä <var>ground</var> ‚Æ
-<var>rsize</var>, <var>csize</var>,  <var>sizes</var> ‚ª’è‹`‚³‚êA‚»‚ê‚¼‚êA
-Šî’ê‚Æ‚È‚éŠÂ <var>ring</var>As‚ÌƒTƒCƒY <var>m</var>A—ñ‚ÌƒTƒCƒY <var>n</var>A
-‚»‚ê‚ç‚Ì”z—ñ <code> [m, n] </code> ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>ÀÛ‚És—ñ‚ğì‚é‚É‚Í <a href="#label-8">::new</a>,  <a href="#label-9">::matrix</a>, 
-<a href="#label-10">::[]</a> ‚ğg‚¢‚Ü‚·B</p></dd>
+<p>ç’° <var>ring</var> ã‚’è¦ç´ ã¨ã™ã‚‹, <code> (m, n) </code> å‹ã®è¡Œåˆ—ã‚’
+è¡¨ç¾ã™ã‚‹ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚</p>
+<p>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®æˆ»ã‚Šå€¤ã¯ <a href="#label-0">Algebra::MatrixAlgebra</a> ã‚¯ãƒ©ã‚¹ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹
+ã§ã™ã€‚ã“ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã«ã¯ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã—ã¦ <var>ground</var> ã¨
+<var>rsize</var>, <var>csize</var>,  <var>sizes</var> ãŒå®šç¾©ã•ã‚Œã€ãã‚Œãã‚Œã€
+åŸºåº•ã¨ãªã‚‹ç’° <var>ring</var>ã€è¡Œã®ã‚µã‚¤ã‚º <var>m</var>ã€åˆ—ã®ã‚µã‚¤ã‚º <var>n</var>ã€
+ãã‚Œã‚‰ã®é…åˆ— <code> [m, n] </code> ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>å®Ÿéš›ã«è¡Œåˆ—ã‚’ä½œã‚‹ã«ã¯ <a href="#label-8">::new</a>,  <a href="#label-9">::matrix</a>, 
+<a href="#label-10">::[]</a> ã‚’ä½¿ã„ã¾ã™ã€‚</p></dd>
 <dt><a name="label-8" id="label-8"><code>::new(<var>array</var>)</code></a></dt><!-- RDLabel: "::new" -->
 <dd>
-<p><var>array</var> ‚ğ”z—ñ‚Ì”z—ñ‚Æ‚·‚é‚Æ‚«A‚»‚ê‚ğ—v‘f‚Æ‚·‚és—ñ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p><var>array</var> ã‚’é…åˆ—ã®é…åˆ—ã¨ã™ã‚‹ã¨ãã€ãã‚Œã‚’è¦ç´ ã¨ã™ã‚‹è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
 a = M.new([[1, 2, 3], [4, 5, 6]])
 a.display
@@ -70,9 +70,9 @@ a.display
   #=&gt; [4, 5, 6]</pre></dd>
 <dt><a name="label-9" id="label-9"><code>::matrix{|<var>i</var>, <var>j</var>| ... }</code></a></dt><!-- RDLabel: "::matrix" -->
 <dd>
-<p><var>i</var> ‚Æ <var>j</var> ‚És‚Æ—ñ‚ÌƒCƒ“ƒfƒbƒNƒX‚ğ—^‚¦ ... ‚ğ•]‰¿‚µ‚½’l‚ğ
-<code> (i, j) </code> ¬•ª‚É‚µ‚½s—ñ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p><var>i</var> ã¨ <var>j</var> ã«è¡Œã¨åˆ—ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’ä¸ãˆ ... ã‚’è©•ä¾¡ã—ãŸå€¤ã‚’
+<code> (i, j) </code> æˆåˆ†ã«ã—ãŸè¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>M = Alebra.MatrixAlgebra(Integer, 2, 3)
 a = M.matrix{|i, j| 10*(i + 1) + j + 1}
 a.display
@@ -80,8 +80,8 @@ a.display
   #=&gt; [21, 22, 23]</pre></dd>
 <dt><a name="label-10" id="label-10"><code>::[<var>array1</var>, <var>array2</var>, ..., <var>arrayr</var>]</code></a></dt><!-- RDLabel: "::[]" -->
 <dd>
-<p>”z—ñ <code>array1, array2, ..., arrayr</code> ‚ğ‚»‚ê‚¼‚ês‚Æ‚·‚é”z—ñ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>é…åˆ— <code>array1, array2, ..., arrayr</code> ã‚’ãã‚Œãã‚Œè¡Œã¨ã™ã‚‹é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
 a = M[[1, 2, 3], [4, 5, 6]]
 a.display
@@ -89,12 +89,12 @@ a.display
   #=&gt; [4, 5, 6]</pre></dd>
 <dt><a name="label-11" id="label-11"><code>::collect_ij{|<var>i</var>, <var>j</var>| ... }</code></a></dt><!-- RDLabel: "::collect_ij" -->
 <dd>
-<a href="#label-9">::matrix</a> ‚É‚æ‚­—‚Ä‚¢‚Ü‚·‚ªA
-•Ô‚è’l‚Í Algebra::MatrixAlgebra ‚Å‚È‚­A2d”z—ñ(Array ‚Ì Array)‚Å‚·B</dd>
+<a href="#label-9">::matrix</a> ã«ã‚ˆãä¼¼ã¦ã„ã¾ã™ãŒã€
+è¿”ã‚Šå€¤ã¯ Algebra::MatrixAlgebra ã§ãªãã€2é‡é…åˆ—(Array ã® Array)ã§ã™ã€‚</dd>
 <dt><a name="label-12" id="label-12"><code>::collect_row{|<var>i</var>| ... }</code></a></dt><!-- RDLabel: "::collect_row" -->
 <dd>
-<p>‘æ i s‚É ... ‚ğ•]‰¿‚µ‚Ä“¾‚½”z—ñ‚ğ•À‚×‚½s—ñ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>ç¬¬ i è¡Œã« ... ã‚’è©•ä¾¡ã—ã¦å¾—ãŸé…åˆ—ã‚’ä¸¦ã¹ãŸè¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
 A = M.collect_row{|i| [i*10 + 11, i*10 + 12, i*10 + 13]}
 A.display
@@ -102,8 +102,8 @@ A.display
   #=&gt; [21, 22, 23]</pre></dd>
 <dt><a name="label-13" id="label-13"><code>::collect_column{|<var>j</var>| ... }</code></a></dt><!-- RDLabel: "::collect_column" -->
 <dd>
-<p>‘æ j —ñ‚É ... ‚ğ•]‰¿‚µ‚Ä“¾‚½”z—ñ‚ğ•À‚×‚½s—ñ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>ç¬¬ j åˆ—ã« ... ã‚’è©•ä¾¡ã—ã¦å¾—ãŸé…åˆ—ã‚’ä¸¦ã¹ãŸè¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
 A = M.collect_column{|j| [11 + j, 21 + j]}
 A.display
@@ -111,47 +111,47 @@ A.display
   #=&gt; [21, 22, 23]</pre></dd>
 <dt><a name="label-14" id="label-14"><code>::*(<var>otype</var>)</code></a></dt><!-- RDLabel: "::*" -->
 <dd>
-<p>2‚Â‚Ìs—ñ‚ÌŒ^‚ğŠ|‚¯‚½V‚µ‚¢ƒNƒ‰ƒX‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>2ã¤ã®è¡Œåˆ—ã®å‹ã‚’æ›ã‘ãŸæ–°ã—ã„ã‚¯ãƒ©ã‚¹ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
 N = Algebra.MatrixAlgebra(Integer, 3, 4)
 L = M * N
 p L.sizes #=&gt; [3, 4]</pre></dd>
 <dt><a name="label-15" id="label-15"><code>::vector_type</code></a></dt><!-- RDLabel: "::vector_type" -->
 <dd>
-<a href="#label-22">rsize</a> ‚Æ“¯‚¶ƒTƒCƒY‚ÌcƒxƒNƒgƒ‹(Vector)ƒNƒ‰ƒX‚ğ•Ô‚µ‚Ü‚·B</dd>
+<a href="#label-22">rsize</a> ã¨åŒã˜ã‚µã‚¤ã‚ºã®ç¸¦ãƒ™ã‚¯ãƒˆãƒ«(Vector)ã‚¯ãƒ©ã‚¹ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-16" id="label-16"><code>::covector_type</code></a></dt><!-- RDLabel: "::covector_type" -->
 <dd>
-<a href="#label-23">csize</a> ‚Æ“¯‚¶ƒTƒCƒY‚Ì‰¡ƒxƒNƒgƒ‹(CoVector)ƒNƒ‰ƒX‚ğ•Ô‚µ‚Ü‚·B</dd>
+<a href="#label-23">csize</a> ã¨åŒã˜ã‚µã‚¤ã‚ºã®æ¨ªãƒ™ã‚¯ãƒˆãƒ«(CoVector)ã‚¯ãƒ©ã‚¹ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-17" id="label-17"><code>::transpose</code></a></dt><!-- RDLabel: "::transpose" -->
 <dd>
-“]’u‚ğs‚Á‚½V‚µ‚¢s—ñƒNƒ‰ƒX‚ğ•Ô‚µ‚Ü‚·B</dd>
+è»¢ç½®ã‚’è¡Œã£ãŸæ–°ã—ã„è¡Œåˆ—ã‚¯ãƒ©ã‚¹ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-18" id="label-18"><code>::zero</code></a></dt><!-- RDLabel: "::zero" -->
 <dd>
-—ës—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+é›¶è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 </dl>
-<h2><a name="label-19" id="label-19">ƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒƒ\ƒbƒh:" -->
+<h2><a name="label-19" id="label-19">ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-20" id="label-20"><code>[<var>i</var>, <var>j</var>]</code></a></dt><!-- RDLabel: "[]" -->
 <dd>
-<code>(i, j)</code> ¬•ª‚ğ•Ô‚µ‚Ü‚·B</dd>
+<code>(i, j)</code> æˆåˆ†ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-21" id="label-21"><code>[<var>i</var>, <var>j</var>] = <var>x</var></code></a></dt><!-- RDLabel: "[]=" -->
 <dd>
-<code>(i, j)</code> ¬•ª‚ğ x ‚É‚µ‚Ü‚·B</dd>
+<code>(i, j)</code> æˆåˆ†ã‚’ x ã«ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-22" id="label-22"><code>rsize</code></a></dt><!-- RDLabel: "rsize" -->
 <dd>
-sƒTƒCƒY‚ğ•Ô‚µ‚Ü‚·B<!-- Reference, RDLabel "::rsize" doesn't exist --><em class="label-not-found">::rsize</em><!-- Reference end --> ‚Æ“¯‚¶‚Å‚·B</dd>
+è¡Œã‚µã‚¤ã‚ºã‚’è¿”ã—ã¾ã™ã€‚<!-- Reference, RDLabel "::rsize" doesn't exist --><em class="label-not-found">::rsize</em><!-- Reference end --> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-23" id="label-23"><code>csize</code></a></dt><!-- RDLabel: "csize" -->
 <dd>
-—ñƒTƒCƒY‚ğ•Ô‚µ‚Ü‚·B<!-- Reference, RDLabel "::csize" doesn't exist --><em class="label-not-found">::csize</em><!-- Reference end --> ‚Æ“¯‚¶‚Å‚·B</dd>
+åˆ—ã‚µã‚¤ã‚ºã‚’è¿”ã—ã¾ã™ã€‚<!-- Reference, RDLabel "::csize" doesn't exist --><em class="label-not-found">::csize</em><!-- Reference end --> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-24" id="label-24"><code>sizes</code></a></dt><!-- RDLabel: "sizes" -->
 <dd>
-[<a href="#label-22">rsize</a>, <a href="#label-23">csize</a>] ‚Ì”z—ñ‚ğ•Ô‚µ‚Ü‚·B
-<!-- Reference, RDLabel "::sizes" doesn't exist --><em class="label-not-found">::sizes</em><!-- Reference end --> ‚Æ“¯‚¶‚Å‚·B</dd>
+[<a href="#label-22">rsize</a>, <a href="#label-23">csize</a>] ã®é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
+<!-- Reference, RDLabel "::sizes" doesn't exist --><em class="label-not-found">::sizes</em><!-- Reference end --> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-25" id="label-25"><code>rows</code></a></dt><!-- RDLabel: "rows" -->
 <dd>
-<p>Šes‚ğ—v‘f‚Æ‚·‚é”z—ñ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>å„è¡Œã‚’è¦ç´ ã¨ã™ã‚‹é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
 a = M.new([[1, 2, 3], [4, 5, 6]])
 p a.rows #=&gt; [[1, 2, 3], [4, 5, 6]]
@@ -161,14 +161,14 @@ a.display #=&gt; [1, 2, 3]
           #=&gt; [40, 50, 60]</pre></dd>
 <dt><a name="label-26" id="label-26"><code>row(<var>i</var>)</code></a></dt><!-- RDLabel: "row" -->
 <dd>
-i s–Ú‚ğ”z—ñ‚Æ‚µ‚Ä•Ô‚µ‚Ü‚·B</dd>
+i è¡Œç›®ã‚’é…åˆ—ã¨ã—ã¦è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-27" id="label-27"><code>set_row(<var>i</var>, <var>array</var>)</code></a></dt><!-- RDLabel: "set_row" -->
 <dd>
-i s–Ú‚ğ”z—ñ array ‚É“ü‚êŠ·‚¦‚Ü‚·B</dd>
+i è¡Œç›®ã‚’é…åˆ— array ã«å…¥ã‚Œæ›ãˆã¾ã™ã€‚</dd>
 <dt><a name="label-28" id="label-28"><code>columns</code></a></dt><!-- RDLabel: "columns" -->
 <dd>
-<p>Še—ñ‚ğ—v‘f‚Æ‚·‚é”z—ñ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>å„åˆ—ã‚’è¦ç´ ã¨ã™ã‚‹é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
 a = M.new([[1, 2, 3], [4, 5, 6]])
 p a.columns #=&gt; [[1, 4], [2, 5], [3, 6]]
@@ -178,67 +178,67 @@ a.display #=&gt; [1, 20, 3]
           #=&gt; [4, 50, 6]</pre></dd>
 <dt><a name="label-29" id="label-29"><code>column(<var>j</var>)</code></a></dt><!-- RDLabel: "column" -->
 <dd>
-j —ñ–Ú‚ğ”z—ñ‚Æ‚µ‚Ä•Ô‚µ‚Ü‚·B</dd>
+j åˆ—ç›®ã‚’é…åˆ—ã¨ã—ã¦è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-30" id="label-30"><code>set_column(<var>j</var>, <var>array</var>)</code></a></dt><!-- RDLabel: "set_column" -->
 <dd>
-j —ñ–Ú‚ğ”z—ñ array ‚É“ü‚êŠ·‚¦‚Ü‚·B</dd>
+j åˆ—ç›®ã‚’é…åˆ— array ã«å…¥ã‚Œæ›ãˆã¾ã™ã€‚</dd>
 <dt><a name="label-31" id="label-31"><code>each{|<var>row</var>| ...}</code></a></dt><!-- RDLabel: "each" -->
 <dd>
-Šes‚ğ”z—ñ‚É‚µ‚Ä <var>row</var> ‚É“ü‚ê‚éƒCƒeƒŒ[ƒ^‚Å‚·B</dd>
+å„è¡Œã‚’é…åˆ—ã«ã—ã¦ <var>row</var> ã«å…¥ã‚Œã‚‹ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã§ã™ã€‚</dd>
 <dt><a name="label-32" id="label-32"><code>each_index{|<var>i</var>, <var>j</var>| ...}</code></a></dt><!-- RDLabel: "each_index" -->
 <dd>
-Še“Y‚¦š <code> (i, j) </code> ‚ÉŠÖ‚·‚éƒCƒeƒŒ[ƒ^‚Å‚·B</dd>
+å„æ·»ãˆå­— <code> (i, j) </code> ã«é–¢ã™ã‚‹ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã§ã™ã€‚</dd>
 <dt><a name="label-33" id="label-33"><code>each_i{|<var>i</var>| ...}</code></a></dt><!-- RDLabel: "each_i" -->
 <dd>
-Šes‚Ì“Y‚¦š <code>i</code> ‚ÉŠÖ‚·‚éƒCƒeƒŒ[ƒ^‚Å‚·B</dd>
+å„è¡Œã®æ·»ãˆå­— <code>i</code> ã«é–¢ã™ã‚‹ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã§ã™ã€‚</dd>
 <dt><a name="label-34" id="label-34"><code>each_j{|<var>j</var>| ...}</code></a></dt><!-- RDLabel: "each_j" -->
 <dd>
-Še—ñ‚Ì“Y‚¦š <code>j</code> ‚ÉŠÖ‚·‚éƒCƒeƒŒ[ƒ^‚Å‚·B</dd>
+å„åˆ—ã®æ·»ãˆå­— <code>j</code> ã«é–¢ã™ã‚‹ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã§ã™ã€‚</dd>
 <dt><a name="label-35" id="label-35"><code>each_row{|<var>r</var>| ... }</code></a></dt><!-- RDLabel: "each_row" -->
 <dd>
-Šes‚ğ”z—ñ‚É‚µ‚Ä <var>r</var> ‚É“ü‚ê‚éƒCƒeƒŒ[ƒ^‚Å‚·B
-<a href="#label-31">each</a> ‚Æ“¯‚¶‚Å‚·B</dd>
+å„è¡Œã‚’é…åˆ—ã«ã—ã¦ <var>r</var> ã«å…¥ã‚Œã‚‹ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã§ã™ã€‚
+<a href="#label-31">each</a> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-36" id="label-36"><code>each_column{|<var>c</var>| ... }</code></a></dt><!-- RDLabel: "each_column" -->
 <dd>
-Še—ñ‚ğ”z—ñ‚É‚µ‚Ä <var>c</var> ‚É“ü‚ê‚éƒCƒeƒŒ[ƒ^‚Å‚·B</dd>
+å„åˆ—ã‚’é…åˆ—ã«ã—ã¦ <var>c</var> ã«å…¥ã‚Œã‚‹ã‚¤ãƒ†ãƒ¬ãƒ¼ã‚¿ã§ã™ã€‚</dd>
 <dt><a name="label-37" id="label-37"><code>matrix{|<var>i</var>, <var>j</var>| ... }</code></a></dt><!-- RDLabel: "matrix" -->
 <dd>
-<a href="#label-9">::matrix</a> ‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-9">::matrix</a> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-38" id="label-38"><code>collect_ij{|<var>i</var>, <var>j</var>| ... }</code></a></dt><!-- RDLabel: "collect_ij" -->
 <dd>
-<a href="#label-11">::collect_ij</a> ‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-11">::collect_ij</a> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-39" id="label-39"><code>collect_row{|<var>i</var>| ... }</code></a></dt><!-- RDLabel: "collect_row" -->
 <dd>
-<a href="#label-12">::collect_row</a> ‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-12">::collect_row</a> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-40" id="label-40"><code>collect_column{|<var>j</var>| ... }</code></a></dt><!-- RDLabel: "collect_column" -->
 <dd>
-<a href="#label-13">::collect_column</a> ‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-13">::collect_column</a> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-41" id="label-41"><code>minor(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "minor" -->
 <dd>
-<var>i</var> s <var>j</var> —ñ‚ğœ‚¢‚½¬s—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>i</var> è¡Œ <var>j</var> åˆ—ã‚’é™¤ã„ãŸå°è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-42" id="label-42"><code>cofactor(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "cofactor" -->
 <dd>
-<var>i</var> s <var>j</var> —ñ‚ğœ‚¢‚½¬s—ñ®‚É (-1)**(i+j) ‚ğŠ|‚¯‚½‚à‚Ì‚ğ
-•Ô‚µ‚Ü‚·B<code>minor(i, j) ** (i + j)</code> ‚Æ“¯‚¶‚Å‚·B</dd>
+<var>i</var> è¡Œ <var>j</var> åˆ—ã‚’é™¤ã„ãŸå°è¡Œåˆ—å¼ã« (-1)**(i+j) ã‚’æ›ã‘ãŸã‚‚ã®ã‚’
+è¿”ã—ã¾ã™ã€‚<code>minor(i, j) ** (i + j)</code> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-43" id="label-43"><code>cofactor_matrix</code></a></dt><!-- RDLabel: "cofactor_matrix" -->
 <dd>
-—]ˆöqs—ñ‚ğ•Ô‚µ‚Ü‚·B<code>self.class.transpose.matrix{|i, j| cofactor(j, i)}</code> ‚Æ“¯‚¶‚Å‚·B</dd>
+ä½™å› å­è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚<code>self.class.transpose.matrix{|i, j| cofactor(j, i)}</code> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-44" id="label-44"><code>adjoint</code></a></dt><!-- RDLabel: "adjoint" -->
 <dd>
-<a href="#label-43">cofactor_matrix</a> ‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-43">cofactor_matrix</a> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-45" id="label-45"><code>==(<var>other</var>)</code></a></dt><!-- RDLabel: "==" -->
 <dd>
-“™‚µ‚¢‚Æ‚«^‚ğ•Ô‚µ‚Ü‚·B</dd>
+ç­‰ã—ã„ã¨ãçœŸã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-46" id="label-46"><code>+(<var>other</var>)</code></a></dt><!-- RDLabel: "+" -->
 <dd>
-˜a‚ğŒvZ‚µ‚Ü‚·B</dd>
+å’Œã‚’è¨ˆç®—ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-47" id="label-47"><code>-(<var>other</var>)</code></a></dt><!-- RDLabel: "-" -->
 <dd>
-·‚ğŒvZ‚µ‚Ü‚·B</dd>
+å·®ã‚’è¨ˆç®—ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-48" id="label-48"><code>*(<var>other</var>)</code></a></dt><!-- RDLabel: "*" -->
 <dd>
-<p>Ï‚ğŒvZ‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>ç©ã‚’è¨ˆç®—ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
 N = Algebra.MatrixAlgebra(Integer, 3, 4)
 L = M * N
@@ -250,17 +250,17 @@ c.display #=&gt; [14, 20, 26, 32]
           #=&gt; [23, 38, 53, 68]</pre></dd>
 <dt><a name="label-49" id="label-49"><code>**(<var>n</var>)</code></a></dt><!-- RDLabel: "**" -->
 <dd>
-<var>n</var> æ‚ğŒvZ‚µ‚Ü‚·B</dd>
+<var>n</var> ä¹—ã‚’è¨ˆç®—ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-50" id="label-50"><code>/(<var>other</var>)</code></a></dt><!-- RDLabel: "/" -->
 <dd>
-¤‚ğŒvZ‚µ‚Ü‚·B</dd>
+å•†ã‚’è¨ˆç®—ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-51" id="label-51"><code>rank</code></a></dt><!-- RDLabel: "rank" -->
 <dd>
-ŠK”‚ğ•Ô‚µ‚Ü‚·B</dd>
+éšæ•°ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-52" id="label-52"><code>dsum(<var>other</var>)</code></a></dt><!-- RDLabel: "dsum" -->
 <dd>
-<p>’¼˜a‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>ç›´å’Œã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>a = Algebra.MatrixAlgebra(Integer, 2, 3)[
       [1, 2, 3],
       [4, 5, 6]
@@ -277,7 +277,7 @@ b = Algebra.MatrixAlgebra(Integer, 3, 2)[
                    #=&gt; 0,   0,   0,  -5,  -6</pre></dd>
 <dt><a name="label-53" id="label-53"><code>convert_to(<var>ring</var>)</code></a></dt><!-- RDLabel: "convert_to" -->
 <dd>
-<p><var>self</var> ‚ÌŠe¬•ª‚ğs—ñŠÂ <var>ring</var> ‚ÉƒRƒ“ƒo[ƒg‚µ‚Ü‚·B</p>
+<p><var>self</var> ã®å„æˆåˆ†ã‚’è¡Œåˆ—ç’° <var>ring</var> ã«ã‚³ãƒ³ãƒãƒ¼ãƒˆã—ã¾ã™ã€‚</p>
 <p>Example:</p>
 <pre>require "matrix-algebra"
 require "residue-class-ring"
@@ -291,17 +291,17 @@ a.convert_to(Algebra.MatrixAlgebra(Z3, 2, 3)).display
                                     #=&gt;  1,   2,   0</pre></dd>
 <dt><a name="label-54" id="label-54"><code>to_ary</code></a></dt><!-- RDLabel: "to_ary" -->
 <dd>
-<var>to_a</var> ‚ğ•Ô‚µ‚Ü‚·B<var>to_a</var> ‚Í <var>Enumerable</var> ‚Å’è‹`‚³‚ê‚Ä‚¢‚Ü‚·B</dd>
+<var>to_a</var> ã‚’è¿”ã—ã¾ã™ã€‚<var>to_a</var> ã¯ <var>Enumerable</var> ã§å®šç¾©ã•ã‚Œã¦ã„ã¾ã™ã€‚</dd>
 <dt><a name="label-55" id="label-55"><code>flatten</code></a></dt><!-- RDLabel: "flatten" -->
 <dd>
-<var>to_a.flatten</var> ‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>to_a.flatten</var> ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-56" id="label-56"><code>diag</code></a></dt><!-- RDLabel: "diag" -->
 <dd>
-‘ÎŠp¬•ª‚ğ”z—ñ‚Å•Ô‚µ‚Ü‚·B</dd>
+å¯¾è§’æˆåˆ†ã‚’é…åˆ—ã§è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-57" id="label-57"><code>transpose</code></a></dt><!-- RDLabel: "transpose" -->
 <dd>
-<p>“]’us—ñ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>è»¢ç½®è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
 a = M.new([[1, 2, 3], [4, 5, 6]])
 Mt = M.transpose
@@ -312,8 +312,8 @@ b.display #=&gt; [1, 4]
           #=&gt; [3, 6]</pre></dd>
 <dt><a name="label-58" id="label-58"><code>dup</code></a></dt><!-- RDLabel: "dup" -->
 <dd>
-<p>•¡»‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>è¤‡è£½ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>M = Algebra.MatrixAlgebra(Integer, 2, 3)
 a = M.new([[1, 2, 3], [4, 5, 6]])
 b = a.dup
@@ -324,44 +324,44 @@ b.display #=&gt; [1, 2, 3]
           #=&gt; [4, 50, 6]</pre></dd>
 <dt><a name="label-59" id="label-59"><code>display([<var>out</var>])</code></a></dt><!-- RDLabel: "display" -->
 <dd>
-s—ñ‚ğ <var>out</var> ‚É•\¦‚µ‚Ü‚·B<var>out</var> ‚ªÈ—ª‚³‚ê‚é‚Æ <var>$stdout</var>
-‚É•\¦‚µ‚Ü‚·B</dd>
+è¡Œåˆ—ã‚’ <var>out</var> ã«è¡¨ç¤ºã—ã¾ã™ã€‚<var>out</var> ãŒçœç•¥ã•ã‚Œã‚‹ã¨ <var>$stdout</var>
+ã«è¡¨ç¤ºã—ã¾ã™ã€‚</dd>
 </dl>
 <h1><a name="label-60" id="label-60">Algebra::Vector</a></h1><!-- RDLabel: "Algebra::Vector" -->
-<p><em>(cƒxƒNƒgƒ‹ƒNƒ‰ƒX)</em></p>
-<p>ƒxƒNƒgƒ‹‚ÌƒNƒ‰ƒX‚Å‚·B</p>
-<h2><a name="label-61" id="label-61">ƒX[ƒp[ƒNƒ‰ƒX:</a></h2><!-- RDLabel: "ƒX[ƒp[ƒNƒ‰ƒX:" -->
+<p><em>(ç¸¦ãƒ™ã‚¯ãƒˆãƒ«ã‚¯ãƒ©ã‚¹)</em></p>
+<p>ãƒ™ã‚¯ãƒˆãƒ«ã®ã‚¯ãƒ©ã‚¹ã§ã™ã€‚</p>
+<h2><a name="label-61" id="label-61">ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:</a></h2><!-- RDLabel: "ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:" -->
 <ul>
 <li><var>Algebra::MatrixAlgebra</var></li>
 </ul>
-<h2><a name="label-62" id="label-62">ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:</a></h2><!-- RDLabel: "ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:" -->
-<p>‚È‚µ</p>
-<h2><a name="label-63" id="label-63">ŠÖ˜A‚·‚éŠÖ”:</a></h2><!-- RDLabel: "ŠÖ˜A‚·‚éŠÖ”:" -->
+<h2><a name="label-62" id="label-62">ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:</a></h2><!-- RDLabel: "ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:" -->
+<p>ãªã—</p>
+<h2><a name="label-63" id="label-63">é–¢é€£ã™ã‚‹é–¢æ•°:</a></h2><!-- RDLabel: "é–¢é€£ã™ã‚‹é–¢æ•°:" -->
 <dl>
 <dt><a name="label-64" id="label-64"><code>Algebra.Vector(<var>ring</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra.Vector" -->
 <dd>
-<a href="#label-66">Algebra::Vector::create</a>(ring, n) ‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-66">Algebra::Vector::create</a>(ring, n) ã¨åŒã˜ã§ã™ã€‚</dd>
 </dl>
-<h2><a name="label-65" id="label-65">ƒNƒ‰ƒXƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒNƒ‰ƒXƒƒ\ƒbƒh:" -->
+<h2><a name="label-65" id="label-65">ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-66" id="label-66"><code>Algebra::Vector::create(<var>ring</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra::Vector::create" -->
 <dd>
-<p>ŠÂ <var>ring</var> ‚ğ—v‘f‚Æ‚·‚é, <var>n</var> ŸŒ³‚ÌƒxƒNƒgƒ‹icƒxƒNƒgƒ‹j
-•\Œ»‚·‚éƒNƒ‰ƒX‚ğ¶¬‚µ‚Ü‚·B</p>
-<p>‚±‚Ìƒƒ\ƒbƒh‚Ì–ß‚è’l‚Í <a href="#label-60">Algebra::Vector</a> ƒNƒ‰ƒX‚ÌƒTƒuƒNƒ‰ƒX
-‚Å‚·B‚±‚ÌƒTƒuƒNƒ‰ƒX‚É‚ÍƒNƒ‰ƒXƒƒ\ƒbƒh‚Æ‚µ‚Ä <var>ground</var> ‚Æ
-<var>size</var> ‚ª’è‹`‚³‚êA‚»‚ê‚¼‚êAŠî’ê‚Æ‚È‚éŠÂ <var>ring</var>A
-ƒTƒCƒY <var>n</var> ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>ÀÛ‚ÉƒxƒNƒgƒ‹‚ğì‚é‚É‚ÍƒNƒ‰ƒXƒƒ\ƒbƒh <var>new</var>,  
+<p>ç’° <var>ring</var> ã‚’è¦ç´ ã¨ã™ã‚‹, <var>n</var> æ¬¡å…ƒã®ãƒ™ã‚¯ãƒˆãƒ«ï¼ˆç¸¦ãƒ™ã‚¯ãƒˆãƒ«ï¼‰
+è¡¨ç¾ã™ã‚‹ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚</p>
+<p>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®æˆ»ã‚Šå€¤ã¯ <a href="#label-60">Algebra::Vector</a> ã‚¯ãƒ©ã‚¹ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹
+ã§ã™ã€‚ã“ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã«ã¯ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã—ã¦ <var>ground</var> ã¨
+<var>size</var> ãŒå®šç¾©ã•ã‚Œã€ãã‚Œãã‚Œã€åŸºåº•ã¨ãªã‚‹ç’° <var>ring</var>ã€
+ã‚µã‚¤ã‚º <var>n</var> ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>å®Ÿéš›ã«ãƒ™ã‚¯ãƒˆãƒ«ã‚’ä½œã‚‹ã«ã¯ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ <var>new</var>,  
 <var>matrix</var>, 
-<var>[]</var> ‚ğg‚¢‚Ü‚·B</p>
-<p><a href="#label-60">Algebra::Vector</a> ‚Í <var>n</var> s 1 —ñ‚Ì 
-<a href="#label-0">Algebra::MatrixAlgebra</a> ‚Æ“¯ˆê‹‚³‚ê‚Ü‚·B</p></dd>
+<var>[]</var> ã‚’ä½¿ã„ã¾ã™ã€‚</p>
+<p><a href="#label-60">Algebra::Vector</a> ã¯ <var>n</var> è¡Œ 1 åˆ—ã® 
+<a href="#label-0">Algebra::MatrixAlgebra</a> ã¨åŒä¸€è¦–ã•ã‚Œã¾ã™ã€‚</p></dd>
 <dt><a name="label-67" id="label-67"><code>Algebra::Vector::new(<var>array</var>)</code></a></dt><!-- RDLabel: "Algebra::Vector::new" -->
 <dd>
-<p><var>array</var> ‚ğ”z—ñ‚Æ‚·‚é‚Æ‚«A‚»‚ê‚ğ—v‘f‚Æ‚·
-‚écƒxƒNƒgƒ‹‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p><var>array</var> ã‚’é…åˆ—ã¨ã™ã‚‹ã¨ãã€ãã‚Œã‚’è¦ç´ ã¨ã™
+ã‚‹ç¸¦ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>V = Algebra.Vector(Integer, 3)
 a = V.new([1, 2, 3])
 a.display
@@ -370,8 +370,8 @@ a.display
   #=&gt; [3]</pre></dd>
 <dt><a name="label-68" id="label-68"><code>Algebra::Vector::vector{|<var>i</var>| ... }</code></a></dt><!-- RDLabel: "Algebra::Vector::vector" -->
 <dd>
-<p>‘æ <var>i</var> ¬•ª‚ğ ... ‚É‚µ‚½ƒxƒNƒgƒ‹‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>ç¬¬ <var>i</var> æˆåˆ†ã‚’ ... ã«ã—ãŸãƒ™ã‚¯ãƒˆãƒ«ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>V = Algebra.Vector(Integer, 3)
 a = V.vector{|j| j + 1}
 a.display
@@ -380,253 +380,253 @@ a.display
   #=&gt; [3]</pre></dd>
 <dt><a name="label-69" id="label-69"><code>Algebra::Vector::matrix{|<var>i</var>, <var>j</var>| ... }</code></a></dt><!-- RDLabel: "Algebra::Vector::matrix" -->
 <dd>
-‘æ <var>i</var> ¬•ª‚ğ ... ‚É‚µ‚½ƒxƒNƒgƒ‹‚ğ•Ô‚µ‚Ü‚·B
-<var>j</var> ‚É‚Íí‚É 0 ‚ª‘ã“ü‚³‚ê‚Ü‚·B</dd>
+ç¬¬ <var>i</var> æˆåˆ†ã‚’ ... ã«ã—ãŸãƒ™ã‚¯ãƒˆãƒ«ã‚’è¿”ã—ã¾ã™ã€‚
+<var>j</var> ã«ã¯å¸¸ã« 0 ãŒä»£å…¥ã•ã‚Œã¾ã™ã€‚</dd>
 </dl>
-<h2><a name="label-70" id="label-70">ƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒƒ\ƒbƒh:" -->
+<h2><a name="label-70" id="label-70">ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-71" id="label-71"><code>size</code></a></dt><!-- RDLabel: "size" -->
 <dd>
-ŸŒ³‚ğ•Ô‚µ‚Ü‚·B</dd>
+æ¬¡å…ƒã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-72" id="label-72"><code>to_a</code></a></dt><!-- RDLabel: "to_a" -->
 <dd>
-Še¬•ª‚ğ”z—ñ‚É‚µ‚Ä•Ô‚µ‚Ü‚·B</dd>
+å„æˆåˆ†ã‚’é…åˆ—ã«ã—ã¦è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-73" id="label-73"><code>transpose</code></a></dt><!-- RDLabel: "transpose" -->
 <dd>
-‰¡ƒxƒNƒgƒ‹ <a href="#label-78">Algebra::Covector</a> ‚É“]’u‚µ‚Ü‚·B</dd>
+æ¨ªãƒ™ã‚¯ãƒˆãƒ« <a href="#label-78">Algebra::Covector</a> ã«è»¢ç½®ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-74" id="label-74"><code>inner_product(<var>other</var>)</code></a></dt><!-- RDLabel: "inner_product" -->
 <dd>
-<var>other</var> ‚Æ‚Ì“àÏ‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>other</var> ã¨ã®å†…ç©ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-75" id="label-75"><code>inner_product_complex(<var>other</var>)</code></a></dt><!-- RDLabel: "inner_product_complex" -->
 <dd>
-<var>other</var> ‚Æ‚Ì“àÏ‚ğ•Ô‚µ‚Ü‚·B
-<code>inner_product(other.conjugate)</code>‚Æ“¯‚¶‚Å‚·B</dd>
+<var>other</var> ã¨ã®å†…ç©ã‚’è¿”ã—ã¾ã™ã€‚
+<code>inner_product(other.conjugate)</code>ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-76" id="label-76"><code>norm2</code></a></dt><!-- RDLabel: "norm2" -->
 <dd>
-ƒmƒ‹ƒ€‚ğ•Ô‚µ‚Ü‚·B
-<code>inner_product(self)</code>‚Æ“¯‚¶‚Å‚·B</dd>
+ãƒãƒ«ãƒ ã‚’è¿”ã—ã¾ã™ã€‚
+<code>inner_product(self)</code>ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-77" id="label-77"><code>norm2_complex</code></a></dt><!-- RDLabel: "norm2_complex" -->
 <dd>
-ƒmƒ‹ƒ€‚ğ•Ô‚µ‚Ü‚·B
-<code>inner_product(self.conjugate)</code>‚Æ“¯‚¶‚Å‚·B</dd>
+ãƒãƒ«ãƒ ã‚’è¿”ã—ã¾ã™ã€‚
+<code>inner_product(self.conjugate)</code>ã¨åŒã˜ã§ã™ã€‚</dd>
 </dl>
 <h1><a name="label-78" id="label-78">Algebra::Covector</a></h1><!-- RDLabel: "Algebra::Covector" -->
-<p><em>(‰¡ƒxƒNƒgƒ‹ƒNƒ‰ƒX)</em></p>
-<p>ƒxƒNƒgƒ‹‚ÌƒNƒ‰ƒX‚Å‚·B</p>
-<h2><a name="label-79" id="label-79">ƒX[ƒp[ƒNƒ‰ƒX:</a></h2><!-- RDLabel: "ƒX[ƒp[ƒNƒ‰ƒX:" -->
+<p><em>(æ¨ªãƒ™ã‚¯ãƒˆãƒ«ã‚¯ãƒ©ã‚¹)</em></p>
+<p>ãƒ™ã‚¯ãƒˆãƒ«ã®ã‚¯ãƒ©ã‚¹ã§ã™ã€‚</p>
+<h2><a name="label-79" id="label-79">ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:</a></h2><!-- RDLabel: "ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:" -->
 <ul>
 <li><var>Algebra::MatrixAlgebra</var></li>
 </ul>
-<h2><a name="label-80" id="label-80">ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:</a></h2><!-- RDLabel: "ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:" -->
-<p>‚È‚µ</p>
-<h2><a name="label-81" id="label-81">ŠÖ˜A‚·‚éŠÖ”:</a></h2><!-- RDLabel: "ŠÖ˜A‚·‚éŠÖ”:" -->
+<h2><a name="label-80" id="label-80">ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:</a></h2><!-- RDLabel: "ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:" -->
+<p>ãªã—</p>
+<h2><a name="label-81" id="label-81">é–¢é€£ã™ã‚‹é–¢æ•°:</a></h2><!-- RDLabel: "é–¢é€£ã™ã‚‹é–¢æ•°:" -->
 <dl>
 <dt><a name="label-82" id="label-82"><code>Algebra.Covector(<var>ring</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra.Covector" -->
 <dd>
-<a href="#label-84">Algebra::Covector::create</a> (ring n)‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-84">Algebra::Covector::create</a> (ring n)ã¨åŒã˜ã§ã™ã€‚</dd>
 </dl>
-<h2><a name="label-83" id="label-83">ƒNƒ‰ƒXƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒNƒ‰ƒXƒƒ\ƒbƒh:" -->
+<h2><a name="label-83" id="label-83">ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-84" id="label-84"><code>Algebra::Covector::create(<var>ring</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra::Covector::create" -->
 <dd>
-<p>ŠÂ <var>ring</var> ‚ğ—v‘f‚Æ‚·‚é, <var>n</var> ŸŒ³‚ÌƒxƒNƒgƒ‹i‰¡ƒxƒNƒgƒ‹j
-•\Œ»‚·‚éƒNƒ‰ƒX‚ğ¶¬‚µ‚Ü‚·B</p>
-<p>‚±‚Ìƒƒ\ƒbƒh‚Ì–ß‚è’l‚Í <a href="#label-78">Algebra::Covector</a> ƒNƒ‰ƒX‚ÌƒTƒuƒNƒ‰ƒX
-‚Å‚·B‚±‚ÌƒTƒuƒNƒ‰ƒX‚É‚ÍƒNƒ‰ƒXƒƒ\ƒbƒh‚Æ‚µ‚Ä <var>ground</var> ‚Æ
-<var>size</var> ‚ª’è‹`‚³‚êA‚»‚ê‚¼‚êAŠî’ê‚Æ‚È‚éŠÂ <var>ring</var>A
-ƒTƒCƒY <var>n</var> ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>ÀÛ‚ÉƒxƒNƒgƒ‹‚ğì‚é‚É‚ÍƒNƒ‰ƒXƒƒ\ƒbƒh <var>new</var>, 
+<p>ç’° <var>ring</var> ã‚’è¦ç´ ã¨ã™ã‚‹, <var>n</var> æ¬¡å…ƒã®ãƒ™ã‚¯ãƒˆãƒ«ï¼ˆæ¨ªãƒ™ã‚¯ãƒˆãƒ«ï¼‰
+è¡¨ç¾ã™ã‚‹ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚</p>
+<p>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®æˆ»ã‚Šå€¤ã¯ <a href="#label-78">Algebra::Covector</a> ã‚¯ãƒ©ã‚¹ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹
+ã§ã™ã€‚ã“ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã«ã¯ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã—ã¦ <var>ground</var> ã¨
+<var>size</var> ãŒå®šç¾©ã•ã‚Œã€ãã‚Œãã‚Œã€åŸºåº•ã¨ãªã‚‹ç’° <var>ring</var>ã€
+ã‚µã‚¤ã‚º <var>n</var> ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>å®Ÿéš›ã«ãƒ™ã‚¯ãƒˆãƒ«ã‚’ä½œã‚‹ã«ã¯ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ <var>new</var>, 
 <var>matrix</var>, 
-<var>[]</var> ‚ğg‚¢‚Ü‚·B</p>
-<p><a href="#label-78">Algebra::Covector</a> ‚Í 1 s <var>n</var> —ñ‚Ì <a href="#label-0">Algebra::MatrixAlgebra</a> ‚Æ
-“¯ˆê‹‚³‚ê‚Ü‚·B</p></dd>
+<var>[]</var> ã‚’ä½¿ã„ã¾ã™ã€‚</p>
+<p><a href="#label-78">Algebra::Covector</a> ã¯ 1 è¡Œ <var>n</var> åˆ—ã® <a href="#label-0">Algebra::MatrixAlgebra</a> ã¨
+åŒä¸€è¦–ã•ã‚Œã¾ã™ã€‚</p></dd>
 <dt><a name="label-85" id="label-85"><code>Algebra::Covector::new(<var>array</var>)</code></a></dt><!-- RDLabel: "Algebra::Covector::new" -->
 <dd>
-<p><var>array</var> ‚ğ”z—ñ‚Æ‚·‚é‚Æ‚«A‚»‚ê‚ğ—v‘f‚Æ‚·
-‚é‰¡ƒxƒNƒgƒ‹‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p><var>array</var> ã‚’é…åˆ—ã¨ã™ã‚‹ã¨ãã€ãã‚Œã‚’è¦ç´ ã¨ã™
+ã‚‹æ¨ªãƒ™ã‚¯ãƒˆãƒ«ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>V = Algebra.Covector(Integer, 3)
 a = V.new([1, 2, 3])
 a.display
   #=&gt; [1, 2, 3]</pre></dd>
 <dt><a name="label-86" id="label-86"><code>Algebra::Covector::covector{|<var>j</var>| ... }</code></a></dt><!-- RDLabel: "Algebra::Covector::covector" -->
 <dd>
-<p>‘æ j ¬•ª‚ğ ... ‚É‚µ‚½ƒxƒNƒgƒ‹‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>ç¬¬ j æˆåˆ†ã‚’ ... ã«ã—ãŸãƒ™ã‚¯ãƒˆãƒ«ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>V = Algebra.Covector(Integer, 3)
 a = V.covector{|j| j + 1}
 a.display
   #=&gt; [1, 2, 3]</pre></dd>
 <dt><a name="label-87" id="label-87"><code>Algebra::Covector::matrix{|<var>i</var>, <var>j</var>| ... }</code></a></dt><!-- RDLabel: "Algebra::Covector::matrix" -->
 <dd>
-‘æ j ¬•ª‚ğ ... ‚É‚µ‚½ƒxƒNƒgƒ‹‚ğ•Ô‚µ‚Ü‚·Bi ‚É‚Íí‚É 0 ‚ª‘ã“ü‚³‚ê‚Ü‚·B</dd>
+ç¬¬ j æˆåˆ†ã‚’ ... ã«ã—ãŸãƒ™ã‚¯ãƒˆãƒ«ã‚’è¿”ã—ã¾ã™ã€‚i ã«ã¯å¸¸ã« 0 ãŒä»£å…¥ã•ã‚Œã¾ã™ã€‚</dd>
 </dl>
-<h2><a name="label-88" id="label-88">ƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒƒ\ƒbƒh:" -->
+<h2><a name="label-88" id="label-88">ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-89" id="label-89"><code>size</code></a></dt><!-- RDLabel: "size" -->
 <dd>
-ŸŒ³‚ğ•Ô‚µ‚Ü‚·B</dd>
+æ¬¡å…ƒã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-90" id="label-90"><code>to_a</code></a></dt><!-- RDLabel: "to_a" -->
 <dd>
-Še¬•ª‚ğ”z—ñ‚É‚µ‚Ä•Ô‚µ‚Ü‚·B</dd>
+å„æˆåˆ†ã‚’é…åˆ—ã«ã—ã¦è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-91" id="label-91"><code>transpose</code></a></dt><!-- RDLabel: "transpose" -->
 <dd>
-‰¡ƒxƒNƒgƒ‹ <a href="#label-60">Algebra::Vector</a> ‚É“]’u‚µ‚Ü‚·B</dd>
+æ¨ªãƒ™ã‚¯ãƒˆãƒ« <a href="#label-60">Algebra::Vector</a> ã«è»¢ç½®ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-92" id="label-92"><code>inner_product(<var>other</var>)</code></a></dt><!-- RDLabel: "inner_product" -->
 <dd>
-<var>other</var> ‚Æ‚Ì“àÏ‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>other</var> ã¨ã®å†…ç©ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-93" id="label-93"><code>inner_product_complex(<var>other</var>)</code></a></dt><!-- RDLabel: "inner_product_complex" -->
 <dd>
-<var>other</var> ‚Æ‚Ì“àÏ‚ğ•Ô‚µ‚Ü‚·B
-<code>inner_product(other.conjugate)</code>‚Æ“¯‚¶‚Å‚·B</dd>
+<var>other</var> ã¨ã®å†…ç©ã‚’è¿”ã—ã¾ã™ã€‚
+<code>inner_product(other.conjugate)</code>ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-94" id="label-94"><code>norm2</code></a></dt><!-- RDLabel: "norm2" -->
 <dd>
-ƒmƒ‹ƒ€‚ğ•Ô‚µ‚Ü‚·B
-<code>inner_product(self)</code>‚Æ“¯‚¶‚Å‚·B</dd>
+ãƒãƒ«ãƒ ã‚’è¿”ã—ã¾ã™ã€‚
+<code>inner_product(self)</code>ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-95" id="label-95"><code>norm2_complex</code></a></dt><!-- RDLabel: "norm2_complex" -->
 <dd>
-ƒmƒ‹ƒ€‚ğ•Ô‚µ‚Ü‚·B
-<code>inner_product(self.conjugate)</code>‚Æ“¯‚¶‚Å‚·B</dd>
+ãƒãƒ«ãƒ ã‚’è¿”ã—ã¾ã™ã€‚
+<code>inner_product(self.conjugate)</code>ã¨åŒã˜ã§ã™ã€‚</dd>
 </dl>
 <h1><a name="label-96" id="label-96">Algebra::SquareMatrix</a></h1><!-- RDLabel: "Algebra::SquareMatrix" -->
-<p><em>(³•ûs—ñŠÂƒNƒ‰ƒX)</em></p>
-<p>³•ûs—ñ‚Ìì‚éŠÂ‚ğ•\Œ»‚·‚éƒNƒ‰ƒX‚Å‚·B</p>
-<h2><a name="label-97" id="label-97">ƒX[ƒp[ƒNƒ‰ƒX:</a></h2><!-- RDLabel: "ƒX[ƒp[ƒNƒ‰ƒX:" -->
+<p><em>(æ­£æ–¹è¡Œåˆ—ç’°ã‚¯ãƒ©ã‚¹)</em></p>
+<p>æ­£æ–¹è¡Œåˆ—ã®ä½œã‚‹ç’°ã‚’è¡¨ç¾ã™ã‚‹ã‚¯ãƒ©ã‚¹ã§ã™ã€‚</p>
+<h2><a name="label-97" id="label-97">ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:</a></h2><!-- RDLabel: "ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:" -->
 <ul>
 <li><var>Algebra::MatrixAlgebra</var></li>
 </ul>
-<h2><a name="label-98" id="label-98">ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:</a></h2><!-- RDLabel: "ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:" -->
-<p>‚È‚µ</p>
-<h2><a name="label-99" id="label-99">ŠÖ˜A‚·‚éŠÖ”:</a></h2><!-- RDLabel: "ŠÖ˜A‚·‚éŠÖ”:" -->
+<h2><a name="label-98" id="label-98">ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:</a></h2><!-- RDLabel: "ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:" -->
+<p>ãªã—</p>
+<h2><a name="label-99" id="label-99">é–¢é€£ã™ã‚‹é–¢æ•°:</a></h2><!-- RDLabel: "é–¢é€£ã™ã‚‹é–¢æ•°:" -->
 <dl>
 <dt><a name="label-100" id="label-100"><code>Algebra.SquareMatrix(<var>ring</var>, <var>size</var>)</code></a></dt><!-- RDLabel: "Algebra.SquareMatrix" -->
 <dd>
-<a href="#label-102">Algebra::SquareMatrix::create</a>(ring, n) ‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-102">Algebra::SquareMatrix::create</a>(ring, n) ã¨åŒã˜ã§ã™ã€‚</dd>
 </dl>
-<h2><a name="label-101" id="label-101">ƒNƒ‰ƒXƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒNƒ‰ƒXƒƒ\ƒbƒh:" -->
+<h2><a name="label-101" id="label-101">ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-102" id="label-102"><code>Algebra::SquareMatrix::create(<var>ring</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra::SquareMatrix::create" -->
 <dd>
-<p>³•ûs—ñ•\Œ»‚·‚éƒNƒ‰ƒX‚ğ¶¬‚µ‚Ü‚·B</p>
-<p>‚±‚Ìƒƒ\ƒbƒh‚Ì–ß‚è’l‚Í 
-<a href="#label-96">Algebra::SquareMatrix</a> ƒNƒ‰ƒX‚ÌƒTƒuƒNƒ‰ƒX
-‚Å‚·B‚±‚ÌƒTƒuƒNƒ‰ƒX‚É‚ÍƒNƒ‰ƒXƒƒ\ƒbƒh‚Æ‚µ‚Ä 
-<var>ground</var> ‚Æ
-<var>size</var> ‚ª’è‹`‚³‚êA‚»‚ê‚¼‚êAŠî’ê‚Æ‚È‚éŠÂ <var>ring</var>A
-ƒTƒCƒY <var>n</var> ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>SquareMatrix ‚Í <var>n</var> s <var>n</var> —ñ‚Ì Algebra::MatrixAlgebra ‚Æ“¯ˆê‹‚³‚ê‚Ü‚·B</p>
-<p>ÀÛ‚És—ñ‚ğì‚é‚É‚ÍƒNƒ‰ƒXƒƒ\ƒbƒh <var>new</var>,  
+<p>æ­£æ–¹è¡Œåˆ—è¡¨ç¾ã™ã‚‹ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆã—ã¾ã™ã€‚</p>
+<p>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®æˆ»ã‚Šå€¤ã¯ 
+<a href="#label-96">Algebra::SquareMatrix</a> ã‚¯ãƒ©ã‚¹ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹
+ã§ã™ã€‚ã“ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã«ã¯ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã—ã¦ 
+<var>ground</var> ã¨
+<var>size</var> ãŒå®šç¾©ã•ã‚Œã€ãã‚Œãã‚Œã€åŸºåº•ã¨ãªã‚‹ç’° <var>ring</var>ã€
+ã‚µã‚¤ã‚º <var>n</var> ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>SquareMatrix ã¯ <var>n</var> è¡Œ <var>n</var> åˆ—ã® Algebra::MatrixAlgebra ã¨åŒä¸€è¦–ã•ã‚Œã¾ã™ã€‚</p>
+<p>å®Ÿéš›ã«è¡Œåˆ—ã‚’ä½œã‚‹ã«ã¯ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ <var>new</var>,  
 <var>matrix</var>, 
-<var>[]</var> ‚ğg‚¢‚Ü‚·B</p></dd>
+<var>[]</var> ã‚’ä½¿ã„ã¾ã™ã€‚</p></dd>
 <dt><a name="label-103" id="label-103"><code>Algebra::SquareMatrix.determinant(<var>aa</var>)</code></a></dt><!-- RDLabel: "Algebra::SquareMatrix.determinant" -->
 <dd>
-”z—ñ‚Ì”z—ñ <var>aa</var> ‚Ìs—ñ®‚ğ•Ô‚µ‚Ü‚·B</dd>
+é…åˆ—ã®é…åˆ— <var>aa</var> ã®è¡Œåˆ—å¼ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-104" id="label-104"><code>Algebra::SquareMatrix.det(<var>aa</var>)</code></a></dt><!-- RDLabel: "Algebra::SquareMatrix.det" -->
 <dd>
-<!-- Reference, RDLabel "Algebra::SquareMatrix.determinat" doesn't exist --><em class="label-not-found">Algebra::SquareMatrix.determinat</em><!-- Reference end -->‚Æ“¯‚¶‚Å‚·B</dd>
+<!-- Reference, RDLabel "Algebra::SquareMatrix.determinat" doesn't exist --><em class="label-not-found">Algebra::SquareMatrix.determinat</em><!-- Reference end -->ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-105" id="label-105"><code>Algebra::SquareMatrix::unity</code></a></dt><!-- RDLabel: "Algebra::SquareMatrix::unity" -->
 <dd>
-’PˆÊs—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+å˜ä½è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-106" id="label-106"><code>Algebra::SquareMatrix::zero</code></a></dt><!-- RDLabel: "Algebra::SquareMatrix::zero" -->
 <dd>
-—ës—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+é›¶è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-107" id="label-107"><code>Algebra::SquareMatrix.const(<var>x</var>)</code></a></dt><!-- RDLabel: "Algebra::SquareMatrix.const" -->
 <dd>
-¬•ª‚ª <var>x</var> ‚ÌƒXƒJƒ‰[s—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+æˆåˆ†ãŒ <var>x</var> ã®ã‚¹ã‚«ãƒ©ãƒ¼è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 </dl>
-<h2><a name="label-108" id="label-108">ƒƒ\ƒbƒh</a></h2><!-- RDLabel: "ƒƒ\ƒbƒh" -->
+<h2><a name="label-108" id="label-108">ãƒ¡ã‚½ãƒƒãƒ‰</a></h2><!-- RDLabel: "ãƒ¡ã‚½ãƒƒãƒ‰" -->
 <dl>
 <dt><a name="label-109" id="label-109"><code>size</code></a></dt><!-- RDLabel: "size" -->
 <dd>
-ƒTƒCƒY‚ğ•Ô‚µ‚Ü‚·B</dd>
+ã‚µã‚¤ã‚ºã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-110" id="label-110"><code>const(<var>x</var>)</code></a></dt><!-- RDLabel: "const" -->
 <dd>
-¬•ª‚ª <var>x</var> ‚ÌƒXƒJƒ‰[s—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+æˆåˆ†ãŒ <var>x</var> ã®ã‚¹ã‚«ãƒ©ãƒ¼è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-111" id="label-111"><code>determinant</code></a></dt><!-- RDLabel: "determinant" -->
 <dd>
-s—ñ®‚ğ•Ô‚µ‚Ü‚·B</dd>
+è¡Œåˆ—å¼ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-112" id="label-112"><code>inverse</code></a></dt><!-- RDLabel: "inverse" -->
 <dd>
-‹ts—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+é€†è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-113" id="label-113"><code>/(<var>other</var>)</code></a></dt><!-- RDLabel: "/" -->
 <dd>
-<code>self * other.inverse</code> ‚ğ•Ô‚µ‚Ü‚·B<var>other</var> ‚ªƒXƒJƒ‰[‚È‚ç
-Še—v‘f‚ğ <var>other</var> ‚ÅŠ„‚è‚Ü‚·B</dd>
+<code>self * other.inverse</code> ã‚’è¿”ã—ã¾ã™ã€‚<var>other</var> ãŒã‚¹ã‚«ãƒ©ãƒ¼ãªã‚‰
+å„è¦ç´ ã‚’ <var>other</var> ã§å‰²ã‚Šã¾ã™ã€‚</dd>
 <dt><a name="label-114" id="label-114"><code>char_polynomial(<var>ring</var>)</code></a></dt><!-- RDLabel: "char_polynomial" -->
 <dd>
-<var>ring</var> ‚É‘½€®ŠÂ‚ğ—^‚¦‚é‚ÆA“Á«‘½€®‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>ring</var> ã«å¤šé …å¼ç’°ã‚’ä¸ãˆã‚‹ã¨ã€ç‰¹æ€§å¤šé …å¼ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-115" id="label-115"><code>char_matrix(<var>ring</var>)</code></a></dt><!-- RDLabel: "char_matrix" -->
 <dd>
-<var>ring</var> ‚É‘½€®ŠÂ‚ğ—^‚¦‚é‚ÆA“Á«s—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>ring</var> ã«å¤šé …å¼ç’°ã‚’ä¸ãˆã‚‹ã¨ã€ç‰¹æ€§è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-116" id="label-116"><code>_char_matrix(<var>poly_ring_matrix</var>)</code></a></dt><!-- RDLabel: "_char_matrix" -->
 <dd>
-<var>poly_ring_matrix</var> ‚É‘½€®¬•ª‚Ìs—ñŠÂ‚ğ—^‚¦‚é‚ÆA“Á«s—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>poly_ring_matrix</var> ã«å¤šé …å¼æˆåˆ†ã®è¡Œåˆ—ç’°ã‚’ä¸ãˆã‚‹ã¨ã€ç‰¹æ€§è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 </dl>
 <h1><a name="label-117" id="label-117">Algebra::GaussianElimination</a></h1><!-- RDLabel: "Algebra::GaussianElimination" -->
-<p><em>(ƒKƒEƒX‚ÌÁ‹–@ƒ‚ƒWƒ…[ƒ‹)</em></p>
-<p>ƒKƒEƒX‚Ì‘|‚«o‚µ–@‚ğÀŒ»‚·‚éƒ‚ƒWƒ…[ƒ‹‚Å‚·B</p>
-<h2><a name="label-118" id="label-118">ƒtƒ@ƒCƒ‹–¼:</a></h2><!-- RDLabel: "ƒtƒ@ƒCƒ‹–¼:" -->
+<p><em>(ã‚¬ã‚¦ã‚¹ã®æ¶ˆå»æ³•ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«)</em></p>
+<p>ã‚¬ã‚¦ã‚¹ã®æƒãå‡ºã—æ³•ã‚’å®Ÿç¾ã™ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§ã™ã€‚</p>
+<h2><a name="label-118" id="label-118">ãƒ•ã‚¡ã‚¤ãƒ«å:</a></h2><!-- RDLabel: "ãƒ•ã‚¡ã‚¤ãƒ«å:" -->
 <p><var>gaussian-elimination.rb</var></p>
-<h2><a name="label-119" id="label-119">ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:</a></h2><!-- RDLabel: "ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:" -->
-<p>‚È‚µ</p>
-<h2><a name="label-120" id="label-120">ƒNƒ‰ƒXƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒNƒ‰ƒXƒƒ\ƒbƒh:" -->
-<p>‚È‚µ</p>
-<h2><a name="label-121" id="label-121">ƒƒ\ƒbƒh</a></h2><!-- RDLabel: "ƒƒ\ƒbƒh" -->
+<h2><a name="label-119" id="label-119">ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:</a></h2><!-- RDLabel: "ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:" -->
+<p>ãªã—</p>
+<h2><a name="label-120" id="label-120">ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:" -->
+<p>ãªã—</p>
+<h2><a name="label-121" id="label-121">ãƒ¡ã‚½ãƒƒãƒ‰</a></h2><!-- RDLabel: "ãƒ¡ã‚½ãƒƒãƒ‰" -->
 <dl>
 <dt><a name="label-122" id="label-122"><code>swap_r!(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "swap_r!" -->
 <dd>
-<var>i</var> s‚Æ <var>j</var> s‚ğ“ü‚êŠ·‚¦‚Ü‚·B</dd>
+<var>i</var> è¡Œã¨ <var>j</var> è¡Œã‚’å…¥ã‚Œæ›ãˆã¾ã™ã€‚</dd>
 <dt><a name="label-123" id="label-123"><code>swap_r(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "swap_r" -->
 <dd>
-<var>i</var> s‚Æ <var>j</var> s‚ğ“ü‚êŠ·‚¦‚½‚à‚Ì‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>i</var> è¡Œã¨ <var>j</var> è¡Œã‚’å…¥ã‚Œæ›ãˆãŸã‚‚ã®ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-124" id="label-124"><code>swap_c!(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "swap_c!" -->
 <dd>
-<var>i</var> —ñ‚Æ <var>j</var> —ñ‚ğ“ü‚êŠ·‚¦‚Ü‚·B</dd>
+<var>i</var> åˆ—ã¨ <var>j</var> åˆ—ã‚’å…¥ã‚Œæ›ãˆã¾ã™ã€‚</dd>
 <dt><a name="label-125" id="label-125"><code>swap_c(<var>i</var>, <var>j</var>)</code></a></dt><!-- RDLabel: "swap_c" -->
 <dd>
-<var>i</var> —ñ‚Æ <var>j</var> —ñ‚ğ“ü‚êŠ·‚¦‚½‚à‚Ì‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>i</var> åˆ—ã¨ <var>j</var> åˆ—ã‚’å…¥ã‚Œæ›ãˆãŸã‚‚ã®ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-126" id="label-126"><code>multiply_r!(<var>i</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "multiply_r!" -->
 <dd>
-<var>i</var> s–Ú‚ğ <var>c</var> ”{‚µ‚Ü‚·B</dd>
+<var>i</var> è¡Œç›®ã‚’ <var>c</var> å€ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-127" id="label-127"><code>multiply_r(<var>i</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "multiply_r" -->
 <dd>
-<var>i</var> s–Ú‚ğ <var>c</var> ”{‚µ‚½‚à‚Ì‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>i</var> è¡Œç›®ã‚’ <var>c</var> å€ã—ãŸã‚‚ã®ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-128" id="label-128"><code>multiply_c!(<var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "multiply_c!" -->
 <dd>
-<var>j</var> —ñ–Ú‚ğ <var>c</var> ”{‚µ‚Ü‚·B</dd>
+<var>j</var> åˆ—ç›®ã‚’ <var>c</var> å€ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-129" id="label-129"><code>multiply_c(<var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "multiply_c" -->
 <dd>
-<var>j</var> —ñ–Ú‚ğ <var>c</var> ”{‚µ‚½‚à‚Ì‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>j</var> åˆ—ç›®ã‚’ <var>c</var> å€ã—ãŸã‚‚ã®ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-130" id="label-130"><code>divide_r!(<var>i</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "divide_r!" -->
 <dd>
-<var>i</var> s–Ú‚ğ <var>c</var> ‚ÅŠ„‚è‚Ü‚·B</dd>
+<var>i</var> è¡Œç›®ã‚’ <var>c</var> ã§å‰²ã‚Šã¾ã™ã€‚</dd>
 <dt><a name="label-131" id="label-131"><code>divide_r(<var>i</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "divide_r" -->
 <dd>
-<var>i</var> s–Ú‚ğ <var>c</var> Š„‚Á‚½‚à‚Ì‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>i</var> è¡Œç›®ã‚’ <var>c</var> å‰²ã£ãŸã‚‚ã®ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-132" id="label-132"><code>divide_c!(<var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "divide_c!" -->
 <dd>
-<var>j</var> —ñ–Ú‚ğ <var>c</var> ‚ÅŠ„‚è‚Ü‚·B</dd>
+<var>j</var> åˆ—ç›®ã‚’ <var>c</var> ã§å‰²ã‚Šã¾ã™ã€‚</dd>
 <dt><a name="label-133" id="label-133"><code>divide_c(<var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "divide_c" -->
 <dd>
-<var>j</var> —ñ–Ú‚ğ <var>c</var> Š„‚Á‚½‚à‚Ì‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>j</var> åˆ—ç›®ã‚’ <var>c</var> å‰²ã£ãŸã‚‚ã®ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-134" id="label-134"><code>mix_r!(<var>i</var>, <var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "mix_r!" -->
 <dd>
-<var>i</var> s–Ú‚É <var>j</var> s–Ú‚Ì <var>c</var> ”{‚ğ‘«‚µ‚Ü‚·B</dd>
+<var>i</var> è¡Œç›®ã« <var>j</var> è¡Œç›®ã® <var>c</var> å€ã‚’è¶³ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-135" id="label-135"><code>mix_r(<var>i</var>, <var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "mix_r" -->
 <dd>
-<var>i</var> s–Ú‚É <var>j</var> s–Ú‚Ì <var>c</var> ”{‚ğ‘«‚µ‚½‚à‚Ì‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>i</var> è¡Œç›®ã« <var>j</var> è¡Œç›®ã® <var>c</var> å€ã‚’è¶³ã—ãŸã‚‚ã®ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-136" id="label-136"><code>mix_c!(<var>i</var>, <var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "mix_c!" -->
 <dd>
-<var>i</var> —ñ–Ú‚É <var>j</var> —ñ–Ú‚Ì <var>c</var> ”{‚ğ‘«‚µ‚Ü‚·B</dd>
+<var>i</var> åˆ—ç›®ã« <var>j</var> åˆ—ç›®ã® <var>c</var> å€ã‚’è¶³ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-137" id="label-137"><code>mix_c(<var>i</var>, <var>j</var>, <var>c</var>)</code></a></dt><!-- RDLabel: "mix_c" -->
 <dd>
-<var>i</var> —ñ–Ú‚É <var>j</var> —ñ–Ú‚Ì <var>c</var> ”{‚ğ‘«‚µ‚½‚à‚Ì‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>i</var> åˆ—ç›®ã« <var>j</var> åˆ—ç›®ã® <var>c</var> å€ã‚’è¶³ã—ãŸã‚‚ã®ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-138" id="label-138"><code>left_eliminate!</code></a></dt><!-- RDLabel: "left_eliminate!" -->
 <dd>
-<p>¶‚©‚ç‚ÌŠî–{•ÏŒ`‚ÅŠK’is—ñ‚É•ÏŒ`‚µ‚Ü‚·B</p>
-<p>–ß‚è’l‚ÍA•ÏŒ`‚·‚é‚Ì‚Ég‚Á‚½³•ûs—ñ‚ÌÏ‚Æ‚»‚Ì³•ûs—ñ‚Ì
-s—ñ®‚ÆŠK”‚Ì”z—ñ‚Å‚·B</p>
-<p>—á:</p>
+<p>å·¦ã‹ã‚‰ã®åŸºæœ¬å¤‰å½¢ã§éšæ®µè¡Œåˆ—ã«å¤‰å½¢ã—ã¾ã™ã€‚</p>
+<p>æˆ»ã‚Šå€¤ã¯ã€å¤‰å½¢ã™ã‚‹ã®ã«ä½¿ã£ãŸæ­£æ–¹è¡Œåˆ—ã®ç©ã¨ãã®æ­£æ–¹è¡Œåˆ—ã®
+è¡Œåˆ—å¼ã¨éšæ•°ã®é…åˆ—ã§ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>require "matrix-algebra"
 require "mathn"
 class Rational &lt; Numeric
@@ -649,19 +649,19 @@ p d       #=&gt; 1/10
 p e       #=&gt; 2</pre></dd>
 <dt><a name="label-139" id="label-139"><code>left_inverse</code></a></dt><!-- RDLabel: "left_inverse" -->
 <dd>
-¶‚©‚ç‚ÌŠî–{•ÏŒ`‚É‚æ‚éˆê”Ê‹ts—ñ‚Å‚·B</dd>
+å·¦ã‹ã‚‰ã®åŸºæœ¬å¤‰å½¢ã«ã‚ˆã‚‹ä¸€èˆ¬é€†è¡Œåˆ—ã§ã™ã€‚</dd>
 <dt><a name="label-140" id="label-140"><code>left_sweep</code></a></dt><!-- RDLabel: "left_sweep" -->
 <dd>
-¶‚©‚ç‚ÌŠî–{•ÏŒ`‚ÅŠK’is—ñ‚É‚µ‚Ä•Ô‚µ‚Ü‚·B</dd>
+å·¦ã‹ã‚‰ã®åŸºæœ¬å¤‰å½¢ã§éšæ®µè¡Œåˆ—ã«ã—ã¦è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-141" id="label-141"><code>step_matrix?</code></a></dt><!-- RDLabel: "step_matrix?" -->
 <dd>
-ŠK’is—ñ‚Å‚ ‚é‚Æ‚«A²(pivot)‚Ì”z—ñ‚ğ•Ô‚µ‚Ü‚·B‚»‚¤‚Å‚È‚¢‚Æ‚«Anil
-‚ğ•Ô‚µ‚Ü‚·B</dd>
+éšæ®µè¡Œåˆ—ã§ã‚ã‚‹ã¨ãã€è»¸(pivot)ã®é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚ãã†ã§ãªã„ã¨ãã€nil
+ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-142" id="label-142"><code>kernel_basis</code></a></dt><!-- RDLabel: "kernel_basis" -->
 <dd>
-<p>‰E‚©‚çŠ|‚¯‚Ä—ë‚É‚È‚éƒxƒNƒgƒ‹‚Ì‹óŠÔ‚ÌŠî’ê‚Ì”z—ñ‚ğ•Ô‚µ‚Ü‚·B
-ŠeŠî’ê‚Í <a href="#label-60">Algebra::Vector</a> ‚Ì—v‘f‚Å‚·B</p>
-<p>—á:</p>
+<p>å³ã‹ã‚‰æ›ã‘ã¦é›¶ã«ãªã‚‹ãƒ™ã‚¯ãƒˆãƒ«ã®ç©ºé–“ã®åŸºåº•ã®é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
+å„åŸºåº•ã¯ <a href="#label-60">Algebra::Vector</a> ã®è¦ç´ ã§ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>require "matrix-algebra"
 require "mathn"
 M = Algebra.MatrixAlgebra(Rational, 5, 4)
@@ -679,7 +679,7 @@ a.kernel_basis.each do |v|
 end</pre></dd>
 <dt><a name="label-143" id="label-143"><code>determinant_by_elimination</code></a></dt><!-- RDLabel: "determinant_by_elimination" -->
 <dd>
-‘Ìã‚Ì³•ûs—ñ‚Ìs—ñ®‚ğ‘|‚«o‚µ–@‚Å‹‚ß‚Ü‚·B</dd>
+ä½“ä¸Šã®æ­£æ–¹è¡Œåˆ—ã®è¡Œåˆ—å¼ã‚’æƒãå‡ºã—æ³•ã§æ±‚ã‚ã¾ã™ã€‚</dd>
 </dl>
 
 </body>

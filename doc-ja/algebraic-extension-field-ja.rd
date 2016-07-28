@@ -2,36 +2,36 @@
 [((<index-ja|URL:index-ja.html>))] 
 
 = AlgebraicExtensionField
-((*(�㐔�g���)*))
+((*(代数拡大体)*))
 
-�㐔�g��̂�\������N���X
+代数拡大体を表現するクラス
 
-== �t�@�C����:
+== ファイル名:
 * ((|algebraic-Extension-feild.rb|))
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 
 * ((|ResidueClassRing|))
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 
-�Ȃ��B
+なし。
 
-== �֘A���郁�\�b�h:
+== 関連するメソッド:
 
 --- Algebra.AlgebraicExtensionField(field, obj){|x| ... }
-    ((<::create>)) �Ɠ����B
+    ((<::create>)) と同じ。
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
 --- ::create(k, obj){|x| p(x) }
-    �� ((|k|)) ���A((|obj|)) �ŕ\�����ϐ� ((|x|)) �̑�����
-    ((|p(x)|)) �Ŋg�債���� ((|k[x]/(p(x))|))��Ԃ��܂��B
-    ���̊ɂ́A�N���X���\�b�h ((<::var>))�A((<::def_polys>))�A
-    ((<::env_ring>)) ����`����܂��B
+    体 ((|k|)) を、((|obj|)) で表される変数 ((|x|)) の多項式
+    ((|p(x)|)) で拡大した環 ((|k[x]/(p(x))|))を返します。
+    この環には、クラスメソッド ((<::var>))、((<::def_polys>))、
+    ((<::env_ring>)) が定義されます。
 
     
-    ��: �L����������� (({x**2 + x + 1 == 0})) �Ŋg�債���� F �����B
+    例: 有理数を方程式 (({x**2 + x + 1 == 0})) で拡大した体 F を作る。
       require "rational"
       require "algebraic-extension-field"
       F = Algebra::AlgebraicExtensionField.create(Rational, "x") {|x| x**2 + x + 1}
@@ -39,30 +39,30 @@
       p( (x-1)** 3 / (x**2 - 1) ) #=> -3x - 3
 
 --- ::to_ary
-    (({[self, var]})) ��Ԃ��܂��B
+    (({[self, var]})) を返します。
 
-    ��: �㐔�g��̂ƓY�����𓯎��ɒ�`����
+    例: 代数拡大体と添加元を同時に定義する
       require "rational"
       require "algebraic-extension-field"
       F, a = Algebra.AlgebraicExtensionField(Rational, "a") {|a| a**2 + a + 1}
 
 --- ::var
-    ((<::create>)) �̕Ԃ�l ((|k[x]/(p(x))|)) �ɒ�`����A
-    ���̏�]�ɂ����� ((|x|)) ��
-    ��\������]�ނ�Ԃ��܂��B
+    ((<::create>)) の返り値 ((|k[x]/(p(x))|)) に定義され、
+    この剰余環における ((|x|)) で
+    代表される剰余類を返します。
 
 --- ::modulus
-    ((<::create>)) �̕Ԃ�l ((|k[x]/(p(x))|)) �ɒ�`����A((|k[x]|)) 
-    �̗v�f ((|p(x)|))  ��Ԃ��܂��B
+    ((<::create>)) の返り値 ((|k[x]/(p(x))|)) に定義され、((|k[x]|)) 
+    の要素 ((|p(x)|))  を返します。
 
 --- ::def_polys
-    ((<::create>)) �̕Ԃ�l ((|k[x]/(p(x))|)) �ɒ�`����A
-    ���� ((|n|)) �̊e ((<::modulus>)) �̔z���Ԃ��܂��B
-    �����ŁA���g�́A��b�� ((|k0|)) �㍂�� ((|n|)) ��
-    �ċA�I�� ((|AlgebraicExtensionField|)) �ł���Ƃ��܂��B
+    ((<::create>)) の返り値 ((|k[x]/(p(x))|)) に定義され、
+    長さ ((|n|)) の各 ((<::modulus>)) の配列を返します。
+    ここで、自身は、基礎体 ((|k0|)) 上高さ ((|n|)) の
+    再帰的な ((|AlgebraicExtensionField|)) であるとします。
 
 
-    ��: ��b�̂�L�����Ƃ��A2, 3, 5 �̗������ɂ��g��̂����
+    例: 基礎体を有理数とし、2, 3, 5 の立方根による拡大体を作る
       require "algebra"
       # K0 == Rational
       K1 = AlgebraicExtensionField(Rational, "x1") { |x|
@@ -90,25 +90,25 @@
 
 
 --- ::env_ring
-    ((<::create>)) �̕Ԃ�l ((|k[x]/(p(x))|)) �ɒ�`����A
-    ���ϐ��������� ((|k0[x1, x2,.., xn]|)) ��Ԃ��܂��B
-    �����ŁA���g�́A��b�� ((|k0|)) �㍂�� ((|n|)) ��
-    �ċA�I�� ((|AlgebraicExtensionField|)) �ł���Ƃ��܂��B
+    ((<::create>)) の返り値 ((|k[x]/(p(x))|)) に定義され、
+    多変数多項式環 ((|k0[x1, x2,.., xn]|)) を返します。
+    ここで、自身は、基礎体 ((|k0|)) 上高さ ((|n|)) の
+    再帰的な ((|AlgebraicExtensionField|)) であるとします。
 
 --- ::ground
-    ��]�̂��ƂɂȂ鑽������ ((|k[x]|)) ��Ԃ��܂��B
+    剰余環のもとになる多項式環 ((|k[x]|)) を返します。
 
 
-== ���\�b�h
+== メソッド
 --- abs_lift
-    ((<::env_ring>)) ���Ȃ킿��b�� ((|k0|)) ��
-    �̑��ϐ��������� ((|k0[x1, x2,.., xn]|))
-    �ւ̃��t�g��Ԃ��܂��B
+    ((<::env_ring>)) すなわち基礎体 ((|k0|)) 上
+    の多変数多項式環 ((|k0[x1, x2,.., xn]|))
+    へのリフトを返します。
 
 --- [](n)
-    ((<n>)) ���̌W����Ԃ��܂��B(({lift[n]})) �Ɠ����ł��B
+    ((<n>)) 次の係数を返します。(({lift[n]})) と同じです。
 
-    ��: Fibonacci ����
+    例: Fibonacci 数列
       require "algebra"
       t = AlgebraicExtensionField(Integral, "t"){|x| x**2-x-1}.var
       (0..10).each do |n|

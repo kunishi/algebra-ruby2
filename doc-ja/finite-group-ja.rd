@@ -15,89 +15,89 @@
 
 = Algebra::OperatorDomain
 
-�Q����p����W���̐������W�߂����W���[���ł��B
-((<Group>)) �N���X���C���N���[�h���Ă��܂��B
+群が作用する集合の性質を集めたモジュールです。
+((<Group>)) クラスがインクルードしています。
 
-== �t�@�C����:
+== ファイル名:
 * ((|finite-group.rb|))
 
-== ���\�b�h:
+== メソッド:
 
 --- right_act(other)
-    ((|self|)) �� ((|other|)) �̐ς�Ԃ��܂��B���Ȃ킿 ((|self|))
-    �̌� ((|x|)) �� ((|other|)) �̌� ((|y|)) �ɑ΂��� (({x * y})) ��
-    �`�̌��̏W���i((|Set|))�j��Ԃ��܂��B
+    ((|self|)) と ((|other|)) の積を返します。すなわち ((|self|))
+    の元 ((|x|)) と ((|other|)) の元 ((|y|)) に対して (({x * y})) の
+    形の元の集合（((|Set|))）を返します。
 
 --- act
-    ((<right_act>)) �̃G�C���A�X�ł��B
+    ((<right_act>)) のエイリアスです。
 
 --- left_act(other)
-    ((|self|)) �� ((|other|)) �̐ς�Ԃ��܂��B���Ȃ킿 ((|self|))
-    �̌� ((|x|)) �� ((|other|)) �̌� ((|y|)) �ɑ΂��� (({y * x})) ��
-    �`�̌��̏W���i((|Set|))�j��Ԃ��܂��B
+    ((|self|)) と ((|other|)) の積を返します。すなわち ((|self|))
+    の元 ((|x|)) と ((|other|)) の元 ((|y|)) に対して (({y * x})) の
+    形の元の集合（((|Set|))）を返します。
 
 --- right_quotient(other)
-    ((|self|)) �� ((|other|)) �Ŋ������E��]�ނ̏W���i((|Set|))�j
-    ��Ԃ��܂��B
+    ((|self|)) を ((|other|)) で割った右剰余類の集合（((|Set|))）
+    を返します。
 
 --- quotient
 --- right_coset
 --- coset
-    ((<right_quotient>)) �̃G�C���A�X�ł��B
+    ((<right_quotient>)) のエイリアスです。
 
 --- left_quotient(other)
-    ((|self|)) �� ((|other|)) �Ŋ���������]�ނ̏W���i((|Set|))�j
-    ��Ԃ��܂��B
+    ((|self|)) を ((|other|)) で割った左剰余類の集合（((|Set|))）
+    を返します。
 
 --- left_coset
-    ((<left_quotient>)) �̃G�C���A�X�ł��B
+    ((<left_quotient>)) のエイリアスです。
 
 --- right_representatives(other)
-    �E��]�� ((<right_quotient>)) ����������\���̏W����Ԃ��܂��B
+    右剰余類 ((<right_quotient>)) から取った代表元の集合を返します。
 
 --- representatives
-    ((<right_representatives>)) �̃G�C���A�X�ł��B
+    ((<right_representatives>)) のエイリアスです。
 
 --- left_representatives(other)
-    ����]�� ((<left_quotient>)) ����������\���̏W����Ԃ��܂��B
+    左剰余類 ((<left_quotient>)) から取った代表元の集合を返します。
 
 --- right_orbit!(other)
-    ((|self|)) �� ((|other|)) ���J��Ԃ��E�����p�����čL���܂��B
-    ��p�� ((|*|)) �ɂ��܂��B
+    ((|self|)) を ((|other|)) を繰り返し右から作用させて広げます。
+    作用は ((|*|)) によります。
 
 --- orbit!
-    ((<right_orbit!>)) �̃G�C���A�X�ł��B
+    ((<right_orbit!>)) のエイリアスです。
 
 --- left_orbit!(other)
-    ((|self|)) �� ((|other|)) ���J��Ԃ��������p�����čL���܂��B
-    ��p�� ((|*|)) �ɂ��܂��B
+    ((|self|)) を ((|other|)) を繰り返し左から作用させて広げます。
+    作用は ((|*|)) によります。
     
 
 = Algebra::Set
 
-== �t�@�C����:
+== ファイル名:
 * ((|finite-group.rb|))
-  �����ł� ((|finite-set.rb|)) �Œ�`���ꂽ ((<Set|URL:finite-set.html>))
-  �ɕt��������ׂ����\�b�h���`���Ă��܂��B
+  ここでは ((|finite-set.rb|)) で定義された ((<Set|URL:finite-set.html>))
+  に付け加えるべきメソッドを定義しています。
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 
 * ((|OperatorDomain|))
 
-== ���\�b�h:
+== メソッド:
 
 --- *
-    ((<act>)) �̃G�C���A�X�ł��B
+    ((<act>)) のエイリアスです。
 
 --- /
-    ((<quotient>)) �̃G�C���A�X�ł��B
+    ((<quotient>)) のエイリアスです。
 
 --- %
-    ((<representatives>)) �̃G�C���A�X�ł��B
+    ((<representatives>)) のエイリアスです。
 
 --- increasing_series([x])
-    ((|x|)) ����n�܂鑝���̔z���Ԃ��܂��B����͎��̃R�[�h�Ɠ��l
-    �ł��B
+    ((|x|)) から始まる増大列の配列を返します。これは次のコードと同値
+    です。
 
       def increasing_series(x = unit_group)
         a = []
@@ -112,8 +112,8 @@
       end
 
 --- decreasing_series([x])
-    ((|x|)) ����n�܂錸���̔z���Ԃ��܂��B����͎��̃R�[�h�Ɠ��l
-    �ł��B
+    ((|x|)) から始まる減少の配列を返します。これは次のコードと同値
+    です。
 
       def decreasing_series(x = self)
         a = []
@@ -129,148 +129,148 @@
 
 = Algebra::Group
 
-== �t�@�C����:
+== ファイル名:
 * ((|finite-group.rb|))
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 * ((|Set|))
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
 --- ::new(u, [g0, g1, ...]])
-    ((|u|)) ��P�ʌ��Ƃ��A((|g0|)), ((|g1|)), ... �ō\�������Q��
-    �Ԃ��܂��B
+    ((|u|)) を単位元とし、((|g0|)), ((|g1|)), ... で構成される群を
+    返します。
 
 --- ::generate_strong(u, [g0, [g1, ...]])
-    �P�ʌ��� ((|u|))�A���������� ((|g0|)), ((|g1|)), ... �Ƃ��āA
-    ���������Q��Ԃ��܂��B
+    単位元を ((|u|))、強生成元を ((|g0|)), ((|g1|)), ... として、
+    生成される群を返します。
 
-== ���\�b�h:
+== メソッド:
 
 --- quotient_group(u)
-    ���K�����Q ((|u|)) �ɂ���]�Q��Ԃ��܂��B
+    正規部分群 ((|u|)) による剰余群を返します。
 
 --- separate
-    �u���b�N��^�Ƃ��錳����Ȃ镔���Q��Ԃ��܂��B
+    ブロックを真とする元からなる部分群を返します。
 
 --- to_a
-    �e�v�f��z��ɂ��ĕԂ��܂��B�ŏ��̗v�f�͒P�ʌ��ł��B
+    各要素を配列にして返します。最初の要素は単位元です。
 
 --- unity
-    �P�ʌ���Ԃ��܂��B
+    単位元を返します。
 
 --- unit_group
-    �P�ʌ��Ő��������P�ʌQ��Ԃ��܂��B
+    単位元で生成される単位群を返します。
 
 --- semi_complete!
-    ���݂̗v�f���|�����킹�Ĕ��Q���\�����܂��B
+    現在の要素を掛け合わせて半群を構成します。
 
 --- semi_complete
-    ���݂̗v�f���|�����킹�Ĕ��Q���\�������̂�Ԃ��܂��B
+    現在の要素を掛け合わせて半群を構成たものを返します。
 
 --- complete!
-    ���݂̗v�f���|�����킹�ČQ���\�����܂��B
+    現在の要素を掛け合わせて群を構成します。
 
 --- complete
-    ���݂̗v�f���|�����킹�ČQ���\�������̂�Ԃ��܂��B
+    現在の要素を掛け合わせて群を構成たものを返します。
 
 --- closed?
-    �Q�Ƃ��ĕ��Ă���Ƃ��^��Ԃ��܂��B
+    群として閉じているとき真を返します。
 
 --- subgroups
-    �S�Ă̕����Q�̏W����Ԃ��܂��B
+    全ての部分群の集合を返します。
 
 --- centralizer(s)
-    ((|self|)) �ɂ����� ((|s|)) �̒��S���Q��Ԃ��܂��B
+    ((|self|)) における ((|s|)) の中心化群を返します。
 
 --- center
-    ((|self|)) �̒��S���Q��Ԃ��܂��B
+    ((|self|)) の中心化群を返します。
 
 --- center?(x)
-    ((|self|)) �̒��Ō� ((|x|)) �����S�Ɋ܂܂�Ă���Ƃ��A�^��Ԃ��܂��B
+    ((|self|)) の中で元 ((|x|)) が中心に含まれているとき、真を返します。
 
 --- normalizer(s)
-    ((|self|)) �ɂ����� ((|s|)) �̐��K���Q��Ԃ��܂��B
+    ((|self|)) における ((|s|)) の正規化群を返します。
 
 --- normal?(s)
-    ((|s|)) �� ((|self|)) �̐��K�����Q�ł���Ƃ��^��Ԃ��܂��B
+    ((|s|)) が ((|self|)) の正規部分群であるとき真を返します。
 
 --- normal_subgroups
-    �S�Ă̐��K�����Q�̏W����Ԃ��܂��B
+    全ての正規部分群の集合を返します。
 
 --- conjugacy_class(x)
-    �� ((|x|)) �̋���ނ�Ԃ��܂�
+    元 ((|x|)) の共役類を返します
 
 --- conjugacy_classes
-    ((|self|)) �̑S�Ă̋���ނ̏W����Ԃ��܂��B
+    ((|self|)) の全ての共役類の集合を返します。
 
 --- simple?
-    �P���Q�ł���Ƃ��A�^��Ԃ��܂��B
+    単純群であるとき、真を返します。
 
 --- commutator([h])
-    ((|self|)) �� ((|h|)) �Ƃ̌����q�Q��Ԃ��܂��B((|h|)) ���ȗ�
-    ����� ((|self|)) ���p�����܂��B
+    ((|self|)) と ((|h|)) との交換子群を返します。((|h|)) を省略
+    すると ((|self|)) が用いられます。
 
 --- D([n])
-    ((|n|)) �Ԗڂ̌����q�Q��Ԃ��܂��B(({D(0) = �������g})),
-    (({D(n+1) = [D[n], D[n]]})) �Œ�`����Ă��܂��B
-    ((|n|)) ���ȗ������ 1 ���p�����܂��B
+    ((|n|)) 番目の交換子群を返します。(({D(0) = 自分自身})),
+    (({D(n+1) = [D[n], D[n]]})) で定義されています。
+    ((|n|)) を省略すると 1 が用いられます。
 
 --- commutator_series
-    (({[D(0), D(1), D(2),..., D(n)]})) �Ƃ����z���Ԃ��܂��B���̔z���
-    (({D(n) == D(n+1)})) �ƂȂ� ((|n|)) �Œ�~���܂��B 
+    (({[D(0), D(1), D(2),..., D(n)]})) という配列を返します。この配列は
+    (({D(n) == D(n+1)})) となる ((|n|)) で停止します。 
 
 --- solvable?
-    ���Q�ł���Ƃ��^��Ԃ��܂��B
+    可解群であるとき真を返します。
 
 --- K([n])
-    (({K(0) = �������g})),
-    (({K(n+1) = [self, K[n]]})) �Œ�`�����Q��Ԃ��܂��B
-    ((|n|)) ���ȗ������ 1 ���p�����܂��B
+    (({K(0) = 自分自身})),
+    (({K(n+1) = [self, K[n]]})) で定義される群を返します。
+    ((|n|)) を省略すると 1 が用いられます。
 
 --- descending_central_series
-    �~���S��
-    (({[K(0), K(1), K(2),..., K(n)]})) �Ƃ����z���Ԃ��܂��B���̔z���
-    (({K(n) == K(n+1)})) �ƂȂ� ((|n|)) �Œ�~���܂��B 
+    降中心列
+    (({[K(0), K(1), K(2),..., K(n)]})) という配列を返します。この配列は
+    (({K(n) == K(n+1)})) となる ((|n|)) で停止します。 
 
 --- Z([n])
-    (({Z(0) = �P�ʌQ})),
+    (({Z(0) = 単位群})),
     (({Z(n+1) = separate{|x| commutator(Set[x]) <= Z(n-1)}})) 
-    �Œ�`�����Q��Ԃ��܂��B
-    ((|n|)) ���ȗ������ 1 ���p�����܂��B
+    で定義される群を返します。
+    ((|n|)) を省略すると 1 が用いられます。
 
 --- ascending_central_series
-    �����S��
-    (({[Z(0), Z(1), Z(2),..., Z(n)]})) �Ƃ����z���Ԃ��܂��B���̔z���
-    (({Z(n) == Z(n+1)})) �ƂȂ� ((|n|)) �Œ�~���܂��B 
+    昇中心列
+    (({[Z(0), Z(1), Z(2),..., Z(n)]})) という配列を返します。この配列は
+    (({Z(n) == Z(n+1)})) となる ((|n|)) で停止します。 
 
 --- nilpotent?
-    �p��Q�ł���Ƃ��^��Ԃ��܂��B
+    冪零群であるとき真を返します。
 
 --- nilpotency_class
-    �p��N���X��Ԃ��܂��B�p��Q�łȂ��Ƃ� ((|nil|)) ��Ԃ��܂��B
+    冪零クラスを返します。冪例群でないとき ((|nil|)) を返します。
 
 
 = Algebra::QuotientGroup
 
-== �t�@�C����:
+== ファイル名:
 * ((|finite-group.rb|))
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 * ((|Group|))
 
-== �N���X���\�b�h:
+== クラスメソッド:
 --- new(u, [g0, [g1,...]])
-    ((|self|)) �̐��K�����Q�� ((|u|)) �Ƃ��āA
-    ((|u|)), ((|g0|)), ((|g1|)), .. ����]�ނƂ����]�Q��Ԃ��܂��B
+    ((|self|)) の正規部分群を ((|u|)) として、
+    ((|u|)), ((|g0|)), ((|g1|)), .. を剰余類とする剰余群を返します。
 
-== ���\�b�h:
+== メソッド:
 
 --- inverse
-    �t����Ԃ��܂�
+    逆元を返します
 
 --- inv
-    ((<inverse>)) �̃G�C���A�X�ł��B
+    ((<inverse>)) のエイリアスです。
 
 =end
 

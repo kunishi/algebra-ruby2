@@ -1,33 +1,33 @@
 =begin
 [((<index-ja|URL:index-ja.html>))] 
 = Algebra::LocalizedRing
-((*(�Ǐ����N���X)*))
+((*(局所化環クラス)*))
 
-�^����ꂽ�𕪎q�E����ɂ����������\�����܂��B
-���ۂ̃N���X�𐶐�����ɂ́A�N���X���\�b�h ((<::create>)) 
-���邢�͊֐� ((<Algebra.LocalizedRing>))() ��p���܂��B
+与えられた環を分子・分母にした分数環を構成します。
+実際のクラスを生成するには、クラスメソッド ((<::create>)) 
+あるいは関数 ((<Algebra.LocalizedRing>))() を用います。
 
-== �t�@�C����:
+== ファイル名:
 * ((|localized-ring.rb|))
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 
 * ((|Object|))
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 
-�Ȃ�
+なし
 
-== �֘A����֐�:
+== 関連する関数:
 
 --- Algebra.LocalizedRing(ring)
-    ((<::create>))(ring) �Ɠ����ł��B
+    ((<::create>))(ring) と同じです。
 
 --- Algebra.RationalFunctionField(ring, obj)
-    �� ((|ring|))�A�ϐ���\���I�u�W�F�N�g�� ((|obj|)) �Ƃ��ėL���֐���
-    �����܂��B�N���X���\�b�h ((|::var|)) �ŕϐ��𓾂邱�Ƃ��ł��܂��B
+    環 ((|ring|))、変数を表すオブジェクトを ((|obj|)) として有理関数体
+    を作ります。クラスメソッド ((|::var|)) で変数を得ることができます。
     
-    ��: �L���֐���
+    例: 有理関数体
       require "algebra/localized-ring"
       require "rational"
       F = Algebra.RationalFunctionField(Rational, "x")
@@ -36,9 +36,9 @@
         #=> x^2/(x^4 + x^3 - x - 1)
 
 --- Algebra.MRationalFunctionField(ring, [obj1[, obj2, ...]])
-    �� ((|ring|))�A�ϐ���\���I�u�W�F�N�g�� ((|obj1|)), ((|obj2|)),... �Ƃ��ėL���֐��̂����܂��B�N���X���\�b�h ((|::vars|)) �ŕϐ��𓾂邱�Ƃ��ł��܂��B
+    環 ((|ring|))、変数を表すオブジェクトを ((|obj1|)), ((|obj2|)),... として有理関数体を作ります。クラスメソッド ((|::vars|)) で変数を得ることができます。
     
-    ��: �L���֐���
+    例: 有理関数体
       require "algebra/localized-ring"
       require "rational"
       G = Algebra.MRationalFunctionField(Rational, "x", "y", "z")
@@ -47,25 +47,25 @@
       p f #=> (x^2 + xy)/(x^2 + 2xy + y^2)
       p f.simplify #=> x/(x + y)
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
 --- ::create(ring)
-    �N���X((|ring|))�ŕ\���������̌��𕪎q�E����Ƃ��镪����
-    �����܂��B
+    クラス((|ring|))で表現されるを環の元を分子・分母とする分数環
+    を作ります。
 
-    ���̖߂�l�� Algebra::LocalizedRing �N���X�̃T�u�N���X�ł��B
-    ���̃T�u�N���X�ɂ̓N���X���\�b�h�Ƃ��� ((|::ground|)) ����`����
-    ((|ring|)) ��Ԃ��܂��B
+    この戻り値は Algebra::LocalizedRing クラスのサブクラスです。
+    このサブクラスにはクラスメソッドとして ((|::ground|)) が定義され
+    ((|ring|)) を返します。
     
-    ���������N���X�ɂ̓N���X���\�b�h(({::[]}))����`����A��b��
-    �� (({x})) �ɑ΂��ĕ����̌� (({x/1})) ��Ԃ��܂��B
+    生成したクラスにはクラスメソッド(({::[]}))が定義され、基礎環の
+    元 (({x})) に対して分数環の元 (({x/1})) を返します。
     
-    ��: �L���������
+    例: 有理数を作る
       require "localized-ring"
       F = Algebra.LocalizedRing(Integer)
       p F.new(1, 2) + F.new(2, 3) #=> 7/6
 
-    ��: ������̑������̏���
+    例: 整数上の多項式環の商体
       require "polynomial"
       require "localized-ring"
       P = Algebra.Polynomial(Integer, "x")
@@ -75,51 +75,51 @@
         #=> (x^3 - x^2)/(x^5 - x^3 - x^2 + 1)
 
 --- ::zero
-    �댳��Ԃ��܂��B
+    零元を返します。
     
 --- ::unity
-    �P�ʌ���Ԃ��܂��B
+    単位元を返します。
 
 #--- ::[](num, den = nil)
 
 #--- ::reduce(num, den)
 
 
-== ���\�b�h:
+== メソッド:
 
 #--- monomial?; true; end
 
 
 
 --- zero?
-    �댳�ł���Ƃ��^��Ԃ��܂��B
+    零元であるとき真を返します。
 
 --- zero
-    �댳��Ԃ��܂��B
+    零元を返します。
     
 --- unity
-    �P�ʌ���Ԃ��܂��B
+    単位元を返します。
 
 --- ==(other)
-    �������Ƃ��^��Ԃ��܂��B
+    等しいとき真を返します。
 
 --- <=>(other)
-    �召�֌W�����߂܂��B
+    大小関係を求めます。
 
 --- +(other)
-    �a���v�Z���܂��B
+    和を計算します。
 
 --- -(other)
-    �����v�Z���܂��B
+    差を計算します。
 
 --- *(other)
-    �ς��v�Z���܂��B
+    積を計算します。
 
 --- **(n)
-    ((|n|)) ����v�Z���܂��B
+    ((|n|)) 乗を計算します。
 
 --- /(other)
-    �����v�Z���܂��B
+    商を計算します。
 
 
 #--- to_s

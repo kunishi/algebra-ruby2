@@ -1,12 +1,12 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html 
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<link rel="stylesheet" type="text/css" href="style.css" />
-<title>algebra/polynomial-ja.html</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>doc-ja/polynomial-ja.rd</title>
+<link href="style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <p>[<a href="index-ja.html">index-ja</a>] 
@@ -18,17 +18,17 @@
 /
 <a href="#label-71">Algebra::Galois</a></p>
 <h1><a name="label-0" id="label-0">Algebra::Polynomial</a></h1><!-- RDLabel: "Algebra::Polynomial" -->
-<p><em>(1•Ï”‘½€®ŠÂƒNƒ‰ƒX)</em></p>
-<p>1•Ï”‚Ì‘½€®ŠÂ‚ğ•\Œ»‚µ‚Ü‚·BÀÛ‚ÌƒNƒ‰ƒX‚ğ¶¬‚·‚é‚É‚ÍŠÂ‚ğw’è‚µ‚ÄAƒNƒ‰ƒXƒƒ\ƒbƒh <a href="#label-7">::create</a> ‚ ‚é‚¢‚ÍŠÖ” <a href="#label-5">Algebra.Polynomial</a>() ‚ğ—p‚¢‚Ü‚·B</p>
-<h2><a name="label-1" id="label-1">ƒtƒ@ƒCƒ‹–¼:</a></h2><!-- RDLabel: "ƒtƒ@ƒCƒ‹–¼:" -->
+<p><em>(1å¤‰æ•°å¤šé …å¼ç’°ã‚¯ãƒ©ã‚¹)</em></p>
+<p>1å¤‰æ•°ã®å¤šé …å¼ç’°ã‚’è¡¨ç¾ã—ã¾ã™ã€‚å®Ÿéš›ã®ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã«ã¯ç’°ã‚’æŒ‡å®šã—ã¦ã€ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ <a href="#label-7">::create</a> ã‚ã‚‹ã„ã¯é–¢æ•° <a href="#label-5">Algebra.Polynomial</a>() ã‚’ç”¨ã„ã¾ã™ã€‚</p>
+<h2><a name="label-1" id="label-1">ãƒ•ã‚¡ã‚¤ãƒ«å:</a></h2><!-- RDLabel: "ãƒ•ã‚¡ã‚¤ãƒ«å:" -->
 <ul>
 <li><var>polynomial.rb</var></li>
 </ul>
-<h2><a name="label-2" id="label-2">ƒX[ƒp[ƒNƒ‰ƒX:</a></h2><!-- RDLabel: "ƒX[ƒp[ƒNƒ‰ƒX:" -->
+<h2><a name="label-2" id="label-2">ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:</a></h2><!-- RDLabel: "ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:" -->
 <ul>
 <li><var>Object</var></li>
 </ul>
-<h2><a name="label-3" id="label-3">ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:</a></h2><!-- RDLabel: "ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:" -->
+<h2><a name="label-3" id="label-3">ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:</a></h2><!-- RDLabel: "ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:" -->
 <ul>
 <li><var>Enumerable</var></li>
 <li><var>Comparable</var></li>
@@ -37,42 +37,42 @@
 <li><a href="#label-66">Algebra::SplittingField</a></li>
 <li><a href="#label-71">Algebra::Galois</a></li>
 </ul>
-<h2><a name="label-4" id="label-4">ŠÖ˜A‚·‚éƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ŠÖ˜A‚·‚éƒƒ\ƒbƒh:" -->
+<h2><a name="label-4" id="label-4">é–¢é€£ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "é–¢é€£ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-5" id="label-5"><code>Algebra.Polynomial(<var>ring</var> [, <var>obj0</var> , <var>obj1</var> [, ...]])</code></a></dt><!-- RDLabel: "Algebra.Polynomial" -->
 <dd>
-<a href="#label-7">::create</a>(ring, obj0[, obj1 [, ...]])&gt; ‚É“¯‚¶B</dd>
+<a href="#label-7">::create</a>(ring, obj0[, obj1 [, ...]])&gt; ã«åŒã˜ã€‚</dd>
 </dl>
-<h2><a name="label-6" id="label-6">ƒNƒ‰ƒXƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒNƒ‰ƒXƒƒ\ƒbƒh:" -->
+<h2><a name="label-6" id="label-6">ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-7" id="label-7"><code>::create(<var>ring</var>, <var>obj0</var>[, <var>obj1</var>[, ...]])</code></a></dt><!-- RDLabel: "::create" -->
 <dd>
-<p><var>ring</var> ‚Å•\Œ»‚³‚ê‚éƒNƒ‰ƒX‚ğŒW”ŠÂ‚Æ‚·‚é‘½€®ŠÂƒNƒ‰ƒX‚ğ
-¶¬‚µ‚Ü‚·B</p>
-<p><code>obj0, obj1, ...</code> ‚Åw’è‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ª•Ï”‚ğ
-•\Œ»‚µA‚±‚ê‚ª•¡”‚È‚ç‚ÎAÄ‹A“I‚É‘½€®ŠÂã‚Ì‘½€
-®ŠÂ‚ğ¶¬‚µ‚Ü‚·B</p>
-<p>‚±‚Ìƒƒ\ƒbƒh‚Ì–ß‚è’l‚Í Polynomial ƒNƒ‰ƒX‚ÌƒTƒuƒNƒ‰ƒX
-‚Å‚·B‚±‚ÌƒTƒuƒNƒ‰ƒX‚É‚ÍƒNƒ‰ƒXƒƒ\ƒbƒh‚Æ‚µ‚Ä <var>ground</var> ‚Æ
-<var>var</var>A<var>vars</var> ‚ª’è‹`‚³‚êA‚»‚ê‚¼‚êAŒW”ŠÂ <var>ring</var>A
-å•Ï”ƒIƒuƒWƒFƒNƒgiÅŒã‚Éw’è‚³‚ê‚½•Ï”jA‘S‚Ä‚Ì•Ï”ƒI
-ƒuƒWƒFƒNƒg‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>ƒIƒuƒWƒFƒNƒg<code>obj0, obj1, ...</code>‚Í•Ï”‚Ì–¼i<var>to_s</var>‚Ì’lj
-‚É—˜—p‚³‚ê‚é‚¾‚¯‚Å‚·B</p>
-<p>—á: ®”‚ğŒW”‚Æ‚·‚é‘½€®ŠÂ‚Ì¶¬</p>
+<p><var>ring</var> ã§è¡¨ç¾ã•ã‚Œã‚‹ã‚¯ãƒ©ã‚¹ã‚’ä¿‚æ•°ç’°ã¨ã™ã‚‹å¤šé …å¼ç’°ã‚¯ãƒ©ã‚¹ã‚’
+ç”Ÿæˆã—ã¾ã™ã€‚</p>
+<p><code>obj0, obj1, ...</code> ã§æŒ‡å®šã•ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå¤‰æ•°ã‚’
+è¡¨ç¾ã—ã€ã“ã‚ŒãŒè¤‡æ•°ãªã‚‰ã°ã€å†å¸°çš„ã«å¤šé …å¼ç’°ä¸Šã®å¤šé …
+å¼ç’°ã‚’ç”Ÿæˆã—ã¾ã™ã€‚</p>
+<p>ã“ã®ãƒ¡ã‚½ãƒƒãƒ‰ã®æˆ»ã‚Šå€¤ã¯ Polynomial ã‚¯ãƒ©ã‚¹ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹
+ã§ã™ã€‚ã“ã®ã‚µãƒ–ã‚¯ãƒ©ã‚¹ã«ã¯ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰ã¨ã—ã¦ <var>ground</var> ã¨
+<var>var</var>ã€<var>vars</var> ãŒå®šç¾©ã•ã‚Œã€ãã‚Œãã‚Œã€ä¿‚æ•°ç’° <var>ring</var>ã€
+ä¸»å¤‰æ•°ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆï¼ˆæœ€å¾Œã«æŒ‡å®šã•ã‚ŒãŸå¤‰æ•°ï¼‰ã€å…¨ã¦ã®å¤‰æ•°ã‚ª
+ãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ<code>obj0, obj1, ...</code>ã¯å¤‰æ•°ã®åï¼ˆ<var>to_s</var>ã®å€¤ï¼‰
+ã«åˆ©ç”¨ã•ã‚Œã‚‹ã ã‘ã§ã™ã€‚</p>
+<p>ä¾‹: æ•´æ•°ã‚’ä¿‚æ•°ã¨ã™ã‚‹å¤šé …å¼ç’°ã®ç”Ÿæˆ</p>
 <pre>require "polynomial"
 P = Algebra::Polynomial.create(Integer, "x")
 x = P.var
 p((x + 1)**100) #=&gt; x^100 + 100x^99 + ... + 100x + 1
 p P.ground #=&gt; integer</pre>
-<p>—á: ®”‚ğŒW”‚Æ‚·‚é•¡”•Ï”‘½€®ŠÂ‚Ì¶¬</p>
+<p>ä¾‹: æ•´æ•°ã‚’ä¿‚æ•°ã¨ã™ã‚‹è¤‡æ•°å¤‰æ•°å¤šé …å¼ç’°ã®ç”Ÿæˆ</p>
 <pre>require "polynomial"
 P = Algebra::Polynomial.create(Integer, "x", "y", "z")
 x, y, z = P.vars
 p((-x + y + z)*(x + y - z)*(x - y + z))
 #=&gt; -z^3 + (y + x)z^2 + (y^2 - 2xy + x^2)z - y^3 + xy^2 + x^2y - x^3
 p P.var #=&gt; z</pre>
-<p>‚±‚Ì—á‚Ì <code>P</code> ‚Í</p>
+<p>ã“ã®ä¾‹ã® <code>P</code> ã¯</p>
 <pre>Algebra::Polynomial.create(
   Algebra::Polynomial.create(
     Algebra::Polynomial.create(
@@ -80,63 +80,63 @@ p P.var #=&gt; z</pre>
     "x"),
   "y"),
 "z")</pre>
-<p>‚Æ“¯’l‚ÅAÅŒã‚Ì•Ï” <var>z</var> ‚ªå•Ï”‚Æ‚È‚è‚Ü‚·B</p></dd>
+<p>ã¨åŒå€¤ã§ã€æœ€å¾Œã®å¤‰æ•° <var>z</var> ãŒä¸»å¤‰æ•°ã¨ãªã‚Šã¾ã™ã€‚</p></dd>
 <dt><a name="label-8" id="label-8"><code>::var</code></a></dt><!-- RDLabel: "::var" -->
 <dd>
-‘½€®ŠÂ‚Ì•Ï”iå•Ï”j‚ğ•Ô‚µ‚Ü‚·B</dd>
+å¤šé …å¼ç’°ã®å¤‰æ•°ï¼ˆä¸»å¤‰æ•°ï¼‰ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-9" id="label-9"><code>::vars</code></a></dt><!-- RDLabel: "::vars" -->
 <dd>
-Ä‹A“I‚ÉŠe‘½€®ŠÂ‚Ì•Ï”‚ğW‚ß‚½”z—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+å†å¸°çš„ã«å„å¤šé …å¼ç’°ã®å¤‰æ•°ã‚’é›†ã‚ãŸé…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-10" id="label-10"><code>::mvar</code></a></dt><!-- RDLabel: "::mvar" -->
 <dd>
-<a href="#label-9">::vars</a> ‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-9">::vars</a> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-11" id="label-11"><code>::to_ary</code></a></dt><!-- RDLabel: "::to_ary" -->
 <dd>
-<p><code>[self, *vars]</code> ‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á: ‘½€®ŠÂ‚Æ•Ï”‚ğ“¯‚É’è‹`‚·‚éB</p>
+<p><code>[self, *vars]</code> ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹: å¤šé …å¼ç’°ã¨å¤‰æ•°ã‚’åŒæ™‚ã«å®šç¾©ã™ã‚‹ã€‚</p>
 <pre>P, x, y, z = Algebra::Polynomial.create(Integer, "x", "y", "z")</pre></dd>
 <dt><a name="label-12" id="label-12"><code>::variable</code></a></dt><!-- RDLabel: "::variable" -->
 <dd>
-•Ï”iå•Ï”j‚ğ•\Œ»‚·‚éƒIƒuƒWƒFƒNƒg‚ğ•Ô‚µ‚Ü‚·B</dd>
+å¤‰æ•°ï¼ˆä¸»å¤‰æ•°ï¼‰ã‚’è¡¨ç¾ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-13" id="label-13"><code>::variables</code></a></dt><!-- RDLabel: "::variables" -->
 <dd>
-Ä‹A“I‚ÉŠe‘½€®ŠÂ‚Ì•Ï”‚ğ•\Œ»‚·‚éƒIƒuƒWƒFƒNƒg‚ğ
-W‚ß‚½”z—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+å†å¸°çš„ã«å„å¤šé …å¼ç’°ã®å¤‰æ•°ã‚’è¡¨ç¾ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’
+é›†ã‚ãŸé…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-14" id="label-14"><code>::indeterminate(<var>obj</var>)</code></a></dt><!-- RDLabel: "::indeterminate" -->
 <dd>
-<var>obj</var> ‚Å•\Œ»‚³‚ê‚é•Ï”‚ğÄ‹A“I‚É’T‚µ‚Ä•Ô‚µ‚Ü‚·B</dd>
+<var>obj</var> ã§è¡¨ç¾ã•ã‚Œã‚‹å¤‰æ•°ã‚’å†å¸°çš„ã«æ¢ã—ã¦è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-15" id="label-15"><code>::monomial([<var>n</var>])</code></a></dt><!-- RDLabel: "::monomial" -->
 <dd>
-<p><var>n</var> Ÿ‚Ì’P€®‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p><var>n</var> æ¬¡ã®å˜é …å¼ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>P = Algebra::Polynomial(Integer, "x")
 P.monomial(3) #=&gt; x^3</pre></dd>
 <dt><a name="label-16" id="label-16"><code>::const(<var>c</var>)</code></a></dt><!-- RDLabel: "::const" -->
 <dd>
-<p>’l <var>c</var> ‚Ì’è”€‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>å€¤ <var>c</var> ã®å®šæ•°é …ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>P = Algebra::Polynomial(Integer, "x")
 P.const(3)      #=&gt; 3
 P.const(3).type #=&gt; P</pre></dd>
 <dt><a name="label-17" id="label-17"><code>::zero</code></a></dt><!-- RDLabel: "::zero" -->
 <dd>
-—ëŒ³‚ğ•Ô‚µ‚Ü‚·B</dd>
+é›¶å…ƒã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-18" id="label-18"><code>::unity</code></a></dt><!-- RDLabel: "::unity" -->
 <dd>
-’PˆÊŒ³‚ğ•Ô‚µ‚Ü‚·B</dd>
+å˜ä½å…ƒã‚’è¿”ã—ã¾ã™ã€‚</dd>
 </dl>
-<h2><a name="label-19" id="label-19">ƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒƒ\ƒbƒh:" -->
+<h2><a name="label-19" id="label-19">ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-20" id="label-20"><code>var</code></a></dt><!-- RDLabel: "var" -->
 <dd>
-<a href="#label-8">::var</a> ‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-8">::var</a> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-21" id="label-21"><code>variable</code></a></dt><!-- RDLabel: "variable" -->
 <dd>
-<a href="#label-12">::variable</a> ‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-12">::variable</a> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-22" id="label-22"><code>each(&amp;<var>b</var>)</code></a></dt><!-- RDLabel: "each" -->
 <dd>
-<p>ŠeŸ‚ÌŒW”‚ğ¸™p‡‚ÉŒJ‚è•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>å„æ¬¡ã®ä¿‚æ•°ã‚’æ˜‡å†ªé †ã«ç¹°ã‚Šè¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>P = Algebra::Polynomial(Integer, "x")
 x = P.var
 (x**3 + 2*x**2 + 4).each do |c|
@@ -144,8 +144,8 @@ x = P.var
 end</pre></dd>
 <dt><a name="label-23" id="label-23"><code>reverse_each(&amp;<var>b</var>)</code></a></dt><!-- RDLabel: "reverse_each" -->
 <dd>
-<p>ŠeŸ‚ÌŒW”‚ğ~™p‡‚ÉŒJ‚è•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>å„æ¬¡ã®ä¿‚æ•°ã‚’é™å†ªé †ã«ç¹°ã‚Šè¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>P = Algebra::Polynomial(Integer, "x")
 x = P.var
 (x**3 + 2*x**2 + 4).reverse_each do |c|
@@ -153,105 +153,105 @@ x = P.var
 end</pre></dd>
 <dt><a name="label-24" id="label-24"><code>[<var>n</var>]</code></a></dt><!-- RDLabel: "[]" -->
 <dd>
-<var>n</var> Ÿ‚ÌŒW”‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>n</var> æ¬¡ã®ä¿‚æ•°ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-25" id="label-25"><code>[<var>n</var>] = <var>v</var></code></a></dt><!-- RDLabel: "[]=" -->
 <dd>
-<var>n</var> Ÿ‚ÌŒW”‚ğ<var>v</var>‚Éİ’è‚µ‚Ü‚·B</dd>
+<var>n</var> æ¬¡ã®ä¿‚æ•°ã‚’<var>v</var>ã«è¨­å®šã—ã¾ã™ã€‚</dd>
 <dt><a name="label-26" id="label-26"><code>monomial</code></a></dt><!-- RDLabel: "monomial" -->
 <dd>
-<a href="#label-15">::monomial</a> ‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-15">::monomial</a> ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-27" id="label-27"><code>monomial?</code></a></dt><!-- RDLabel: "monomial?" -->
 <dd>
-’P€®‚Å‚ ‚é‚Æ‚«^‚ğ•Ô‚µ‚Ü‚·B</dd>
+å˜é …å¼ã§ã‚ã‚‹ã¨ãçœŸã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-28" id="label-28"><code>zero?</code></a></dt><!-- RDLabel: "zero?" -->
 <dd>
-—ëŒ³‚Å‚ ‚é‚Æ‚«^‚ğ•Ô‚µ‚Ü‚·B</dd>
+é›¶å…ƒã§ã‚ã‚‹ã¨ãçœŸã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-29" id="label-29"><code>zero</code></a></dt><!-- RDLabel: "zero" -->
 <dd>
-—ëŒ³‚ğ•Ô‚µ‚Ü‚·B</dd>
+é›¶å…ƒã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-30" id="label-30"><code>unity</code></a></dt><!-- RDLabel: "unity" -->
 <dd>
-’PˆÊŒ³‚ğ•Ô‚µ‚Ü‚·B</dd>
+å˜ä½å…ƒã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-31" id="label-31"><code>==(<var>other</var>)</code></a></dt><!-- RDLabel: "==" -->
 <dd>
-“™‚µ‚¢‚Æ‚«^‚ğ•Ô‚µ‚Ü‚·B</dd>
+ç­‰ã—ã„ã¨ãçœŸã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-32" id="label-32"><code>&lt;=&gt;(<var>other</var>)</code></a></dt><!-- RDLabel: "<=>" -->
 <dd>
-‘å¬ŠÖŒW‚ğ‹‚ß‚Ü‚·B</dd>
+å¤§å°é–¢ä¿‚ã‚’æ±‚ã‚ã¾ã™ã€‚</dd>
 <dt><a name="label-33" id="label-33"><code>+(<var>other</var>)</code></a></dt><!-- RDLabel: "+" -->
 <dd>
-˜a‚ğŒvZ‚µ‚Ü‚·B</dd>
+å’Œã‚’è¨ˆç®—ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-34" id="label-34"><code>-(<var>other</var>)</code></a></dt><!-- RDLabel: "-" -->
 <dd>
-·‚ğŒvZ‚µ‚Ü‚·B</dd>
+å·®ã‚’è¨ˆç®—ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-35" id="label-35"><code>*(<var>other</var>)</code></a></dt><!-- RDLabel: "*" -->
 <dd>
-Ï‚ğŒvZ‚µ‚Ü‚·B</dd>
+ç©ã‚’è¨ˆç®—ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-36" id="label-36"><code>**(<var>n</var>)</code></a></dt><!-- RDLabel: "**" -->
 <dd>
-<var>n</var> æ‚ğŒvZ‚µ‚Ü‚·B</dd>
+<var>n</var> ä¹—ã‚’è¨ˆç®—ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-37" id="label-37"><code>/(<var>other</var>)</code></a></dt><!-- RDLabel: "/" -->
 <dd>
-¤‚ğŒvZ‚µ‚Ü‚·B<a href="#label-39">div</a>‚Æ“¯‚¶‚Å‚·B</dd>
+å•†ã‚’è¨ˆç®—ã—ã¾ã™ã€‚<a href="#label-39">div</a>ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-38" id="label-38"><code>divmod(<var>other</var>)</code></a></dt><!-- RDLabel: "divmod" -->
 <dd>
-<var>other</var> ‚ÅŠ„‚Á‚½¤‚Æ—]‚è‚Ì”z—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>other</var> ã§å‰²ã£ãŸå•†ã¨ä½™ã‚Šã®é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-39" id="label-39"><code>div(<var>other</var>)</code></a></dt><!-- RDLabel: "div" -->
 <dd>
-<var>other</var> ‚ÅŠ„‚Á‚½¤‚ğ•Ô‚µ‚Ü‚·B<code>divmod(other).first</code>
-‚Æˆê’v‚µ‚Ü‚·B</dd>
+<var>other</var> ã§å‰²ã£ãŸå•†ã‚’è¿”ã—ã¾ã™ã€‚<code>divmod(other).first</code>
+ã¨ä¸€è‡´ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-40" id="label-40"><code>%(<var>other</var>)</code></a></dt><!-- RDLabel: "%" -->
 <dd>
-<var>other</var> ‚ÅŠ„‚Á‚½—]‚è‚ğ•Ô‚µ‚Ü‚·B<code>divmod(other).last</code>
-‚Æˆê’v‚µ‚Ü‚·B</dd>
+<var>other</var> ã§å‰²ã£ãŸä½™ã‚Šã‚’è¿”ã—ã¾ã™ã€‚<code>divmod(other).last</code>
+ã¨ä¸€è‡´ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-41" id="label-41"><code>divide?(<var>other</var>)</code></a></dt><!-- RDLabel: "divide?" -->
 <dd>
-<var>other</var> ‚ÅŠ„‚èØ‚ê‚é‚Æ‚«^‚ğ•Ô‚µ‚Ü‚·B
-<code>divmod(other).last == zero?</code>‚Æˆê’v‚µ‚Ü‚·B</dd>
+<var>other</var> ã§å‰²ã‚Šåˆ‡ã‚Œã‚‹ã¨ãçœŸã‚’è¿”ã—ã¾ã™ã€‚
+<code>divmod(other).last == zero?</code>ã¨ä¸€è‡´ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-42" id="label-42"><code>deg</code></a></dt><!-- RDLabel: "deg" -->
 <dd>
-<p>Ÿ”‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>æ¬¡æ•°ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>P = Algebra::Polynomial(Integer, "x")
 x = P.var
 (5*x**3 + 2*x + 1).deg #=&gt; 3</pre></dd>
 <dt><a name="label-43" id="label-43"><code>lc</code></a></dt><!-- RDLabel: "lc" -->
 <dd>
-<p>æ“ªŒW”(leading coeffcient)‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>å…ˆé ­ä¿‚æ•°(leading coeffcient)ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>(5*x**3 + 2*x + 1).lc #=&gt; 5</pre></dd>
 <dt><a name="label-44" id="label-44"><code>lm</code></a></dt><!-- RDLabel: "lm" -->
 <dd>
-<p>æ“ª’P€®(leading monomial)‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>å…ˆé ­å˜é …å¼(leading monomial)ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>(5*x**3 + 2*x + 1).lm #=&gt; x**3</pre></dd>
 <dt><a name="label-45" id="label-45"><code>lt</code></a></dt><!-- RDLabel: "lt" -->
 <dd>
-<p>æ“ª€(leading term)‚ğ•Ô‚µ‚Ü‚·B<code>lc * lm</code>‚Æ“™‚µ‚¢’l‚ğ‚¿‚Ü‚·B</p>
-<p>—á:</p>
+<p>å…ˆé ­é …(leading term)ã‚’è¿”ã—ã¾ã™ã€‚<code>lc * lm</code>ã¨ç­‰ã—ã„å€¤ã‚’æŒã¡ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>(5*x**3 + 2*x + 1).lt #=&gt; 5*x**3</pre></dd>
 <dt><a name="label-46" id="label-46"><code>rt</code></a></dt><!-- RDLabel: "rt" -->
 <dd>
-<p>c—]€(rest term)‚ğ•Ô‚µ‚Ü‚·B<code>self - lt</code>‚Æ“™‚µ‚¢’l‚ğ‚¿‚Ü‚·B</p>
-<p>—á:</p>
+<p>æ®‹ä½™é …(rest term)ã‚’è¿”ã—ã¾ã™ã€‚<code>self - lt</code>ã¨ç­‰ã—ã„å€¤ã‚’æŒã¡ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>(5*x**3 + 2*x + 1).rt #=&gt; 2*x + 1</pre></dd>
 <dt><a name="label-47" id="label-47"><code>monic</code></a></dt><!-- RDLabel: "monic" -->
 <dd>
-Å‚ŸŒW”‚ğ1‚É’¼‚µ‚½®‚ğ•Ô‚µ‚Ü‚·B<code>self / lc</code> ‚Æ“¯‚¶’l‚ğ
-‚¿‚Ü‚·B</dd>
+æœ€é«˜æ¬¡ä¿‚æ•°ã‚’1ã«ç›´ã—ãŸå¼ã‚’è¿”ã—ã¾ã™ã€‚<code>self / lc</code> ã¨åŒã˜å€¤ã‚’æŒ
+ã¡ã¾ã™ã€‚</dd>
 <dt><a name="label-48" id="label-48"><code>cont</code></a></dt><!-- RDLabel: "cont" -->
 <dd>
-ŒWˆö”(content(‘S‚Ä‚ÌŒW”‚ÌÅ‘åŒö–ñ”)j‚ğ•Ô‚µ‚Ü‚·B</dd>
+ä¿‚å› æ•°(content(å…¨ã¦ã®ä¿‚æ•°ã®æœ€å¤§å…¬ç´„æ•°)ï¼‰ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-49" id="label-49"><code>pp</code></a></dt><!-- RDLabel: "pp" -->
 <dd>
-Œ´n“I•”•ª(primitive part)‚ğ•Ô‚µ‚Ü‚·B<code>self / cont</code>‚Æ
-“¯‚¶’l‚ğ‚¿‚Ü‚·B</dd>
+åŸå§‹çš„éƒ¨åˆ†(primitive part)ã‚’è¿”ã—ã¾ã™ã€‚<code>self / cont</code>ã¨
+åŒã˜å€¤ã‚’æŒã¡ã¾ã™ã€‚</dd>
 <dt><a name="label-50" id="label-50"><code>to_s</code></a></dt><!-- RDLabel: "to_s" -->
 <dd>
-<p>•¶š—ñ•\Œ»‚ğ“¾‚Ü‚·B•\¦Œ`®‚ğ•Ï‚¦‚é‚É‚Í <var>display_type</var> ‚ğ—p‚¢‚Ü‚·B
-<var>display_type</var> ‚É—^‚¦‚ç‚ê‚é’l‚Í <var>:norm</var>(ƒfƒtƒHƒ‹ƒg), <var>:code</var>
-‚Å‚·B</p>
-<p>—á:</p>
+<p>æ–‡å­—åˆ—è¡¨ç¾ã‚’å¾—ã¾ã™ã€‚è¡¨ç¤ºå½¢å¼ã‚’å¤‰ãˆã‚‹ã«ã¯ <var>display_type</var> ã‚’ç”¨ã„ã¾ã™ã€‚
+<var>display_type</var> ã«ä¸ãˆã‚‰ã‚Œã‚‹å€¤ã¯ <var>:norm</var>(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ), <var>:code</var>
+ã§ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>P = Algebra::Polynomial(Integer, "x")
 x = P.var
 p 5*x**3 + 2*x + 1 #=&gt;5x^3 + 2x + 1
@@ -259,23 +259,23 @@ P.display_type = :code
 p 5*x**3 + 2*x + 1 #=&gt; 5*x**3 + 2*x + 1</pre></dd>
 <dt><a name="label-51" id="label-51"><code>derivate</code></a></dt><!-- RDLabel: "derivate" -->
 <dd>
-<p>”÷•ª‚µ‚½’l‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>å¾®åˆ†ã—ãŸå€¤ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>(5*x**3 + 2*x + 1).derivate #=&gt; 15*x**2 + 2</pre></dd>
 <dt><a name="label-52" id="label-52"><code>sylvester_matrix(<var>other</var>)</code></a></dt><!-- RDLabel: "sylvester_matrix" -->
 <dd>
-<var>other</var> ‚Æ‚ÌƒVƒ‹ƒxƒXƒ^[s—ñ‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>other</var> ã¨ã®ã‚·ãƒ«ãƒ™ã‚¹ã‚¿ãƒ¼è¡Œåˆ—ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-53" id="label-53"><code>resultant(<var>other</var>)</code></a></dt><!-- RDLabel: "resultant" -->
 <dd>
-<var>other</var> ‚Æ‚ÌWŒ‹®•Ô‚µ‚Ü‚·B—\‚ß</dd>
+<var>other</var> ã¨ã®é›†çµå¼è¿”ã—ã¾ã™ã€‚äºˆã‚</dd>
 <dt><a name="label-54" id="label-54"><code>project(<var>ring</var>[, <var>obj</var>]){|<var>c</var>, <var>n</var>| ... }</code></a></dt><!-- RDLabel: "project" -->
 <dd>
-<p>Še’P€®‚É‚Â‚¢‚ÄA
-Ÿ”‚ğ <var>n</var> ‚ÉAŒW” <var>c</var> ‚É‘ã“ü‚µ ... ‚ğ•]‰¿‚µ‚½‚à‚Ì‚ğ
-‚»‚Ì’P€®‚Ì’l‚É’u‚«Š·‚¦A<var>ring</var> ã‚Å˜a‚ğæ‚Á‚½’l‚ğ
-•Ô‚µ‚Ü‚·B<var>obj</var> ‚ªÈ—ª‚³‚ê‚é‚Æ <code>ring.var</code> ‚ª—p‚¢‚ç
-‚ê‚Ü‚·B</p>
-<p>—á:</p>
+<p>å„å˜é …å¼ã«ã¤ã„ã¦ã€
+æ¬¡æ•°ã‚’ <var>n</var> ã«ã€ä¿‚æ•° <var>c</var> ã«ä»£å…¥ã— ... ã‚’è©•ä¾¡ã—ãŸã‚‚ã®ã‚’
+ãã®å˜é …å¼ã®å€¤ã«ç½®ãæ›ãˆã€<var>ring</var> ä¸Šã§å’Œã‚’å–ã£ãŸå€¤ã‚’
+è¿”ã—ã¾ã™ã€‚<var>obj</var> ãŒçœç•¥ã•ã‚Œã‚‹ã¨ <code>ring.var</code> ãŒç”¨ã„ã‚‰
+ã‚Œã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>require "polynomial"
 require "rational"
 P = Algebra::Polynomial(Integer, "x")
@@ -286,9 +286,9 @@ p f.convert_to(PQ) #=&gt; 5y^3 + 2y + 1
 p f.project(PQ) {|c, n| Rational(c) / (n + 1)} #=&gt; 5/4y^3 + y + 1</pre></dd>
 <dt><a name="label-55" id="label-55"><code>evaluate(<var>obj</var>)</code></a></dt><!-- RDLabel: "evaluate" -->
 <dd>
-<p>å•Ï”‚É <var>obj</var> ‚ğ‘ã“ü‚µ‚½’l‚ğ•Ô‚µ‚Ü‚·B
-<code> project(ground, obj){|c, n| c} </code> ‚Ì’l‚Æˆê’v‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>ä¸»å¤‰æ•°ã« <var>obj</var> ã‚’ä»£å…¥ã—ãŸå€¤ã‚’è¿”ã—ã¾ã™ã€‚
+<code> project(ground, obj){|c, n| c} </code> ã®å€¤ã¨ä¸€è‡´ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>require "polynomial"
 P = Algebra::Polynomial(Integer, "x")
 x = P.var
@@ -297,11 +297,11 @@ p f.evaluate(-1)    #=&gt; -3 (in Integer)
 p f.evaluate(x + 1) #=&gt; x^3 - 3x - 1 (in P)</pre></dd>
 <dt><a name="label-56" id="label-56"><code>call(<var>obj</var>)</code></a></dt><!-- RDLabel: "call" -->
 <dd>
-<a href="#label-55">evaluate</a>‚Æ“¯‚¶‚Å‚·B</dd>
+<a href="#label-55">evaluate</a>ã¨åŒã˜ã§ã™ã€‚</dd>
 <dt><a name="label-57" id="label-57"><code>sub(<var>var</var>, <var>value</var>)</code></a></dt><!-- RDLabel: "sub" -->
 <dd>
-<p>•Ï” <var>var</var> ‚É <var>value</var> ‚ğ‘ã“ü‚µ‚½’l‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p>å¤‰æ•° <var>var</var> ã« <var>value</var> ã‚’ä»£å…¥ã—ãŸå€¤ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>require "polynomial"
 P = Algebra::Polynomial(Integer, "x", "y", "z")
 x, y, z = P.vars
@@ -309,61 +309,61 @@ f = (x - y)*(y - z - 1)
 p f.sub(y, z+1)    #=&gt; 0</pre></dd>
 <dt><a name="label-58" id="label-58"><code>convert_to(<var>ring</var>)</code></a></dt><!-- RDLabel: "convert_to" -->
 <dd>
-Še€‚ğ<var>ring</var>ã‚Å•]‰¿‚µ‚Ü‚·B<code> project(ring){|c, n| c} </code>‚Ì
-’l‚Æˆê’v‚µ‚Ü‚·B</dd>
+å„é …ã‚’<var>ring</var>ä¸Šã§è©•ä¾¡ã—ã¾ã™ã€‚<code> project(ring){|c, n| c} </code>ã®
+å€¤ã¨ä¸€è‡´ã—ã¾ã™ã€‚</dd>
 </dl>
 <h1><a name="label-59" id="label-59">Algebra::PolynomialFactorization</a></h1><!-- RDLabel: "Algebra::PolynomialFactorization" -->
-<p><em>(ˆö”•ª‰ğƒ‚ƒWƒ…[ƒ‹)</em></p>
-<p>ˆö”•ª‰ğ‚ğ‚·‚é‚½‚ß‚Ìƒ‚ƒWƒ…[ƒ‹‚Å‚·B</p>
-<h2><a name="label-60" id="label-60">ƒtƒ@ƒCƒ‹–¼:</a></h2><!-- RDLabel: "ƒtƒ@ƒCƒ‹–¼:" -->
+<p><em>(å› æ•°åˆ†è§£ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«)</em></p>
+<p>å› æ•°åˆ†è§£ã‚’ã™ã‚‹ãŸã‚ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§ã™ã€‚</p>
+<h2><a name="label-60" id="label-60">ãƒ•ã‚¡ã‚¤ãƒ«å:</a></h2><!-- RDLabel: "ãƒ•ã‚¡ã‚¤ãƒ«å:" -->
 <p><var>polynomial-factor.rb</var></p>
-<h2><a name="label-61" id="label-61">ƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒƒ\ƒbƒh:" -->
+<h2><a name="label-61" id="label-61">ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-62" id="label-62"><code>sqfree</code></a></dt><!-- RDLabel: "sqfree" -->
 <dd>
-–³•½•û‰»‚µ‚Ü‚·B</dd>
+ç„¡å¹³æ–¹åŒ–ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-63" id="label-63"><code>sqfree?</code></a></dt><!-- RDLabel: "sqfree?" -->
 <dd>
-–³•½•û‚È‚ç^‚ğ•Ô‚µ‚Ü‚·B</dd>
+ç„¡å¹³æ–¹ãªã‚‰çœŸã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-64" id="label-64"><code>irreducible?</code></a></dt><!-- RDLabel: "irreducible?" -->
 <dd>
-Šù–ñ‚È‚ç^‚ğ•Ô‚µ‚Ü‚·B</dd>
+æ—¢ç´„ãªã‚‰çœŸã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-65" id="label-65"><code>factorize</code></a></dt><!-- RDLabel: "factorize" -->
 <dd>
-<p>ˆö”•ª‰ğ‚µ‚Ü‚·B</p>
-<p>ˆö”•ª‰ğ‰Â”\‚ÈŒW”ŠÂ‚Í</p>
+<p>å› æ•°åˆ†è§£ã—ã¾ã™ã€‚</p>
+<p>å› æ•°åˆ†è§£å¯èƒ½ãªä¿‚æ•°ç’°ã¯</p>
 <ul>
 <li>Integer</li>
 <li>Rational</li>
-<li>‘f‘Ì</li>
-<li>‘ã”‘ÌiRational ã‚Ì—LŒÀŸŠg‘åj</li>
+<li>ç´ ä½“</li>
+<li>ä»£æ•°ä½“ï¼ˆRational ä¸Šã®æœ‰é™æ¬¡æ‹¡å¤§ï¼‰</li>
 </ul>
-<p>‚Å‚·B</p></dd>
+<p>ã§ã™ã€‚</p></dd>
 </dl>
 <h1><a name="label-66" id="label-66">Algebra::SplittingField</a></h1><!-- RDLabel: "Algebra::SplittingField" -->
-<p><em>(•ª‰ğ‘Ìƒ‚ƒWƒ…[ƒ‹)</em></p>
-<p>‘½€®‚ÌÅ¬•ª‰ğ‘Ì‚ğ‹‚ß‚é‚½‚ß‚Ìƒ‚ƒWƒ…[ƒ‹</p>
-<h2><a name="label-67" id="label-67">ƒtƒ@ƒCƒ‹–¼:</a></h2><!-- RDLabel: "ƒtƒ@ƒCƒ‹–¼:" -->
+<p><em>(åˆ†è§£ä½“ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«)</em></p>
+<p>å¤šé …å¼ã®æœ€å°åˆ†è§£ä½“ã‚’æ±‚ã‚ã‚‹ãŸã‚ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«</p>
+<h2><a name="label-67" id="label-67">ãƒ•ã‚¡ã‚¤ãƒ«å:</a></h2><!-- RDLabel: "ãƒ•ã‚¡ã‚¤ãƒ«å:" -->
 <ul>
 <li><var>splitting-field.rb</var></li>
 </ul>
-<h2><a name="label-68" id="label-68">ƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒƒ\ƒbƒh:" -->
+<h2><a name="label-68" id="label-68">ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-69" id="label-69"><code>decompose([<var>fac0</var>])</code></a></dt><!-- RDLabel: "decompose" -->
 <dd>
-<p>©g‚ÌÅ¬•ª‰ğ‘Ì‚ğ <var>field</var>AŠg‘å‚É—v‚µ‚½Šù–ñ‘½€®
-‚Ì”z—ñ‚ğ <var>def_polys</var>AÅ¬•ª‰ğ‘Ìã‚Å1Ÿ®‚ÌÏ‚Éˆö”•ª‰ğ‚µ
-‚½‚à‚Ì‚ğ <var>facts</var>A‘½€®‚Ìª‚Ì”z—ñ‚ğ <var>roots</var>A
-<var>roots</var> ‚ğŠî‘b‘Ì‚É“Y‰Á‚µ‚½Œ³‚ª‘O‚É—ˆ‚é‚æ‚¤‚É•À‚×‘Ö‚¦‚½
-‚Ì”z—ñ‚ğ <var>proots</var> ‚Æ‚µ‚ÄA</p>
+<p>è‡ªèº«ã®æœ€å°åˆ†è§£ä½“ã‚’ <var>field</var>ã€æ‹¡å¤§ã«è¦ã—ãŸæ—¢ç´„å¤šé …å¼
+ã®é…åˆ—ã‚’ <var>def_polys</var>ã€æœ€å°åˆ†è§£ä½“ä¸Šã§1æ¬¡å¼ã®ç©ã«å› æ•°åˆ†è§£ã—
+ãŸã‚‚ã®ã‚’ <var>facts</var>ã€å¤šé …å¼ã®æ ¹ã®é…åˆ—ã‚’ <var>roots</var>ã€
+<var>roots</var> ã‚’åŸºç¤ä½“ã«æ·»åŠ ã—ãŸå…ƒãŒå‰ã«æ¥ã‚‹ã‚ˆã†ã«ä¸¦ã¹æ›¿ãˆãŸ
+ã®é…åˆ—ã‚’ <var>proots</var> ã¨ã—ã¦ã€</p>
 <pre>[field, def_polys, facts, roots, proots]</pre>
-<p>‚ğ•Ô‚µ‚Ü‚·BŠî‘b‘Ìã‚Ìˆö”•ª‰ğ <var>fac0</var> ‚ğ“Y‚¦‚é‚Æ‚‘¬‰»‚É–ğ—§‚¿‚Ü‚·B
-i<var>facts</var> ‚Ì—v‘f‚Æ <var>fact0</var> ‚Í <var>Algebra::Factors</var> ƒIƒuƒWƒFƒNƒg
-A<var>field</var> ‚Í
+<p>ã‚’è¿”ã—ã¾ã™ã€‚åŸºç¤ä½“ä¸Šã®å› æ•°åˆ†è§£ <var>fac0</var> ã‚’æ·»ãˆã‚‹ã¨é«˜é€ŸåŒ–ã«å½¹ç«‹ã¡ã¾ã™ã€‚
+ï¼ˆ<var>facts</var> ã®è¦ç´ ã¨ <var>fact0</var> ã¯ <var>Algebra::Factors</var> ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
+ã€<var>field</var> ã¯
 <!-- Reference, RDLabel "algebraic-extension-field.html" doesn't exist --><em class="label-not-found">AlgebraicExtensionField</em><!-- Reference end -->
-ƒIƒuƒWƒFƒNƒg‚Å‚·B‚½‚¾‚µA©g‚ªˆêŸˆöq‚É•ª‰ğ‚³‚ê‚é‚Æ‚«‚Í
-<!-- Reference, RDLabel "groud" doesn't exist --><em class="label-not-found">groud</em><!-- Reference end --> ‚»‚Ì‚à‚Ì‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã§ã™ã€‚ãŸã ã—ã€è‡ªèº«ãŒä¸€æ¬¡å› å­ã«åˆ†è§£ã•ã‚Œã‚‹ã¨ãã¯
+<!-- Reference, RDLabel "groud" doesn't exist --><em class="label-not-found">groud</em><!-- Reference end --> ãã®ã‚‚ã®ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>require "algebra"
 PQ = Polynomial(Rational, "x")
 x = PQ.var
@@ -379,12 +379,12 @@ facts1 = Factors.new(facts.collect{|g, n| [g.call(x), n]})
 p facts1.pi == f.convert_to(fp) #=&gt; true</pre></dd>
 <dt><a name="label-70" id="label-70"><code>splitting_field([<var>fac0</var>]))</code></a></dt><!-- RDLabel: "splitting_field" -->
 <dd>
-<p>©g‚ÌÅ¬•ª‰ğ‘Ì‚Ìî•ñ‚ğ•Ô‚µ‚Ü‚·B•Ô‚è’l‚ÌŠeƒtƒB[ƒ‹ƒh‚Ì’l‚ÍˆÈ‰º
-‚Ì’Ê‚è‚Å‚·Bpoly_exps ˆÈŠO‚Í <a href="#label-69">decompose</a> ‚ÌˆÈ‰º‚Ì‚à‚Ì‚É‘Š“–‚µ‚Ü‚·B</p>
+<p>è‡ªèº«ã®æœ€å°åˆ†è§£ä½“ã®æƒ…å ±ã‚’è¿”ã—ã¾ã™ã€‚è¿”ã‚Šå€¤ã®å„ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®å€¤ã¯ä»¥ä¸‹
+ã®é€šã‚Šã§ã™ã€‚poly_exps ä»¥å¤–ã¯ <a href="#label-69">decompose</a> ã®ä»¥ä¸‹ã®ã‚‚ã®ã«ç›¸å½“ã—ã¾ã™ã€‚</p>
 <p>poly, field, roots, proots, def_polys</p>
-<p>‚½‚¾‚µA<var>roots</var>A<var>proots</var> ‚ÌŠe—v‘f‚Í <var>field</var> ‚Ì
-—v‘f‚Æ‚µ‚Ä•ÏŠ·‚³‚ê‚Ä‚¢‚Ü‚·B</p>
-<p>—á:</p>
+<p>ãŸã ã—ã€<var>roots</var>ã€<var>proots</var> ã®å„è¦ç´ ã¯ <var>field</var> ã®
+è¦ç´ ã¨ã—ã¦å¤‰æ›ã•ã‚Œã¦ã„ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>require "algebra"
 PQ = Polynomial(Rational, "x")
 x = PQ.var
@@ -395,34 +395,34 @@ p sf.proots     #=&gt; [a, b, 1, -a, -b]
 p sf.def_polys #=&gt; [a^4 + 2, b^2 + a^2]</pre></dd>
 </dl>
 <h1><a name="label-71" id="label-71">Algebra::Galois</a></h1><!-- RDLabel: "Algebra::Galois" -->
-<p><em>(ƒKƒƒAŒQ)</em></p>
-<p>‘½€®‚ÌƒKƒƒAŒQ‚ğ‹‚ß‚é‚½‚ß‚Ìƒ‚ƒWƒ…[ƒ‹</p>
-<h2><a name="label-72" id="label-72">ƒtƒ@ƒCƒ‹–¼:</a></h2><!-- RDLabel: "ƒtƒ@ƒCƒ‹–¼:" -->
+<p><em>(ã‚¬ãƒ­ã‚¢ç¾¤)</em></p>
+<p>å¤šé …å¼ã®ã‚¬ãƒ­ã‚¢ç¾¤ã‚’æ±‚ã‚ã‚‹ãŸã‚ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«</p>
+<h2><a name="label-72" id="label-72">ãƒ•ã‚¡ã‚¤ãƒ«å:</a></h2><!-- RDLabel: "ãƒ•ã‚¡ã‚¤ãƒ«å:" -->
 <ul>
 <li><var>galois-group.rb</var></li>
 </ul>
-<h2><a name="label-73" id="label-73">ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:</a></h2><!-- RDLabel: "ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:" -->
+<h2><a name="label-73" id="label-73">ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:</a></h2><!-- RDLabel: "ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:" -->
 <ul>
-<li>‚È‚µ</li>
+<li>ãªã—</li>
 </ul>
-<h2><a name="label-74" id="label-74">ŠÖ˜A‚·‚éƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ŠÖ˜A‚·‚éƒƒ\ƒbƒh:" -->
+<h2><a name="label-74" id="label-74">é–¢é€£ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "é–¢é€£ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-75" id="label-75"><code>GaloisGroup.galois_group(<var>poly</var>)</code></a></dt><!-- RDLabel: "GaloisGroup.galois_group" -->
 <dd>
-<a href="#label-78">galois_group</a> ‚Æ“¯‚¶</dd>
+<a href="#label-78">galois_group</a> ã¨åŒã˜</dd>
 </dl>
-<h2><a name="label-76" id="label-76">ƒ‚ƒWƒ…[ƒ‹ƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒ‚ƒWƒ…[ƒ‹ƒƒ\ƒbƒh:" -->
+<h2><a name="label-76" id="label-76">ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <ul>
-<li>‚È‚µ</li>
+<li>ãªã—</li>
 </ul>
-<h2><a name="label-77" id="label-77">ƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒƒ\ƒbƒh:" -->
+<h2><a name="label-77" id="label-77">ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-78" id="label-78"><code>galois_group</code></a></dt><!-- RDLabel: "galois_group" -->
 <dd>
-<p>‘½€®‚ÌƒKƒƒAŒQ‚ğ•Ô‚µ‚Ü‚·BŒQ‚ÍŠeŒ³‚ª 
-<!-- Reference, RDLabel "permutation-group.html" doesn't exist --><em class="label-not-found">PermutationGroup</em><!-- Reference end --> ‚Å‚ ‚é 
-<!-- Reference, RDLabel "finite-group.html" doesn't exist --><em class="label-not-found">FiniteGroup</em><!-- Reference end --> ƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Ä•\Œ»‚³‚ê‚Ü‚·B</p>
-<p>—á:</p>
+<p>å¤šé …å¼ã®ã‚¬ãƒ­ã‚¢ç¾¤ã‚’è¿”ã—ã¾ã™ã€‚ç¾¤ã¯å„å…ƒãŒ 
+<!-- Reference, RDLabel "permutation-group.html" doesn't exist --><em class="label-not-found">PermutationGroup</em><!-- Reference end --> ã§ã‚ã‚‹ 
+<!-- Reference, RDLabel "finite-group.html" doesn't exist --><em class="label-not-found">FiniteGroup</em><!-- Reference end --> ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦è¡¨ç¾ã•ã‚Œã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>require "rational"
 require "polynomial"
 

@@ -7,79 +7,79 @@
 
 = Algebra::MatrixAlgebraTriplet
 
-((*(3�g�s��̃N���X)*))
+((*(3つ組行列のクラス)*))
 
-�s��ƍs��ɑ΂��鍶�E�̊�{�ό`���L�^����2�̍s���\���N���X�B���ʃN���X
-��5�g�݃N���X ((<Algebra::MatrixAlgebraQuint>)) ������B
+行列と行列に対する左右の基本変形を記録した2つの行列を表すクラス。下位クラス
+に5つ組みクラス ((<Algebra::MatrixAlgebraQuint>)) がある。
 
-== �t�@�C����:
+== ファイル名:
 * ((|matrix-algebra-triplet.rb|))
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 
 * ((|Object|))
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 * ((|GaussianElimination|))
 * ((|ElementaryDivisor|))
 
 
-=== �N���X���\�b�h:
+=== クラスメソッド:
 
 --- :new(matrix[, left[, right]])
-    ((|matrix|)) ��{�́A((|left|))���i�s�j�ό`�̋L�^�A((|right|))
-    ���E�i��j�ό`�̋L�^�Ƃ���3�g�݃I�u�W�F�N�g�𐶐����܂��B
+    ((|matrix|)) を本体、((|left|))左（行）変形の記録、((|right|))
+    を右（列）変形の記録とする3つ組みオブジェクトを生成します。
 
-== ���\�b�h:
+== メソッド:
 
 --- body
-    �{�̂�Ԃ��܂��B
+    本体を返します。
 
 --- left
-    ���i�s�j�ό`�̋L�^��Ԃ��܂��B
+    左（行）変形の記録を返します。
 
 --- right
-    �E�i��j�ό`�̋L�^��Ԃ��܂��B
+    右（列）変形の記録を返します。
 
 --- to_a
-    (({[body, left, right]})) �Ƃ����z���Ԃ��܂��B
+    (({[body, left, right]})) という配列を返します。
 
 --- to_ary
-    ((<to_a>)) �Ɠ����B
+    ((<to_a>)) と同じ。
 
 --- dup
-    ���g�̕�����Ԃ��܂��B
+    自身の複製を返します。
 
 --- transpose
-    �]�u�s���Ԃ��܂��B
+    転置行列を返します。
     
       [type.new(body.transpose, right.transpose, left.transpose]
 
-    �Ɠ����ł��B
+    と同じです。
 
 --- replace(other)
-    ������ ((|other|)) �ƒu�������܂��B
+    自分を ((|other|)) と置き換えます。
 
 --- display
-    ������\�����܂��B
+    自分を表示します。
 
 --- [](i, j)
-    ������ (({(i, j)})) ������Ԃ��܂��B
+    自分の (({(i, j)})) 成分を返します。
 
 --- rsize
-    �s�T�C�Y��Ԃ��܂��B
+    行サイズを返します。
 
 --- csize
-    ��T�C�Y��Ԃ��܂��B
+    列サイズを返します。
 
 --- each_i
-    ���ׂĂ̍s�C���f�b�N�X�ɑ΂��ČJ��Ԃ��C�e���[�^�ł��B
+    すべての行インデックスに対して繰り返すイテレータです。
 
 --- each_j
-    ���ׂĂ̗�C���f�b�N�X�ɑ΂��ČJ��Ԃ��C�e���[�^�ł��B
+    すべての列インデックスに対して繰り返すイテレータです。
 
 --- row!(i)
-    �{�̂� ((|i|)) �s�ڂ��̂��̂�Ԃ��܂��B
+    本体の ((|i|)) 行目そのものを返します。
     
 --- sswap_r!(i, j)
 
@@ -100,30 +100,30 @@
 --- mix_c!(i, j[, c])
 
 --- left_eliminate!
-    �ȏ�A((|Algebra::GauusianElimination|)) �̓������\�b�h���Q�ƁB
+    以上、((|Algebra::GauusianElimination|)) の同名メソッドを参照。
 
 
 = Algebra::MatrixAlgebraQuint
 
-((*(5�g�s��̃N���X)*))
+((*(5つ組行列のクラス)*))
 
-�s��ƍs��ɑ΂��鍶�E�̊�{�ό`�A�����̋t�s����L�^�����v5��
-�s���\���N���X�B��ʃN���X��3�g�݃N���X ((<Algebra::MatrixAlgebraTriplet>)) ������B
+行列と行列に対する左右の基本変形、それらの逆行列を記録した計5つの
+行列を表すクラス。上位クラスに3つ組みクラス ((<Algebra::MatrixAlgebraTriplet>)) がある。
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 
 * ((|Algebra:MatrixAlgebraTriplet|))
 
 
-== ���\�b�h:
+== メソッド:
 
 --- lefti
-    ((<left>)) �̋t�s���Ԃ��܂��B
+    ((<left>)) の逆行列を返します。
 
 --- righti
-    ((<right>)) �̋t�s���Ԃ��܂��B
+    ((<right>)) の逆行列を返します。
 
 --- to_a
-    (({[body, left, right, lefti, righti]})) �Ƃ����z���Ԃ��܂��B
+    (({[body, left, right, lefti, righti]})) という配列を返します。
 
 =end

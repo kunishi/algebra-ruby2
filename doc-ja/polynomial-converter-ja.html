@@ -1,32 +1,32 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html 
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<link rel="stylesheet" type="text/css" href="style.css" />
-<title>algebra/polynomial-converter-ja.html</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>doc-ja/polynomial-converter-ja.rd</title>
+<link href="style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <p>[<a href="index-ja.html">index-ja</a>] </p>
-<h1><a name="label-0" id="label-0">‘½€®ŠÂ‘ŠŒİ•ÏŠ·ƒ†[ƒeƒBƒŠƒeƒB[</a></h1><!-- RDLabel: "‘½€®ŠÂ‘ŠŒİ•ÏŠ·ƒ†[ƒeƒBƒŠƒeƒB[" -->
-<p>Polynomial &lt;-&gt; MPolynomial ‚Ì‘ŠŒİ•ÏŠ·ƒ†[ƒeƒBƒŠƒeƒB[‚Å‚·B</p>
-<h2><a name="label-1" id="label-1">ƒtƒ@ƒCƒ‹–¼:</a></h2><!-- RDLabel: "ƒtƒ@ƒCƒ‹–¼:" -->
+<h1><a name="label-0" id="label-0">å¤šé …å¼ç’°ç›¸äº’å¤‰æ›ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¼</a></h1><!-- RDLabel: "å¤šé …å¼ç’°ç›¸äº’å¤‰æ›ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¼" -->
+<p>Polynomial &lt;-&gt; MPolynomial ã®ç›¸äº’å¤‰æ›ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¼ã§ã™ã€‚</p>
+<h2><a name="label-1" id="label-1">ãƒ•ã‚¡ã‚¤ãƒ«å:</a></h2><!-- RDLabel: "ãƒ•ã‚¡ã‚¤ãƒ«å:" -->
 <ul>
 <li><var>polyomimial-converter.rb</var></li>
 </ul>
-<h2><a name="label-2" id="label-2">ƒƒ\ƒbƒh</a></h2><!-- RDLabel: "ƒƒ\ƒbƒh" -->
+<h2><a name="label-2" id="label-2">ãƒ¡ã‚½ãƒƒãƒ‰</a></h2><!-- RDLabel: "ãƒ¡ã‚½ãƒƒãƒ‰" -->
 <dl>
 <dt><a name="label-3" id="label-3"><code>Algebra::Polynomial.convert_to(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::Polynomial.convert_to" -->
 <dd>
-<a href="m-polynomial-ja.html">Algebra::MPolynomial</a> ‚Å‚ ‚é <var>ring</var>
-‚É•ÏŠ·‚µ‚Ü‚·B</dd>
+<a href="m-polynomial-ja.html">Algebra::MPolynomial</a> ã§ã‚ã‚‹ <var>ring</var>
+ã«å¤‰æ›ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-4" id="label-4"><code>Algebra::Polynomial#value_on(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::Polynomial#value_on" -->
 <dd>
-<p><a href="m-polynomial-ja.html">Algebra::MPolynomial</a> ‚Å‚ ‚é <var>ring</var>
-‚É‚¨‚¯‚é’l‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p><a href="m-polynomial-ja.html">Algebra::MPolynomial</a> ã§ã‚ã‚‹ <var>ring</var>
+ã«ãŠã‘ã‚‹å€¤ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>require "m-polynomial"
 require "polynomial"
 
@@ -40,13 +40,13 @@ x, y, z = MP.vars
 p f == x**2 + y**2 + z**2 - x*y - y*z - z*x #=&gt; true</pre></dd>
 <dt><a name="label-5" id="label-5"><code>Algebra::MPolynomial.convert_to(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::MPolynomial.convert_to" -->
 <dd>
-<a href="m-polynomial-ja.html">Algebra::Polynomial</a> ‚Å‚ ‚é <var>ring</var>
-‚É•ÏŠ·‚µ‚Ü‚·B</dd>
+<a href="m-polynomial-ja.html">Algebra::Polynomial</a> ã§ã‚ã‚‹ <var>ring</var>
+ã«å¤‰æ›ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-6" id="label-6"><code>Algebra::MPolynomial#value_on(<var>ring</var>)</code></a></dt><!-- RDLabel: "Algebra::MPolynomial#value_on" -->
 <dd>
-<p><a href="m-polynomial-ja.html">Algebra::Polynomial</a> ‚Å‚ ‚é <var>ring</var>
-‚É‚¨‚¯‚é’l‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p><a href="m-polynomial-ja.html">Algebra::Polynomial</a> ã§ã‚ã‚‹ <var>ring</var>
+ã«ãŠã‘ã‚‹å€¤ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>require "m-polynomial"
 require "polynomial"
 

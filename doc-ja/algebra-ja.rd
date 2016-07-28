@@ -2,59 +2,59 @@
 ((<Algebra>))
 
 = Algebra
-((*(�㐔���W���[��)*))
+((*(代数モジュール)*))
 
-�㐔���C�u���� 
+代数ライブラリ 
 
-* ((<Algebra::Polynomial|URL:polynomial-ja.html>)) (1�ϐ��������N���X)
-* ((<Algebra::MPolynomial|URL:m-polynomial-ja.html>)) (���ϐ��������N���X)
-* ((<Algebra::ResidueClassRing|URL:residue-class-ring-ja.html>)) (��]�N���X)
-* ((<Algebra::LocalizedRing|URL:localized-ring-ja.html>)) (�Ǐ����N���X)
-* ((<Algebra::MatrixAlgebra|URL:matrix-algebra-ja.html>)) (�s��㐔�N���X)
+* ((<Algebra::Polynomial|URL:polynomial-ja.html>)) (1変数多項式環クラス)
+* ((<Algebra::MPolynomial|URL:m-polynomial-ja.html>)) (多変数多項式環クラス)
+* ((<Algebra::ResidueClassRing|URL:residue-class-ring-ja.html>)) (剰余環クラス)
+* ((<Algebra::LocalizedRing|URL:localized-ring-ja.html>)) (局所化環クラス)
+* ((<Algebra::MatrixAlgebra|URL:matrix-algebra-ja.html>)) (行列代数クラス)
 * etc.
 
-�Ȃǂ��܂Ƃ߂Ă��郂�W���[���ł��B
+などをまとめているモジュールです。
 
-== �֘A����t�@�C��:
-* (({require "algebra.rb"})) �����Ă����ƁA
+== 関連するファイル:
+* (({require "algebra.rb"})) をしておくと、
 
     include Algebra
 
-  ���Ȃ���A�����̃��W���[�����L�q���ꂽ�t�@�C����K�X (({require})) ���܂��B
+  がなされ、これらのモジュールが記述されたファイルを適宜 (({require})) します。
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 
 * ((|Object|))
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 
-�Ȃ�
+なし
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
 --- Algebra.Polynomial(ring [, obj0 , obj1 [, ...]])
-    ((<Algebra.Polynomial|URL:polynomial-ja.html#Algebra_S_Polynomial>))() �Q�ƁB
+    ((<Algebra.Polynomial|URL:polynomial-ja.html#Algebra_S_Polynomial>))() 参照。
 
 --- Algebra.MPolynomial(ring [, obj0 [, obj1 [, ...]]])
-    ((<Algebra.MPolynomial|URL:m-polynomial-ja.html#Algebra_S_MPolynomial>))() �Q�ƁB
+    ((<Algebra.MPolynomial|URL:m-polynomial-ja.html#Algebra_S_MPolynomial>))() 参照。
 
 --- Algebra.ResidueClassRing(ring, mod)
-    ((<Algebra.ResidueClassRing|URL:residue-class-ring-ja.html#Algebra_S_ResidueClassRing>))() �Q�ƁB
+    ((<Algebra.ResidueClassRing|URL:residue-class-ring-ja.html#Algebra_S_ResidueClassRing>))() 参照。
 
 --- Algebra.AlgebraicExtensionField(field, obj){|x| ... }
-    ((<Algebra.AlgebraicExtensionField|URL:residue-class-ring-ja.html#Algebra_S_AlgebraicExtensionField>))() �Q�ƁB
+    ((<Algebra.AlgebraicExtensionField|URL:residue-class-ring-ja.html#Algebra_S_AlgebraicExtensionField>))() 参照。
 
 --- Algebra.MatrixAlgebra(ring, m, n)
-    ((<Algebra.MatrixAlgebra|URL:matrix-algebra-ja.html#Algebra_S_MatrixAlgebra>))(ring, m, n) �Q�ƁB
+    ((<Algebra.MatrixAlgebra|URL:matrix-algebra-ja.html#Algebra_S_MatrixAlgebra>))(ring, m, n) 参照。
 
 --- Algebra.Vector(ring, n)
-    ((<Algebra.Vector|URL:matrix-algebra-ja.html#Algebra_S_Vector>))(ring, n) �Q�ƁB
+    ((<Algebra.Vector|URL:matrix-algebra-ja.html#Algebra_S_Vector>))(ring, n) 参照。
 
 --- Algebra.Covector(ring, n)
-    ((<Algebra.Covector|URL:matrix-algebra-ja.html#Algebra_S_Covector>))(ring, n) �Q�ƁB
+    ((<Algebra.Covector|URL:matrix-algebra-ja.html#Algebra_S_Covector>))(ring, n) 参照。
 
 --- Algebra.SquareMatrix(ring, size)
-    ((<Algebra.SquareMatrix|URL:matrix-algebra-ja.html#Algebra_S_SquareMatrix>))(ring, n) �Q�ƁB
+    ((<Algebra.SquareMatrix|URL:matrix-algebra-ja.html#Algebra_S_SquareMatrix>))(ring, n) 参照。
 
 
 =end

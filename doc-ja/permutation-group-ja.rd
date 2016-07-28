@@ -10,142 +10,142 @@
 ((<Algebra::Permutation>))
 
 = Algebra::PermutationGroup
-�u���Q�̃N���X�ł��B�v�f�Ƃ��� ((<Permutation>)) �̃C���X�^���X
-���w�肳��Ă���Ƃ��܂��B
+置換群のクラスです。要素として ((<Permutation>)) のインスタンス
+が指定されているとします。
 
 
-== �t�@�C����:
+== ファイル名:
 * ((|permutation-group.rb|))
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 * ((|Group|))
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
 --- ::new(u, [g0, [g1, ...]])
-    ((|u|)) ��P�ʌ��Ƃ��A((|g0|)), ((|g1|)), ... �ō\�������Q��
-    �Ԃ��܂��B
+    ((|u|)) を単位元とし、((|g0|)), ((|g1|)), ... で構成される群を
+    返します。
 
 --- ::unit_group(d)
-    ������ ((|d|)) �̒P�ʌQ��Ԃ��܂��B
+    次数が ((|d|)) の単位群を返します。
 
 --- ::unity(n)
-    ������ ((|n|)) �̒P�ʌ���Ԃ��܂��B
+    次数が ((|n|)) の単位元を返します。
 
 --- ::perm(a)
-    �z�� ((|a|)) �ŕ\�����u����Ԃ��܂��B
+    配列 ((|a|)) で表される置換を返します。
 
 --- ::symmetric(n)
-    ((|n|)) ���̑Ώ̌Q��Ԃ��܂��B
+    ((|n|)) 次の対称群を返します。
 
 --- ::alternate(n)
-    ((|n|)) ���̌��Q��Ԃ��܂��B
+    ((|n|)) 次の交代群を返します。
 
 = Algebra::Permutation
-�u����\������N���X�ł��B
+置換を表現するクラスです。
 
 
-== �t�@�C����:
+== ファイル名:
 * ((|permutation-group.rb|))
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 * ((|Object|))
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 
 * ((|Enumerable|))
 * ((|Powers|))
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
 --- ::new(x)
-    ((|x|)) �Ƃ����z��ŕ\�������u���𐶐����܂��B
+    ((|x|)) という配列で表現される置換を生成します。
 
 --- ::[]([n0, [n1, [n2, ..., ]]])
-    (({[n0, n1, n2, ..., ]})) �Ƃ����u���𐶐����܂��B
-    ��
+    (({[n0, n1, n2, ..., ]})) という置換を生成します。
+    例
       a = Permutation[1, 2, 0]
       p a**2 #=> [2, 0, 1]
       p a**3 #=> [0, 1, 2]
 
 --- ::unity(d)
-    ((|d|)) ���̒P�ʌ���Ԃ��܂��B
+    ((|d|)) 次の単位元を返します。
 
 --- ::cyclic2perm(c, n)
-    ((|c|)) �Ƃ�������u����\���z��̔z�񂩂�A((<Permutation>))
-    �I�u�W�F�N�g�𐶐����܂��B((|n|)) �͎����ł��B
-    ((<decompose_cyclic>)) �̋t�ł��B
+    ((|c|)) という巡回置換を表す配列の配列から、((<Permutation>))
+    オブジェクトを生成します。((|n|)) は次数です。
+    ((<decompose_cyclic>)) の逆です。
 
-    ��: 
+    例: 
       Permutation.cyclic2perm([[1,6,5,4], [2,3]], 7) #=> [0, 6, 3, 2, 1, 4, 5]
       Permutation[0, 6, 3, 2, 1, 4, 5].decompose_cyclic #=> [[1,6,5,4], [2,3]]
 
-== ���\�b�h:
+== メソッド:
 --- unity
-    �P�ʌ���Ԃ��܂��B
+    単位元を返します。
 
 --- perm
-    �z��\����Ԃ��܂��B
+    配列表現を返します。
 
 --- degree
-    ������Ԃ��܂��B
+    次数を返します。
 
 --- size
-    ((<degree>)) �̃G�C���A�X�ł��B
+    ((<degree>)) のエイリアスです。
 
 --- each
-    �u���̊e���ɂ��ČJ��Ԃ��܂��B
+    置換の各元について繰り返します。
 
 --- eql?(other)
-    ((|other|)) �Ɠ������Ƃ��^��Ԃ��܂��B
+    ((|other|)) と等しいとき真を返します。
 
 --- ==
-    ((|eql?|)) �̃G�C���A�X�ł��B
+    ((|eql?|)) のエイリアスです。
 
 --- hash
-    �n�b�V���l��Ԃ��܂��B
+    ハッシュ値を返します。
 
 --- [](i)
-    ((|i|)) �̒u�����Ԃ��܂��B
+    ((|i|)) の置換先を返します。
 
 --- call
-    ((<[]>)) �̃G�C���A�X�ł��B
+    ((<[]>)) のエイリアスです。
 
 --- index(i)
-    ((|i|)) �̒u������Ԃ��܂��B
+    ((|i|)) の置換元を返します。
 
 --- right_act(other)
-    ((|other|)) �ɉE���炩���܂��B���Ȃ킿
-    (({(g.right_act(h))[x] == h[g[x]]})) ���������܂��B
+    ((|other|)) に右からかけます。すなわち
+    (({(g.right_act(h))[x] == h[g[x]]})) が成立します。
 
 --- *
-    ((<right_act>)) �̃G�C���A�X�ł��B
+    ((<right_act>)) のエイリアスです。
 
 --- left_act(other)
-    ((|other|)) �ɍ����炩�炩���܂��B���Ȃ킿
-    (({(g.left_act(h))[x] == g[h[x]]})) ���������܂��B
+    ((|other|)) に左からからかけます。すなわち
+    (({(g.left_act(h))[x] == g[h[x]]})) が成立します。
 
 --- inverse
-    �t����Ԃ��܂��B
+    逆元を返します。
 
 --- inv
-    ((|inverse|)) �̃G�C���A�X�ł��B
+    ((|inverse|)) のエイリアスです。
 
 --- sign
-    ������Ԃ��܂��B
+    符号を返します。
 
 --- conjugate(g)
-    ((|g|)) �ɂ�鋤�� (({g * self * g.inv})) ��Ԃ��܂��B
+    ((|g|)) による共役 (({g * self * g.inv})) を返します。
 
 --- decompose_cyclic
-    �z��ɂ�鏄��\���̔z���Ԃ��܂��B
-    ((<::cyclic2perm(c, n)>)) �̋t�ł��B
+    配列による巡回表現の配列を返します。
+    ((<::cyclic2perm(c, n)>)) の逆です。
 
 --- to_map
-    ((<Map|URL:finite-map-ja.html>)) �I�u�W�F�N�g�����܂��B
+    ((<Map|URL:finite-map-ja.html>)) オブジェクト化します。
 
 --- decompose_transposition
-    �݊��̔z��ɕ����������̂�Ԃ��܂��B
+    互換の配列に分解したものを返します。
 
 =end
 
