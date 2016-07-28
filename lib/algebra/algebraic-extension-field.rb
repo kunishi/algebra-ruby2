@@ -7,7 +7,6 @@
 require 'algebra/polynomial'
 # require "algebra/m-polynomial"
 require 'algebra/residue-class-ring'
-require 'algebra/polynomial'
 
 module Algebra
   def AlgebraicExtensionField(field, var = 'x', &b)
