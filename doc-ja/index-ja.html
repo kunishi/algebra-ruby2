@@ -1,105 +1,105 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html 
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<link rel="stylesheet" type="text/css" href="style.css" />
-<title>algebra/index-ja.html</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>doc-ja/index-ja.rd</title>
+<link href="style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <p>[<a href="README-ja.html">README-ja</a>]  [<a href="../doc/index.html">English</a>]</p>
-<h1><a name="label-0" id="label-0">‘ã”ƒpƒbƒP[ƒW</a></h1><!-- RDLabel: "‘ã”ƒpƒbƒP[ƒW" -->
+<h1><a name="label-0" id="label-0">ä»£æ•°ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸</a></h1><!-- RDLabel: "ä»£æ•°ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸" -->
 <pre>Version: 0.72  (2006.09.16)
-Author: Œ´ Mˆê˜Y (sinara@blade.nagaokaut.ac.jp)
+Author: åŸ ä¿¡ä¸€éƒ (sinara@blade.nagaokaut.ac.jp)
 
-‚±‚ê‚Í‚P•Ï”‚ ‚é‚¢‚Í‘½•Ï”‚Ì‘½€®‚ğŒvZ‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ‚Å‚·B</pre>
-<h2><a name="label-1" id="label-1">0. Å‰‚Ìˆê•à</a></h2><!-- RDLabel: "0. Å‰‚Ìˆê•à" -->
-<p>Å‚àŠÈ’P‚È—˜—p–@‚Í require "algebra" ‚Æ‚µ‚ÄAŒvZ‚ğn‚ß‚é‚±‚Æ‚Å‚·B</p>
+ã“ã‚Œã¯ï¼‘å¤‰æ•°ã‚ã‚‹ã„ã¯å¤šå¤‰æ•°ã®å¤šé …å¼ã‚’è¨ˆç®—ã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã§ã™ã€‚</pre>
+<h2><a name="label-1" id="label-1">0. æœ€åˆã®ä¸€æ­©</a></h2><!-- RDLabel: "0. æœ€åˆã®ä¸€æ­©" -->
+<p>æœ€ã‚‚ç°¡å˜ãªåˆ©ç”¨æ³•ã¯ require "algebra" ã¨ã—ã¦ã€è¨ˆç®—ã‚’å§‹ã‚ã‚‹ã“ã¨ã§ã™ã€‚</p>
 <pre>require "algebra"
 x = Polynomial(Integer, "x").var
 puts( (x+1)**7 )
   #=&gt; x^7 + 7x^6 + 21x^5 + 35x^4 + 35x^3 + 21x^2 + 7x + 1
 puts( (x**7 + 7*x**6 + 21*x**5 + 35*x**4 + 35*x**3 + 21*x**2 + 7*x + 1).factorize )
   #=&gt; (x + 1)^7</pre>
-<h2><a name="label-2" id="label-2">1. —á‘è</a></h2><!-- RDLabel: "1. —á‘è" -->
+<h2><a name="label-2" id="label-2">1. ä¾‹é¡Œ</a></h2><!-- RDLabel: "1. ä¾‹é¡Œ" -->
 <ul>
 <li><a href="samples-ja.html">Samples</a></li>
 </ul>
-<h2><a name="label-3" id="label-3">2. å‚ÈƒNƒ‰ƒXEƒ‚ƒWƒ…[ƒ‹</a></h2><!-- RDLabel: "2. å‚ÈƒNƒ‰ƒXEƒ‚ƒWƒ…[ƒ‹" -->
+<h2><a name="label-3" id="label-3">2. ä¸»ãªã‚¯ãƒ©ã‚¹ãƒ»ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«</a></h2><!-- RDLabel: "2. ä¸»ãªã‚¯ãƒ©ã‚¹ãƒ»ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«" -->
 <ul>
-<li><a href="algebra-ja.html">Algebra</a> (‘ã”ƒ‚ƒWƒ…[ƒ‹)
+<li><a href="algebra-ja.html">Algebra</a> (ä»£æ•°ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«)
 <ul>
-<li><a href="polynomial-ja.html">Algebra::Polynomial</a> (1•Ï”‘½€®ŠÂƒNƒ‰ƒX)</li>
-<li><a href="euclidian-ring-ja.html">Algebra::EuclidianRing</a> (ƒ†[ƒNƒŠƒbƒhŠÂƒ‚ƒWƒ…[ƒ‹)</li>
-<li><a href="m-polynomial-ja.html">Algebra::MPolynomial</a> (‘½•Ï”‘½€®ŠÂƒNƒ‰ƒX)</li>
-<li><a href="residue-class-ring-ja.html">Algebra::ResidueClassRing</a> (è—]ŠÂƒNƒ‰ƒX)</li>
-<li><a href="algebraic-extension-field-ja.html">Algebra::AlgebraicExtensionField</a> (‘ã”Šg‘å‘ÌƒNƒ‰ƒX)</li>
-<li><a href="localized-ring-ja.html">Algebra::LocalizedRing</a> (‹ÇŠ‰»ŠÂƒNƒ‰ƒX)</li>
-<li><a href="matrix-algebra-ja.html">Algebra::MatrixAlgebra</a> (s—ñ‘ã”ƒNƒ‰ƒX)</li>
-<li><a href="algebraic-parser-ja.html">Algebra::AlgebraicParser</a> (‘ã”®‚ğ•\‚·•¶š—ñ‚Ì•]‰¿ƒNƒ‰ƒX)</li>
-<li><a href="finite-set-ja.html">Algebra::Set</a> (W‡‚ÌƒNƒ‰ƒX)</li>
-<li><a href="finite-map-ja.html">Algebra::Map</a> (Ê‘œ‚ÌƒNƒ‰ƒX)</li>
-<li><a href="finite-group-ja.html">Algebra::Group</a> (ŒQ‚ÌƒNƒ‰ƒX)</li>
-<li><a href="permutation-group-ja.html">Algebra::PermutationGroup</a> (’uŠ·ŒQ‚ÌƒNƒ‰ƒX)</li>
+<li><a href="polynomial-ja.html">Algebra::Polynomial</a> (1å¤‰æ•°å¤šé …å¼ç’°ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="euclidian-ring-ja.html">Algebra::EuclidianRing</a> (ãƒ¦ãƒ¼ã‚¯ãƒªãƒƒãƒ‰ç’°ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«)</li>
+<li><a href="m-polynomial-ja.html">Algebra::MPolynomial</a> (å¤šå¤‰æ•°å¤šé …å¼ç’°ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="residue-class-ring-ja.html">Algebra::ResidueClassRing</a> (å‰°ä½™ç’°ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="algebraic-extension-field-ja.html">Algebra::AlgebraicExtensionField</a> (ä»£æ•°æ‹¡å¤§ä½“ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="localized-ring-ja.html">Algebra::LocalizedRing</a> (å±€æ‰€åŒ–ç’°ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="matrix-algebra-ja.html">Algebra::MatrixAlgebra</a> (è¡Œåˆ—ä»£æ•°ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="algebraic-parser-ja.html">Algebra::AlgebraicParser</a> (ä»£æ•°å¼ã‚’è¡¨ã™æ–‡å­—åˆ—ã®è©•ä¾¡ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="finite-set-ja.html">Algebra::Set</a> (é›†åˆã®ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="finite-map-ja.html">Algebra::Map</a> (å†™åƒã®ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="finite-group-ja.html">Algebra::Group</a> (ç¾¤ã®ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="permutation-group-ja.html">Algebra::PermutationGroup</a> (ç½®æ›ç¾¤ã®ã‚¯ãƒ©ã‚¹)</li>
 </ul></li>
 </ul>
-<h2><a name="label-4" id="label-4">3. ‚»‚Ì‘¼</a></h2><!-- RDLabel: "3. ‚»‚Ì‘¼" -->
+<h2><a name="label-4" id="label-4">3. ãã®ä»–</a></h2><!-- RDLabel: "3. ãã®ä»–" -->
 <ul>
-<li><a href="elementary-divisor-ja.html">Algebra::ElementaryDivisor</a> (’Pˆöqƒ‚ƒWƒ…[ƒ‹)</li>
-<li><a href="jordan-form-ja.html">Algebra::JordanForm</a> (ƒWƒ‡ƒ‹ƒ_ƒ“s—ñƒNƒ‰ƒX)</li>
-<li><a href="matrix-algebra-triplet-ja.html">Algebra::MatrixAlgebraTriplet</a> (3‚Â‘gs—ñ‚ÌƒNƒ‰ƒX)</li>
-<li><a href="algebraic-equation-ja.html">‘ã”•û’ö®ƒnƒ“ƒhƒ‹ƒ†[ƒeƒBƒŠƒeƒB[</a></li>
-<li><a href="polynomial-converter-ja.html">‘½€®ŠÂ‘ŠŒİ•ÏŠ·ƒ†[ƒeƒBƒŠƒeƒB[</a></li>
+<li><a href="elementary-divisor-ja.html">Algebra::ElementaryDivisor</a> (å˜å› å­ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«)</li>
+<li><a href="jordan-form-ja.html">Algebra::JordanForm</a> (ã‚¸ãƒ§ãƒ«ãƒ€ãƒ³è¡Œåˆ—ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="matrix-algebra-triplet-ja.html">Algebra::MatrixAlgebraTriplet</a> (3ã¤çµ„è¡Œåˆ—ã®ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="algebraic-equation-ja.html">ä»£æ•°æ–¹ç¨‹å¼ãƒãƒ³ãƒ‰ãƒ«ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¼</a></li>
+<li><a href="polynomial-converter-ja.html">å¤šé …å¼ç’°ç›¸äº’å¤‰æ›ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¼</a></li>
 </ul>
-<h2><a name="label-5" id="label-5">4. ƒpƒbƒP[ƒW“à—e</a></h2><!-- RDLabel: "4. ƒpƒbƒP[ƒW“à—e" -->
-<h3><a name="label-6" id="label-6">‘‡</a></h3><!-- RDLabel: "‘‡" -->
-<pre>algebra.rb             Algebra ƒ‰ƒCƒuƒ‰ƒŠˆê”Ê—˜—pƒtƒ@ƒCƒ‹</pre>
-<h3><a name="label-7" id="label-7">ˆê•Ï”ŠÖŒW</a></h3><!-- RDLabel: "ˆê•Ï”ŠÖŒW" -->
-<pre>polynomial.rb          ‚P•Ï”‘½€®ŠÂ‚ÌƒNƒ‰ƒX
-euclidian-ring.rb      ƒ†[ƒNƒŠƒbƒh®ˆæƒ†ƒeƒBƒŠƒeƒB[(G.C.D.‚ÌŒvZ)
-polynomial-factor.rb   ‚P•Ï”‘½€®ˆö”•ª‰ğƒ‰ƒCƒuƒ‰ƒŠ
-  polynomial-factor-int.rb   ®”ŒW””Å
-  polynomial-factor-zp.rb    ZpŒW””Å
-  polynomial-factor-alg.rb   ‘ã”“I”ŒW””Å</pre>
-<h3><a name="label-8" id="label-8">‘½•Ï”ŠÖŒW</a></h3><!-- RDLabel: "‘½•Ï”ŠÖŒW" -->
-<pre>m-polynomial.rb         ‘½•Ï”‘½€®ŠÂ‚ÌƒNƒ‰ƒX
-  m-index.rb            m-polynomial.rb ‚Ì‰º¿‚¯
-m-polynomial-factor.rb   ‚P•Ï”‘½€®ˆö”•ª‰ğƒ‰ƒCƒuƒ‰ƒŠ
-  m-polynomial-factor-int.rb   ®”ŒW””Å
-  m-polynomial-factor-zp.rb    ZpŒW””Å
-groebner-basis.rb       ƒOƒŒƒuƒiŠî’ê‚ÌŒvZƒ‚ƒWƒ…[ƒ‹
-groebner-basis-coeff.rb œZ‚ÌŒvZƒ‚ƒWƒ…[ƒ‹</pre>
-<h3><a name="label-9" id="label-9">‘ã”‘S”Ê</a></h3><!-- RDLabel: "‘ã”‘S”Ê" -->
-<pre>localized-ring.rb       ¤‘Ìì¬ƒ‰ƒCƒuƒ‰ƒŠ
-matrix-algebra.rb       s—ñ‘ã”‚ÌƒNƒ‰ƒX
-  elementary-divisor.rb ’Pˆöq‘€ìƒ‚ƒWƒ…[ƒ‹
-  matrix-algebra.triplete.rb  3‚Â‘gs—ñƒNƒ‰ƒX
-  jordan-form.rb        ƒWƒ‡ƒ‹ƒ_ƒ“s—ñƒNƒ‰ƒX
-residue-class-ring.rb   ‘½€®ŠÂ‚Ìè—]ŠÂ
-algebraic-extention-field.rb ‘ã”Šg‘å‘Ì
-splitting-field.rb      ‘½€®‚ÌÅ¬•ª‰ğ‘Ì
-galois-group.rb         Galois ŒQ
-linear-algebra.rb       üŒ`‘ã”ƒ‰ƒCƒuƒ‰ƒŠ
-algebraic-equation.rb   ‘ã”•û’ö®ƒ‰ƒCƒuƒ‰ƒŠ</pre>
-<h3><a name="label-10" id="label-10">Šî‘b•”•ª</a></h3><!-- RDLabel: "Šî‘b•”•ª" -->
-<pre>finite-set.rb           W‡‚ÌƒNƒ‰ƒX
-  finite-map.rb         Ê‘œ‚ÌƒNƒ‰ƒX
-  finite-group.rb       ŒQ‚ÌƒNƒ‰ƒX
-    permutation-group.rb  ’uŠ·ŒQ‚ÌƒNƒ‰ƒX</pre>
-<h3><a name="label-11" id="label-11">‹¤’Ê•”•ª</a></h3><!-- RDLabel: "‹¤’Ê•”•ª" -->
-<pre>prime-gen.rb            ‘f”¶¬ƒNƒ‰ƒX
-numeric-supplement.rb   Numeric ‚Ì•âŠ®
-polynomial-converter.rb ‘½€®ŠÂ‘ŠŒİ•ÏŠ·ƒ†[ƒeƒBƒŠƒeƒB[
-algebra-system.rb       ‘ã”Œn‚Ì‹¤’Êd—l
-algebraic-parser.rb     ‘½Œ³ŠÂ‚Ì®‚Ì•¶š—ñ•\Œ»‚ğ•]‰¿‚·‚éƒ‚ƒWƒ…[ƒ‹</pre>
-<h3><a name="label-12" id="label-12">‚»‚Ì‘¼</a></h3><!-- RDLabel: "‚»‚Ì‘¼" -->
-<pre>array-supplement.rb     Array ‚Ì•âŠ®
-doc-ja/                 ƒ}ƒjƒ…ƒAƒ‹“ú–{Œê”Å(RD, HTML, TXT)
-doc/                    ƒ}ƒjƒ…ƒAƒ‹‰pŒê”Å(RD, HTML, TXT)
-sample/                 ƒTƒ“ƒvƒ‹ƒR[ƒh
-work/                   iŠJ”­ì‹ÆêŠj</pre>
+<h2><a name="label-5" id="label-5">4. ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸å†…å®¹</a></h2><!-- RDLabel: "4. ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸å†…å®¹" -->
+<h3><a name="label-6" id="label-6">ç·åˆ</a></h3><!-- RDLabel: "ç·åˆ" -->
+<pre>algebra.rb             Algebra ãƒ©ã‚¤ãƒ–ãƒ©ãƒªä¸€èˆ¬åˆ©ç”¨ãƒ•ã‚¡ã‚¤ãƒ«</pre>
+<h3><a name="label-7" id="label-7">ä¸€å¤‰æ•°é–¢ä¿‚</a></h3><!-- RDLabel: "ä¸€å¤‰æ•°é–¢ä¿‚" -->
+<pre>polynomial.rb          ï¼‘å¤‰æ•°å¤šé …å¼ç’°ã®ã‚¯ãƒ©ã‚¹
+euclidian-ring.rb      ãƒ¦ãƒ¼ã‚¯ãƒªãƒƒãƒ‰æ•´åŸŸãƒ¦ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¼(G.C.D.ã®è¨ˆç®—)
+polynomial-factor.rb   ï¼‘å¤‰æ•°å¤šé …å¼å› æ•°åˆ†è§£ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+  polynomial-factor-int.rb   æ•´æ•°ä¿‚æ•°ç‰ˆ
+  polynomial-factor-zp.rb    Zpä¿‚æ•°ç‰ˆ
+  polynomial-factor-alg.rb   ä»£æ•°çš„æ•°ä¿‚æ•°ç‰ˆ</pre>
+<h3><a name="label-8" id="label-8">å¤šå¤‰æ•°é–¢ä¿‚</a></h3><!-- RDLabel: "å¤šå¤‰æ•°é–¢ä¿‚" -->
+<pre>m-polynomial.rb         å¤šå¤‰æ•°å¤šé …å¼ç’°ã®ã‚¯ãƒ©ã‚¹
+  m-index.rb            m-polynomial.rb ã®ä¸‹è«‹ã‘
+m-polynomial-factor.rb   ï¼‘å¤‰æ•°å¤šé …å¼å› æ•°åˆ†è§£ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+  m-polynomial-factor-int.rb   æ•´æ•°ä¿‚æ•°ç‰ˆ
+  m-polynomial-factor-zp.rb    Zpä¿‚æ•°ç‰ˆ
+groebner-basis.rb       ã‚°ãƒ¬ãƒ–ãƒŠåŸºåº•ã®è¨ˆç®—ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
+groebner-basis-coeff.rb é™¤ç®—ã®è¨ˆç®—ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«</pre>
+<h3><a name="label-9" id="label-9">ä»£æ•°å…¨èˆ¬</a></h3><!-- RDLabel: "ä»£æ•°å…¨èˆ¬" -->
+<pre>localized-ring.rb       å•†ä½“ä½œæˆãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+matrix-algebra.rb       è¡Œåˆ—ä»£æ•°ã®ã‚¯ãƒ©ã‚¹
+  elementary-divisor.rb å˜å› å­æ“ä½œãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
+  matrix-algebra.triplete.rb  3ã¤çµ„è¡Œåˆ—ã‚¯ãƒ©ã‚¹
+  jordan-form.rb        ã‚¸ãƒ§ãƒ«ãƒ€ãƒ³è¡Œåˆ—ã‚¯ãƒ©ã‚¹
+residue-class-ring.rb   å¤šé …å¼ç’°ã®å‰°ä½™ç’°
+algebraic-extention-field.rb ä»£æ•°æ‹¡å¤§ä½“
+splitting-field.rb      å¤šé …å¼ã®æœ€å°åˆ†è§£ä½“
+galois-group.rb         Galois ç¾¤
+linear-algebra.rb       ç·šå½¢ä»£æ•°ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+algebraic-equation.rb   ä»£æ•°æ–¹ç¨‹å¼ãƒ©ã‚¤ãƒ–ãƒ©ãƒª</pre>
+<h3><a name="label-10" id="label-10">åŸºç¤éƒ¨åˆ†</a></h3><!-- RDLabel: "åŸºç¤éƒ¨åˆ†" -->
+<pre>finite-set.rb           é›†åˆã®ã‚¯ãƒ©ã‚¹
+  finite-map.rb         å†™åƒã®ã‚¯ãƒ©ã‚¹
+  finite-group.rb       ç¾¤ã®ã‚¯ãƒ©ã‚¹
+    permutation-group.rb  ç½®æ›ç¾¤ã®ã‚¯ãƒ©ã‚¹</pre>
+<h3><a name="label-11" id="label-11">å…±é€šéƒ¨åˆ†</a></h3><!-- RDLabel: "å…±é€šéƒ¨åˆ†" -->
+<pre>prime-gen.rb            ç´ æ•°ç”Ÿæˆã‚¯ãƒ©ã‚¹
+numeric-supplement.rb   Numeric ã®è£œå®Œ
+polynomial-converter.rb å¤šé …å¼ç’°ç›¸äº’å¤‰æ›ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¼
+algebra-system.rb       ä»£æ•°ç³»ã®å…±é€šä»•æ§˜
+algebraic-parser.rb     å¤šå…ƒç’°ã®å¼ã®æ–‡å­—åˆ—è¡¨ç¾ã‚’è©•ä¾¡ã™ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«</pre>
+<h3><a name="label-12" id="label-12">ãã®ä»–</a></h3><!-- RDLabel: "ãã®ä»–" -->
+<pre>array-supplement.rb     Array ã®è£œå®Œ
+doc-ja/                 ãƒãƒ‹ãƒ¥ã‚¢ãƒ«æ—¥æœ¬èªç‰ˆ(RD, HTML, TXT)
+doc/                    ãƒãƒ‹ãƒ¥ã‚¢ãƒ«è‹±èªç‰ˆ(RD, HTML, TXT)
+sample/                 ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰
+work/                   ï¼ˆé–‹ç™ºä½œæ¥­å ´æ‰€ï¼‰</pre>
 <h2><a name="label-13" id="label-13">5. ToDo</a></h2><!-- RDLabel: "5. ToDo" -->
 <ul>
 <li><a href="todo.html">todo.html</a></li>

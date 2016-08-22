@@ -94,7 +94,7 @@ module Algebra
       k = ground.unity
       pi = 0
       each_j do |j|
-        if i = (pi...rsize).find{|i| !self[i, j].zero?}
+        if i = (pi...rsize).find{|i1| !self[i1, j].zero?}
           #	  pivots.push j
           if i != pi
             swap_r!(pi, i); inv.swap_r!(pi, i)
@@ -132,7 +132,7 @@ module Algebra
       k = ground.unity
       pi = 0
       each_j do |j|
-        if i = (pi...rsize).find{|i| !self[i, j].zero?}
+        if i = (pi...rsize).find{|i1| !self[i1, j].zero?}
           #	  pivots.push j
           if i != pi
             swap_r!(pi, i); inv.swap_r!(pi, i)

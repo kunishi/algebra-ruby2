@@ -732,7 +732,7 @@ class MPolynomial
     end
 
     def ind
-      if @ind
+      if defined? @ind
         return @ind
       else
         each do |obj|

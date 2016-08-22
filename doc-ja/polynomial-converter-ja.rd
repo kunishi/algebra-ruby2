@@ -1,23 +1,23 @@
 =begin
 [((<index-ja|URL:index-ja.html>))] 
-= ‘½€®ŠÂ‘ŠŒİ•ÏŠ·ƒ†[ƒeƒBƒŠƒeƒB[
+= å¤šé …å¼ç’°ç›¸äº’å¤‰æ›ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¼
 
-Polynomial <-> MPolynomial ‚Ì‘ŠŒİ•ÏŠ·ƒ†[ƒeƒBƒŠƒeƒB[‚Å‚·B
+Polynomial <-> MPolynomial ã®ç›¸äº’å¤‰æ›ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¼ã§ã™ã€‚
 
-== ƒtƒ@ƒCƒ‹–¼:
+== ãƒ•ã‚¡ã‚¤ãƒ«å:
 * ((|polyomimial-converter.rb|))
 
-== ƒƒ\ƒbƒh
+== ãƒ¡ã‚½ãƒƒãƒ‰
 
 --- Algebra::Polynomial.convert_to(ring)
-    ((<Algebra::MPolynomial|URL:m-polynomial-ja.html>)) ‚Å‚ ‚é ((|ring|))
-    ‚É•ÏŠ·‚µ‚Ü‚·B
+    ((<Algebra::MPolynomial|URL:m-polynomial-ja.html>)) ã§ã‚ã‚‹ ((|ring|))
+    ã«å¤‰æ›ã—ã¾ã™ã€‚
 
 --- Algebra::Polynomial#value_on(ring)
-    ((<Algebra::MPolynomial|URL:m-polynomial-ja.html>)) ‚Å‚ ‚é ((|ring|))
-    ‚É‚¨‚¯‚é’l‚ğ•Ô‚µ‚Ü‚·B
+    ((<Algebra::MPolynomial|URL:m-polynomial-ja.html>)) ã§ã‚ã‚‹ ((|ring|))
+    ã«ãŠã‘ã‚‹å€¤ã‚’è¿”ã—ã¾ã™ã€‚
     
-    —á:
+    ä¾‹:
         require "m-polynomial"
         require "polynomial"
 
@@ -31,14 +31,14 @@ Polynomial <-> MPolynomial ‚Ì‘ŠŒİ•ÏŠ·ƒ†[ƒeƒBƒŠƒeƒB[‚Å‚·B
         p f == x**2 + y**2 + z**2 - x*y - y*z - z*x #=> true
 
 --- Algebra::MPolynomial.convert_to(ring)
-    ((<Algebra::Polynomial|URL:m-polynomial-ja.html>)) ‚Å‚ ‚é ((|ring|))
-    ‚É•ÏŠ·‚µ‚Ü‚·B
+    ((<Algebra::Polynomial|URL:m-polynomial-ja.html>)) ã§ã‚ã‚‹ ((|ring|))
+    ã«å¤‰æ›ã—ã¾ã™ã€‚
 
 --- Algebra::MPolynomial#value_on(ring)
-    ((<Algebra::Polynomial|URL:m-polynomial-ja.html>)) ‚Å‚ ‚é ((|ring|))
-    ‚É‚¨‚¯‚é’l‚ğ•Ô‚µ‚Ü‚·B
+    ((<Algebra::Polynomial|URL:m-polynomial-ja.html>)) ã§ã‚ã‚‹ ((|ring|))
+    ã«ãŠã‘ã‚‹å€¤ã‚’è¿”ã—ã¾ã™ã€‚
 
-    —á:
+    ä¾‹:
         require "m-polynomial"
         require "polynomial"
 

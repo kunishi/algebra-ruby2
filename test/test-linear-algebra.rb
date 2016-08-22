@@ -1,10 +1,8 @@
-require "test/unit"
-require "algebra/rational"
-require "algebra/linear-algebra"
-#include Algebra
+require 'test/unit'
+require 'algebra'
+require 'algebra/linear-algebra'
 
 class TestDiagonalize < Test::Unit::TestCase
-
   def test_diagonalize
     m = Algebra.SquareMatrix(Rational, 4)
     as = [
@@ -18,39 +16,35 @@ class TestDiagonalize < Test::Unit::TestCase
       a, b, c, d = elms
       case i
       when 0
-	ans = m1[
-	  [ -1,   1, -a - 1, a - 1],
-	  [1,   1,  -1,  -1],
-	  [-1,   1, a + 1, -a + 1],
-	  [1,   1,   1,   1],
-	]
-=begin
-	ans = m[
-	  [-1,   1,   1, a - 1],
-	  [1,   1,   1,  -1],
-	  [-1,   1,   1, -a + 1],
-	  [1,   1,   1,   1],
-	]
-=end
+        ans = m1[
+          [-1, 1, -a - 1, a - 1],
+          [1, 1,  -1, -1],
+          [-1, 1, a + 1, -a + 1],
+          [1, 1, 1, 1],
+        ]
+      # 	ans = m[
+      # 	  [-1,   1,   1, a - 1],
+      # 	  [1,   1,   1,  -1],
+      # 	  [-1,   1,   1, -a + 1],
+      # 	  [1,   1,   1,   1],
+      # 	]
       when 1
-	ans = m1[
-	  [a**2 - a - 2, -a**2 + a + 1,
-	    (-a**3 + 2*a**2 + a - 1)*b + a**3 - 2*a**2 - a,
-	    (a**3 - 2*a**2 - a + 1)*b - a**3 + 2*a**2 + a - 1],
-	  [a**3 - 2*a**2 - a + 2, a**3 - 2*a**2 - a + 2,
-	    -a**3 + 2*a**2 + a - 1, -a**3 + 2*a**2 + a - 1],
-	  [-a**3 + 2*a**2 + 2*a - 2, -a + 1, b + a**3 - 2*a**2 - a + 1,
-	    -b + 1],
-	  [1,   1,   1,   1]
-	]
-=begin
-	ans = m[
-	  [a**2 - a - 2, (-a**3 + 2*a**2 + a - 1)*b + a**3 - 2*a**2 - a, -a**2 + a + 1, (a**3 - 2*a**2 - a + 1)*b - a**3 + 2*a**2 + a - 1],
-	  [a**3 - 2*a**2 - a + 2, -a**3 + 2*a**2 + a - 1, a**3 - 2*a**2 - a + 2, -a**3 + 2*a**2 + a - 1],
-	  [-a**3 + 2*a**2 + 2*a - 2, b + a**3 - 2*a**2 - a + 1, -a + 1, -b + 1],
-	  [1,   1,   1,   1],
-	]
-=end
+        ans = m1[
+          [a**2 - a - 2, -a**2 + a + 1,
+           (-a**3 + 2 * a**2 + a - 1) * b + a**3 - 2 * a**2 - a,
+           (a**3 - 2 * a**2 - a + 1) * b - a**3 + 2 * a**2 + a - 1],
+          [a**3 - 2 * a**2 - a + 2, a**3 - 2 * a**2 - a + 2,
+           -a**3 + 2 * a**2 + a - 1, -a**3 + 2 * a**2 + a - 1],
+          [-a**3 + 2 * a**2 + 2 * a - 2, -a + 1, b + a**3 - 2 * a**2 - a + 1,
+           -b + 1],
+          [1,   1, 1, 1]
+        ]
+        # 	ans = m[
+        # 	  [a**2 - a - 2, (-a**3 + 2*a**2 + a - 1)*b + a**3 - 2*a**2 - a, -a**2 + a + 1, (a**3 - 2*a**2 - a + 1)*b - a**3 + 2*a**2 + a - 1],
+        # 	  [a**3 - 2*a**2 - a + 2, -a**3 + 2*a**2 + a - 1, a**3 - 2*a**2 - a + 2, -a**3 + 2*a**2 + a - 1],
+        # 	  [-a**3 + 2*a**2 + 2*a - 2, b + a**3 - 2*a**2 - a + 1, -a + 1, -b + 1],
+        # 	  [1,   1,   1,   1],
+        # 	]
       end
       #      sleep 1
       assert_equal(ans, tmatrix)

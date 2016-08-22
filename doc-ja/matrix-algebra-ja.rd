@@ -11,52 +11,52 @@
 ((<Algebra::GaussianElimination>))
 
 = Algebra::MatrixAlgebra
-((*(�s��N���X)*))
+((*(行列クラス)*))
 
-�s���\�����܂��B���ۂ̃N���X�𐶐�����ɂ͊��ƃT�C�Y���w�肵�āA
-�N���X���\�b�h ((<::create>)) ���邢�͊֐� ((<Algebra::MatrixAlgebra>))()
-��p���܂��B
+行列を表現します。実際のクラスを生成するには基底環とサイズを指定して、
+クラスメソッド ((<::create>)) あるいは関数 ((<Algebra::MatrixAlgebra>))()
+を用います。
 
-�T�u�N���X�Ƃ��� ((<Algebra::Vector>))(�c�x�N�g���j, 
-((<Algebra::Covector>))(���x�N�g��), 
-((<Algebra::SquareMatrix>))(�����s��) �������܂��B
+サブクラスとして ((<Algebra::Vector>))(縦ベクトル）, 
+((<Algebra::Covector>))(横ベクトル), 
+((<Algebra::SquareMatrix>))(正方行列) を持ちます。
 
-== �t�@�C����:
+== ファイル名:
 * ((|matrix-algebra.rb|))
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 
 * ((|Object|))
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 
 * ((<Algebra::GaussianElimination>))
 * Enumerable
 
-== �֘A����֐�:
+== 関連する関数:
 
 --- Algebra.MatrixAlgebra(ring, m, n)
-    ((<::create>))(ring, m, n)�Ɠ����ł��B
+    ((<::create>))(ring, m, n)と同じです。
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
 --- ::create(ring, m, n)
-    �� ((|ring|)) ��v�f�Ƃ���, (({ (m, n) })) �^�̍s���
-    �\������N���X�𐶐����܂��B
+    環 ((|ring|)) を要素とする, (({ (m, n) })) 型の行列を
+    表現するクラスを生成します。
 
-    ���̃��\�b�h�̖߂�l�� ((<Algebra::MatrixAlgebra>)) �N���X�̃T�u�N���X
-    �ł��B���̃T�u�N���X�ɂ̓N���X���\�b�h�Ƃ��� ((|ground|)) ��
-    ((|rsize|)), ((|csize|)),  ((|sizes|)) ����`����A���ꂼ��A
-    ���ƂȂ�� ((|ring|))�A�s�̃T�C�Y ((|m|))�A��̃T�C�Y ((|n|))�A
-    �����̔z�� (({ [m, n] })) ��Ԃ��܂��B
+    このメソッドの戻り値は ((<Algebra::MatrixAlgebra>)) クラスのサブクラス
+    です。このサブクラスにはクラスメソッドとして ((|ground|)) と
+    ((|rsize|)), ((|csize|)),  ((|sizes|)) が定義され、それぞれ、
+    基底となる環 ((|ring|))、行のサイズ ((|m|))、列のサイズ ((|n|))、
+    それらの配列 (({ [m, n] })) を返します。
 
-    ���ۂɍs������ɂ� ((<::new>)),  ((<::matrix>)), 
-    ((<::[]>)) ���g���܂��B
+    実際に行列を作るには ((<::new>)),  ((<::matrix>)), 
+    ((<::[]>)) を使います。
 
 --- ::new(array)
-    ((|array|)) ��z��̔z��Ƃ���Ƃ��A�����v�f�Ƃ���s���Ԃ��܂��B
+    ((|array|)) を配列の配列とするとき、それを要素とする行列を返します。
 
-    ��:
+    例:
       M = Algebra.MatrixAlgebra(Integer, 2, 3)
       a = M.new([[1, 2, 3], [4, 5, 6]])
       a.display
@@ -64,10 +64,10 @@
         #=> [4, 5, 6]
 
 --- ::matrix{|i, j| ... }
-    ((|i|)) �� ((|j|)) �ɍs�Ɨ�̃C���f�b�N�X��^�� ... ��]�������l��
-    (({ (i, j) })) �����ɂ����s���Ԃ��܂��B
+    ((|i|)) と ((|j|)) に行と列のインデックスを与え ... を評価した値を
+    (({ (i, j) })) 成分にした行列を返します。
     
-    ��:
+    例:
       M = Alebra.MatrixAlgebra(Integer, 2, 3)
       a = M.matrix{|i, j| 10*(i + 1) + j + 1}
       a.display
@@ -75,9 +75,9 @@
         #=> [21, 22, 23]
 
 --- ::[](array1, array2, ..., arrayr)
-    �z�� (({array1, array2, ..., arrayr})) �����ꂼ��s�Ƃ���z���Ԃ��܂��B
+    配列 (({array1, array2, ..., arrayr})) をそれぞれ行とする配列を返します。
 
-    ��:
+    例:
       M = Algebra.MatrixAlgebra(Integer, 2, 3)
       a = M[[1, 2, 3], [4, 5, 6]]
       a.display
@@ -85,13 +85,13 @@
         #=> [4, 5, 6]
 
 --- ::collect_ij{|i, j| ... }
-    ((<::matrix>)) �ɂ悭���Ă��܂����A
-    �Ԃ�l�� Algebra::MatrixAlgebra �łȂ��A2�d�z��(Array �� Array)�ł��B
+    ((<::matrix>)) によく似ていますが、
+    返り値は Algebra::MatrixAlgebra でなく、2重配列(Array の Array)です。
 
 --- ::collect_row{|i| ... }
-    �� i �s�� ... ��]�����ē����z�����ׂ��s���Ԃ��܂��B
+    第 i 行に ... を評価して得た配列を並べた行列を返します。
 
-    ��:
+    例:
       M = Algebra.MatrixAlgebra(Integer, 2, 3)
       A = M.collect_row{|i| [i*10 + 11, i*10 + 12, i*10 + 13]}
       A.display
@@ -99,9 +99,9 @@
         #=> [21, 22, 23]
 
 --- ::collect_column{|j| ... }
-    �� j ��� ... ��]�����ē����z�����ׂ��s���Ԃ��܂��B
+    第 j 列に ... を評価して得た配列を並べた行列を返します。
 
-    ��:
+    例:
       M = Algebra.MatrixAlgebra(Integer, 2, 3)
       A = M.collect_column{|j| [11 + j, 21 + j]}
       A.display
@@ -109,51 +109,51 @@
         #=> [21, 22, 23]
 
 --- ::*(otype)
-    2�̍s��̌^���|�����V�����N���X��Ԃ��܂��B
+    2つの行列の型を掛けた新しいクラスを返します。
 
-    ��:
+    例:
       M = Algebra.MatrixAlgebra(Integer, 2, 3)
       N = Algebra.MatrixAlgebra(Integer, 3, 4)
       L = M * N
       p L.sizes #=> [3, 4]
 
 --- ::vector_type
-    ((<rsize>)) �Ɠ����T�C�Y�̏c�x�N�g��(Vector)�N���X��Ԃ��܂��B
+    ((<rsize>)) と同じサイズの縦ベクトル(Vector)クラスを返します。
 
 --- ::covector_type
-    ((<csize>)) �Ɠ����T�C�Y�̉��x�N�g��(CoVector)�N���X��Ԃ��܂��B
+    ((<csize>)) と同じサイズの横ベクトル(CoVector)クラスを返します。
 
 --- ::transpose
-    �]�u���s�����V�����s��N���X��Ԃ��܂��B
+    転置を行った新しい行列クラスを返します。
 
 --- ::zero
-    ��s���Ԃ��܂��B
+    零行列を返します。
 
 #--- ::matrices; Matrices; end
 #--- ::regulate(x)
 
-== ���\�b�h:
+== メソッド:
 #--- dup
 --- [](i, j)
-    (({(i, j)})) ������Ԃ��܂��B
+    (({(i, j)})) 成分を返します。
 
 --- []=(i, j, x)
-    (({(i, j)})) ������ x �ɂ��܂��B
+    (({(i, j)})) 成分を x にします。
 
 --- rsize
-    �s�T�C�Y��Ԃ��܂��B((<::rsize>)) �Ɠ����ł��B
+    行サイズを返します。((<::rsize>)) と同じです。
 
 --- csize
-    ��T�C�Y��Ԃ��܂��B((<::csize>)) �Ɠ����ł��B
+    列サイズを返します。((<::csize>)) と同じです。
 
 --- sizes
-    [((<rsize>)), ((<csize>))] �̔z���Ԃ��܂��B
-    ((<::sizes>)) �Ɠ����ł��B
+    [((<rsize>)), ((<csize>))] の配列を返します。
+    ((<::sizes>)) と同じです。
 
 --- rows
-    �e�s��v�f�Ƃ���z���Ԃ��܂��B
+    各行を要素とする配列を返します。
     
-    ��:
+    例:
       M = Algebra.MatrixAlgebra(Integer, 2, 3)
       a = M.new([[1, 2, 3], [4, 5, 6]])
       p a.rows #=> [[1, 2, 3], [4, 5, 6]]
@@ -163,15 +163,15 @@
                 #=> [40, 50, 60]
 
 --- row(i)
-    i �s�ڂ�z��Ƃ��ĕԂ��܂��B
+    i 行目を配列として返します。
 
 --- set_row(i, array)
-    i �s�ڂ�z�� array �ɓ��ꊷ���܂��B
+    i 行目を配列 array に入れ換えます。
 
 --- columns
-    �e���v�f�Ƃ���z���Ԃ��܂��B
+    各列を要素とする配列を返します。
     
-    ��:
+    例:
       M = Algebra.MatrixAlgebra(Integer, 2, 3)
       a = M.new([[1, 2, 3], [4, 5, 6]])
       p a.columns #=> [[1, 4], [2, 5], [3, 6]]
@@ -181,68 +181,68 @@
                 #=> [4, 50, 6]
 
 --- column(j)
-    j ��ڂ�z��Ƃ��ĕԂ��܂��B
+    j 列目を配列として返します。
 
 --- set_column(j, array)
-    j ��ڂ�z�� array �ɓ��ꊷ���܂��B
+    j 列目を配列 array に入れ換えます。
 
 --- each{|row| ...}
-    �e�s��z��ɂ��� ((|row|)) �ɓ����C�e���[�^�ł��B
+    各行を配列にして ((|row|)) に入れるイテレータです。
 
 --- each_index{|i, j| ...}
-    �e�Y���� (({ (i, j) })) �Ɋւ���C�e���[�^�ł��B
+    各添え字 (({ (i, j) })) に関するイテレータです。
 
 --- each_i{|i| ...}
-    �e�s�̓Y���� (({i})) �Ɋւ���C�e���[�^�ł��B
+    各行の添え字 (({i})) に関するイテレータです。
 
 --- each_j{|j| ...}
-    �e��̓Y���� (({j})) �Ɋւ���C�e���[�^�ł��B
+    各列の添え字 (({j})) に関するイテレータです。
 
 --- each_row{|r| ... }
-    �e�s��z��ɂ��� ((|r|)) �ɓ����C�e���[�^�ł��B
-    ((<each>)) �Ɠ����ł��B
+    各行を配列にして ((|r|)) に入れるイテレータです。
+    ((<each>)) と同じです。
 
 --- each_column{|c| ... }
-    �e���z��ɂ��� ((|c|)) �ɓ����C�e���[�^�ł��B
+    各列を配列にして ((|c|)) に入れるイテレータです。
 
 --- matrix{|i, j| ... }
-    ((<::matrix>)) �Ɠ����ł��B
+    ((<::matrix>)) と同じです。
 
 --- collect_ij{|i, j| ... }
-    ((<::collect_ij>)) �Ɠ����ł��B
+    ((<::collect_ij>)) と同じです。
 
 --- collect_row{|i| ... }
-    ((<::collect_row>)) �Ɠ����ł��B
+    ((<::collect_row>)) と同じです。
 
 --- collect_column{|j| ... }
-    ((<::collect_column>)) �Ɠ����ł��B
+    ((<::collect_column>)) と同じです。
 
 --- minor(i, j)
-    ((|i|)) �s ((|j|)) ������������s���Ԃ��܂��B
+    ((|i|)) 行 ((|j|)) 列を除いた小行列を返します。
 
 --- cofactor(i, j)
-    ((|i|)) �s ((|j|)) ������������s�񎮂� (-1)**(i+j) ���|�������̂�
-    �Ԃ��܂��B(({minor(i, j) ** (i + j)})) �Ɠ����ł��B
+    ((|i|)) 行 ((|j|)) 列を除いた小行列式に (-1)**(i+j) を掛けたものを
+    返します。(({minor(i, j) ** (i + j)})) と同じです。
 
 --- cofactor_matrix
-    �]���q�s���Ԃ��܂��B(({self.class.transpose.matrix{|i, j| cofactor(j, i)}})) �Ɠ����ł��B
+    余因子行列を返します。(({self.class.transpose.matrix{|i, j| cofactor(j, i)}})) と同じです。
 
 --- adjoint
-    ((<cofactor_matrix>)) �Ɠ����ł��B
+    ((<cofactor_matrix>)) と同じです。
 
 --- ==(other)
-    �������Ƃ��^��Ԃ��܂��B
+    等しいとき真を返します。
 
 --- +(other)
-    �a���v�Z���܂��B
+    和を計算します。
 
 --- -(other)
-    �����v�Z���܂��B
+    差を計算します。
 
 --- *(other)
-    �ς��v�Z���܂��B
+    積を計算します。
     
-    ��:
+    例:
       M = Algebra.MatrixAlgebra(Integer, 2, 3)
       N = Algebra.MatrixAlgebra(Integer, 3, 4)
       L = M * N
@@ -254,18 +254,18 @@
                 #=> [23, 38, 53, 68]
 
 --- **(n)
-    ((|n|)) ����v�Z���܂��B
+    ((|n|)) 乗を計算します。
 
 --- /(other)
-    �����v�Z���܂��B
+    商を計算します。
 
 --- rank
-    �K����Ԃ��܂��B
+    階数を返します。
 
 --- dsum(other)
-    ���a��Ԃ��܂��B
+    直和を返します。
 
-    ��:
+    例:
       a = Algebra.MatrixAlgebra(Integer, 2, 3)[
             [1, 2, 3],
             [4, 5, 6]
@@ -282,7 +282,7 @@
                          #=> 0,   0,   0,  -5,  -6
 
 --- convert_to(ring)
-    ((|self|)) �̊e�������s��� ((|ring|)) �ɃR���o�[�g���܂��B
+    ((|self|)) の各成分を行列環 ((|ring|)) にコンバートします。
 
     Example:
       require "matrix-algebra"
@@ -297,18 +297,18 @@
                                           #=>  1,   2,   0
 
 --- to_ary
-    ((|to_a|)) ��Ԃ��܂��B((|to_a|)) �� ((|Enumerable|)) �Œ�`����Ă��܂��B
+    ((|to_a|)) を返します。((|to_a|)) は ((|Enumerable|)) で定義されています。
 
 --- flatten
-    ((|to_a.flatten|)) ��Ԃ��܂��B
+    ((|to_a.flatten|)) を返します。
 
 --- diag
-    �Ίp������z��ŕԂ��܂��B
+    対角成分を配列で返します。
 
 --- transpose
-    �]�u�s���Ԃ��܂��B
+    転置行列を返します。
 
-    ��:
+    例:
       M = Algebra.MatrixAlgebra(Integer, 2, 3)
       a = M.new([[1, 2, 3], [4, 5, 6]])
       Mt = M.transpose
@@ -321,9 +321,9 @@
 #--- to_s
 
 --- dup
-    �������܂��B
+    複製します。
     
-    ��:
+    例:
       M = Algebra.MatrixAlgebra(Integer, 2, 3)
       a = M.new([[1, 2, 3], [4, 5, 6]])
       b = a.dup
@@ -334,52 +334,52 @@
                 #=> [4, 50, 6]
 
 --- display([out])
-    �s��� ((|out|)) �ɕ\�����܂��B((|out|)) ���ȗ������� ((|$stdout|))
-    �ɕ\�����܂��B
+    行列を ((|out|)) に表示します。((|out|)) が省略されると ((|$stdout|))
+    に表示します。
     
 #--- inspect
 
 = Algebra::Vector
-((*(�c�x�N�g���N���X)*))
+((*(縦ベクトルクラス)*))
 
-�x�N�g���̃N���X�ł��B
+ベクトルのクラスです。
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 
 * ((|Algebra::MatrixAlgebra|))
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 
-�Ȃ�
+なし
 
-== �֘A����֐�:
+== 関連する関数:
 
 --- Algebra.Vector(ring, n)
-    ((<Algebra::Vector::create>))(ring, n) �Ɠ����ł��B
+    ((<Algebra::Vector::create>))(ring, n) と同じです。
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
 --- Algebra::Vector::create(ring, n)
-    �� ((|ring|)) ��v�f�Ƃ���, ((|n|)) �����̃x�N�g���i�c�x�N�g���j
-    �\������N���X�𐶐����܂��B
+    環 ((|ring|)) を要素とする, ((|n|)) 次元のベクトル（縦ベクトル）
+    表現するクラスを生成します。
 
-    ���̃��\�b�h�̖߂�l�� ((<Algebra::Vector>)) �N���X�̃T�u�N���X
-    �ł��B���̃T�u�N���X�ɂ̓N���X���\�b�h�Ƃ��� ((|ground|)) ��
-    ((|size|)) ����`����A���ꂼ��A���ƂȂ�� ((|ring|))�A
-    �T�C�Y ((|n|)) ��Ԃ��܂��B
+    このメソッドの戻り値は ((<Algebra::Vector>)) クラスのサブクラス
+    です。このサブクラスにはクラスメソッドとして ((|ground|)) と
+    ((|size|)) が定義され、それぞれ、基底となる環 ((|ring|))、
+    サイズ ((|n|)) を返します。
 
-    ���ۂɃx�N�g�������ɂ̓N���X���\�b�h ((|new|)),  
+    実際にベクトルを作るにはクラスメソッド ((|new|)),  
     ((|matrix|)), 
-    ((|[]|)) ���g���܂��B
+    ((|[]|)) を使います。
     
-    ((<Algebra::Vector>)) �� ((|n|)) �s 1 ��� 
-    ((<Algebra::MatrixAlgebra>)) �Ɠ��ꎋ����܂��B
+    ((<Algebra::Vector>)) は ((|n|)) 行 1 列の 
+    ((<Algebra::MatrixAlgebra>)) と同一視されます。
 
 --- Algebra::Vector::new(array)
-    ((|array|)) ��z��Ƃ���Ƃ��A�����v�f�Ƃ�
-    ��c�x�N�g����Ԃ��܂��B
+    ((|array|)) を配列とするとき、それを要素とす
+    る縦ベクトルを返します。
 
-    ��:
+    例:
       V = Algebra.Vector(Integer, 3)
       a = V.new([1, 2, 3])
       a.display
@@ -388,9 +388,9 @@
         #=> [3]
 
 --- Algebra::Vector::vector{|i| ... }
-    �� ((|i|)) ������ ... �ɂ����x�N�g����Ԃ��܂��B
+    第 ((|i|)) 成分を ... にしたベクトルを返します。
 
-    ��:
+    例:
       V = Algebra.Vector(Integer, 3)
       a = V.vector{|j| j + 1}
       a.display
@@ -399,275 +399,275 @@
         #=> [3]
 
 --- Algebra::Vector::matrix{|i, j| ... }
-    �� ((|i|)) ������ ... �ɂ����x�N�g����Ԃ��܂��B
-    ((|j|)) �ɂ͏�� 0 ���������܂��B
+    第 ((|i|)) 成分を ... にしたベクトルを返します。
+    ((|j|)) には常に 0 が代入されます。
 
-== ���\�b�h:
+== メソッド:
 
 --- size
-    ������Ԃ��܂��B
+    次元を返します。
 
 --- to_a
-    �e������z��ɂ��ĕԂ��܂��B
+    各成分を配列にして返します。
 
 --- transpose
-    ���x�N�g�� ((<Algebra::Covector>)) �ɓ]�u���܂��B
+    横ベクトル ((<Algebra::Covector>)) に転置します。
 
 --- inner_product(other)
-    ((|other|)) �Ƃ̓��ς�Ԃ��܂��B
+    ((|other|)) との内積を返します。
 
 --- inner_product_complex(other)
-    ((|other|)) �Ƃ̓��ς�Ԃ��܂��B
-    (({inner_product(other.conjugate)}))�Ɠ����ł��B
+    ((|other|)) との内積を返します。
+    (({inner_product(other.conjugate)}))と同じです。
 
 --- norm2
-    �m������Ԃ��܂��B
-    (({inner_product(self)}))�Ɠ����ł��B
+    ノルムを返します。
+    (({inner_product(self)}))と同じです。
 
 --- norm2_complex
-    �m������Ԃ��܂��B
-    (({inner_product(self.conjugate)}))�Ɠ����ł��B
+    ノルムを返します。
+    (({inner_product(self.conjugate)}))と同じです。
 
 
 = Algebra::Covector
-((*(���x�N�g���N���X)*))
+((*(横ベクトルクラス)*))
 
-�x�N�g���̃N���X�ł��B
+ベクトルのクラスです。
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 * ((|Algebra::MatrixAlgebra|))
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 
-�Ȃ�
+なし
 
-== �֘A����֐�:
+== 関連する関数:
 
 --- Algebra.Covector(ring, n)
-    ((<Algebra::Covector::create>)) (ring n)�Ɠ����ł��B
+    ((<Algebra::Covector::create>)) (ring n)と同じです。
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
 --- Algebra::Covector::create(ring, n)
-    �� ((|ring|)) ��v�f�Ƃ���, ((|n|)) �����̃x�N�g���i���x�N�g���j
-    �\������N���X�𐶐����܂��B
+    環 ((|ring|)) を要素とする, ((|n|)) 次元のベクトル（横ベクトル）
+    表現するクラスを生成します。
 
-    ���̃��\�b�h�̖߂�l�� ((<Algebra::Covector>)) �N���X�̃T�u�N���X
-    �ł��B���̃T�u�N���X�ɂ̓N���X���\�b�h�Ƃ��� ((|ground|)) ��
-    ((|size|)) ����`����A���ꂼ��A���ƂȂ�� ((|ring|))�A
-    �T�C�Y ((|n|)) ��Ԃ��܂��B
+    このメソッドの戻り値は ((<Algebra::Covector>)) クラスのサブクラス
+    です。このサブクラスにはクラスメソッドとして ((|ground|)) と
+    ((|size|)) が定義され、それぞれ、基底となる環 ((|ring|))、
+    サイズ ((|n|)) を返します。
 
-    ���ۂɃx�N�g�������ɂ̓N���X���\�b�h ((|new|)), 
+    実際にベクトルを作るにはクラスメソッド ((|new|)), 
     ((|matrix|)), 
-    ((|[]|)) ���g���܂��B
+    ((|[]|)) を使います。
     
-    ((<Algebra::Covector>)) �� 1 �s ((|n|)) ��� ((<Algebra::MatrixAlgebra>)) ��
-    ���ꎋ����܂��B
+    ((<Algebra::Covector>)) は 1 行 ((|n|)) 列の ((<Algebra::MatrixAlgebra>)) と
+    同一視されます。
 
 --- Algebra::Covector::new(array)
-    ((|array|)) ��z��Ƃ���Ƃ��A�����v�f�Ƃ�
-    �鉡�x�N�g����Ԃ��܂��B
+    ((|array|)) を配列とするとき、それを要素とす
+    る横ベクトルを返します。
 
-    ��:
+    例:
       V = Algebra.Covector(Integer, 3)
       a = V.new([1, 2, 3])
       a.display
         #=> [1, 2, 3]
 
 --- Algebra::Covector::covector{|j| ... }
-    �� j ������ ... �ɂ����x�N�g����Ԃ��܂��B
+    第 j 成分を ... にしたベクトルを返します。
 
-    ��:
+    例:
       V = Algebra.Covector(Integer, 3)
       a = V.covector{|j| j + 1}
       a.display
         #=> [1, 2, 3]
 
 --- Algebra::Covector::matrix{|i, j| ... }
-    �� j ������ ... �ɂ����x�N�g����Ԃ��܂��Bi �ɂ͏�� 0 ���������܂��B
+    第 j 成分を ... にしたベクトルを返します。i には常に 0 が代入されます。
 
-== ���\�b�h:
+== メソッド:
 
 --- size
-    ������Ԃ��܂��B
+    次元を返します。
 
 --- to_a
-    �e������z��ɂ��ĕԂ��܂��B
+    各成分を配列にして返します。
 
 --- transpose
-    ���x�N�g�� ((<Algebra::Vector>)) �ɓ]�u���܂��B
+    横ベクトル ((<Algebra::Vector>)) に転置します。
 
 --- inner_product(other)
-    ((|other|)) �Ƃ̓��ς�Ԃ��܂��B
+    ((|other|)) との内積を返します。
 
 --- inner_product_complex(other)
-    ((|other|)) �Ƃ̓��ς�Ԃ��܂��B
-    (({inner_product(other.conjugate)}))�Ɠ����ł��B
+    ((|other|)) との内積を返します。
+    (({inner_product(other.conjugate)}))と同じです。
 
 --- norm2
-    �m������Ԃ��܂��B
-    (({inner_product(self)}))�Ɠ����ł��B
+    ノルムを返します。
+    (({inner_product(self)}))と同じです。
 
 --- norm2_complex
-    �m������Ԃ��܂��B
-    (({inner_product(self.conjugate)}))�Ɠ����ł��B
+    ノルムを返します。
+    (({inner_product(self.conjugate)}))と同じです。
 
 = Algebra::SquareMatrix
-((*(�����s��N���X)*))
+((*(正方行列環クラス)*))
 
-�����s��̍���\������N���X�ł��B
+正方行列の作る環を表現するクラスです。
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 
 * ((|Algebra::MatrixAlgebra|))
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 
-�Ȃ�
+なし
 
-== �֘A����֐�:
+== 関連する関数:
 
 --- Algebra.SquareMatrix(ring, size)
-    ((<Algebra::SquareMatrix::create>))(ring, n) �Ɠ����ł��B
+    ((<Algebra::SquareMatrix::create>))(ring, n) と同じです。
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
 --- Algebra::SquareMatrix::create(ring, n)
 
-    �����s��\������N���X�𐶐����܂��B
+    正方行列表現するクラスを生成します。
 
-    ���̃��\�b�h�̖߂�l�� 
-    ((<Algebra::SquareMatrix>)) �N���X�̃T�u�N���X
-    �ł��B���̃T�u�N���X�ɂ̓N���X���\�b�h�Ƃ��� 
-    ((|ground|)) ��
-    ((|size|)) ����`����A���ꂼ��A���ƂȂ�� ((|ring|))�A
-    �T�C�Y ((|n|)) ��Ԃ��܂��B
+    このメソッドの戻り値は 
+    ((<Algebra::SquareMatrix>)) クラスのサブクラス
+    です。このサブクラスにはクラスメソッドとして 
+    ((|ground|)) と
+    ((|size|)) が定義され、それぞれ、基底となる環 ((|ring|))、
+    サイズ ((|n|)) を返します。
 
-    SquareMatrix �� ((|n|)) �s ((|n|)) ��� Algebra::MatrixAlgebra �Ɠ��ꎋ����܂��B
+    SquareMatrix は ((|n|)) 行 ((|n|)) 列の Algebra::MatrixAlgebra と同一視されます。
 
-    ���ۂɍs������ɂ̓N���X���\�b�h ((|new|)),  
+    実際に行列を作るにはクラスメソッド ((|new|)),  
     ((|matrix|)), 
-    ((|[]|)) ���g���܂��B
+    ((|[]|)) を使います。
     
 --- Algebra::SquareMatrix.determinant(aa)
-    �z��̔z�� ((|aa|)) �̍s�񎮂�Ԃ��܂��B
+    配列の配列 ((|aa|)) の行列式を返します。
 
 --- Algebra::SquareMatrix.det(aa)
-    ((<Algebra::SquareMatrix.determinat>))�Ɠ����ł��B
+    ((<Algebra::SquareMatrix.determinat>))と同じです。
 
 --- Algebra::SquareMatrix::unity
-    �P�ʍs���Ԃ��܂��B
+    単位行列を返します。
 
 --- Algebra::SquareMatrix::zero
-    ��s���Ԃ��܂��B
+    零行列を返します。
 
 --- Algebra::SquareMatrix.const(x)
-    ������ ((|x|)) �̃X�J���[�s���Ԃ��܂��B
+    成分が ((|x|)) のスカラー行列を返します。
 
 #--- self.regulate(x)
 
-== ���\�b�h
+== メソッド
 --- size
-    �T�C�Y��Ԃ��܂��B
+    サイズを返します。
 
 --- const(x)
-    ������ ((|x|)) �̃X�J���[�s���Ԃ��܂��B
+    成分が ((|x|)) のスカラー行列を返します。
 #--- self.matrices
 --- determinant
-    �s�񎮂�Ԃ��܂��B
+    行列式を返します。
 
 --- inverse
-    �t�s���Ԃ��܂��B
+    逆行列を返します。
 
 --- /(other)
-    (({self * other.inverse})) ��Ԃ��܂��B((|other|)) ���X�J���[�Ȃ�
-    �e�v�f�� ((|other|)) �Ŋ���܂��B
+    (({self * other.inverse})) を返します。((|other|)) がスカラーなら
+    各要素を ((|other|)) で割ります。
 
 #--- sign(a)
 #--- perm
 
 --- char_polynomial(ring)
-    ((|ring|)) �ɑ�������^����ƁA������������Ԃ��܂��B
+    ((|ring|)) に多項式環を与えると、特性多項式を返します。
 
 --- char_matrix(ring)
-    ((|ring|)) �ɑ�������^����ƁA�����s���Ԃ��܂��B
+    ((|ring|)) に多項式環を与えると、特性行列を返します。
 
 --- _char_matrix(poly_ring_matrix)
-    ((|poly_ring_matrix|)) �ɑ����������̍s���^����ƁA�����s���Ԃ��܂��B
+    ((|poly_ring_matrix|)) に多項式成分の行列環を与えると、特性行列を返します。
 
 = Algebra::GaussianElimination
-((*(�K�E�X�̏����@���W���[��)*))
+((*(ガウスの消去法モジュール)*))
 
-�K�E�X�̑|���o���@���������郂�W���[���ł��B
+ガウスの掃き出し法を実現するモジュールです。
 
-== �t�@�C����:
+== ファイル名:
 ((|gaussian-elimination.rb|))
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 
-�Ȃ�
+なし
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
-�Ȃ�
+なし
 
-== ���\�b�h
+== メソッド
 
 --- swap_r!(i, j)
-    ((|i|)) �s�� ((|j|)) �s����ꊷ���܂��B
+    ((|i|)) 行と ((|j|)) 行を入れ換えます。
 
 --- swap_r(i, j)
-    ((|i|)) �s�� ((|j|)) �s����ꊷ�������̂�Ԃ��܂��B
+    ((|i|)) 行と ((|j|)) 行を入れ換えたものを返します。
 
 --- swap_c!(i, j)
-    ((|i|)) ��� ((|j|)) �����ꊷ���܂��B
+    ((|i|)) 列と ((|j|)) 列を入れ換えます。
 
 --- swap_c(i, j)
-    ((|i|)) ��� ((|j|)) �����ꊷ�������̂�Ԃ��܂��B
+    ((|i|)) 列と ((|j|)) 列を入れ換えたものを返します。
 
 --- multiply_r!(i, c)
-    ((|i|)) �s�ڂ� ((|c|)) �{���܂��B
+    ((|i|)) 行目を ((|c|)) 倍します。
 
 --- multiply_r(i, c)
-    ((|i|)) �s�ڂ� ((|c|)) �{�������̂�Ԃ��܂��B
+    ((|i|)) 行目を ((|c|)) 倍したものを返します。
 
 --- multiply_c!(j, c)
-    ((|j|)) ��ڂ� ((|c|)) �{���܂��B
+    ((|j|)) 列目を ((|c|)) 倍します。
 
 --- multiply_c(j, c)
-    ((|j|)) ��ڂ� ((|c|)) �{�������̂�Ԃ��܂��B
+    ((|j|)) 列目を ((|c|)) 倍したものを返します。
 
 --- divide_r!(i, c)
-    ((|i|)) �s�ڂ� ((|c|)) �Ŋ���܂��B
+    ((|i|)) 行目を ((|c|)) で割ります。
 
 --- divide_r(i, c)
-    ((|i|)) �s�ڂ� ((|c|)) ���������̂�Ԃ��܂��B
+    ((|i|)) 行目を ((|c|)) 割ったものを返します。
 
 --- divide_c!(j, c)
-    ((|j|)) ��ڂ� ((|c|)) �Ŋ���܂��B
+    ((|j|)) 列目を ((|c|)) で割ります。
 
 --- divide_c(j, c)
-    ((|j|)) ��ڂ� ((|c|)) ���������̂�Ԃ��܂��B
+    ((|j|)) 列目を ((|c|)) 割ったものを返します。
 
 --- mix_r!(i, j, c)
-    ((|i|)) �s�ڂ� ((|j|)) �s�ڂ� ((|c|)) �{�𑫂��܂��B
+    ((|i|)) 行目に ((|j|)) 行目の ((|c|)) 倍を足します。
 
 --- mix_r(i, j, c)
-    ((|i|)) �s�ڂ� ((|j|)) �s�ڂ� ((|c|)) �{�𑫂������̂�Ԃ��܂��B
+    ((|i|)) 行目に ((|j|)) 行目の ((|c|)) 倍を足したものを返します。
 
 --- mix_c!(i, j, c)
-    ((|i|)) ��ڂ� ((|j|)) ��ڂ� ((|c|)) �{�𑫂��܂��B
+    ((|i|)) 列目に ((|j|)) 列目の ((|c|)) 倍を足します。
 
 --- mix_c(i, j, c)
-    ((|i|)) ��ڂ� ((|j|)) ��ڂ� ((|c|)) �{�𑫂������̂�Ԃ��܂��B
+    ((|i|)) 列目に ((|j|)) 列目の ((|c|)) 倍を足したものを返します。
 
 --- left_eliminate!
-    ������̊�{�ό`�ŊK�i�s��ɕό`���܂��B
+    左からの基本変形で階段行列に変形します。
     
-    �߂�l�́A�ό`����̂Ɏg���������s��̐ςƂ��̐����s���
-    �s�񎮂ƊK���̔z��ł��B
+    戻り値は、変形するのに使った正方行列の積とその正方行列の
+    行列式と階数の配列です。
     
-    ��:
+    例:
       require "matrix-algebra"
       require "mathn"
       class Rational < Numeric
@@ -690,20 +690,20 @@
       p e       #=> 2
 
 --- left_inverse
-    ������̊�{�ό`�ɂ���ʋt�s��ł��B
+    左からの基本変形による一般逆行列です。
 
 --- left_sweep
-    ������̊�{�ό`�ŊK�i�s��ɂ��ĕԂ��܂��B
+    左からの基本変形で階段行列にして返します。
 
 --- step_matrix?
-    �K�i�s��ł���Ƃ��A��(pivot)�̔z���Ԃ��܂��B�����łȂ��Ƃ��Anil
-    ��Ԃ��܂��B
+    階段行列であるとき、軸(pivot)の配列を返します。そうでないとき、nil
+    を返します。
 
 --- kernel_basis
-    �E����|���ė�ɂȂ�x�N�g���̋�Ԃ̊��̔z���Ԃ��܂��B
-    �e���� ((<Algebra::Vector>)) �̗v�f�ł��B
+    右から掛けて零になるベクトルの空間の基底の配列を返します。
+    各基底は ((<Algebra::Vector>)) の要素です。
 
-    ��:
+    例:
       require "matrix-algebra"
       require "mathn"
       M = Algebra.MatrixAlgebra(Rational, 5, 4)
@@ -721,7 +721,7 @@
       end
 
 --- determinant_by_elimination
-    �̏�̐����s��̍s�񎮂�|���o���@�ŋ��߂܂��B
+    体上の正方行列の行列式を掃き出し法で求めます。
     
 =end
 

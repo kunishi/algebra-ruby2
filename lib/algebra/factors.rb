@@ -7,7 +7,7 @@
 module Algebra
   class Factors
     include Enumerable
-    
+
     def self.[](*a)
       fact = new
       a.each do |x|
@@ -78,7 +78,7 @@ module Algebra
     def multiply(other, n = 1)
       flag = false
       @bone.each do |fact|
-        f, i = fact
+        f, _i = fact
         if f == other
           fact[1] = fact[1]+ 1
           flag = true
@@ -101,14 +101,14 @@ module Algebra
       end
       self.class.new(bone)
     end
-    
+
     def concat(facts)
       facts.each do |f, i|
         multiply f, i
       end
       self
     end
-    
+
     def *(o)
       case o
       when self.class
@@ -144,19 +144,19 @@ module Algebra
 
     def ==(fact)
       if pi == fact.pi
-	flag = false
-	@bone.each do |f, i|
-	  fact.each do |g, j|
-	    if f == g || f == -g # this will be improved.
-	      unless i == j
-		return false
-	      end
-	    end
-	  end
-	end
-	true
+        # flag = false
+        @bone.each do |f, i|
+          fact.each do |g, j|
+            if f == g || f == -g # this will be improved.
+              unless i == j
+                return false
+              end
+            end
+    	    end
+    	  end
+    	  true
       else
-	false
+	      false
       end
     end
 
@@ -171,7 +171,7 @@ module Algebra
 
     def each_product0 #create non trivial powers
       if size > 0
-        fact0, e0 = head
+        fact0, _e0 = head
         yield fact0
         tail.each_product do |fact, e|
           yield fact
@@ -189,11 +189,11 @@ module Algebra
         break if i >= size
         indices.push [idx0[i...size], [i], fact(i)]
       end
-      
+
       avoid = []
       until indices.empty?
         idx, rdx, f = indices.shift
-        i = idx.first
+        # i = idx.first
         next if avoid.find{|x| !(rdx & x).empty? }
         #print rdx.inspect + " : "
         r = yield(f)
@@ -216,18 +216,18 @@ module Algebra
     def fact_all(f)
       facts = self.class.new
       each do |g, e|
-	next if e <= 0
-	i = 0
-	loop do
-	  q, r = f.divmod_ED g
-	  if r.zero?
-	    f = q
-	    i += 1
-	  else
-	    facts.push [g, i]
-	    break
-	  end
-	end
+        next if e <= 0
+        i = 0
+        loop do
+          q, r = f.divmod_ED g
+          if r.zero?
+            f = q
+            i += 1
+          else
+            facts.push [g, i]
+            break
+          end
+        end
       end
       facts
     end
@@ -235,19 +235,19 @@ module Algebra
     def fact_all_u(f)
       facts = self.class.new
       each do |g, e|
-	next if e <= 0
-	next if g.constant?
-	i = 0
-	loop do
-	  q, r = f.divmod g
-	  if r.zero?
-	    f = q.first
-	    i += 1
-	  else
-	    facts.push [g, i]
-	    break
-	  end
-	end
+        next if e <= 0
+        next if g.constant?
+        i = 0
+        loop do
+          q, r = f.divmod g
+          if r.zero?
+            f = q.first
+            i += 1
+          else
+            facts.push [g, i]
+            break
+          end
+        end
       end
       facts
     end
@@ -292,10 +292,10 @@ end
 if $0 == __FILE__
   include Algebra
   p Factors.new([[2, 2], [3, 2], [5, 2]]).pi == (2*3*5)**2
-  
+
   facts = Factors.new
   facts << 2 << 3 << 5 << 7 << 11 << 13
- k = 0
+  k = 0
   facts.each_product do |x|
     k += 1
     p x

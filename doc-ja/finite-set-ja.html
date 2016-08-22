@@ -1,12 +1,12 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html 
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<link rel="stylesheet" type="text/css" href="style.css" />
-<title>algebra/finite-set-ja.html</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>doc-ja/finite-set-ja.rd</title>
+<link href="style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <p>[<a href="index-ja.html">index-ja</a>] 
@@ -15,29 +15,29 @@
 /
 <a href="#label-81">Enumerable</a></p>
 <h1><a name="label-0" id="label-0">Algebra::Set</a></h1><!-- RDLabel: "Algebra::Set" -->
-<p><em>W‡‚ÌƒNƒ‰ƒX</em></p>
-<p>W‡‚ğ•\Œ»‚·‚éƒNƒ‰ƒX‚Å‚·B‚Q‚Â‚ÌW‡ <var>s</var>, <var>t</var> ‚ÉŠÖ‚µ‚ÄA
-<var>s</var> ‚ª <var>t</var> ‚ÉŠÜ‚Ü‚ê‚é–‚Í <a href="#label-85">all?</a> ‚ğg‚Á‚ÄA</p>
+<p><em>é›†åˆã®ã‚¯ãƒ©ã‚¹</em></p>
+<p>é›†åˆã‚’è¡¨ç¾ã™ã‚‹ã‚¯ãƒ©ã‚¹ã§ã™ã€‚ï¼’ã¤ã®é›†åˆ <var>s</var>, <var>t</var> ã«é–¢ã—ã¦ã€
+<var>s</var> ãŒ <var>t</var> ã«å«ã¾ã‚Œã‚‹äº‹ã¯ <a href="#label-85">all?</a> ã‚’ä½¿ã£ã¦ã€</p>
 <pre>s.all?{|x| t.member?(x)}</pre>
-<p>‚Å•\Œ»‚³‚ê‚Ü‚·B</p>
-<h2><a name="label-1" id="label-1">ƒtƒ@ƒCƒ‹–¼:</a></h2><!-- RDLabel: "ƒtƒ@ƒCƒ‹–¼:" -->
+<p>ã§è¡¨ç¾ã•ã‚Œã¾ã™ã€‚</p>
+<h2><a name="label-1" id="label-1">ãƒ•ã‚¡ã‚¤ãƒ«å:</a></h2><!-- RDLabel: "ãƒ•ã‚¡ã‚¤ãƒ«å:" -->
 <ul>
 <li><var>finite-set.rb</var></li>
 </ul>
-<h2><a name="label-2" id="label-2">ƒX[ƒp[ƒNƒ‰ƒX:</a></h2><!-- RDLabel: "ƒX[ƒp[ƒNƒ‰ƒX:" -->
+<h2><a name="label-2" id="label-2">ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:</a></h2><!-- RDLabel: "ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:" -->
 <ul>
 <li><var>Object</var></li>
 </ul>
-<h2><a name="label-3" id="label-3">ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:</a></h2><!-- RDLabel: "ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:" -->
+<h2><a name="label-3" id="label-3">ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:</a></h2><!-- RDLabel: "ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:" -->
 <ul>
 <li><var>Enumerable</var></li>
 </ul>
-<h2><a name="label-4" id="label-4">ƒNƒ‰ƒXƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒNƒ‰ƒXƒƒ\ƒbƒh:" -->
+<h2><a name="label-4" id="label-4">ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-5" id="label-5"><code>::[[<var>obj0</var>, [<var>obj1</var>, [<var>obj2</var>, ...]]]]</code></a></dt><!-- RDLabel: "::[]" -->
 <dd>
-<p>ˆø”‚Ì—ñ‚©‚ç <var>Set</var> ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚µ‚Ü‚·B</p>
-<p>—á: ‘S‚Ä {"a", [1, 2], 0} ‚ğ¶¬‚·‚éB</p>
+<p>å¼•æ•°ã®åˆ—ã‹ã‚‰ <var>Set</var> ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã—ã¾ã™ã€‚</p>
+<p>ä¾‹: å…¨ã¦ {"a", [1, 2], 0} ã‚’ç”Ÿæˆã™ã‚‹ã€‚</p>
 <pre>require "finite-set"
 p Algebra::Set[0, "a", [1, 2]]
 p Algebra::Set.new(0, "a", [1, 2])
@@ -45,54 +45,54 @@ p Algebra::Set.new_a([0, "a", [1, 2]])
 p Algebra::Set.new_h({0=&gt;true, "a"=&gt;true, [1, 2]=&gt;true})</pre></dd>
 <dt><a name="label-6" id="label-6"><code>::new([<var>obj0</var>, [<var>obj1</var>, [<var>obj2</var>, ...]]])</code></a></dt><!-- RDLabel: "::new" -->
 <dd>
-ˆø”‚Ì—ñ‚©‚ç <var>Set</var> ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚µ‚Ü‚·B</dd>
+å¼•æ•°ã®åˆ—ã‹ã‚‰ <var>Set</var> ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã—ã¾ã™ã€‚</dd>
 <dt><a name="label-7" id="label-7"><code>::new_a(<var>a</var>)</code></a></dt><!-- RDLabel: "::new_a" -->
 <dd>
-”z—ñ <var>a</var> ‚©‚ç <var>Set</var> ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚µ‚Ü‚·B</dd>
+é…åˆ— <var>a</var> ã‹ã‚‰ <var>Set</var> ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã—ã¾ã™ã€‚</dd>
 <dt><a name="label-8" id="label-8"><code>::new_h(<var>h</var>)</code></a></dt><!-- RDLabel: "::new_h" -->
 <dd>
-<var>Hash</var> ‚©‚ç <var>Set</var> ƒIƒuƒWƒFƒNƒg‚ğ¶¬‚µ‚Ü‚·B</dd>
+<var>Hash</var> ã‹ã‚‰ <var>Set</var> ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆã—ã¾ã™ã€‚</dd>
 <dt><a name="label-9" id="label-9"><code>self.empty_set</code></a></dt><!-- RDLabel: "self.empty_set" -->
 <dd>
-‹óW‡‚ğ¶¬‚·‚éB</dd>
+ç©ºé›†åˆã‚’ç”Ÿæˆã™ã‚‹ã€‚</dd>
 <dt><a name="label-10" id="label-10"><code>::phi</code></a></dt><!-- RDLabel: "::phi" -->
 <dt><a name="label-11" id="label-11"><code>::null</code></a></dt><!-- RDLabel: "::null" -->
 <dd>
-<!-- Reference, RDLabel "::empty_set" doesn't exist --><em class="label-not-found">::empty_set</em><!-- Reference end --> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<!-- Reference, RDLabel "::empty_set" doesn't exist --><em class="label-not-found">::empty_set</em><!-- Reference end --> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-12" id="label-12"><code>::singleton(<var>x</var>)</code></a></dt><!-- RDLabel: "::singleton" -->
 <dd>
-<var>x</var> ˆêŒ³‚Ì‚İ‚Å\¬‚³‚ê‚éW‡‚ğ¶¬‚µ‚Ü‚·B</dd>
+<var>x</var> ä¸€å…ƒã®ã¿ã§æ§‹æˆã•ã‚Œã‚‹é›†åˆã‚’ç”Ÿæˆã—ã¾ã™ã€‚</dd>
 </dl>
-<h2><a name="label-13" id="label-13">ƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒƒ\ƒbƒh:" -->
+<h2><a name="label-13" id="label-13">ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-14" id="label-14"><code>empty_set</code></a></dt><!-- RDLabel: "empty_set" -->
 <dd>
-‹óW‡‚ğ¶¬‚·‚éB</dd>
+ç©ºé›†åˆã‚’ç”Ÿæˆã™ã‚‹ã€‚</dd>
 <dt><a name="label-15" id="label-15"><code>phi</code></a></dt><!-- RDLabel: "phi" -->
 <dt><a name="label-16" id="label-16"><code>null</code></a></dt><!-- RDLabel: "null" -->
 <dd>
-<a href="#label-14">empty_set</a> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<a href="#label-14">empty_set</a> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-17" id="label-17"><code>empty?</code></a></dt><!-- RDLabel: "empty?" -->
 <dd>
-‹óW‡‚Å‚ ‚é‚Æ‚«^‚ğ•Ô‚µ‚Ü‚·B</dd>
+ç©ºé›†åˆã§ã‚ã‚‹ã¨ãçœŸã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-18" id="label-18"><code>phi?</code></a></dt><!-- RDLabel: "phi?" -->
 <dt><a name="label-19" id="label-19"><code>empty_set?</code></a></dt><!-- RDLabel: "empty_set?" -->
 <dt><a name="label-20" id="label-20"><code>null?</code></a></dt><!-- RDLabel: "null?" -->
 <dd>
-<a href="#label-17">empty?</a> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<a href="#label-17">empty?</a> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-21" id="label-21"><code>singleton(<var>x</var>)</code></a></dt><!-- RDLabel: "singleton" -->
 <dd>
-<var>x</var> ˆêŒ³‚Ì‚İ‚Å\¬‚³‚ê‚éW‡‚ğ¶¬‚µ‚Ü‚·B</dd>
+<var>x</var> ä¸€å…ƒã®ã¿ã§æ§‹æˆã•ã‚Œã‚‹é›†åˆã‚’ç”Ÿæˆã—ã¾ã™ã€‚</dd>
 <dt><a name="label-22" id="label-22"><code>singleton?</code></a></dt><!-- RDLabel: "singleton?" -->
 <dd>
-ˆêŒ³‚Ì‚İ‚Å\¬‚³‚ê‚éW‡‚Å‚ ‚é‚Æ‚«^‚ğ•Ô‚µ‚Ü‚·B</dd>
+ä¸€å…ƒã®ã¿ã§æ§‹æˆã•ã‚Œã‚‹é›†åˆã§ã‚ã‚‹ã¨ãçœŸã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-23" id="label-23"><code>size</code></a></dt><!-- RDLabel: "size" -->
 <dd>
-W‡‚Ì‘å‚«‚³‚ğ•Ô‚µ‚Ü‚·B</dd>
+é›†åˆã®å¤§ãã•ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-24" id="label-24"><code>each</code></a></dt><!-- RDLabel: "each" -->
 <dd>
-<p>W‡‚ÌŠe—v‘f‚ÉŠÖ‚µ‚ÄŒJ‚è•Ô‚µ‚Ü‚·BŒJ‚è•Ô‚µ‚Ì‡”Ô‚Í•s’è‚Å‚·B</p>
-<p>—á: </p>
+<p>é›†åˆã®å„è¦ç´ ã«é–¢ã—ã¦ç¹°ã‚Šè¿”ã—ã¾ã™ã€‚ç¹°ã‚Šè¿”ã—ã®é †ç•ªã¯ä¸å®šã§ã™ã€‚</p>
+<p>ä¾‹: </p>
 <pre>require "finite-set"
 include Algebra
 Set[0, 1, 2].each do |x|
@@ -100,33 +100,33 @@ Set[0, 1, 2].each do |x|
 end</pre></dd>
 <dt><a name="label-25" id="label-25"><code>separate</code></a></dt><!-- RDLabel: "separate" -->
 <dd>
-<p>W‡‚ÌŠe—v‘f‚ğƒuƒƒbƒNƒpƒ‰ƒ[ƒ^‚É“n‚µAƒuƒƒbƒN‚Ì’l‚ğ^‚É‚·‚é
-‚à‚Ì‚Å\¬‚³‚ê‚éW‡‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á: </p>
+<p>é›†åˆã®å„è¦ç´ ã‚’ãƒ–ãƒ­ãƒƒã‚¯ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«æ¸¡ã—ã€ãƒ–ãƒ­ãƒƒã‚¯ã®å€¤ã‚’çœŸã«ã™ã‚‹
+ã‚‚ã®ã§æ§‹æˆã•ã‚Œã‚‹é›†åˆã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹: </p>
 <pre>require "finite-set"
 include Algebra
 p Set[0, 1, 2, 3].separate{|x| x % 2 == 0} #=&gt; {2, 0}</pre></dd>
 <dt><a name="label-26" id="label-26"><code>select_s</code></a></dt><!-- RDLabel: "select_s" -->
 <dt><a name="label-27" id="label-27"><code>find_all_s</code></a></dt><!-- RDLabel: "find_all_s" -->
 <dd>
-<a href="#label-25">separate</a> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<a href="#label-25">separate</a> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-28" id="label-28"><code>map_s</code></a></dt><!-- RDLabel: "map_s" -->
 <dd>
-<p>W‡‚ÌŠe—v‘f‚ğƒuƒƒbƒNƒpƒ‰ƒ[ƒ^‚É“n‚µAƒuƒƒbƒN‚Ì’l‚É‚æ‚Á‚Ä
-\¬‚³‚ê‚éW‡‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á: </p>
+<p>é›†åˆã®å„è¦ç´ ã‚’ãƒ–ãƒ­ãƒƒã‚¯ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«æ¸¡ã—ã€ãƒ–ãƒ­ãƒƒã‚¯ã®å€¤ã«ã‚ˆã£ã¦
+æ§‹æˆã•ã‚Œã‚‹é›†åˆã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹: </p>
 <pre>require "finite-set"
 include Algebra
 p Set[0, 1, 2, 3].map_s{|x| x % 2 + 1} #=&gt; {2, 1}</pre></dd>
 <dt><a name="label-29" id="label-29"><code>pick</code></a></dt><!-- RDLabel: "pick" -->
 <dd>
-W‡‚Ì—v‘f‚©‚çˆê‚Â‘I‚ñ‚Å’l‚Æ‚µ‚Ü‚·B‚Ç‚Ì—v‘f‚ª‘I‚Î‚ê‚é‚©‚Í
-•s’è‚Å‚·B‹óW‡‚É‘Î‚µ‚Ä‚Í <var>nil</var> ‚ğ•Ô‚µ‚Ü‚·B</dd>
+é›†åˆã®è¦ç´ ã‹ã‚‰ä¸€ã¤é¸ã‚“ã§å€¤ã¨ã—ã¾ã™ã€‚ã©ã®è¦ç´ ãŒé¸ã°ã‚Œã‚‹ã‹ã¯
+ä¸å®šã§ã™ã€‚ç©ºé›†åˆã«å¯¾ã—ã¦ã¯ <var>nil</var> ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-30" id="label-30"><code>shift</code></a></dt><!-- RDLabel: "shift" -->
 <dd>
-<p>W‡‚Ì—v‘f‚©‚çˆê‚Â‘I‚ñ‚Åæ‚èo‚µ’l‚Æ‚µ‚Ü‚·B‚Ç‚Ì—v‘f‚ª‘I‚Î‚ê‚é
-‚©‚Í•s’è‚Å‚·B</p>
-<p>—á: </p>
+<p>é›†åˆã®è¦ç´ ã‹ã‚‰ä¸€ã¤é¸ã‚“ã§å–ã‚Šå‡ºã—å€¤ã¨ã—ã¾ã™ã€‚ã©ã®è¦ç´ ãŒé¸ã°ã‚Œã‚‹
+ã‹ã¯ä¸å®šã§ã™ã€‚</p>
+<p>ä¾‹: </p>
 <pre>require "finite-set"
 include Algebra
 s = Set[0, 1, 2, 3]
@@ -134,71 +134,71 @@ p s.shift #=&gt; 2
 p s #=&gt; {0, 1, 3}</pre></dd>
 <dt><a name="label-31" id="label-31"><code>dup</code></a></dt><!-- RDLabel: "dup" -->
 <dd>
-W‡‚Ì•¡»‚ğ•Ô‚µ‚Ü‚·Bi“à•”‚Ì Hash ‚Ì•¡»‚É‚æ‚è‚Ü‚·Bj</dd>
+é›†åˆã®è¤‡è£½ã‚’è¿”ã—ã¾ã™ã€‚ï¼ˆå†…éƒ¨ã® Hash ã®è¤‡è£½ã«ã‚ˆã‚Šã¾ã™ã€‚ï¼‰</dd>
 <dt><a name="label-32" id="label-32"><code>append!(<var>x</var>)</code></a></dt><!-- RDLabel: "append!" -->
 <dd>
-W‡‚É—v‘f <var>x</var> ‚ğ•t‚¯‰Á‚¦‚Ü‚·B•Ô‚è’l‚Í <var>self</var> ‚Å‚·B</dd>
+é›†åˆã«è¦ç´  <var>x</var> ã‚’ä»˜ã‘åŠ ãˆã¾ã™ã€‚è¿”ã‚Šå€¤ã¯ <var>self</var> ã§ã™ã€‚</dd>
 <dt><a name="label-33" id="label-33"><code>push</code></a></dt><!-- RDLabel: "push" -->
 <dt><a name="label-34" id="label-34"><code>&lt;&lt;</code></a></dt><!-- RDLabel: "<<" -->
 <dd>
-<var>append!</var> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<var>append!</var> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-35" id="label-35"><code>append(<var>x</var>)</code></a></dt><!-- RDLabel: "append" -->
 <dd>
-W‡‚É—v‘f <var>x</var> ‚ğ•t‚¯‰Á‚¦‚½•¡»‚ğ•Ô‚µ‚Ü‚·B</dd>
+é›†åˆã«è¦ç´  <var>x</var> ã‚’ä»˜ã‘åŠ ãˆãŸè¤‡è£½ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-36" id="label-36"><code>concat(<var>other</var>)</code></a></dt><!-- RDLabel: "concat" -->
 <dd>
-W‡‚É•Ê‚ÌW‡ <var>other</var> ‚Ì—v‘f‚ğ•t‚¯‰Á‚¦‚Ü‚·B
-i<var>+</var> ‚Ì”j‰ó”Å‚Å‚·Bj</dd>
+é›†åˆã«åˆ¥ã®é›†åˆ <var>other</var> ã®è¦ç´ ã‚’ä»˜ã‘åŠ ãˆã¾ã™ã€‚
+ï¼ˆ<var>+</var> ã®ç ´å£Šç‰ˆã§ã™ã€‚ï¼‰</dd>
 <dt><a name="label-37" id="label-37"><code>rehash</code></a></dt><!-- RDLabel: "rehash" -->
 <dd>
-“à•”‚Ì <var>Hash</var> ƒIƒuƒWƒFƒNƒg‚ğ <var>rehash</var> ‚µ‚Ü‚·B</dd>
+å†…éƒ¨ã® <var>Hash</var> ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ <var>rehash</var> ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-38" id="label-38"><code>eql?(<var>other</var>)</code></a></dt><!-- RDLabel: "eql?" -->
 <dd>
-W‡ <var>other</var> ‚Æ“™‚µ‚¢‚Æ‚«A^‚ğ•Ô‚µ‚Ü‚·B
-<code> self &gt;= other and self &lt;= other</code> ‚Æ“¯’l‚Å‚·B</dd>
+é›†åˆ <var>other</var> ã¨ç­‰ã—ã„ã¨ãã€çœŸã‚’è¿”ã—ã¾ã™ã€‚
+<code> self &gt;= other and self &lt;= other</code> ã¨åŒå€¤ã§ã™ã€‚</dd>
 <dt><a name="label-39" id="label-39"><code>==</code></a></dt><!-- RDLabel: "==" -->
 <dd>
-<a href="#label-38">eql?</a> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<a href="#label-38">eql?</a> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-40" id="label-40"><code>hash</code></a></dt><!-- RDLabel: "hash" -->
 <dd>
-©g‚ª <var>Hash</var> ‚ ‚é‚¢‚Í <var>Set</var> ‚Ì—v‘f‚Æ‚È‚é‚Æ‚«‚É—˜—p‚³‚ê‚é
-ƒnƒbƒVƒ…’lŠÖ”‚Å‚·B</dd>
+è‡ªèº«ãŒ <var>Hash</var> ã‚ã‚‹ã„ã¯ <var>Set</var> ã®è¦ç´ ã¨ãªã‚‹ã¨ãã«åˆ©ç”¨ã•ã‚Œã‚‹
+ãƒãƒƒã‚·ãƒ¥å€¤é–¢æ•°ã§ã™ã€‚</dd>
 <dt><a name="label-41" id="label-41"><code>include?(<var>x</var>)</code></a></dt><!-- RDLabel: "include?" -->
 <dd>
-W‡‚ª <var>x</var> ‚ğ—v‘f‚Æ‚µ‚Ä‚¢‚é‚Æ‚«A^‚ğ•Ô‚µ‚Ü‚·B</dd>
+é›†åˆãŒ <var>x</var> ã‚’è¦ç´ ã¨ã—ã¦ã„ã‚‹ã¨ãã€çœŸã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-42" id="label-42"><code>member?</code></a></dt><!-- RDLabel: "member?" -->
 <dt><a name="label-43" id="label-43"><code>has?</code></a></dt><!-- RDLabel: "has?" -->
 <dt><a name="label-44" id="label-44"><code>contains?</code></a></dt><!-- RDLabel: "contains?" -->
 <dd>
-<a href="#label-41">include?</a> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<a href="#label-41">include?</a> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-45" id="label-45"><code>superset?(<var>other</var>)</code></a></dt><!-- RDLabel: "superset?" -->
 <dd>
-W‡‚ª‘¼‚ÌW‡ <var>other</var> ‚ğ•ïŠÜ‚·‚é‚Æ‚«^‚ğ•Ô‚µ‚Ü‚·B
-<code>other.all{|x| member?(x)}</code> ‚Æ“¯’l‚Å‚·B</dd>
+é›†åˆãŒä»–ã®é›†åˆ <var>other</var> ã‚’åŒ…å«ã™ã‚‹ã¨ãçœŸã‚’è¿”ã—ã¾ã™ã€‚
+<code>other.all{|x| member?(x)}</code> ã¨åŒå€¤ã§ã™ã€‚</dd>
 <dt><a name="label-46" id="label-46"><code>&gt;=</code></a></dt><!-- RDLabel: ">=" -->
 <dt><a name="label-47" id="label-47"><code>incl?</code></a></dt><!-- RDLabel: "incl?" -->
 <dd>
-<code>superset?</code> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<code>superset?</code> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-48" id="label-48"><code>subset?(<var>other</var>)</code></a></dt><!-- RDLabel: "subset?" -->
 <dd>
-W‡‚ª‘¼‚ÌW‡ <var>other</var> ‚Ì•”•ªW‡‚Å‚ ‚é‚Æ‚«^‚ğ•Ô‚µ‚Ü‚·B
-<code>self.all{|x| other.member?(x)}</code> ‚Æ“¯’l‚Å‚·B</dd>
+é›†åˆãŒä»–ã®é›†åˆ <var>other</var> ã®éƒ¨åˆ†é›†åˆã§ã‚ã‚‹ã¨ãçœŸã‚’è¿”ã—ã¾ã™ã€‚
+<code>self.all{|x| other.member?(x)}</code> ã¨åŒå€¤ã§ã™ã€‚</dd>
 <dt><a name="label-49" id="label-49"><code>&lt;=</code></a></dt><!-- RDLabel: "<=" -->
 <dt><a name="label-50" id="label-50"><code>part_of?</code></a></dt><!-- RDLabel: "part_of?" -->
 <dd>
-<var>subset?</var> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<var>subset?</var> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-51" id="label-51"><code>&lt;(<var>other</var>)</code></a></dt><!-- RDLabel: "<" -->
 <dd>
-<var>self</var> ‚ª <var>other</var> ‚Ì^•”•ªW‡‚Ì^‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>self</var> ãŒ <var>other</var> ã®çœŸéƒ¨åˆ†é›†åˆã®æ™‚çœŸã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-52" id="label-52"><code>&gt;(<var>other</var>)</code></a></dt><!-- RDLabel: ">" -->
 <dd>
-<var>self</var> ‚ª <var>other</var> ‚ğ^‚ÉŠÜ‚Ş^‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>self</var> ãŒ <var>other</var> ã‚’çœŸã«å«ã‚€æ™‚çœŸã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-53" id="label-53"><code>union([<var>other</var>])</code></a></dt><!-- RDLabel: "union" -->
 <dd>
-<p><var>self</var> ‚Æ <var>other</var> ‚Ì‡•¹W‡‚ğ•Ô‚µ‚Ü‚·B
-<var>other</var> ‚ªÈ—ª‚³‚ê‚½ê‡A©g‚ğW‡‚ÌW‡‚Æ‚İ‚È‚µA‘S‚Ä‚Ì
-—v‘f‚Ì‡•¹‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p><var>self</var> ã¨ <var>other</var> ã®åˆä½µé›†åˆã‚’è¿”ã—ã¾ã™ã€‚
+<var>other</var> ãŒçœç•¥ã•ã‚ŒãŸå ´åˆã€è‡ªèº«ã‚’é›†åˆã®é›†åˆã¨ã¿ãªã—ã€å…¨ã¦ã®
+è¦ç´ ã®åˆä½µã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>require "finite-set"
 include Algebra
 p Set[0, 2, 4].cup Set[1, 3] #=&gt; {0, 1, 2, 3, 4}
@@ -211,13 +211,13 @@ p Set[s2, s3, s5].union #=&gt; {1, 7, 11, 13}</pre></dd>
 <dt><a name="label-55" id="label-55"><code>+</code></a></dt><!-- RDLabel: "+" -->
 <dt><a name="label-56" id="label-56"><code>cup</code></a></dt><!-- RDLabel: "cup" -->
 <dd>
-<var>union</var> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<var>union</var> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-57" id="label-57"><code>intersection([<var>other</var>])</code></a></dt><!-- RDLabel: "intersection" -->
 <dd>
-<p><var>self</var> ‚Æ <var>other</var> ‚ÌŒğ‚í‚è‚ÌW‡‚ğ•Ô‚µ‚Ü‚·B
-<var>other</var> ‚ªÈ—ª‚³‚ê‚½ê‡A©g‚ğW‡‚ÌW‡‚Æ‚İ‚È‚µA‘S‚Ä‚Ì
-—v‘f‚Ì‹¤’Ê•”•ª‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á:</p>
+<p><var>self</var> ã¨ <var>other</var> ã®äº¤ã‚ã‚Šã®é›†åˆã‚’è¿”ã—ã¾ã™ã€‚
+<var>other</var> ãŒçœç•¥ã•ã‚ŒãŸå ´åˆã€è‡ªèº«ã‚’é›†åˆã®é›†åˆã¨ã¿ãªã—ã€å…¨ã¦ã®
+è¦ç´ ã®å…±é€šéƒ¨åˆ†ã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹:</p>
 <pre>require "finite-set"
 include Algebra
 p Set[0, 2, 4].cap(Set[4, 2, 0]) #=&gt; {0, 2, 4}
@@ -229,18 +229,18 @@ p Set[s2, s3, s5].cap #=&gt; {0, 30}</pre></dd>
 <dt><a name="label-58" id="label-58"><code>&amp;</code></a></dt><!-- RDLabel: "&" -->
 <dt><a name="label-59" id="label-59"><code>cap</code></a></dt><!-- RDLabel: "cap" -->
 <dd>
-<var>intersection</var> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<var>intersection</var> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-60" id="label-60"><code>difference(<var>other</var>)</code></a></dt><!-- RDLabel: "difference" -->
 <dd>
-<var>self</var> ‚©‚ç <var>other</var> ‚ÉŠÜ‚Ü‚ê‚é—v‘f‚ğæ‚èœ‚¢‚½‚à‚Ì‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>self</var> ã‹ã‚‰ <var>other</var> ã«å«ã¾ã‚Œã‚‹è¦ç´ ã‚’å–ã‚Šé™¤ã„ãŸã‚‚ã®ã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-61" id="label-61"><code>-</code></a></dt><!-- RDLabel: "-" -->
 <dd>
-<var>difference</var> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<var>difference</var> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-62" id="label-62"><code>each_pair</code></a></dt><!-- RDLabel: "each_pair" -->
 <dd>
-<p>W‡‚©‚çˆÙ‚È‚é‚Q‚Â‚Ì—v‘f‚ğæ‚èo‚µ‚ÄAƒuƒƒbƒNƒpƒ‰ƒ[ƒ^‚É
-‘ã“ü‚µ‚ÄŒJ‚è•Ô‚µ‚Ü‚·B</p>
-<p>—á: </p>
+<p>é›†åˆã‹ã‚‰ç•°ãªã‚‹ï¼’ã¤ã®è¦ç´ ã‚’å–ã‚Šå‡ºã—ã¦ã€ãƒ–ãƒ­ãƒƒã‚¯ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«
+ä»£å…¥ã—ã¦ç¹°ã‚Šè¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹: </p>
 <pre>require "finite-set"
 include Algebra
 s = Set.phi
@@ -250,9 +250,9 @@ end
 p s == Set[[0, 1], [0, 2], [1, 2]] #=&gt; true</pre></dd>
 <dt><a name="label-63" id="label-63"><code>each_member(<var>n</var>)</code></a></dt><!-- RDLabel: "each_member" -->
 <dd>
-<p>W‡‚©‚çˆÙ‚È‚é <var>n</var> ŒÂ‚Ì—v‘f‚ğæ‚èo‚µ‚ÄAƒuƒƒbƒNƒpƒ‰ƒ[ƒ^‚É
-‘ã“ü‚µ‚ÄŒJ‚è•Ô‚µ‚Ü‚·B</p>
-<p>—á: </p>
+<p>é›†åˆã‹ã‚‰ç•°ãªã‚‹ <var>n</var> å€‹ã®è¦ç´ ã‚’å–ã‚Šå‡ºã—ã¦ã€ãƒ–ãƒ­ãƒƒã‚¯ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«
+ä»£å…¥ã—ã¦ç¹°ã‚Šè¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹: </p>
 <pre>require "finite-set"
 include Algebra
 s = Set.phi
@@ -262,8 +262,8 @@ end
 p s == Set[[0, 1], [0, 2], [1, 2]] #=&gt; true</pre></dd>
 <dt><a name="label-64" id="label-64"><code>each_subset</code></a></dt><!-- RDLabel: "each_subset" -->
 <dd>
-<p>W‡‚Ì‘S‚Ä‚Ì•”•ªW‡‚ğƒuƒƒbƒNƒpƒ‰ƒ[ƒ^‚É‘ã“ü‚µ‚ÄŒJ‚è•Ô‚µ‚Ü‚·B</p>
-<p>—á: </p>
+<p>é›†åˆã®å…¨ã¦ã®éƒ¨åˆ†é›†åˆã‚’ãƒ–ãƒ­ãƒƒã‚¯ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«ä»£å…¥ã—ã¦ç¹°ã‚Šè¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹: </p>
 <pre>require "finite-set"
 include Algebra
 s = Set.phi
@@ -273,16 +273,16 @@ end
 p s.size = 2**3 #=&gt; true</pre></dd>
 <dt><a name="label-65" id="label-65"><code>each_non_trivial_subset</code></a></dt><!-- RDLabel: "each_non_trivial_subset" -->
 <dd>
-W‡‚Ì‹óW‡‚Å‚È‚¢^•”•ªW‡‚ğƒuƒƒbƒNƒpƒ‰ƒ[ƒ^‚É‘ã“ü‚µ‚ÄŒJ‚è•Ô‚µ‚Ü‚·B</dd>
+é›†åˆã®ç©ºé›†åˆã§ãªã„çœŸéƒ¨åˆ†é›†åˆã‚’ãƒ–ãƒ­ãƒƒã‚¯ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã«ä»£å…¥ã—ã¦ç¹°ã‚Šè¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-66" id="label-66"><code>power_set</code></a></dt><!-- RDLabel: "power_set" -->
 <dd>
-W‡‚Ì‘S‚Ä‚Ì•”•ªW‡‚ÌW‡‚ğ•Ô‚µ‚Ü‚·B</dd>
+é›†åˆã®å…¨ã¦ã®éƒ¨åˆ†é›†åˆã®é›†åˆã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-67" id="label-67"><code>each_product(<var>other</var>)</code></a></dt><!-- RDLabel: "each_product" -->
 <dd>
-<var>self</var> ‚Æ <var>other</var> ‚Ì‘S‚Ä‚Ì—v‘f <var>x</var>, <var>y</var> ‚É
-‚Â‚¢‚ÄAŒJ‚è•Ô‚µ‚Ü‚·B</dd>
+<var>self</var> ã¨ <var>other</var> ã®å…¨ã¦ã®è¦ç´  <var>x</var>, <var>y</var> ã«
+ã¤ã„ã¦ã€ç¹°ã‚Šè¿”ã—ã¾ã™ã€‚</dd>
 </dl>
-<pre>—á:
+<pre>ä¾‹:
    require "finite-set"
    include Algebra
    Set[0, 1].each_prodct(Set[0, 1]) do |x, y|
@@ -291,28 +291,28 @@ p s.size = 2**3 #=&gt; true</pre></dd>
 <dl>
 <dt><a name="label-68" id="label-68"><code>product(<var>other</var>)</code></a></dt><!-- RDLabel: "product" -->
 <dd>
-<p><var>self</var> ‚Æ <var>other</var> ‚ÌÏW‡‚ğ•Ô‚µ‚Ü‚·BÏW‡‚ÌŠeŒ³
-‚Í”z—ñ <code>[x, y]</code> ‚Å‚·BƒuƒƒbƒN‚ª—^‚¦‚ç‚ê‚½‚ÍAƒuƒƒbƒN
-‚ğ•]‰¿‚µ‚½’l‚Å\¬‚³‚ê‚éW‡‚ğ•Ô‚µ‚Ü‚·B</p>
-<p>—á: </p>
+<p><var>self</var> ã¨ <var>other</var> ã®ç©é›†åˆã‚’è¿”ã—ã¾ã™ã€‚ç©é›†åˆã®å„å…ƒ
+ã¯é…åˆ— <code>[x, y]</code> ã§ã™ã€‚ãƒ–ãƒ­ãƒƒã‚¯ãŒä¸ãˆã‚‰ã‚ŒãŸæ™‚ã¯ã€ãƒ–ãƒ­ãƒƒã‚¯
+ã‚’è©•ä¾¡ã—ãŸå€¤ã§æ§‹æˆã•ã‚Œã‚‹é›†åˆã‚’è¿”ã—ã¾ã™ã€‚</p>
+<p>ä¾‹: </p>
 <pre>require "finite-set"
 include Algebra
 p Set[0, 1].product(Set[0, 1]) #=&gt; {[0,0], [0,1], [1,0], [1,1]}
 p Set[0, 1].product(Set[0, 1]){|x, y| x + 2*y} #=&gt; {0, 1, 2, 3]</pre></dd>
 <dt><a name="label-69" id="label-69"><code>*</code></a></dt><!-- RDLabel: "*" -->
 <dd>
-<a href="#label-68">product</a> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<a href="#label-68">product</a> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-70" id="label-70"><code>equiv_class([<var>equiv</var>])</code></a></dt><!-- RDLabel: "equiv_class" -->
 <dd>
-W‡‚ğ“¯’lŠÖŒW‚ÅŠ„‚Á‚½¤W‡‚ğ•Ô‚µ‚Ü‚·B“¯’lŠÖŒW‚Ì—^‚¦•û‚ÍŸ‚Ì‚R’Ê‚è‚ ‚è‚Ü‚·B
+é›†åˆã‚’åŒå€¤é–¢ä¿‚ã§å‰²ã£ãŸå•†é›†åˆã‚’è¿”ã—ã¾ã™ã€‚åŒå€¤é–¢ä¿‚ã®ä¸ãˆæ–¹ã¯æ¬¡ã®ï¼“é€šã‚Šã‚ã‚Šã¾ã™ã€‚
 <ol>
-<li><p>ƒuƒƒbƒN‚Ì•]‰¿’l‚ğ^‚É‚·‚é“¯’lŠÖŒW</p>
+<li><p>ãƒ–ãƒ­ãƒƒã‚¯ã®è©•ä¾¡å€¤ã‚’çœŸã«ã™ã‚‹åŒå€¤é–¢ä¿‚</p>
 <pre>require "finite-set"
 include Algebra
 s = Set[0, 1, 2, 3, 4, 5]
 p s.equiv_class{|a, b| (a - b) % 3 == 0} #=&gt; {{0, 3}, {1, 4}, {2, 5}}</pre></li>
-<li><p>ˆø”‚É—^‚¦‚ç‚ê‚½ƒIƒuƒWƒFƒNƒg‚É‘Î‚·‚éƒƒ\ƒbƒh <var>call(x, y)</var> 
-        ‚Ì^‹U’l‚É‚æ‚é“¯’lŠÖŒW</p>
+<li><p>å¼•æ•°ã«ä¸ãˆã‚‰ã‚ŒãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å¯¾ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ <var>call(x, y)</var> 
+        ã®çœŸå½å€¤ã«ã‚ˆã‚‹åŒå€¤é–¢ä¿‚</p>
 <pre>require "finite-set"
 include Algebra
 o = Object.new
@@ -321,7 +321,7 @@ def o.call(x, y)
 end
 s = Set[0, 1, 2, 3, 4, 5]
 p s.equiv_class(o) #=&gt; {{0, 3}, {1, 4}, {2, 5}}</pre></li>
-<li><p>ˆø”‚É—^‚¦‚ç‚ê‚½ <var>Symbol</var> ‚É‰‚¶‚½ƒƒ\ƒbƒh‚É‚æ‚é“¯’lŠÖŒW</p>
+<li><p>å¼•æ•°ã«ä¸ãˆã‚‰ã‚ŒãŸ <var>Symbol</var> ã«å¿œã˜ãŸãƒ¡ã‚½ãƒƒãƒ‰ã«ã‚ˆã‚‹åŒå€¤é–¢ä¿‚</p>
 <pre>require "finite-set"
 include Algebra
 s = Set[0, 1, 2, 3, 4, 5]
@@ -332,21 +332,21 @@ p s.equiv_class(:q) #=&gt; {{0, 3}, {1, 4}, {2, 5}}</pre></li>
 </ol></dd>
 <dt><a name="label-71" id="label-71"><code>/</code></a></dt><!-- RDLabel: "/" -->
 <dd>
-<a href="#label-70">equiv_class</a> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<a href="#label-70">equiv_class</a> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-72" id="label-72"><code>to_a</code></a></dt><!-- RDLabel: "to_a" -->
 <dd>
-W‡‚ğ”z—ñ‚É‚µ‚Ä•Ô‚µ‚Ü‚·B—v‘f‚Ì•À‚Ñ‚Ì‡‚Í•s’è‚Å‚·B</dd>
+é›†åˆã‚’é…åˆ—ã«ã—ã¦è¿”ã—ã¾ã™ã€‚è¦ç´ ã®ä¸¦ã³ã®é †ã¯ä¸å®šã§ã™ã€‚</dd>
 <dt><a name="label-73" id="label-73"><code>to_ary</code></a></dt><!-- RDLabel: "to_ary" -->
 <dd>
-<a href="#label-72">to_a</a> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<a href="#label-72">to_a</a> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-74" id="label-74"><code>sort</code></a></dt><!-- RDLabel: "sort" -->
 <dd>
-<a href="#label-72">to_a</a> ‚Ì’l‚ğƒ\[ƒg‚µ‚Ä•Ô‚µ‚Ü‚·B</dd>
+<a href="#label-72">to_a</a> ã®å€¤ã‚’ã‚½ãƒ¼ãƒˆã—ã¦è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-75" id="label-75"><code>power(<var>other</var>)</code></a></dt><!-- RDLabel: "power" -->
 <dd>
-<p><var>other</var> ‚©‚ç <var>self</var> ‚Ö‚ÌÊ‘œ‘S‚Ä‚ÌW‡‚ğ•Ô‚µ‚Ü‚·B
-Ê‘œ‚Í <a href="finite-map-ja.html">Map</a> ‚ÌŒ³‚Æ‚µ‚Ä•\Œ»‚³‚ê‚Ü‚·B</p>
-<p>—á: </p>
+<p><var>other</var> ã‹ã‚‰ <var>self</var> ã¸ã®å†™åƒå…¨ã¦ã®é›†åˆã‚’è¿”ã—ã¾ã™ã€‚
+å†™åƒã¯ <a href="finite-map-ja.html">Map</a> ã®å…ƒã¨ã—ã¦è¡¨ç¾ã•ã‚Œã¾ã™ã€‚</p>
+<p>ä¾‹: </p>
 <pre>require "finite-map"
 include Algebra
 a = Set[0, 1, 2, 3]
@@ -357,36 +357,36 @@ p b.surjections(a).size #=&gt; S(3, 4) = 36
 p a.injections(b).size  #=&gt; 4P3 = 24</pre></dd>
 <dt><a name="label-76" id="label-76"><code>**</code></a></dt><!-- RDLabel: "**" -->
 <dd>
-<a href="#label-75">power</a> ‚ÌƒGƒCƒŠƒAƒX‚Å‚·B</dd>
+<a href="#label-75">power</a> ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã§ã™ã€‚</dd>
 <dt><a name="label-77" id="label-77"><code>identity_map</code></a></dt><!-- RDLabel: "identity_map" -->
 <dd>
-©•ª‚Ö‚ÌP“™Ê‘œ‚ğ•Ô‚µ‚Ü‚·B</dd>
+è‡ªåˆ†ã¸ã®æ’ç­‰å†™åƒã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-78" id="label-78"><code>surjections(<var>other</var>)</code></a></dt><!-- RDLabel: "surjections" -->
 <dd>
-<var>other</var> ‚©‚ç <var>self</var> ‚Ö‚Ì‘SË‘S‚Ä‚ÌW‡‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>other</var> ã‹ã‚‰ <var>self</var> ã¸ã®å…¨å°„å…¨ã¦ã®é›†åˆã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-79" id="label-79"><code>injections(<var>other</var>)</code></a></dt><!-- RDLabel: "injections" -->
 <dd>
-<var>other</var> ‚©‚ç <var>self</var> ‚Ö‚Ì’PË‘S‚Ä‚ÌW‡‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>other</var> ã‹ã‚‰ <var>self</var> ã¸ã®å˜å°„å…¨ã¦ã®é›†åˆã‚’è¿”ã—ã¾ã™ã€‚</dd>
 <dt><a name="label-80" id="label-80"><code>bijections(<var>other</var>)</code></a></dt><!-- RDLabel: "bijections" -->
 <dd>
-<var>other</var> ‚©‚ç <var>self</var> ‚Ö‚Ì‘S’PË‘S‚Ä‚ÌW‡‚ğ•Ô‚µ‚Ü‚·B</dd>
+<var>other</var> ã‹ã‚‰ <var>self</var> ã¸ã®å…¨å˜å°„å…¨ã¦ã®é›†åˆã‚’è¿”ã—ã¾ã™ã€‚</dd>
 </dl>
 <h1><a name="label-81" id="label-81">Enumerable</a></h1><!-- RDLabel: "Enumerable" -->
-<h2><a name="label-82" id="label-82">ƒtƒ@ƒCƒ‹–¼:</a></h2><!-- RDLabel: "ƒtƒ@ƒCƒ‹–¼:" -->
+<h2><a name="label-82" id="label-82">ãƒ•ã‚¡ã‚¤ãƒ«å:</a></h2><!-- RDLabel: "ãƒ•ã‚¡ã‚¤ãƒ«å:" -->
 <ul>
 <li><var>finite-set.rb</var></li>
 </ul>
-<h2><a name="label-83" id="label-83">ƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒƒ\ƒbƒh:" -->
+<h2><a name="label-83" id="label-83">ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-84" id="label-84"><code>any?</code></a></dt><!-- RDLabel: "any?" -->
 <dd>
-ƒuƒƒbƒN‚ğ^‚É‚·‚é—v‘f‚ª‚ ‚é‚Æ‚«A^‚ğ•Ô‚µ‚Ü‚·B
-<var>Enumerable#find</var> ‚Ì•Ê–¼‚Å‚·B(built-in of ruby-1.8)</dd>
+ãƒ–ãƒ­ãƒƒã‚¯ã‚’çœŸã«ã™ã‚‹è¦ç´ ãŒã‚ã‚‹ã¨ãã€çœŸã‚’è¿”ã—ã¾ã™ã€‚
+<var>Enumerable#find</var> ã®åˆ¥åã§ã™ã€‚(built-in of ruby-1.8)</dd>
 <dt><a name="label-85" id="label-85"><code>all?</code></a></dt><!-- RDLabel: "all?" -->
 <dd>
-<p>‘S‚Ä‚Ì—v‘f‚É‚Â‚¢‚ÄƒuƒƒbƒN‚ª^‚Å‚ ‚é‚Æ‚«A^‚ğ•Ô‚µ‚Ü‚·B</p>
+<p>å…¨ã¦ã®è¦ç´ ã«ã¤ã„ã¦ãƒ–ãƒ­ãƒƒã‚¯ãŒçœŸã§ã‚ã‚‹ã¨ãã€çœŸã‚’è¿”ã—ã¾ã™ã€‚</p>
 <pre>!any?{|x| !yield(x)}</pre>
-<p>‚Æ’è‹`‚³‚ê‚Ä‚¢‚Ü‚·B(built-in of ruby-1.8)</p></dd>
+<p>ã¨å®šç¾©ã•ã‚Œã¦ã„ã¾ã™ã€‚(built-in of ruby-1.8)</p></dd>
 </dl>
 
 </body>

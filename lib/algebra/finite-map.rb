@@ -4,8 +4,8 @@
 #
 # Version 0.96 (2003.11.06)
 
-require "algebra/finite-set"
-require "algebra/powers"
+require 'algebra/finite-set'
+require 'algebra/powers'
 
 module Algebra
   class Map < Set
@@ -13,8 +13,8 @@ module Algebra
 
     def self.[](a = {})
       new.instance_eval do
-	@body = Hash[a]
-	self
+        @body = Hash[a]
+        self
       end
     end
 
@@ -27,11 +27,11 @@ module Algebra
     end
 
     def self.empty_set(t = nil)
-      m = new()
+      m = new
       m.target = t if t
       m
     end
-    
+
     class << self
       alias phi empty_set
       alias null empty_set
@@ -52,7 +52,7 @@ module Algebra
     def empty_set(s = nil)
       self.class.empty_set(s)
     end
-    
+
     alias phi empty_set
     alias null empty_set
 
@@ -83,7 +83,7 @@ module Algebra
     def hash
       s = 0
       @body.each_key do |k, v|
-	s ^= k.hash ^ ~(v.hash)
+        s ^= k.hash ^ ~v.hash
       end
       s
     end
@@ -98,27 +98,27 @@ module Algebra
     def domain
       base_class.new(*@body.keys)
     end
-    
+
     def image(set = nil)
       if set
-	set.map_s{|k| call(k)}
+        set.map_s { |k| call(k) }
       else
-	base_class.new(*@body.values)
+        base_class.new(*@body.values)
       end
     end
 
     def map_s
       s = base_class.phi
       each do |x, y|
-	s.append!(yield(x, y))
+        s.append!(yield(x, y))
       end
       s
     end
-    
+
     def map_m
       s = phi
       each do |x, y|
-	s.append!(* yield(x, y))
+        s.append!(* yield(x, y))
       end
       s
     end
@@ -127,55 +127,55 @@ module Algebra
       self.class.new(@body.invert)
     end
 
-    def compose(other)  # LEFT ACTION!!!
-      m = other.map_m{|x, y| [x, call(y)]}
+    def compose(other) # LEFT ACTION!!!
+      m = other.map_m { |x, y| [x, call(y)] }
       m.target = target
       m
     end
 
     alias * compose
 
-#  module Map_common
-    
+    #  module Map_common
+
     attr_accessor :target
     alias source domain
     alias codomain target
     alias codomain= target=
 
     def identity?
-      all?{|x, y| x == y}
+      all? { |x, y| x == y }
     end
-        
+
     def surjective?
-      raise "target is not defined." unless @target
+      raise 'target is not defined.' unless @target
       image.size == target.size
     end
-    
+
     def injective?
       image.size == source.size
     end
-    
+
     def bijective?
-      surjective? and injective?
+      surjective? && injective?
     end
-    
+
     def inv_image(s)
-      source.separate{|x| s.member? act(x)}
+      source.separate { |x| s.member? act(x) }
     end
 
     def inv_coset
       s = phi
       if target
-	target.each do |y|
-	  s.append!(y, base_class.phi)
-	end
+        target.each do |y|
+          s.append!(y, base_class.phi)
+        end
       end
       each do |x, y|
-	if s.include? y
-	  s.call(y) << x
-	else
-	  s.append!(y, base_class.singleton(x))
-	end
+        if s.include? y
+          s.call(y) << x
+        else
+          s.append!(y, base_class.singleton(x))
+        end
       end
       s
     end
@@ -190,12 +190,12 @@ module Algebra
   end
 end
 
-if $0 == __FILE__
-  require "algebra/permutation-group"
+if $PROGRAM_NAME == __FILE__
+  require 'algebra/permutation-group'
 
   a = Algebra::Set[0, 1, 2]
   b = Algebra::Set[0, 1, 2]
-  (a ** b).each do |x|
+  (a**b).each do |x|
     p x
   end
 end

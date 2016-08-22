@@ -4,12 +4,7 @@
 #                                                     #
 #######################################################
 require 'test/unit'
-require "algebra/groebner-basis-coeff.rb"
-require "algebra/m-polynomial"
-require "algebra/groebner-basis"
-require "algebra/algebraic-parser"
-require "algebra/rational"
-include Algebra
+require 'algebra'
 
 class TestGroebnerBasisCoeff < Test::Unit::TestCase
   def setup
@@ -18,37 +13,37 @@ class TestGroebnerBasisCoeff < Test::Unit::TestCase
 
   def gbc(f)
     f0 = f.first
-    print "Basis of: "
+    print 'Basis of: '
     p f.class
     f.each do |elem|
       p elem.class
       p elem.to_s
     end
     p f
-    puts(f.map { |v| v.to_s }.join(", "))
+    puts(f.map(&:to_s).join(', '))
     c, g = Groebner.basis_coeff(f)
-    print "is: "
-    puts(g.map { |v| v.to_s }.join(", "))
-    puts "Coeefitients are: "
+    print 'is: '
+    puts(g.map(&:to_s).join(', '))
+    puts 'Coeefitients are: '
     c.each do |x|
-      puts x.map { |v| v.to_s }.join(", ")
+      puts x.map(&:to_s).join(', ')
     end
     p 3333
     p g
-    p c.collect{|x| f.inner_product x}
+    p c.collect { |x| f.inner_product x }
 
-    if g == c.collect{|x| f.inner_product x}
-      puts "Success!"
+    if g == c.collect { |x| f.inner_product x }
+      puts 'Success!'
     else
-      puts "Fail."
+      puts 'Fail.'
     end
     puts
   end
 
   def test_gbc
-    x, y, z = @P.vars("xyz")
+    x, y, z = @P.vars('xyz')
 
-    f1 = x**2 + y**2 + z**2 -1
+    f1 = x**2 + y**2 + z**2 - 1
     f2 = x**2 + z**2 - y
     f3 = x - z
 
@@ -75,23 +70,22 @@ class TestGroebnerBasisCoeff < Test::Unit::TestCase
     # p g
     # p c.collect{|x| f.inner_product x}
 
-    assert_equal(g, c.collect{|x| f.inner_product x})
-  #   if g == c.collect{|x| f.inner_product x}
-  #     puts "Success!"
-  #   else
-  #     puts "Fail."
-  #   end
-  #   puts
+    assert_equal(g, c.collect { |x| f.inner_product x })
+    #   if g == c.collect{|x| f.inner_product x}
+    #     puts "Success!"
+    #   else
+    #     puts "Fail."
+    #   end
+    #   puts
   end
 
   #  require "algebra/residue-class-ring"
   #  Z5 = ResidueClassRing(Integer, 5)
   #  P = MPolynomial(Z5)
   def test_groebner_basis_coeff_01
+    x, y, z = @P.vars('xyz')
 
-    x, y, z = @P.vars("xyz")
-
-    f1 = x**2 + y**2 + z**2 -1
+    f1 = x**2 + y**2 + z**2 - 1
     f2 = x**2 + z**2 - y
     f3 = x - z
 

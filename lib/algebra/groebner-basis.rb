@@ -9,7 +9,7 @@
 #   require "algebra/mathn"
 #   p Groebner.basis([x**2 + y**2 + z**2 -1, x**2 + z**2 - y, x - z])
 
-require "algebra/ruby-version"
+# require "algebra/ruby-version"
 require "algebra/array-supplement"
 require "algebra/groebner-basis-coeff"
 #require "algebra/work/old-basis"
@@ -20,7 +20,7 @@ module Groebner
     x = lm.lcm(other.lm)
     x / lt * rt - x / other.lt * other.rt
   end
-  
+
   alias | S_pair
 
   def self.basis?(f)

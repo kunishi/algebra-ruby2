@@ -2,8 +2,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     power_assert (0.3.0)
-    rake (11.1.2)
-    test-unit (3.1.8)
+    rake (11.2.2)
+    rdtool (0.6.38)
+    test-unit (3.2.1)
       power_assert
 
 PLATFORMS
@@ -11,7 +12,8 @@ PLATFORMS
 
 DEPENDENCIES
   rake
+  rdtool
   test-unit
 
 BUNDLED WITH
-   1.12.2
+   1.12.5

@@ -1,42 +1,42 @@
 =begin
 [((<index-ja|URL:index-ja.html>))] 
 = Algebra::ResidueClassRing
-((*(��]�N���X)*))
+((*(剰余環クラス)*))
 
-���炻��1�̌���@�Ƃ�����]���\�����܂��B���ۂ̃N���X�𐶐�����ɂ͊�
-�Ɩ@�Ƃ��w�肵�āA�N���X���\�b�h ((<::create>)) ���邢��
-�֐� ((<Algebra.ResidueClassRing>))() ��p���܂��B
+環からその1つの元を法とした剰余環を構成します。実際のクラスを生成するには環
+と法とを指定して、クラスメソッド ((<::create>)) あるいは
+関数 ((<Algebra.ResidueClassRing>))() を用います。
 
 
-== �t�@�C����:
+== ファイル名:
 * ((|residue-class-ring.rb|))
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 
 * ((|Object|))
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 
-�Ȃ�
+なし
 
-== �֘A����֐�:
+== 関連する関数:
 
 --- Algebra.ResidueClassRing(ring, mod)
-    ((<::create>))(ring, mod) �Ɠ����ł��B
+    ((<::create>))(ring, mod) と同じです。
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
 --- ::create(ring, mod)
 
-    �N���X ((|ring|)) �ŕ\���������Ƃ��̊̌� ((|mod|)) ����A
-    ���̌���@�Ƃ�����]��\������N���X��Ԃ��܂��B
+    クラス ((|ring|)) で表現されるを環とその環の元 ((|mod|)) から、
+    その元を法とした剰余環を表現するクラスを返します。
     
-    ���̖߂�l�� ((<Algebra::ResidueClassRing>)) �N���X�̃T�u�N���X�ł��B
-    ���̃T�u�N���X�ɂ̓N���X���\�b�h�Ƃ��� ((|::ground|)) ��
-    ((|::modulus|)) �� (({[x]})) ����`����A���ꂼ��A��b�� ((|ring|))�A
-    �@ ((|mod|))�Ax ���\���Ƃ����]�ނ�Ԃ��܂��B
+    この戻り値は ((<Algebra::ResidueClassRing>)) クラスのサブクラスです。
+    このサブクラスにはクラスメソッドとして ((|::ground|)) と
+    ((|::modulus|)) と (({[x]})) が定義され、それぞれ、基礎環 ((|ring|))、
+    法 ((|mod|))、x を代表元とする剰余類を返します。
         
-    ��: ��������@ (({x**2 + x + 1})) �Ŋ���B
+    例: 多項式環を法 (({x**2 + x + 1})) で割る。
       require "rational"
       require "polynomial"
       require "residue-class-ring"
@@ -45,11 +45,11 @@
       F = Algebra.ResidueClassRing(Px, x**2 + x + 1)
       p F[x + 1]**100     #=> -x - 1
       
-    ((|ring|)) �� Integer �ł���ꍇ�Ɍ���A�S�Ă̋t����\�ߌv�Z����
-    �ۊǂ��܂��B�܂� (({0, 1, ... , mod-1})) �ɑΉ������]�ނ̔z���
-    ((|to_ary|)) �œ��邱�Ƃ��ł��܂��B
+    ((|ring|)) が Integer である場合に限り、全ての逆数を予め計算して
+    保管します。また (({0, 1, ... , mod-1})) に対応する剰余類の配列を
+    ((|to_ary|)) で得ることができます。
     
-    ��: modulo 7 �̑f��
+    例: modulo 7 の素体
       require "residue-class-ring"
       F7 = Algebra::ResidueClassRing.create(Integer, 7)
       a, b, c, d, e, f, g = F7
@@ -59,54 +59,54 @@
         #=> [1, 1, 1, 1, 1, 1]
 
 --- ::[](x)
-    ((|x|)) �ő�\������]�ނ�Ԃ��܂��B
+    ((|x|)) で代表される剰余類を返します。
     
 #--- ::indeterminate(obj)
 
 --- ::zero
-    �댳��Ԃ��܂��B
+    零元を返します。
     
 --- ::unity
-    �P�ʌ���Ԃ��܂��B
+    単位元を返します。
 
 
-== ���\�b�h:
+== メソッド:
 
 --- lift
-    ��]�ނ̑�\����Ԃ��܂��B
+    剰余類の代表元を返します。
 
 #--- monomial?
 
 --- zero?
-    �댳�ł���Ƃ��^��Ԃ��܂��B
+    零元であるとき真を返します。
 
 --- zero
-    �댳��Ԃ��܂��B
+    零元を返します。
     
 --- unity
-    �P�ʌ���Ԃ��܂��B
+    単位元を返します。
 
 --- ==(other)
-    �������Ƃ��^��Ԃ��܂��B
+    等しいとき真を返します。
 
 --- +(other)
-    �a���v�Z���܂��B
+    和を計算します。
 
 --- -(other)
-    �����v�Z���܂��B
+    差を計算します。
 
 --- *(other)
-    �ς��v�Z���܂��B
+    積を計算します。
 
 --- **(n)
-    ((|n|)) ����v�Z���܂��B
+    ((|n|)) 乗を計算します。
 
 --- /(other)
-    ((<inverse>)) �𗘗p���ď����v�Z���܂��B
+    ((<inverse>)) を利用して商を計算します。
 
 --- inverse
-    ��b�����[�N���b�h�ł��邱�Ƃ����肵�āA�t����Ԃ��܂��B
-    �t�������݂��Ȃ��ꍇ�̒l�� nil �ł��B
+    基礎環がユークリッド環であることを仮定して、逆数を返します。
+    逆数が存在しない場合の値は nil です。
 
 #--- to_s
 

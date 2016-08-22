@@ -1,60 +1,60 @@
 =begin
-= ‘ã”ƒpƒbƒP[ƒW
+= ä»£æ•°ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 
 2006.09.16
 
 *Version: 0.72
-*’˜ŽÒ: Œ´ Mˆê˜Y
+*è‘—è€…: åŽŸ ä¿¡ä¸€éƒŽ
 *e-mail: sinara@blade.nagaokaut.ac.jp
 *Home Page: ((<URL:http://blade.nagaokaut.ac.jp/~sinara/ruby/math/>))
 
-== ‚±‚ê‚ÍAAA
+== ã“ã‚Œã¯ã€ã€ã€
 
-1•Ï”‚ ‚é‚¢‚Í‘½•Ï”‚Ì‘½€Ž®‚ðŒvŽZ‚·‚é‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ‚Å‚·B
-”Šw“I‘ÎÛ‚ðŽ©‘R‚É Ruby ‚Å•\Œ»‰Â”\‚É‚·‚éŽ–‚ð–Ú“I‚É‚µ‚Ä‚¢‚Ü‚·B
-ƒXƒs[ƒh‚Í‚ ‚è‚Ü‚¹‚ñ‚ªAƒXƒNƒŠƒvƒgŒ¾Œê‚È‚Ì‚ÅƒAƒ‹ƒSƒŠƒYƒ€‚ðŒ©‚éŽ–
-‚ª‚Å‚«‚Ü‚·B
+1å¤‰æ•°ã‚ã‚‹ã„ã¯å¤šå¤‰æ•°ã®å¤šé …å¼ã‚’è¨ˆç®—ã™ã‚‹ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã§ã™ã€‚
+æ•°å­¦çš„å¯¾è±¡ã‚’è‡ªç„¶ã« Ruby ã§è¡¨ç¾å¯èƒ½ã«ã™ã‚‹äº‹ã‚’ç›®çš„ã«ã—ã¦ã„ã¾ã™ã€‚
+ã‚¹ãƒ”ãƒ¼ãƒ‰ã¯ã‚ã‚Šã¾ã›ã‚“ãŒã€ã‚¹ã‚¯ãƒªãƒ—ãƒˆè¨€èªžãªã®ã§ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’è¦‹ã‚‹äº‹
+ãŒã§ãã¾ã™ã€‚
 
-* ˆê•Ï”‘½€Ž®
-  * ‰Á–@Aæ–@A¤^è—]“™‚Ì‰‰ŽZ
-  * ˆö”•ª‰ð
-  * Galois ŒQ
-* ‘½•Ï”‘½€Ž®
-  * ‰Á–@Aæ–@“™‚Ì‰‰ŽZ
-  * ˆö”•ª‰ð
-  * ƒOƒŒƒuƒiŠî’ê‚Ì¶¬AƒOƒŒƒuƒiŠî’ê‚É‚æ‚é¤^è—]‚Ì‰‰ŽZ
-* ‘ã”Œn
-  * ¤‘Ì‚Ì¶¬
-  * è—]ŠÂ‚Ì¶¬
-  * s—ñŠÂ‚Ì¶¬
-  * ’uŠ·ŒQ‚ÌŒvŽZ
-* W‡‚ÆŽÊ‘œ
+* ä¸€å¤‰æ•°å¤šé …å¼
+  * åŠ æ³•ã€ä¹—æ³•ã€å•†ï¼å‰°ä½™ç­‰ã®æ¼”ç®—
+  * å› æ•°åˆ†è§£
+  * Galois ç¾¤
+* å¤šå¤‰æ•°å¤šé …å¼
+  * åŠ æ³•ã€ä¹—æ³•ç­‰ã®æ¼”ç®—
+  * å› æ•°åˆ†è§£
+  * ã‚°ãƒ¬ãƒ–ãƒŠåŸºåº•ã®ç”Ÿæˆã€ã‚°ãƒ¬ãƒ–ãƒŠåŸºåº•ã«ã‚ˆã‚‹å•†ï¼å‰°ä½™ã®æ¼”ç®—
+* ä»£æ•°ç³»
+  * å•†ä½“ã®ç”Ÿæˆ
+  * å‰°ä½™ç’°ã®ç”Ÿæˆ
+  * è¡Œåˆ—ç’°ã®ç”Ÿæˆ
+  * ç½®æ›ç¾¤ã®è¨ˆç®—
+* é›†åˆã¨å†™åƒ
 
-== ƒCƒ“ƒXƒg[ƒ‹
+== ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 
-‚±‚ÌƒpƒbƒP[ƒW‚ð—˜—p‚·‚é‚É‚Í‚Ü‚¸AƒIƒuƒWƒFƒNƒgŽwŒüƒXƒNƒŠƒvƒgŒ¾Œê Ruby 
-(((<URL:http://www.ruby-lang.org/>))ŽQÆ) ‚ª•K—v‚Å‚·B
+ã“ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’åˆ©ç”¨ã™ã‚‹ã«ã¯ã¾ãšã€ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å‘ã‚¹ã‚¯ãƒªãƒ—ãƒˆè¨€èªž Ruby 
+(((<URL:http://www.ruby-lang.org/>))å‚ç…§) ãŒå¿…è¦ã§ã™ã€‚
 
-X‚ÉAƒA[ƒJƒCƒu‚Ì“WŠJŒã
+æ›´ã«ã€ã‚¢ãƒ¼ã‚«ã‚¤ãƒ–ã®å±•é–‹å¾Œ
 
   ruby install.rb
 
-‚Æ‚·‚ê‚ÎAlib ƒfƒBƒŒƒNƒgƒŠˆÈ‰º‚ðAƒ[ƒh‰Â”\‚ÈƒfƒBƒŒƒNƒgƒŠ‚ÉƒRƒs[‚µA
-ƒCƒ“ƒXƒg[ƒ‹‚ªŠ®—¹‚µ‚Ü‚·B
+ã¨ã™ã‚Œã°ã€lib ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªä»¥ä¸‹ã‚’ã€ãƒ­ãƒ¼ãƒ‰å¯èƒ½ãªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã‚³ãƒ”ãƒ¼ã—ã€
+ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãŒå®Œäº†ã—ã¾ã™ã€‚
 
-‘¬“x‚Ì“_‚©‚çA—L—”‚Í•W€“Y•t‚Ì rational.rb ‚Å‚Í‚È‚­AŠg’£ƒ‰ƒCƒuƒ‰ƒŠ
+é€Ÿåº¦ã®ç‚¹ã‹ã‚‰ã€æœ‰ç†æ•°ã¯æ¨™æº–æ·»ä»˜ã® rational.rb ã§ã¯ãªãã€æ‹¡å¼µãƒ©ã‚¤ãƒ–ãƒ©ãƒª
 (((<URL:http://blade.nagaokaut.ac.jp/~sinara/ruby/rational/>))
-‚ðŽg‚¤‚±‚Æ‚ðŠ©‚ß‚Ü‚·B
+ã‚’ä½¿ã†ã“ã¨ã‚’å‹§ã‚ã¾ã™ã€‚
 
-== Žg‚¢•ûEƒTƒ“ƒvƒ‹
+== ä½¿ã„æ–¹ãƒ»ã‚µãƒ³ãƒ—ãƒ«
 
-doc ƒfƒBƒŒƒNƒgƒŠ‚Ì ((<index-ja.html|URL:index-ja.html>)) ‚ðŒ©‚Ä‚­‚¾‚³‚¢B
-ƒ}ƒjƒ…ƒAƒ‹‚âƒTƒ“ƒvƒ‹‚ª‚ ‚è‚Ü‚·B
+doc ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã® ((<index-ja.html|URL:index-ja.html>)) ã‚’è¦‹ã¦ãã ã•ã„ã€‚
+ãƒžãƒ‹ãƒ¥ã‚¢ãƒ«ã‚„ã‚µãƒ³ãƒ—ãƒ«ãŒã‚ã‚Šã¾ã™ã€‚
 
-== ŽQl
-* D.ƒRƒbƒNƒX, J.ƒŠƒgƒ‹ and D.ƒIƒV[, "ƒOƒŒƒuƒiŠî’ê‚Æ‘ã”‘½—l‘Ì“ü–åiãE‰ºj",
-  2000,ƒVƒ…ƒvƒŠƒ“ƒK[EƒtƒFƒAƒ‰[ƒN“Œ‹ž
-* Ž™‹ÊGŽ™, "Polynomial", ((<URL:http://www.math.kobe-u.ac.jp/HOME/kodama/tips-RubyPoly.html>))
+== å‚è€ƒ
+* D.ã‚³ãƒƒã‚¯ã‚¹, J.ãƒªãƒˆãƒ« and D.ã‚ªã‚·ãƒ¼, "ã‚°ãƒ¬ãƒ–ãƒŠåŸºåº•ã¨ä»£æ•°å¤šæ§˜ä½“å…¥é–€ï¼ˆä¸Šãƒ»ä¸‹ï¼‰",
+  2000,ã‚·ãƒ¥ãƒ—ãƒªãƒ³ã‚¬ãƒ¼ãƒ»ãƒ•ã‚§ã‚¢ãƒ©ãƒ¼ã‚¯æ±äº¬
+* å…çŽ‰å®å…, "Polynomial", ((<URL:http://www.math.kobe-u.ac.jp/HOME/kodama/tips-RubyPoly.html>))
 * H.Anai, M.Noro and K.Yokoyama, "Computation of the splitting fields and the Galois groups of polynomials", Progres in Mathematics, 28-50, Vo.143, 1996
 
 =end

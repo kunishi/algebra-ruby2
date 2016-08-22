@@ -1,221 +1,221 @@
 =begin
 [((<index-ja|URL:index-ja.html>))] 
 
-= —ûK’Ÿ
+= ç·´ç¿’å¸–
 
 == CONTENTS
-* ((<—LŒÀW‡>))
-  * ((<W‡>))
-  * ((<ŽÊ‘œ>))
-  * ((<ŒQ>))
-* ((<‘½€Ž®‚ÌŒvŽZ>))
-* ((<‘½•Ï”‘½€Ž®‚ÌŒvŽZ>))
-* ((<‘½•Ï”‘½€Ž®‚ÌŒvŽZ‚»‚Ì‚Q>))
-* ((<‘½€Ž®‚ð•¡”‚Ì‘½€Ž®‚ÅŠ„‚Á‚½—]‚è‚ð‹‚ß‚é>))
-* ((<‘½€Ž®‚ÌƒOƒŒƒuƒiŠî’ê‚ð‹‚ß‚é>))
-* ((<‘f‘Ì‚ðì‚é>))
-* ((<‘ã”‘Ì‚ðì‚é>))
-* ((<¤‘Ì‚Ì¶¬>))
-  * ((<®”ŠÂ‚Ì¤‘Ì‚ðŽæ‚Á‚Ä—L—”‚ðì‚é>))
-  * ((<—L—ŠÖ”‘Ì‚Ì¶¬>))
-  * ((<‘ã”Šg‘å‘Ìã‚Ì—L—Ž®‚ÌŒvŽZ>))
-  * ((<‘ã”ŠÖ”‘Ì>))
-* ((<üŒ`‘ã”>))
-  * ((<˜A—§1ŽŸ•û’öŽ®‚ð‰ð‚­>))
-  * ((<³•ûs—ñ‚Ì‘ÎŠp‰»>))
-  * ((<s—ñ‚Ì’PˆöŽq‚ð‹‚ß‚é>))
-  * ((<s—ñ‚Ì Jordan •W€Œ`‚ð‹‚ß‚é>))
-  * ((<Cayley-Hamilton ‚Ì’è—‚ÌiŽŸŒ³–ˆ‚ÌjØ–¾>))
-* ((<ƒOƒŒƒuƒiŠî’ê‚ðŒ³‚ÌŠî’ê‚Å•\Œ»‚·‚é>))
-* ((<”CˆÓ‚ÌŠî’ê‚ÅŠ„‚Á‚½¤‚Æ—]‚è‚ð‹‚ß‚éi—]‚è‚O‚ÉˆÓ–¡‚ª‚ ‚éj>))
-* ((<ˆö”•ª‰ð>))
-  * ((<®”ŒW”‘½€Ž®‚Ìˆö”•ª‰ð>))
-  * ((<Zp ŒW”‘½€Ž®‚Ìˆö”•ª‰ð>))
-  * ((<—L—”‚Ì‘ã”Šg‘åã‚Ì‘½€Ž®‚Ìˆö”•ª‰ð>))
-  * ((<—L—”‚Ì‘ã”Šg‘å‚Ì‘ã”Šg‘åã‚Ì‘½€Ž®‚Ìˆö”•ª‰ð>))
-  * ((<x^4 + 10x^2 + 1 ‚Ìˆö”•ª‰ð>))
-  * ((<®”A—L—ŒW”‘½•Ï”‘½€Ž®‚Ìˆö”•ª‰ð>))
-  * ((<Zp ŒW”‘½•Ï”‘½€Ž®‚Ìˆö”•ª‰ð>))
-* ((<‘ã”•û’öŽ®>))
-  * ((<Å¬‘½€Ž®>))
-  * ((<Å¬•ª‰ð‘Ì>))
-  * ((<‘½€Ž®‚ÌƒKƒƒAŒQ>))
-* ((<‰“™Šô‰½>))
-  * ((<dS‚Ì‘¶Ý>))
-  * ((<ŠOS‚Ì‘¶Ý>))
-  * ((<‚S‚Ì‘¶Ý>))
-  * ((<4 ‚Â‚Ì“™–ÊÏ>))
-* ((<‰ðÍ>))
-  * ((<ƒ‰ƒOƒ‰ƒ“ƒWƒ…‚Ìæ”–@>))
+* ((<æœ‰é™é›†åˆ>))
+  * ((<é›†åˆ>))
+  * ((<å†™åƒ>))
+  * ((<ç¾¤>))
+* ((<å¤šé …å¼ã®è¨ˆç®—>))
+* ((<å¤šå¤‰æ•°å¤šé …å¼ã®è¨ˆç®—>))
+* ((<å¤šå¤‰æ•°å¤šé …å¼ã®è¨ˆç®—ãã®ï¼’>))
+* ((<å¤šé …å¼ã‚’è¤‡æ•°ã®å¤šé …å¼ã§å‰²ã£ãŸä½™ã‚Šã‚’æ±‚ã‚ã‚‹>))
+* ((<å¤šé …å¼ã®ã‚°ãƒ¬ãƒ–ãƒŠåŸºåº•ã‚’æ±‚ã‚ã‚‹>))
+* ((<ç´ ä½“ã‚’ä½œã‚‹>))
+* ((<ä»£æ•°ä½“ã‚’ä½œã‚‹>))
+* ((<å•†ä½“ã®ç”Ÿæˆ>))
+  * ((<æ•´æ•°ç’°ã®å•†ä½“ã‚’å–ã£ã¦æœ‰ç†æ•°ã‚’ä½œã‚‹>))
+  * ((<æœ‰ç†é–¢æ•°ä½“ã®ç”Ÿæˆ>))
+  * ((<ä»£æ•°æ‹¡å¤§ä½“ä¸Šã®æœ‰ç†å¼ã®è¨ˆç®—>))
+  * ((<ä»£æ•°é–¢æ•°ä½“>))
+* ((<ç·šå½¢ä»£æ•°>))
+  * ((<é€£ç«‹1æ¬¡æ–¹ç¨‹å¼ã‚’è§£ã>))
+  * ((<æ­£æ–¹è¡Œåˆ—ã®å¯¾è§’åŒ–>))
+  * ((<è¡Œåˆ—ã®å˜å› å­ã‚’æ±‚ã‚ã‚‹>))
+  * ((<è¡Œåˆ—ã® Jordan æ¨™æº–å½¢ã‚’æ±‚ã‚ã‚‹>))
+  * ((<Cayley-Hamilton ã®å®šç†ã®ï¼ˆæ¬¡å…ƒæ¯Žã®ï¼‰è¨¼æ˜Ž>))
+* ((<ã‚°ãƒ¬ãƒ–ãƒŠåŸºåº•ã‚’å…ƒã®åŸºåº•ã§è¡¨ç¾ã™ã‚‹>))
+* ((<ä»»æ„ã®åŸºåº•ã§å‰²ã£ãŸå•†ã¨ä½™ã‚Šã‚’æ±‚ã‚ã‚‹ï¼ˆä½™ã‚Šï¼ï¼ã«æ„å‘³ãŒã‚ã‚‹ï¼‰>))
+* ((<å› æ•°åˆ†è§£>))
+  * ((<æ•´æ•°ä¿‚æ•°å¤šé …å¼ã®å› æ•°åˆ†è§£>))
+  * ((<Zp ä¿‚æ•°å¤šé …å¼ã®å› æ•°åˆ†è§£>))
+  * ((<æœ‰ç†æ•°ã®ä»£æ•°æ‹¡å¤§ä¸Šã®å¤šé …å¼ã®å› æ•°åˆ†è§£>))
+  * ((<æœ‰ç†æ•°ã®ä»£æ•°æ‹¡å¤§ã®ä»£æ•°æ‹¡å¤§ä¸Šã®å¤šé …å¼ã®å› æ•°åˆ†è§£>))
+  * ((<x^4 + 10x^2 + 1 ã®å› æ•°åˆ†è§£>))
+  * ((<æ•´æ•°ã€æœ‰ç†ä¿‚æ•°å¤šå¤‰æ•°å¤šé …å¼ã®å› æ•°åˆ†è§£>))
+  * ((<Zp ä¿‚æ•°å¤šå¤‰æ•°å¤šé …å¼ã®å› æ•°åˆ†è§£>))
+* ((<ä»£æ•°æ–¹ç¨‹å¼>))
+  * ((<æœ€å°å¤šé …å¼>))
+  * ((<æœ€å°åˆ†è§£ä½“>))
+  * ((<å¤šé …å¼ã®ã‚¬ãƒ­ã‚¢ç¾¤>))
+* ((<åˆç­‰å¹¾ä½•>))
+  * ((<é‡å¿ƒã®å­˜åœ¨>))
+  * ((<å¤–å¿ƒã®å­˜åœ¨>))
+  * ((<åž‚å¿ƒã®å­˜åœ¨>))
+  * ((<4 ã¤ã®ç­‰é¢ç©>))
+* ((<è§£æž>))
+  * ((<ãƒ©ã‚°ãƒ©ãƒ³ã‚¸ãƒ¥ã®ä¹—æ•°æ³•>))
 
-== —LŒÀW‡
+== æœ‰é™é›†åˆ
 
-=== W‡
+=== é›†åˆ
 
 <<< sample-set01.rb.v.rd
 
-=== ŽÊ‘œ
+=== å†™åƒ
 
 <<< sample-map01.rb.v.rd
 
-=== ŒQ
+=== ç¾¤
 
 <<< sample-group01.rb.v.rd
 
-== ‘½€Ž®‚ÌŒvŽZ
+== å¤šé …å¼ã®è¨ˆç®—
 
 <<< sample-polynomial01.rb.v.rd
 
-== ‘½•Ï”‘½€Ž®‚ÌŒvŽZ
+== å¤šå¤‰æ•°å¤šé …å¼ã®è¨ˆç®—
 
 <<< sample-polynomial02.rb.v.rd
 
-== ‘½•Ï”‘½€Ž®‚ÌŒvŽZ‚»‚Ì‚Q
+== å¤šå¤‰æ•°å¤šé …å¼ã®è¨ˆç®—ãã®ï¼’
 
 <<< sample-m-polynomial01.rb.v.rd
 
-== ‘½€Ž®‚ð•¡”‚Ì‘½€Ž®‚ÅŠ„‚Á‚½—]‚è‚ð‹‚ß‚é
+== å¤šé …å¼ã‚’è¤‡æ•°ã®å¤šé …å¼ã§å‰²ã£ãŸä½™ã‚Šã‚’æ±‚ã‚ã‚‹
 
 <<< sample-divmod01.rb.v.rd
 
-== ‘½€Ž®‚ÌƒOƒŒƒuƒiŠî’ê‚ð‹‚ß‚é
+== å¤šé …å¼ã®ã‚°ãƒ¬ãƒ–ãƒŠåŸºåº•ã‚’æ±‚ã‚ã‚‹
 
 <<< sample-groebner01.rb.v.rd
 
-== ‘f‘Ì‚ðì‚é
+== ç´ ä½“ã‚’ä½œã‚‹
 
 <<< sample-primefield01.rb.v.rd
 
-== ‘ã”‘Ì‚ðì‚é
+== ä»£æ•°ä½“ã‚’ä½œã‚‹
 
 <<< sample-algebraicfield01.rb.v.rd
 
-=== ‚±‚ê‚Æ“¯‚¶‚à‚Ì‚ªŽŸ‚Ì—l‚É‘‚¯‚éB
+=== ã“ã‚Œã¨åŒã˜ã‚‚ã®ãŒæ¬¡ã®æ§˜ã«æ›¸ã‘ã‚‹ã€‚
 
 <<< sample-algebraicfield02.rb.v.rd
 
-=== ƒ‹[ƒg‚ÌŒvŽZ
+=== ãƒ«ãƒ¼ãƒˆã®è¨ˆç®—
 
 <<< sample-algebraic-root01.rb.v.rd
 
-== ¤‘Ì‚Ì¶¬
+== å•†ä½“ã®ç”Ÿæˆ
 
-=== ®”ŠÂ‚Ì¤‘Ì‚ðŽæ‚Á‚Ä—L—”‚ðì‚é
+=== æ•´æ•°ç’°ã®å•†ä½“ã‚’å–ã£ã¦æœ‰ç†æ•°ã‚’ä½œã‚‹
 
 <<< sample-quotientfield01.rb.v.rd
 
-=== —L—ŠÖ”‘Ì‚Ì¶¬
+=== æœ‰ç†é–¢æ•°ä½“ã®ç”Ÿæˆ
 
 <<< sample-quotientfield02.rb.v.rd
 
-=== ‘ã”Šg‘å‘Ìã‚Ì—L—Ž®‚ÌŒvŽZ
+=== ä»£æ•°æ‹¡å¤§ä½“ä¸Šã®æœ‰ç†å¼ã®è¨ˆç®—
 
 <<< sample-quotientfield03.rb.v.rd
 
-=== ‘ã”ŠÖ”‘Ì
+=== ä»£æ•°é–¢æ•°ä½“
 
 <<< sample-quotientfield04.rb.v.rd
 
-== üŒ`‘ã”
+== ç·šå½¢ä»£æ•°
 
-=== ˜A—§1ŽŸ•û’öŽ®‚ð‰ð‚­
+=== é€£ç«‹1æ¬¡æ–¹ç¨‹å¼ã‚’è§£ã
 
 <<< sample-gaussian-elimination01.rb.v.rd
 
-=== ³•ûs—ñ‚Ì‘ÎŠp‰»
+=== æ­£æ–¹è¡Œåˆ—ã®å¯¾è§’åŒ–
 
 <<< sample-diagonalization01.rb.v.rd >>>
 
-=== s—ñ‚Ì’PˆöŽq‚ð‹‚ß‚é
+=== è¡Œåˆ—ã®å˜å› å­ã‚’æ±‚ã‚ã‚‹
 
 <<< sample-elementary-divisor01.rb.v.rd
 
-=== s—ñ‚Ì Jordan •W€Œ`‚ð‹‚ß‚é
+=== è¡Œåˆ—ã® Jordan æ¨™æº–å½¢ã‚’æ±‚ã‚ã‚‹
 
 <<< sample-jordan-form01.rb.v.rd
 
-=== Cayley-Hamilton ‚Ì’è—‚ÌiŽŸŒ³–ˆ‚ÌjØ–¾
+=== Cayley-Hamilton ã®å®šç†ã®ï¼ˆæ¬¡å…ƒæ¯Žã®ï¼‰è¨¼æ˜Ž
 
 <<< sample-cayleyhamilton01.rb.v.rd
 
-== ƒOƒŒƒuƒiŠî’ê‚ðŒ³‚ÌŠî’ê‚Å•\Œ»‚·‚é
+== ã‚°ãƒ¬ãƒ–ãƒŠåŸºåº•ã‚’å…ƒã®åŸºåº•ã§è¡¨ç¾ã™ã‚‹
 
 <<< sample-groebner02.rb.v.rd
 
-== ”CˆÓ‚ÌŠî’ê‚ÅŠ„‚Á‚½¤‚Æ—]‚è‚ð‹‚ß‚éi—]‚è‚O‚ÉˆÓ–¡‚ª‚ ‚éj
+== ä»»æ„ã®åŸºåº•ã§å‰²ã£ãŸå•†ã¨ä½™ã‚Šã‚’æ±‚ã‚ã‚‹ï¼ˆä½™ã‚Šï¼ï¼ã«æ„å‘³ãŒã‚ã‚‹ï¼‰
 
 <<< sample-groebner03.rb.v.rd
 
-== ˆö”•ª‰ð
+== å› æ•°åˆ†è§£
 
-=== ®”ŒW”‘½€Ž®‚Ìˆö”•ª‰ð
+=== æ•´æ•°ä¿‚æ•°å¤šé …å¼ã®å› æ•°åˆ†è§£
 
 <<< sample-factorize01.rb.v.rd
 
-=== Zp ŒW”‘½€Ž®‚Ìˆö”•ª‰ð
+=== Zp ä¿‚æ•°å¤šé …å¼ã®å› æ•°åˆ†è§£
 
 <<< sample-factorize02.rb.v.rd
 
-=== —L—”‚Ì‘ã”Šg‘åã‚Ì‘½€Ž®‚Ìˆö”•ª‰ð
+=== æœ‰ç†æ•°ã®ä»£æ•°æ‹¡å¤§ä¸Šã®å¤šé …å¼ã®å› æ•°åˆ†è§£
 
 <<< sample-factorize03.rb.v.rd
 
-=== —L—”‚Ì‘ã”Šg‘å‚Ì‘ã”Šg‘åã‚Ì‘½€Ž®‚Ìˆö”•ª‰ð
+=== æœ‰ç†æ•°ã®ä»£æ•°æ‹¡å¤§ã®ä»£æ•°æ‹¡å¤§ä¸Šã®å¤šé …å¼ã®å› æ•°åˆ†è§£
 
 <<< sample-factorize04.rb.v.rd
 
-=== x^4 + 10x^2 + 1 ‚Ìˆö”•ª‰ð
+=== x^4 + 10x^2 + 1 ã®å› æ•°åˆ†è§£
 
 <<< sample-factorize05.rb.v.rd
 
-=== ®”A—L—ŒW”‘½•Ï”‘½€Ž®‚Ìˆö”•ª‰ð
+=== æ•´æ•°ã€æœ‰ç†ä¿‚æ•°å¤šå¤‰æ•°å¤šé …å¼ã®å› æ•°åˆ†è§£
 
 <<< sample-m-factorize01.rb.v.rd
 
-=== Zp ŒW”‘½•Ï”‘½€Ž®‚Ìˆö”•ª‰ð
+=== Zp ä¿‚æ•°å¤šå¤‰æ•°å¤šé …å¼ã®å› æ•°åˆ†è§£
 
 <<< sample-m-factorize02.rb.v.rd
 
-== ‘ã”•û’öŽ®
+== ä»£æ•°æ–¹ç¨‹å¼
 
-=== Å¬‘½€Ž®
+=== æœ€å°å¤šé …å¼
 
 <<< sample-algebraic-equation01.rb.v.rd
 
-=== Å¬•ª‰ð‘Ì
+=== æœ€å°åˆ†è§£ä½“
 
 <<< sample-splitting-field01.rb.v.rd
 
-=== ‘½€Ž®‚ÌƒKƒƒAŒQ
+=== å¤šé …å¼ã®ã‚¬ãƒ­ã‚¢ç¾¤
 
 <<< sample-galois-group01.rb.v.rd
 
-== ‰“™Šô‰½
+== åˆç­‰å¹¾ä½•
 
-=== dS‚Ì‘¶Ý
+=== é‡å¿ƒã®å­˜åœ¨
 
 <<< sample-geometry01.rb.v.rd
 
-=== ŠOS‚Ì‘¶Ý
+=== å¤–å¿ƒã®å­˜åœ¨
 
 <<< sample-geometry02.rb.v.rd
 
-#=== “àS‚Ì‘¶Ý
+#=== å†…å¿ƒã®å­˜åœ¨
 
 #<<< sample-geometry03.rb.v.rd
 
-=== ‚S‚Ì‘¶Ý
+=== åž‚å¿ƒã®å­˜åœ¨
 
 <<< sample-geometry04.rb.v.rd
 
 
-=== 4 ‚Â‚Ì“™–ÊÏ
+=== 4 ã¤ã®ç­‰é¢ç©
 see ((<URL:http://www1.odn.ne.jp/drinkcat/topic/column/quest/quest_2/quest_2.html>)) Question 3.
 
 <<< sample-geometry07.rb.v.rd
 
-== ‰ðÍ
-=== ƒ‰ƒOƒ‰ƒ“ƒWƒ…‚Ìæ”–@
+== è§£æž
+=== ãƒ©ã‚°ãƒ©ãƒ³ã‚¸ãƒ¥ã®ä¹—æ•°æ³•
 <<< sample-lagrange-multiplier01.rb.v.rd
 
 =end

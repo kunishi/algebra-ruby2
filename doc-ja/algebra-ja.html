@@ -1,65 +1,65 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html 
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<link rel="stylesheet" type="text/css" href="style.css" />
-<title>algebra/algebra-ja.html</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>doc-ja/algebra-ja.rd</title>
+<link href="style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <p><a href="#label-0">Algebra</a></p>
 <h1><a name="label-0" id="label-0">Algebra</a></h1><!-- RDLabel: "Algebra" -->
-<p><em>(‘ã”ƒ‚ƒWƒ…[ƒ‹)</em></p>
-<p>‘ã”ƒ‰ƒCƒuƒ‰ƒŠ </p>
+<p><em>(ä»£æ•°ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«)</em></p>
+<p>ä»£æ•°ãƒ©ã‚¤ãƒ–ãƒ©ãƒª </p>
 <ul>
-<li><a href="polynomial-ja.html">Algebra::Polynomial</a> (1•Ï”‘½€®ŠÂƒNƒ‰ƒX)</li>
-<li><a href="m-polynomial-ja.html">Algebra::MPolynomial</a> (‘½•Ï”‘½€®ŠÂƒNƒ‰ƒX)</li>
-<li><a href="residue-class-ring-ja.html">Algebra::ResidueClassRing</a> (è—]ŠÂƒNƒ‰ƒX)</li>
-<li><a href="localized-ring-ja.html">Algebra::LocalizedRing</a> (‹ÇŠ‰»ŠÂƒNƒ‰ƒX)</li>
-<li><a href="matrix-algebra-ja.html">Algebra::MatrixAlgebra</a> (s—ñ‘ã”ƒNƒ‰ƒX)</li>
+<li><a href="polynomial-ja.html">Algebra::Polynomial</a> (1å¤‰æ•°å¤šé …å¼ç’°ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="m-polynomial-ja.html">Algebra::MPolynomial</a> (å¤šå¤‰æ•°å¤šé …å¼ç’°ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="residue-class-ring-ja.html">Algebra::ResidueClassRing</a> (å‰°ä½™ç’°ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="localized-ring-ja.html">Algebra::LocalizedRing</a> (å±€æ‰€åŒ–ç’°ã‚¯ãƒ©ã‚¹)</li>
+<li><a href="matrix-algebra-ja.html">Algebra::MatrixAlgebra</a> (è¡Œåˆ—ä»£æ•°ã‚¯ãƒ©ã‚¹)</li>
 <li>etc.</li>
 </ul>
-<p>‚È‚Ç‚ğ‚Ü‚Æ‚ß‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹‚Å‚·B</p>
-<h2><a name="label-1" id="label-1">ŠÖ˜A‚·‚éƒtƒ@ƒCƒ‹:</a></h2><!-- RDLabel: "ŠÖ˜A‚·‚éƒtƒ@ƒCƒ‹:" -->
+<p>ãªã©ã‚’ã¾ã¨ã‚ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§ã™ã€‚</p>
+<h2><a name="label-1" id="label-1">é–¢é€£ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«:</a></h2><!-- RDLabel: "é–¢é€£ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«:" -->
 <ul>
-<li><p><code>require "algebra.rb"</code> ‚ğ‚µ‚Ä‚¨‚­‚ÆA</p>
+<li><p><code>require "algebra.rb"</code> ã‚’ã—ã¦ãŠãã¨ã€</p>
 <pre>include Algebra</pre>
-<p>‚ª‚È‚³‚êA‚±‚ê‚ç‚Ìƒ‚ƒWƒ…[ƒ‹‚ª‹Lq‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ğ“K‹X <code>require</code> ‚µ‚Ü‚·B</p></li>
+<p>ãŒãªã•ã‚Œã€ã“ã‚Œã‚‰ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒè¨˜è¿°ã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’é©å®œ <code>require</code> ã—ã¾ã™ã€‚</p></li>
 </ul>
-<h2><a name="label-2" id="label-2">ƒX[ƒp[ƒNƒ‰ƒX:</a></h2><!-- RDLabel: "ƒX[ƒp[ƒNƒ‰ƒX:" -->
+<h2><a name="label-2" id="label-2">ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:</a></h2><!-- RDLabel: "ã‚¹ãƒ¼ãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹:" -->
 <ul>
 <li><var>Object</var></li>
 </ul>
-<h2><a name="label-3" id="label-3">ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:</a></h2><!-- RDLabel: "ƒCƒ“ƒNƒ‹[ƒh‚µ‚Ä‚¢‚éƒ‚ƒWƒ…[ƒ‹:" -->
-<p>‚È‚µ</p>
-<h2><a name="label-4" id="label-4">ƒNƒ‰ƒXƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒNƒ‰ƒXƒƒ\ƒbƒh:" -->
+<h2><a name="label-3" id="label-3">ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:</a></h2><!-- RDLabel: "ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã—ã¦ã„ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«:" -->
+<p>ãªã—</p>
+<h2><a name="label-4" id="label-4">ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ã‚¯ãƒ©ã‚¹ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-5" id="label-5"><code>Algebra.Polynomial(<var>ring</var> [, <var>obj0</var> , <var>obj1</var> [, ...]])</code></a></dt><!-- RDLabel: "Algebra.Polynomial" -->
 <dd>
-<a href="polynomial-ja.html#Algebra_S_Polynomial">Algebra.Polynomial</a>() QÆB</dd>
+<a href="polynomial-ja.html#Algebra_S_Polynomial">Algebra.Polynomial</a>() å‚ç…§ã€‚</dd>
 <dt><a name="label-6" id="label-6"><code>Algebra.MPolynomial(<var>ring</var> [, <var>obj0</var> [, <var>obj1</var> [, ...]]])</code></a></dt><!-- RDLabel: "Algebra.MPolynomial" -->
 <dd>
-<a href="m-polynomial-ja.html#Algebra_S_MPolynomial">Algebra.MPolynomial</a>() QÆB</dd>
+<a href="m-polynomial-ja.html#Algebra_S_MPolynomial">Algebra.MPolynomial</a>() å‚ç…§ã€‚</dd>
 <dt><a name="label-7" id="label-7"><code>Algebra.ResidueClassRing(<var>ring</var>, <var>mod</var>)</code></a></dt><!-- RDLabel: "Algebra.ResidueClassRing" -->
 <dd>
-<a href="residue-class-ring-ja.html#Algebra_S_ResidueClassRing">Algebra.ResidueClassRing</a>() QÆB</dd>
+<a href="residue-class-ring-ja.html#Algebra_S_ResidueClassRing">Algebra.ResidueClassRing</a>() å‚ç…§ã€‚</dd>
 <dt><a name="label-8" id="label-8"><code>Algebra.AlgebraicExtensionField(<var>field</var>, <var>obj</var>){|<var>x</var>| ... }</code></a></dt><!-- RDLabel: "Algebra.AlgebraicExtensionField" -->
 <dd>
-<a href="residue-class-ring-ja.html#Algebra_S_AlgebraicExtensionField">Algebra.AlgebraicExtensionField</a>() QÆB</dd>
+<a href="residue-class-ring-ja.html#Algebra_S_AlgebraicExtensionField">Algebra.AlgebraicExtensionField</a>() å‚ç…§ã€‚</dd>
 <dt><a name="label-9" id="label-9"><code>Algebra.MatrixAlgebra(<var>ring</var>, <var>m</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra.MatrixAlgebra" -->
 <dd>
-<a href="matrix-algebra-ja.html#Algebra_S_MatrixAlgebra">Algebra.MatrixAlgebra</a>(ring, m, n) QÆB</dd>
+<a href="matrix-algebra-ja.html#Algebra_S_MatrixAlgebra">Algebra.MatrixAlgebra</a>(ring, m, n) å‚ç…§ã€‚</dd>
 <dt><a name="label-10" id="label-10"><code>Algebra.Vector(<var>ring</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra.Vector" -->
 <dd>
-<a href="matrix-algebra-ja.html#Algebra_S_Vector">Algebra.Vector</a>(ring, n) QÆB</dd>
+<a href="matrix-algebra-ja.html#Algebra_S_Vector">Algebra.Vector</a>(ring, n) å‚ç…§ã€‚</dd>
 <dt><a name="label-11" id="label-11"><code>Algebra.Covector(<var>ring</var>, <var>n</var>)</code></a></dt><!-- RDLabel: "Algebra.Covector" -->
 <dd>
-<a href="matrix-algebra-ja.html#Algebra_S_Covector">Algebra.Covector</a>(ring, n) QÆB</dd>
+<a href="matrix-algebra-ja.html#Algebra_S_Covector">Algebra.Covector</a>(ring, n) å‚ç…§ã€‚</dd>
 <dt><a name="label-12" id="label-12"><code>Algebra.SquareMatrix(<var>ring</var>, <var>size</var>)</code></a></dt><!-- RDLabel: "Algebra.SquareMatrix" -->
 <dd>
-<a href="matrix-algebra-ja.html#Algebra_S_SquareMatrix">Algebra.SquareMatrix</a>(ring, n) QÆB</dd>
+<a href="matrix-algebra-ja.html#Algebra_S_SquareMatrix">Algebra.SquareMatrix</a>(ring, n) å‚ç…§ã€‚</dd>
 </dl>
 
 </body>

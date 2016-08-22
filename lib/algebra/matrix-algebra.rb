@@ -47,22 +47,22 @@ class MatrixAlgebra
   extend AlgebraCreator
   include AlgebraBase
   include Enumerable
-  # auto_req_init
-  # auto_req :solve_eigen_value_problem, "algebra/linear-algebra"
-  # auto_req :diagonalize, "algebra/linear-algebra"
-  # auto_req :to_triplet, "algebra/matrix-algebra-triplet"
-  # auto_req :to_quint, "algebra/matrix-algebra-triplet"
-  # auto_req :e_inverse, "algebra/elementary-divisor"
-  # auto_req :elementary_divisor, "algebra/elementary-divisor"
-  # auto_req :e_diagonalize, "algebra/elementary-divisor"
-  # auto_req :e_diagonalize!, "algebra/elementary-divisor"
-  # autoload :JordanForm, "algebra/jordan-form"
-  # auto_req :jordan_form, "algebra/jordan-form"
-  # auto_req :jordan_form_info, "algebra/jordan-form"
-  require 'algebra/linear-algebra'
-  require 'algebra/matrix-algebra-triplet'
-  require 'algebra/elementary-divisor'
-  require 'algebra/jordan-form'
+  auto_req_init
+  auto_req :solve_eigen_value_problem, "algebra/linear-algebra"
+  auto_req :diagonalize, "algebra/linear-algebra"
+  auto_req :to_triplet, "algebra/matrix-algebra-triplet"
+  auto_req :to_quint, "algebra/matrix-algebra-triplet"
+  auto_req :e_inverse, "algebra/elementary-divisor"
+  auto_req :elementary_divisor, "algebra/elementary-divisor"
+  auto_req :e_diagonalize, "algebra/elementary-divisor"
+  auto_req :e_diagonalize!, "algebra/elementary-divisor"
+  autoload :JordanForm, "algebra/jordan-form"
+  auto_req :jordan_form, "algebra/jordan-form"
+  auto_req :jordan_form_info, "algebra/jordan-form"
+  # require 'algebra/linear-algebra'
+  # require 'algebra/matrix-algebra-triplet'
+  # require 'algebra/elementary-divisor'
+  # require 'algebra/jordan-form'
 
   Matrices = {}
 
@@ -905,7 +905,7 @@ if $0 == __FILE__
   p m0 + m1
   p m0 * m0
   p( (m0 * m0).t )
-  m = m0 * m2
+  # m = m0 * m2
   M43 = M34.transpose
   p M34.sizes
   p M43.sizes
@@ -917,10 +917,10 @@ if $0 == __FILE__
   require "algebra/rational"
 
   M3 = Algebra.SquareMatrix(Rational, 3)
-  m3 = M3[
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8]]
+  # m3 = M3[
+  #   [0, 1, 2],
+  #   [3, 4, 5],
+  #   [6, 7, 8]]
 
 #  require "algebra/polynomial"
 #  Px =  Algebra.Polynomial(Rational, "x")

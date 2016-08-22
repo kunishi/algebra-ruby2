@@ -1,29 +1,29 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html 
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<link rel="stylesheet" type="text/css" href="style.css" />
-<title>algebra/algebraic-equation-ja.html</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<title>doc-ja/algebraic-equation-ja.rd</title>
+<link href="style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <p>[<a href="index-ja.html">index-ja</a>] </p>
 <h1><a name="label-0" id="label-0">AlgebraicEqation</a></h1><!-- RDLabel: "AlgebraicEqation" -->
-<p><em>(‘ã”•û’ö®‚Ì‚½‚ß‚Ìƒ†[ƒeƒBƒŠƒeƒB[)</em></p>
-<p>•û’ö®‚Æ‘Ì‚Ì‚½‚ß‚Ìƒtƒ@ƒCƒ‹</p>
-<h2><a name="label-1" id="label-1">ƒtƒ@ƒCƒ‹–¼:</a></h2><!-- RDLabel: "ƒtƒ@ƒCƒ‹–¼:" -->
+<p><em>(ä»£æ•°æ–¹ç¨‹å¼ã®ãŸã‚ã®ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ¼)</em></p>
+<p>æ–¹ç¨‹å¼ã¨ä½“ã®ãŸã‚ã®ãƒ•ã‚¡ã‚¤ãƒ«</p>
+<h2><a name="label-1" id="label-1">ãƒ•ã‚¡ã‚¤ãƒ«å:</a></h2><!-- RDLabel: "ãƒ•ã‚¡ã‚¤ãƒ«å:" -->
 <ul>
 <li><var>algebraic-equation.rb</var></li>
 </ul>
-<h2><a name="label-2" id="label-2">ƒ‚ƒWƒ…[ƒ‹ƒƒ\ƒbƒh:</a></h2><!-- RDLabel: "ƒ‚ƒWƒ…[ƒ‹ƒƒ\ƒbƒh:" -->
+<h2><a name="label-2" id="label-2">ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ¡ã‚½ãƒƒãƒ‰:</a></h2><!-- RDLabel: "ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ¡ã‚½ãƒƒãƒ‰:" -->
 <dl>
 <dt><a name="label-3" id="label-3"><code>minimal_polynomial(<var>element</var>, <var>poly1</var>[, <var>poly2</var>[, <var>poly3</var>...]])</code></a></dt><!-- RDLabel: "minimal_polynomial" -->
 <dd>
-<p><code>poly1, poly2, poly3...</code> ‚ğ–@‚Æ‚µ‚½A<var>element</var> ‚ÌÅ¬‘½€®
-‚ğ‹‚ß‚Ü‚·B</p>
-<p>—á: ƒ‹[ƒg2 + ƒ‹[ƒg3 + ƒ‹[ƒg5 ‚ÌÅ¬‘½€®‚ğ‹‚ß‚éB</p>
+<p><code>poly1, poly2, poly3...</code> ã‚’æ³•ã¨ã—ãŸã€<var>element</var> ã®æœ€å°å¤šé …å¼
+ã‚’æ±‚ã‚ã¾ã™ã€‚</p>
+<p>ä¾‹: ãƒ«ãƒ¼ãƒˆ2 + ãƒ«ãƒ¼ãƒˆ3 + ãƒ«ãƒ¼ãƒˆ5 ã®æœ€å°å¤šé …å¼ã‚’æ±‚ã‚ã‚‹ã€‚</p>
 <pre>PQ = MPolynomial(Rational)
 a, b, c = PQ.vars("abc")
 p AlgebraicEquation.minimal_polynomial(a + b + c, a**2-2, b**2-3, c**2-5)

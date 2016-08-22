@@ -1,38 +1,38 @@
 =begin
 [((<index-ja|URL:index-ja.html>))] 
 = Algebra::JordanForm
-((*(�W�����_���s��N���X)*))
+((*(ジョルダン行列クラス)*))
 
-�W�����_���s���\������N���X�ł��B
+ジョルダン行列を表現するクラスです。
 
-== �t�@�C����:
+== ファイル名:
 * ((|jordan-form.rb|))
 
-== �X�[�p�[�N���X:
+== スーパークラス:
 
 * ((|Object|))
 
-== �C���N���[�h���Ă��郂�W���[��:
+== インクルードしているモジュール:
 
-�Ȃ�
+なし
 
-== �֘A����֐�:
+== 関連する関数:
 
 --- Algebra::MatrixAlgebra#jordan_form
-    ((|self|))�̃W�����_���W���`��Ԃ��܂��B
+    ((|self|))のジョルダン標準形を返します。
 
 --- Algebra::MatrixAlgebra#jordan_form_info
-    ((<Algebra::JordanForm.decompose>))(self) �Ɠ����ł��B
+    ((<Algebra::JordanForm.decompose>))(self) と同じです。
 
-== �N���X���\�b�h:
+== クラスメソッド:
 
 --- ::new(array)
-    ((<JordanForm>)) �I�u�W�F�N�g��Ԃ��܂��B((|array|)) �́A
-    (({[�Ίp����, �T�C�Y]})) ��v�f�Ƃ���z��ł��B�s��𓾂�ɂ�
-    ���\�b�h ((<to_matrix>)) ���{�����Ƃɂ��A�i��O�p�j�W�����_��
-    �s�񂪓����܂��B���O�p�ɂ���ɂ�((<to_matrix_l>))��p���܂��B
+    ((<JordanForm>)) オブジェクトを返します。((|array|)) は、
+    (({[対角成分, サイズ]})) を要素とする配列です。行列を得るには
+    メソッド ((<to_matrix>)) を施すことにより、（上三角）ジョルダン
+    行列が得られます。下三角にするには((<to_matrix_l>))を用います。
 
-    ��:
+    例:
       j = Algebra::JordanForm.new([[2, 3], [-1, 2]])
       j.to_matrix.display #=>
       #  2,   1,   0,   0,   0
@@ -42,19 +42,19 @@
       #  0,   0,   0,   0,  -1
 
 --- ::construct(elem_divs, facts, field, pfield)
-    ���B
+    略。
 
 --- ::decompose(m)
-    �s�� ((|m|)) �̃W�����_���s��� ((|jm|))�A((|m|)) �� ((|jm|)) ��
-    �ό`���邽�߂ɕK�v�ȍ��ό`�� ((|tL|))�A�E�ό`�� ((|sR|))�A�W�����_��
-    ����������̂ɕK�v�ȍŏ�����̂� ((|field|)) �A�ŏ�����̂܂Ŋ�b��
-    ���g�傷��̂ɕK�v�ȕ������̔z��� ((|modulus|)) �Ƃ���Ƃ��A
+    行列 ((|m|)) のジョルダン行列を ((|jm|))、((|m|)) を ((|jm|)) に
+    変形するために必要な左変形を ((|tL|))、右変形を ((|sR|))、ジョルダン
+    分解をするのに必要な最小分解体を ((|field|)) 、最小分解体まで基礎体
+    を拡大するのに必要な方程式の配列を ((|modulus|)) とするとき、
 
       [jm, tL, sR, field, modulus]
 
-    ��Ԃ��܂��B�i(({tL * sR == �P�ʍs��})) �ł��B�j
+    を返します。（(({tL * sR == 単位行列})) です。）
 
-    ��:
+    例:
       m = Algebra.SquareMatrix(Rational, a.size)[
        [-1, 1, 2, -1],
        [-5, 3, 4, -2],
@@ -76,12 +76,12 @@
       m = m.convert_to(field)
       p jf == p * m * q #=> true
 
-== ���\�b�h:
+== メソッド:
 
 --- to_matrix(ring)
-    ((|ring|)) ��̃W�����_���s��i��O�p�j��Ԃ��܂��B
+    ((|ring|)) 上のジョルダン行列（上三角）を返します。
 
-    ��:
+    例:
       j = Algebra::JordanForm.new([[2, 3], [-1, 2]])
       j.to_matrix(Integer).display #=>
       #  2,   1,   0,   0,   0
@@ -91,9 +91,9 @@
       #  0,   0,   0,   0,  -1
 
 --- to_matrix_r(ring)
-    ((<to_matrix>)) �Ɠ����B
+    ((<to_matrix>)) と同じ。
 
 --- to_matrix_l(ring)
-    �W�����_���s��i���O�p�j��Ԃ��܂��B
+    ジョルダン行列（下三角）を返します。
 
 =end

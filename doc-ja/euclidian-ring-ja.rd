@@ -2,27 +2,27 @@
 [((<index-ja|URL:index-ja.html>))] 
 = Algebra::EuclidianRing
 
-((*(G.C.D.ŒvZƒ‚ƒWƒ…[ƒ‹)*))
+((*(G.C.D.è¨ˆç®—ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«)*))
 
-((|divmod|)) ‚©‚ç G.C.D(Å‘åŒö–ñ”)“™‚ğŒvZ‚·‚éƒ‚ƒWƒ…[ƒ‹‚Å‚·B
-‚±‚ê‚Í ((|Integer|)) ‚â ((|Algebra::Polynomial|)) ‚ÉƒCƒ“ƒNƒ‹[ƒh‚³‚ê‚Ü‚·B
+((|divmod|)) ã‹ã‚‰ G.C.D(æœ€å¤§å…¬ç´„æ•°)ç­‰ã‚’è¨ˆç®—ã™ã‚‹ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§ã™ã€‚
+ã“ã‚Œã¯ ((|Integer|)) ã‚„ ((|Algebra::Polynomial|)) ã«ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã•ã‚Œã¾ã™ã€‚
 
-== ƒtƒ@ƒCƒ‹–¼:
+== ãƒ•ã‚¡ã‚¤ãƒ«å:
 * ((|euclidian-ring.rb|))
 
-== ƒƒ\ƒbƒh:
+== ãƒ¡ã‚½ãƒƒãƒ‰:
 
 --- gcd(other)
-    ((|self|)) ‚Æ ((|other|)) ‚Æ‚ÌÅ‘åŒö–ñ”‚ğ•Ô‚µ‚Ü‚·B
+    ((|self|)) ã¨ ((|other|)) ã¨ã®æœ€å¤§å…¬ç´„æ•°ã‚’è¿”ã—ã¾ã™ã€‚
 
 --- gcd_all(other0 [, other1[, ...]])
-    ((|self|)) ‚Æ ((|other0|)), ((|other1|)),... ‚Æ‚ÌÅ‘åŒö–ñ”‚ğ•Ô‚µ‚Ü‚·B
+    ((|self|)) ã¨ ((|other0|)), ((|other1|)),... ã¨ã®æœ€å¤§å…¬ç´„æ•°ã‚’è¿”ã—ã¾ã™ã€‚
 
 --- gcd_coeff(other)
-    ((|self|)) ‚Æ ((|other|)) ‚Æ‚ÌÅ‘åŒö–ñ”‚ÆA‚»‚ê‚ğ•\Œ»‚·‚éŒW”‚Ì
-    ”z—ñ‚ğ•Ô‚µ‚Ü‚·B
+    ((|self|)) ã¨ ((|other|)) ã¨ã®æœ€å¤§å…¬ç´„æ•°ã¨ã€ãã‚Œã‚’è¡¨ç¾ã™ã‚‹ä¿‚æ•°ã®
+    é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
     
-    —á:
+    ä¾‹:
       require "polynomial"
       require "rational"
       P = Algebra.Polynomial(Rational, "x")
@@ -36,13 +36,13 @@
       p gcd == a*f + b*g #=> true
 
 --- gcd_ext(other)
-    ((<gcd_coeff>)) ‚Æ“¯‚¶‚Å‚·B
+    ((<gcd_coeff>)) ã¨åŒã˜ã§ã™ã€‚
 
 --- gcd_coeff_all(other0 [, other1[, ...]])
-    ((|self|)) ‚Æ ((|other0|)), ((|other1|)),... ‚Æ‚ÌÅ‘åŒö–ñ”‚ÆA‚»‚ê
-    ‚ğ•\Œ»‚·‚éŒW”‚Ì”z—ñ‚ğ•Ô‚µ‚Ü‚·B
+    ((|self|)) ã¨ ((|other0|)), ((|other1|)),... ã¨ã®æœ€å¤§å…¬ç´„æ•°ã¨ã€ãã‚Œ
+    ã‚’è¡¨ç¾ã™ã‚‹ä¿‚æ•°ã®é…åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
 
-    —á:
+    ä¾‹:
       require "polynomial"
       require "rational"
       P = Algebra.Polynomial(Rational, "x")
@@ -58,12 +58,12 @@
       p gcd == a*f + b*g + c*h #=> true
 
 --- gcd_ext_all(other)
-    ((<gcd_coeff_all>)) ‚Æ“¯‚¶‚Å‚·B
+    ((<gcd_coeff_all>)) ã¨åŒã˜ã§ã™ã€‚
 
 --- lcm(b)
-    ((|self|)) ‚Æ ((|other|)) ‚Æ‚ÌÅ¬Œö”{”‚ğ•Ô‚µ‚Ü‚·B
+    ((|self|)) ã¨ ((|other|)) ã¨ã®æœ€å°å…¬å€æ•°ã‚’è¿”ã—ã¾ã™ã€‚
 
 --- lcm_all(other0 [, other1[, ...]])
-    ((|self|)) ‚Æ ((|other0|)), ((|other1|)),... ‚Æ‚ÌÅ¬Œö”{”‚ğ•Ô‚µ‚Ü‚·B
+    ((|self|)) ã¨ ((|other0|)), ((|other1|)),... ã¨ã®æœ€å°å…¬å€æ•°ã‚’è¿”ã—ã¾ã™ã€‚
 
 =end

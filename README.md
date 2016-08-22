@@ -58,8 +58,7 @@ See index.html in doc directory, where manuals and sample codes are.
 
  *  D.Cox, J.Little and D.O'Shea, "IDEALS, VARIETIES AND ALGORITHMS", 1997,
     Springer.
- *  K. Kodama, "Polynomial", <URL:http://www.math.kobe-u.ac.jp/HOME/kodama/
-    tips-RubyPoly.html>
+ *  K. Kodama, "Polynomial", http://www.math.kobe-u.ac.jp/HOME/kodama/tips-RubyPoly.html
  *  H.Anai, M.Noro and K.Yokoyama, "Computation of the splitting fields and
     the Galois groups of polynomials", Progres in Mathematics, 28-50, Vo.143,
     1996

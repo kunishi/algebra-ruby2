@@ -27,13 +27,13 @@ module Algebra
   class ResidueClassRing
     extend AlgebraCreator
     include AlgebraBase
-    
+
     attr_reader :x
-    
+
     def lift; @x; end
-    
+
     def self.[](m); new(m); end
-    
+
     def self.indeterminate(obj)
       new(ground.indeterminate(obj))
     end
@@ -42,11 +42,11 @@ module Algebra
       #elem: Polynomial, ResidueClassRing
       elem.convert_to(self)
     end
-    
+
     def initialize(x)
       @x = x % modulus
     end
-    
+
     def monomial?
       !@x.respond_to?(:monomial?) || @x.monomial?
      #^^^^^^^^^ numeric ^^^^^^^^^
@@ -61,7 +61,7 @@ module Algebra
         true
       end
     end
-    
+
     def evaluate(*a)
       #p [333, @x, @x.class, a[0], a[0].class]
       #b = a[0].lift
@@ -80,38 +80,38 @@ module Algebra
       c = b.evaluate(k.ground.var)
       k[c]
     end
-    
+
     def ==(other)
       super{ |o|
 	((@x - o.x) % modulus).zero?
       }
     end
-    
+
     def +(other)
       super{ |o|
 	self.class[@x + o.x]
-      }    
+      }
     end
-    
+
     def -(other)
       super{ |o|
 	self.class[@x - o.x]
       }
     end
-    
+
     def *(other)
       super{ |o|
 	self.class[@x * o.x]
-      }    
+      }
     end
-    
+
     def inverse
       return self.class.inverse(@x) if self.class.respond_to? :inverse
       return self.class[@x.inverse] if @x.respond_to? :inverse
       d, a, = @x.gcd_coeff(modulus)
       self.class.new(a / d)
     end
-    
+
     def /(other)
       if other.is_a?(self.class)
 	self * other.inverse
@@ -121,30 +121,30 @@ module Algebra
 	}
       end
     end
-    
+
     def pdivmod(other); [self / other, zero]; end
-    
+
     #  def unit?
     #    inverse
     #  end
-    
+
     def to_s
       (@x % modulus).to_s
     end
-    
+
     alias inspect to_s unless $DEBUG
-    
+
     def modulus; self.class.modulus; end
     def modulus=(var); self.class.modulus = var; end
-    
+
     def self.create(ground, mod)
       klass = super(ground)
       klass.sysvar(:modulus, mod)
-      
+
       if mod.is_a?(Integer) && (ground <= Integer || defined?(Rational) &&
 				ground <= Rational)
 	klass.class_eval <<__END_OF_CLASS_DEFINITION__
-	
+
 	#      @@modulus = #{mod}
 	@@inverse = [nil] + (1...@@modulus).collect{|x|
 	  d, a, = x.gcd_coeff(@@modulus)
@@ -155,7 +155,7 @@ module Algebra
 	def self.char; @@modulus; end
 	def self.inverse(k); @@inverse[k]; end
 	def self.to_ary; (0...@@modulus).collect{|x| self[x]}; end
-	
+
 __END_OF_CLASS_DEFINITION__
       end
       klass
@@ -167,7 +167,7 @@ if __FILE__ == $0
   include Algebra
   Z13 = ResidueClassRing.create(Integer, 13)
 
-  a, b, c, d, e, f, g = Z13
+  _a, b, c, d, e, _f, _g = Z13
   p [e + c, e - c, e * c, e * 2001, 3 + c, 1/c, 1/c * c,
     d / d, b * 1 / b] #=> [6, 2, 8, 9, 5, 7, 1, 1, 1]
   p( (1...13).collect{|i|  Z13[i]**12} )
@@ -196,7 +196,7 @@ if __FILE__ == $0
   p( (x + y + 1)**7 )
     #=> 4y^4 + (3x + 4)y^3 + (5x + 6)y^2 + (x + 8)y + 6x + 1
   p( 1/(x + y + 1)**7 )
-    #=> (1798/3x + 1825/9)y^4 + (-74x + 5176/9)y^3 + 
+    #=> (1798/3x + 1825/9)y^4 + (-74x + 5176/9)y^3 +
     #     (-6886/9x - 5917/9)y^2 + (1826/3x - 3101/9)y + 2146/9x + 4702/9
 
   require "algebra/polynomial"
@@ -213,7 +213,7 @@ if __FILE__ == $0
   p( (x+y+z+w)**7 ) #=> w^7 + z^7 + y^7 + x^7
 
   require "algebra/algebraic-extension-field.rb"
-  AEF = AlgebraicExtensionField(Rational, "x") {|x| x**2 + x + 1}
+  AEF = AlgebraicExtensionField(Rational, "x") {|x1| x1**2 + x1 + 1}
   x = AEF.var
   p( (x-1)** 3 / (x**2 - 1) )
 end

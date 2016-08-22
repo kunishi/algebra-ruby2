@@ -16,21 +16,23 @@ class Module
     code.concat <<-__CODE__
     def method_missing(sym, *param, &block)
       begin
-	file, work = AUTO_LOAD[sym]
-	unless file
-	  raise NameError,
-	    "undefined method `\#{sym.id2name}' for \#{inspect}"
-	end
-	require file
-	work.call if work
+      	file, work = AUTO_LOAD[sym]
+      	unless file
+      	  raise NameError,
+      	    "undefined method `\#{sym.id2name}' for \#{inspect}"
+      	end
+      	require file
+      	work.call if work
 
-	unless respond_to?(sym, true)
-	  raise "(auto_req) `\#{sym.id2name}' is not defined for `\#{self}' in file:`\#{file}' \#{self.class.superclass.superclass}"
-	end
-	send(sym, *param, &block)
+      	unless respond_to?(sym, true)
+      	  raise "(auto_req) `\#{sym.id2name}' is not defined for `\#{self}' in file:`\#{file}' \#{self.class.superclass.superclass}"
+      	end
+      	send(sym, *param, &block)
       rescue Exception
-	$@.delete_if{|trace| trace =~ /^\\(eval\\):/}
-	raise
+      	$@.delete_if do |trace|
+          trace =~ /^\\(eval\\):/
+        end
+      	raise
       end
     end
     __CODE__
@@ -52,7 +54,7 @@ class Module
       code = <<-__CODE__
       AUTO_LOAD[symb.is_a?(String) ? symb.intern : symb] = [file, b]
       __CODE__
-      
+
       sw ? instance_eval(code) : module_eval(code)
     end
   end

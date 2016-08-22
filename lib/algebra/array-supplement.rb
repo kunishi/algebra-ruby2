@@ -7,16 +7,18 @@
 class Array
   def each_pair
     each_with_index do |x, i|
-      (i+1).upto(size-1) do |j| y = self[j]
-	yield(x, y)
+      (i + 1).upto(size - 1) do |j|
+        y = self[j]
+        yield(x, y)
       end
     end
   end
 
   def each_pair_with_index
     each_with_index do |x, i|
-      (i+1).upto(size-1) do |j| y = self[j]
-	yield(x, y, i, j)
+      (i + 1).upto(size - 1) do |j|
+        y = self[j]
+        yield(x, y, i, j)
       end
     end
   end
