@@ -40,7 +40,7 @@ Install Ruby (See: <URL:http://www.ruby-lang.org/> ).
 
 After expanding this archive, do
 ```
-bundle install
+bundle exec rake install
 ```
 
 Then all files and directories under lib are copyed in the directory where Ruby

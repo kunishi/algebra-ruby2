@@ -38,7 +38,7 @@ Ruby で表現可能にする事を目的にしています。スピードはあ
 http://www.ruby-lang.org/>参照) が必要です。
 
 更に、アーカイブの展開後
-bundle install
+bundle exec rake install
 
 とすれば、lib ディレクトリ以下を、ロード可能なディレクトリにコピーし、インスト
 ールが完了します。
