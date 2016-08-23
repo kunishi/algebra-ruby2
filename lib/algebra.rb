@@ -7,6 +7,7 @@
 
 require 'algebra/auto-require'
 require 'algebra/rational'
+require 'algebra/version'
 
 module Algebra
   require 'algebra/algebraic-equation'

@@ -1,6 +1,12 @@
+PATH
+  remote: .
+  specs:
+    algebra (0.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    minitest (5.9.0)
     power_assert (0.3.0)
     rake (11.2.2)
     rdtool (0.6.38)
@@ -11,6 +17,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  algebra!
+  bundler (~> 1.12)
+  minitest (~> 5.0)
   rake
   rdtool
   test-unit
