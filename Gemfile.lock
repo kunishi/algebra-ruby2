@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    algebra (0.2.1)
+    algebra (0.2.2)
 
 GEM
   remote: https://rubygems.org/
