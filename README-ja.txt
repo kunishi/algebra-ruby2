@@ -38,13 +38,10 @@ Ruby で表現可能にする事を目的にしています。スピードはあ
 http://www.ruby-lang.org/>参照) が必要です。
 
 更に、アーカイブの展開後
-ruby install.rb
+bundle install
 
 とすれば、lib ディレクトリ以下を、ロード可能なディレクトリにコピーし、インスト
 ールが完了します。
-
-速度の点から、有理数は標準添付の rational.rb ではなく、拡張ライブラリ (<URL:
-http://blade.nagaokaut.ac.jp/~sinara/ruby/rational/> を使うことを勧めます。
 
 使い方・サンプル
 

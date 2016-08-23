@@ -40,15 +40,11 @@ Install Ruby (See: <URL:http://www.ruby-lang.org/> ).
 
 After expanding this archive, do
 ```
-ruby install.rb
+bundle install
 ```
 
 Then all files and directories under lib are copyed in the directory where Ruby
 can load.
-
-To accelerate calculation, it is better to use an extension library of rational
-number: (<URL:http://blade.nagaokaut.ac.jp/~sinara/ruby/rational/> than to use
-the stardard library rational.rb.
 
 ## Usage and Samples
 
