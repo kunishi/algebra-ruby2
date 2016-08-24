@@ -4,7 +4,7 @@
 #
 # Version 0.96 (2003.11.06)
 
-Object.send(:remove_const, :Set)
+Object.send(:remove_const, :Set) if defined? Object::Set
 
 module Algebra
   class Set
