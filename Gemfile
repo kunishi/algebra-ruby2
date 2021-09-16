@@ -2,6 +2,6 @@
 source "https://rubygems.org"
 
 gemspec
-gem 'rake'
+gem "rake", ">= 12.3.3"
 gem 'rdtool'
 gem 'test-unit'
