@@ -8,7 +8,7 @@ GEM
   specs:
     minitest (5.9.0)
     power_assert (0.3.0)
-    rake (11.2.2)
+    rake (12.3.3)
     rdtool (0.6.38)
     test-unit (3.2.1)
       power_assert
@@ -20,7 +20,7 @@ DEPENDENCIES
   algebra!
   bundler (~> 1.12)
   minitest (~> 5.0)
-  rake
+  rake (>= 12.3.3)
   rdtool
   test-unit
 
